@@ -500,6 +500,23 @@
         border-bottom: 1px solid var(--line);
       }
     }
+  
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.4s; }
+    .delay-4 { transition-delay: 0.6s; }
+
   </style>
 </head>
 <body data-page="teachers">
@@ -540,7 +557,7 @@
     <section class="teach-hero">
       <div class="container">
         <div class="teach-hero-grid">
-          <div>
+          <div class="reveal delay-1">
             <span class="badge">Irakasleak · Orientazio didaktikoa</span>
             <h1>AA lantzeko gida praktikoa ikasgelarako</h1>
             <p>
@@ -548,25 +565,25 @@
               saio-sekuentzia, ebaluazio orientabideak eta erabilera arduratsurako gomendioak.
             </p>
           </div>
-          <div class="teach-hero-visual">
+          <div class="teach-hero-visual reveal delay-2">
             <span class="teach-hero-icon">Ir.</span>
           </div>
         </div>
 
         <div class="teach-stats">
-          <div class="teach-stat">
+          <div class="teach-stat reveal delay-1">
             <strong>8</strong>
             <span>Ikasgai</span>
           </div>
-          <div class="teach-stat">
+          <div class="teach-stat reveal delay-2">
             <strong>4</strong>
             <span>Laborategi</span>
           </div>
-          <div class="teach-stat">
+          <div class="teach-stat reveal delay-3">
             <strong>6-10</strong>
             <span>Saio gomendatu</span>
           </div>
-          <div class="teach-stat">
+          <div class="teach-stat reveal delay-4">
             <strong>12-18</strong>
             <span>Urte-tartea</span>
           </div>
@@ -579,7 +596,7 @@
       <div class="container">
         <div class="teach-layout">
           <!-- Sidebar -->
-          <aside class="teach-sidebar">
+          <aside class="teach-sidebar reveal delay-1">
             <div class="teach-side-card">
               <h3>Ibilbide azkarra</h3>
               <p style="margin-bottom:.8rem;">Ikastalde batekin hasteko modu erraz eta praktikoa.</p>
@@ -628,9 +645,9 @@
           </aside>
 
           <!-- Main content -->
-          <div class="teach-main">
+          <div class="teach-main reveal delay-2">
             <!-- Zer eskaintzen du -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Zer eskaintzen du plataformak?</h2>
                 <p>Plataformaren egiturak ulermena, esperimentazioa eta hausnarketa uztartzen ditu, ikasgaiak, laborategiak eta erronkak lotuz.</p>
@@ -653,7 +670,7 @@
             </article>
 
             <!-- Helburu pedagogikoak -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Helburu pedagogikoak</h2>
                 <p>Helburua ez da tresna batzuk erabiltzen ikastea bakarrik, baizik eta ikasleek AA zer den, nola dabilen eta zein mugak dituen ulertzea.</p>
@@ -681,7 +698,7 @@
             </article>
 
             <!-- Saio-sekuentzia -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Saio-sekuentzia proposatua</h2>
                 <p>Hona hemen 6-10 saiotarako erabil daitekeen proposamen malgu bat, ikastaldearen adinaren eta denboraren arabera moldagarria.</p>
@@ -734,7 +751,7 @@
             </article>
 
             <!-- Adinaren araberako egokitzapena -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Adinaren araberako egokitzapena</h2>
                 <p>Edukia ez da berdin landu behar DBH hasierako mailetan eta Batxilergoan.</p>
@@ -772,7 +789,7 @@
             </article>
 
             <!-- Proiektuak LearningML eta Teachable Machine -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Proiektuak: LearningML eta Teachable Machine</h2>
                 <p>Ikasleek ikasketa automatikoaren zikloa zuzenean esperimentatu dezakete bi tresna doako hauekin, programaziorik jakin gabe.</p>
@@ -835,7 +852,7 @@
             </article>
 
             <!-- Ebaluazio proposamena -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Ebaluazio proposamena</h2>
                 <p>Ebaluazioa ulermen kontzeptualean, erabilera arduratsuan eta azalpen-gaitasunean oinarritu daiteke.</p>
@@ -894,7 +911,7 @@
             </article>
 
             <!-- Erabilera arduratsua -->
-            <article class="teach-card">
+            <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Erabilera arduratsurako orientabideak</h2>
                 <p>Ikasleek oso argi izan behar dute AA ez dela iturri perfektua, eta laguntza-tresna gisa ulertu behar dela.</p>
@@ -925,7 +942,7 @@
     </section>
   </main>
 
-<footer class="site-footer">
+<footer class="site-footer reveal">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -1001,5 +1018,26 @@
       });
     }
   </script>
+
+  <script>
+    // Reveal Animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.15
+        };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, revealOptions);
+        revealElements.forEach(el => revealObserver.observe(el));
+    });
+  </script>
 </body>
 </html>
+

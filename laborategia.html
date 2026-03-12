@@ -648,7 +648,24 @@
         text-align: left;
       }
     }
-  </style>
+  
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.4s; }
+    .delay-4 { transition-delay: 0.6s; }
+
+    </style>
 </head>
 <body data-page="lab">
   <header class="site-header">
@@ -684,7 +701,7 @@
   </header>
 
   <main class="page-surface">
-    <section class="inner-hero teal-bg">
+    <section class="inner-hero teal-bg reveal">
       <div class="container lesson-hero-grid">
         <div class="lesson-hero-copy">
           <div class="lesson-breadcrumb">
@@ -715,7 +732,7 @@
 
     <section class="page-content">
       <div class="container lab-shell">
-        <aside class="lab-sidebar">
+        <aside class="lab-sidebar reveal delay-1">
           <div class="lab-side-card">
             <h3>Laborategi honetan</h3>
             <ul>
@@ -745,7 +762,7 @@
           </div>
         </aside>
 
-        <div class="lab-main">
+        <div class="lab-main reveal delay-2">
           <article class="lab-intro-card">
             <p>
               Jarduera hauek guztiak zure nabigatzailean exekutatzen dira eta ez dute erregistrorik behar.
@@ -753,15 +770,15 @@
             </p>
 
             <div class="lab-highlight-grid">
-              <div class="lab-highlight">
+              <div class="lab-highlight reveal delay-1">
                 <strong>4 simulazio</strong>
                 <span>Etiketatzea, promptak, alborapena eta egiaztapena lantzeko.</span>
               </div>
-              <div class="lab-highlight">
+              <div class="lab-highlight reveal delay-2">
                 <strong>Kanpoko bistaratzeak</strong>
                 <span>Sare neuronalak eta CNN-ak barrutik hobeto ikusteko.</span>
               </div>
-              <div class="lab-highlight">
+              <div class="lab-highlight reveal delay-3">
                 <strong>0 erregistro</strong>
                 <span>Dena zuzenean probatzeko pentsatua, frikziorik gabe.</span>
               </div>
@@ -931,7 +948,7 @@
             </div>
 
             <div class="external-tools-grid">
-              <article class="external-tool-card">
+              <article class="external-tool-card reveal">
                 <div class="external-tool-top">
                   <div>
                     <h3>Adam Harley · CNN Visualization</h3>
@@ -957,7 +974,7 @@
                 </div>
               </article>
 
-              <article class="external-tool-card">
+              <article class="external-tool-card reveal">
                 <div class="external-tool-top">
                   <div>
                     <h3>CNN Explainer</h3>
@@ -983,7 +1000,7 @@
                 </div>
               </article>
 
-              <article class="external-tool-card">
+              <article class="external-tool-card reveal">
                 <div class="external-tool-top">
                   <div>
                     <h3>ML Visualizer</h3>
@@ -1009,7 +1026,7 @@
                 </div>
               </article>
 
-              <article class="external-tool-card">
+              <article class="external-tool-card reveal">
                 <div class="external-tool-top">
                   <div>
                     <h3>CNN Playground</h3>
@@ -1076,7 +1093,7 @@
               </p>
 
               <div class="external-tools-grid">
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Sentimenduen sailkatzailea</h3>
@@ -1096,7 +1113,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Spam detektagailua</h3>
@@ -1116,7 +1133,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Gai-sailkatzailea</h3>
@@ -1136,7 +1153,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Hizkuntza detektagailua</h3>
@@ -1170,7 +1187,7 @@
               </p>
 
               <div class="external-tools-grid">
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Objektu sailkatzailea</h3>
@@ -1190,7 +1207,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Keinu ezagutzailea</h3>
@@ -1210,7 +1227,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Soinu sailkatzailea</h3>
@@ -1230,7 +1247,7 @@
                   </div>
                 </article>
 
-                <article class="external-tool-card">
+                <article class="external-tool-card reveal">
                   <div class="external-tool-top">
                     <div>
                       <h3>Gorputz-jarrera detektagailua</h3>
@@ -1712,6 +1729,26 @@
         siteNav.classList.toggle('open');
       });
     }
-  </script>
+  
+    // Reveal Animations
+    document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.15
+        };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, revealOptions);
+        revealElements.forEach(el => revealObserver.observe(el));
+    });
+
+    </script>
 </body>
 </html>
+

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nola ikusten dute makinek? · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .visualizer-container {
+      margin-top: 2rem;
+      color: #ffffff;
+    }
+
+    .visualizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .visualizer-section {
+      background: var(--color-surface, #1e293b);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .visualizer-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+    
+    .visualizer-section p {
+      color: #ffffff !important;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: 2px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .canvas-wrapper canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .visualizer-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .visualizer-controls button {
+      background: var(--color-primary, #38bdf8);
+      color: #0f172a;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+      font-family: inherit;
+    }
+
+    .visualizer-controls button:hover {
+      opacity: 0.9;
+    }
+
+    .visualizer-controls button.secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .visualizer-controls input[type="file"] {
+      display: none;
+    }
+
+    .step-indicator {
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      background: var(--color-background, #0f172a);
+      border-radius: 8px;
+      border-left: 4px solid transparent;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .step-indicator.active {
+      border-left-color: var(--color-primary, #38bdf8);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .step-indicator strong {
+      color: #ffffff;
+    }
+
+    .result-display {
+      background: var(--color-background, #0f172a);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .result-text {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .result-confidence {
+      font-size: 0.95rem;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .visualizer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card,
+    .visualizer-section,
+    .result-display {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Nola ikusten dute makinek?</strong>
+          </div>
+
+          <span class="lesson-kicker">3. modulua / 8</span>
+          <h1>Nola ikusten dute makinek?</h1>
+          <p>
+            Makinek ez dituzte irudiak guk bezala "ikusten". Pixelak, ertzak, formak eta bestelako
+            patroi bisualak aztertzen dituzte, eta horien bidez objektuak edo egoerak identifikatzen saiatzen dira.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Ertaina</span>
+            <span>16 min</span>
+            <span>Ikusmen artifiziala + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">03</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#ikusmena">Nola interpretatzen dute irudia?</a></li>
+              <li><a href="#kontzeptuak">Kontzeptu klabeak</a></li>
+              <li><a href="#prozesua">Nola aztertzen dute?</a></li>
+              <li><a href="#bisualizadorea">Bisualizadore interaktiboa</a></li>
+              <li><a href="#adibideak">Eguneroko adibideak</a></li>
+              <li><a href="#mugak">Mugak eta arriskuak</a></li>
+              <li><a href="#konparaketa">Makina vs pertsona</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau lotuta dago irudiak eta patroien detekzioa ulertzeko ariketekin. Irudi baten barruko
+              ezaugarriak nola banatzen diren pentsatzea oso baliagarria da ikusmen artifiziala ulertzeko.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="ikusmena">
+            <h2>Nola interpretatzen dute irudi bat?</h2>
+            <p>
+              Pertsona batek irudi bat ikusten duenean, normalean berehala antzematen ditu aurpegiak,
+              objektuak, mugimenduak edo egoerak. Makina batek, ordea, ez du ulermen hori modu naturalean:
+              irudi bat zenbakiz osatutako sare gisa tratatzen du.
+            </p>
+            <p style="margin-top:1rem;">
+              Pixel bakoitzak balio jakin bat dauka, eta sistema batek balio horien arteko harremanak aztertzen ditu.
+              Horrela, ertzak, kolore aldaketak, formak edo ehundurak bezalako arrastoak identifikatzen hasten da.
+              Ez du "txakur bat" ulertzen guk bezala, baina txakur askoren irudiak ikusita, antzeko patroiekin lotzen ikasten du.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Ikusmen artifiziala ez da benetako ikusmena</h2>
+            <p>
+              Sistema batek irudi bat sailka dezake oso modu eraginkorrean, baina horrek ez du esan nahi
+              benetan ulertzen duenik irudi horretan zer gertatzen den. Maiz, datuetan ikasitako patroien arabera ari da soilik.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="kontzeptuak">
+            <h2>Kontzeptu klabeak</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Pixelak</strong>
+                <p>Irudi digital baten oinarrizko puntuak dira; makinak hasieran hori baino ez du ikusten.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Ezaugarriak</strong>
+                <p>Ertzak, koloreak, formak edo ehundurak bezalako arrasto bisualak dira.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Patroi bisualak</strong>
+                <p>Adibide askotan errepikatzen diren antzekotasunak, objektuak bereizteko balio dutenak.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Sailkapena</strong>
+                <p>Irudi bati kategoria bat esleitzea, adibidez "autoa", "txakurra" edo "seinale bat".</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="prozesua">
+            <h2>Nola aztertzen dute irudi bat?</h2>
+
+            <div class="process-steps" style="margin-top:1rem;">
+              <div class="process-step">
+                <div class="process-marker">1</div>
+                <div>
+                  <strong>Irudia jasotzea</strong>
+                  <p>Sistemak irudia pixel multzo gisa hartzen du, kolore edo intentsitate balioekin.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-marker">2</div>
+                <div>
+                  <strong>Ezaugarriak bilatzea</strong>
+                  <p>Ertzak, forma sinpleak, lerroak edo errepikapenak bezalako arrasto bisualak identifikatzen ditu.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-marker">3</div>
+                <div>
+                  <strong>Patroiak alderatzea</strong>
+                  <p>Aurreko adibideetan ikasitakoarekin konparatzen du ea antzekotasunik dagoen ikusteko.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-marker">4</div>
+                <div>
+                  <strong>Sailkapena egitea</strong>
+                  <p>Azkenik, probabilitate baten arabera erabakitzen du zer ageri den edo zer elementu dauden.</p>
+                </div>
+              </div>
+
+              <div class="process-step">
+                <div class="process-marker">5</div>
+                <div>
+                  <strong>Emaitza ematea</strong>
+                  <p>Sistemak etiketa edo detekzio bat itzultzen du, baina emaitza hori ez da beti zuzena izango.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="bisualizadorea">
+            <h2>🔬 Bisualizadore interaktiboa</h2>
+            <p>
+              Ikusi zuzenean nola analizatzen duen makina batek irudi bat, pauso bakoitzean zer gertatzen den
+              ulertzeko. Kargatu irudi bat edo erabili adibidea eta sakatu "Analisia hasi".
+            </p>
+
+            <div class="visualizer-container">
+              <div class="visualizer-grid">
+                <div class="visualizer-section reveal delay-1">
+                  <h3>Irudia sartu</h3>
+                  <div class="canvas-wrapper">
+                    <canvas id="inputCanvas" width="300" height="300"></canvas>
+                  </div>
+                  <div class="visualizer-controls">
+                    <button onclick="document.getElementById('fileInput').click()">📁 Irudia kargatu</button>
+                    <button class="secondary" onclick="clearCanvas()">🗑️ Garbitu</button>
+                    <button class="secondary" onclick="loadSampleImage()">🎨 Adibidea</button>
+                    <button onclick="startAnalysis()">▶️ Analisia hasi</button>
+                  </div>
+                  <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
+                </div>
+
+                <div class="visualizer-section reveal delay-2">
+                  <h3>Analisi pausoak</h3>
+                  <div class="step-indicator" id="step1">
+                    <strong>1. Irudia jasotzea:</strong> Pixel multzo gisa
+                  </div>
+                  <div class="step-indicator" id="step2">
+                    <strong>2. Ezaugarriak:</strong> Ertzak eta formak
+                  </div>
+                  <div class="step-indicator" id="step3">
+                    <strong>3. Patroiak:</strong> Antzekotasunak
+                  </div>
+                  <div class="step-indicator" id="step4">
+                    <strong>4. Sailkapena:</strong> Kategoriak
+                  </div>
+                  <div class="step-indicator" id="step5">
+                    <strong>5. Emaitza:</strong> Etiketa finala
+                  </div>
+                </div>
+              </div>
+
+              <div class="visualizer-grid">
+                <div class="visualizer-section reveal delay-1">
+                  <h3>1. Pixelak</h3>
+                  <div class="canvas-wrapper">
+                    <canvas id="pixelCanvas" width="300" height="300"></canvas>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Makina batek pixelak zenbaki gisa ikusten ditu.
+                  </p>
+                </div>
+
+                <div class="visualizer-section reveal delay-2">
+                  <h3>2. Ertzak</h3>
+                  <div class="canvas-wrapper">
+                    <canvas id="edgeCanvas" width="300" height="300"></canvas>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Koloreen aldaketak detektatzen ditu.
+                  </p>
+                </div>
+
+                <div class="visualizer-section reveal delay-3">
+                  <h3>3. Patroiak</h3>
+                  <div class="canvas-wrapper">
+                    <canvas id="patternCanvas" width="300" height="300"></canvas>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Ertzak eta formak konbinatzen ditu.
+                  </p>
+                </div>
+
+                <div class="visualizer-section reveal delay-4">
+                  <h3>4-5. Emaitza</h3>
+                  <div class="result-display">
+                    <div class="result-text" id="resultText">
+                      ⏳ Analisia abiarazi irudia aztertzeko
+                    </div>
+                    <div class="result-confidence" id="confidence"></div>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.5rem;">
+                    Sistemak probabilitatea esleituko dio.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="adibideak">
+            <h2>Eguneroko adibide errealak</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Telefonoaren aurpegi-ezagutza</strong>
+                <p>Gailuak aurpegiko ezaugarri jakin batzuk detektatzen ditu desblokeatzeko.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Argazkien antolaketa automatikoa</strong>
+                <p>Galeria aplikazioek pertsonak, animaliak edo paisaiak automatikoki antzeman ditzakete.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Auto gidaridun laguntza-sistemak</strong>
+                <p>Kameraren bidez errepidea, seinaleak edo oinezkoak identifikatzen saiatzen dira.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Fabriketako ikuskapen bisuala</strong>
+                <p>Produktu batean akatsak edo forma desegokiak automatikoki detektatzeko erabiltzen da.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="mugak">
+            <h2>Mugak eta arriskuak</h2>
+            <p>
+              Ikusmen artifizialeko sistemek huts egin dezakete irudia iluna bada, angelua arraroa bada,
+              kalitatea txarra bada edo entrenamendu datuak mugatuak badira. Horrek esan nahi du egoera berrietan
+              edo baldintza zailagoetan emaitzak ez direla beti fidagarriak.
+            </p>
+            <p style="margin-top:1rem;">
+              Gainera, entrenamendu irudietan aniztasun falta badago, sistema batzuek pertsona edo egoera batzuekin
+              beste batzuekin baino hobeto funtzionatuko dute. Horregatik, datuen kalitatea eta ordezkaritza funtsezkoak dira.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="konparaketa">
+            <h2>Makina vs pertsona</h2>
+
+            <div class="examples-grid-lesson" style="margin-top:1rem;">
+              <div class="example-item reveal delay-1">
+                <strong>Irudia nola tratatzen da</strong>
+                <p>Makinek pixelak balio numeriko gisa tratatzen dute; pertsonek esanahia eta testuingurua lotzen dituzte.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Objektuen ezagutza</strong>
+                <p>Makinek patroi ikasiak erabiltzen dituzte; pertsonek esperientzia zabalagoa eta ulermena.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Egoera berriak</strong>
+                <p>Makinek gehiago sufri dezakete aurretik ikusi ez duten egoera baten aurrean.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Akatsak</strong>
+                <p>Makinek ziurtasunez huts egin dezakete; pertsonek ere huts egiten dute, baina testuingurua hobeto erabiltzen dute.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal">
+            <h2>Hausnartu</h2>
+            <p>
+              Pentsatu gaur egun erabiltzen duzun tresna batean: mugikorreko kamera, sare sozial bat edo garraio-sistema bat.
+              Non egon daiteke ikusmen artifiziala lanean? Zer arrasto edo patroi bilatuko lituzke makina batek egoera horretan?
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="3">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zer da makina batek irudi batean zuzenean "ikusten" duena?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Objektuak guk bezala.</button>
+                  <button class="mini-quiz-opt">Pixelak eta balio numerikoak.</button>
+                  <button class="mini-quiz-opt">Sentimenduak eta asmoak.</button>
+                  <button class="mini-quiz-opt">Testuingurua berez.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Makinak irudi bat datu numeriko gisa tratatzen du hasieran; hortik abiatzen da patroien azterketa.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Zergatik huts egin dezake ikusmen artifizialak?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Makina nekatzen delako.</button>
+                  <button class="mini-quiz-opt">Ikusmen artifizialak ez duelako inoiz daturik behar.</button>
+                  <button class="mini-quiz-opt">Datu eskasak, irudi zailak edo entrenamendu mugatua dituelako.</button>
+                  <button class="mini-quiz-opt">Beti zuzena delako.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Irudi txarrak, baldintza zailak edo entrenamendu datu pobreek sistemaren zehaztasuna asko murriztu dezakete.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Pixela</strong>
+                <p>Irudi digital baten oinarrizko unitatea.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Ezaugarria</strong>
+                <p>Irudi batean antzematen den arrasto bisuala, adibidez ertza edo forma.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Sailkapena</strong>
+                <p>Irudi bati kategoria bat esleitzea, esaterako "txakurra" edo "autoa".</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Ikusmen artifiziala</strong>
+                <p>Makinek irudiak eta bideoak aztertzeko erabiltzen duten AA arloa.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Patroi bisuala</strong>
+                <p>Irudi askotan errepikatzen den egitura edo antzekotasuna, identifikazioa errazten duena.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-2.html">Itzuli 2. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-4.html">Joan 4. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+
+    // Visualizer code
+    const inputCanvas = document.getElementById('inputCanvas');
+    const pixelCanvas = document.getElementById('pixelCanvas');
+    const edgeCanvas = document.getElementById('edgeCanvas');
+    const patternCanvas = document.getElementById('patternCanvas');
+    
+    const inputCtx = inputCanvas.getContext('2d');
+    const pixelCtx = pixelCanvas.getContext('2d');
+    const edgeCtx = edgeCanvas.getContext('2d');
+    const patternCtx = patternCanvas.getContext('2d');
+
+    let currentImage = null;
+    let analysisRunning = false;
+
+    function clearCanvas() {
+      inputCtx.fillStyle = '#000';
+      inputCtx.fillRect(0, 0, inputCanvas.width, inputCanvas.height);
+      pixelCtx.fillStyle = '#000';
+      pixelCtx.fillRect(0, 0, pixelCanvas.width, pixelCanvas.height);
+      edgeCtx.fillStyle = '#000';
+      edgeCtx.fillRect(0, 0, edgeCanvas.width, edgeCanvas.height);
+      patternCtx.fillStyle = '#000';
+      patternCtx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
+      document.getElementById('resultText').textContent = '⏳ Analisia abiarazi irudia aztertzeko';
+      document.getElementById('confidence').textContent = '';
+      resetSteps();
+    }
+
+    function loadImage(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          currentImage = img;
+          inputCtx.fillStyle = '#000';
+          inputCtx.fillRect(0, 0, inputCanvas.width, inputCanvas.height);
+          
+          const scale = Math.min(inputCanvas.width / img.width, inputCanvas.height / img.height);
+          const x = (inputCanvas.width - img.width * scale) / 2;
+          const y = (inputCanvas.height - img.height * scale) / 2;
+          
+          inputCtx.drawImage(img, x, y, img.width * scale, img.height * scale);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function loadSampleImage() {
+      inputCtx.fillStyle = '#000';
+      inputCtx.fillRect(0, 0, inputCanvas.width, inputCanvas.height);
+      
+      inputCtx.fillStyle = '#1e40af';
+      inputCtx.fillRect(100, 80, 100, 140);
+      inputCtx.fillStyle = '#fbbf24';
+      inputCtx.beginPath();
+      inputCtx.arc(150, 200, 30, 0, Math.PI * 2);
+      inputCtx.fill();
+    }
+
+    function resetSteps() {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`step${i}`).classList.remove('active');
+      }
+    }
+
+    async function startAnalysis() {
+      if (analysisRunning) return;
+      analysisRunning = true;
+      resetSteps();
+
+      const imageData = inputCtx.getImageData(0, 0, inputCanvas.width, inputCanvas.height);
+      const pixels = imageData.data;
+
+      document.getElementById('step1').classList.add('active');
+      await sleep(800);
+      showPixels(pixels);
+      await sleep(1500);
+
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+      await sleep(800);
+      detectEdges(pixels);
+      await sleep(1500);
+
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step3').classList.add('active');
+      await sleep(800);
+      showPatterns(pixels);
+      await sleep(1500);
+
+      document.getElementById('step3').classList.remove('active');
+      document.getElementById('step4').classList.add('active');
+      await sleep(800);
+      
+      document.getElementById('step4').classList.remove('active');
+      document.getElementById('step5').classList.add('active');
+      showResult();
+
+      analysisRunning = false;
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function showPixels(pixels) {
+      const pixelData = pixelCtx.createImageData(pixelCanvas.width, pixelCanvas.height);
+      for (let i = 0; i < pixels.length; i++) {
+        pixelData.data[i] = pixels[i];
+      }
+      pixelCtx.putImageData(pixelData, 0, 0);
+    }
+
+    function detectEdges(pixels) {
+      const width = edgeCanvas.width;
+      const height = edgeCanvas.height;
+      const output = edgeCtx.createImageData(width, height);
+      
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          const idx = (y * width + x) * 4;
+          
+          const gx = 
+            -pixels[((y-1)*width + (x-1))*4] + pixels[((y-1)*width + (x+1))*4] +
+            -2*pixels[(y*width + (x-1))*4] + 2*pixels[(y*width + (x+1))*4] +
+            -pixels[((y+1)*width + (x-1))*4] + pixels[((y+1)*width + (x+1))*4];
+          
+          const gy = 
+            -pixels[((y-1)*width + (x-1))*4] - 2*pixels[((y-1)*width + x)*4] - pixels[((y-1)*width + (x+1))*4] +
+            pixels[((y+1)*width + (x-1))*4] + 2*pixels[((y+1)*width + x)*4] + pixels[((y+1)*width + (x+1))*4];
+          
+          const magnitude = Math.sqrt(gx * gx + gy * gy);
+          const value = Math.min(255, magnitude);
+          
+          output.data[idx] = value;
+          output.data[idx + 1] = value;
+          output.data[idx + 2] = value;
+          output.data[idx + 3] = 255;
+        }
+      }
+      
+      edgeCtx.putImageData(output, 0, 0);
+    }
+
+    function showPatterns(pixels) {
+      const width = patternCanvas.width;
+      const height = patternCanvas.height;
+      patternCtx.clearRect(0, 0, width, height);
+      
+      const imageData = inputCtx.getImageData(0, 0, width, height);
+      patternCtx.putImageData(imageData, 0, 0);
+      
+      patternCtx.strokeStyle = '#38bdf8';
+      patternCtx.lineWidth = 3;
+      
+      for (let i = 0; i < 5; i++) {
+        const x = Math.random() * (width - 60) + 30;
+        const y = Math.random() * (height - 60) + 30;
+        const size = Math.random() * 40 + 40;
+        
+        patternCtx.strokeRect(x, y, size, size);
+      }
+    }
+
+    function showResult() {
+      const categories = [
+        { name: 'Objektua', confidence: 0.78 },
+        { name: 'Forma geometrikoa', confidence: 0.65 },
+        { name: 'Irudia', confidence: 0.52 }
+      ];
+      
+      const winner = categories[0];
+      document.getElementById('resultText').textContent = `✅ Detektatua: "${winner.name}"`;
+      document.getElementById('confidence').innerHTML = 
+        `Ziurtasuna: ${(winner.confidence * 100).toFixed(0)}%<br><br>` +
+        categories.map(c => 
+          `${c.name}: ${(c.confidence * 100).toFixed(0)}%`
+        ).join('<br>');
+    }
+
+    clearCanvas();
+  </script>
+</body>
+</html>

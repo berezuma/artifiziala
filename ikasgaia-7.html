@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arriskuak eta erabilera arduratsua · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* CSS Animazioetarako (Scroll Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Ertz borobilagoak */
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .process-step {
+      border-radius: 24px !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Arriskuak eta erabilera arduratsua</strong>
+          </div>
+
+          <span class="lesson-kicker">7. modulua / 8</span>
+          <h1>Arriskuak eta erabilera arduratsua</h1>
+          <p>
+            AA tresnak erabilgarriak izan daitezke, baina arriskuak ere badituzte: alborapena, pribatutasun-arazoak,
+            desinformazioa eta erabilera akademiko desegokia. Horregatik, erabilera kritikoa eta arduratsua behar dute.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Ertaina</span>
+            <span>18 min</span>
+            <span>Etika + pribatutasuna + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">07</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#arrisku-nagusiak">Arrisku nagusiak</a></li>
+              <li><a href="#alborapena">Zer da alborapena?</a></li>
+              <li><a href="#pribatutasuna">Pribatutasuna</a></li>
+              <li><a href="#eskola">Erabilera arduratsua eskolan</a></li>
+              <li><a href="#deepfake">Deepfake-ak eta desinformazioa</a></li>
+              <li><a href="#arauak">Zer egin dezakegu?</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau bias-laborategiarekin eta egia ala fikzioa ariketarekin lotzen da, non ikus daitekeen
+              nola sortzen diren emaitza bidegabeak edo sinesgarri baina okerrak.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+
+          <article class="page-card reveal delay-2" id="arrisku-nagusiak">
+            <h2>Gizartearentzako arriskuak eta desabantailak</h2>
+            <p>
+              Adimen artifizialaren (AA) erabilerak gizartearentzako hainbat desabantaila eta arrisku dakar, batez ere desberdintasun sozialen areagotzeari, pribatutasunari eta lan-merkatuaren eraldaketari lotuta.
+            </p>
+
+            <div class="concept-grid" style="margin-top: 1.5rem;">
+              <div class="concept-box reveal delay-1">
+                <strong>Enpleguen galera</strong>
+                <p>Zeregin errepikakorrak automatizatzeak hainbat lanpostu tradizional desagertzea eragin dezake. Nahiz eta teknologia honek lanbide eta trebetasun berriak sortu, pertsona askok lana aldatzeko eta eredu berrira egokitzeko zailtasun handiak izan ditzakete.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Alborapenak eta diskriminazioa</strong>
+                <p>AA ereduak gizarteko datu historikoekin entrenatzen direnez, gizartean jada existitzen diren aurreiritziak (arrazismoa, sexismoa edo LGTBIQ+ kolektiboaren aurkakoak) ikasi eta erreproduzitzen dituzte. Horrek ekar dezake sistemek talde zaurgarriak modu automatizatuan baztertzea edo diskriminatzea.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Pribatutasuna eta giza eskubideak</strong>
+                <p>Datu pertsonalen bilketa eta prozesamendu masiboak herritarren pribatutasuna arriskuan jartzen du, gizabanakoen etorkizuneko portaerak eta erabakiak aurreikustea ahalbidetuz. Gainera, denbora errealeko zaintza biometrikoak eta herritarrak sailkatzeko puntuazio sozialeko sistemek giza eskubideen aurkako arrisku onartezinak sortzen dituzte.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Desinformazioa eta manipulazioa</strong>
+                <p>Tresna hauen testu eta irudi sorkuntza-gaitasunak desinformazio kanpaina sinesgarriak diseinatzea eta gizartea modu masiboan manipulatzea errazten du. Era berean, jazarpena edo bullyinga muturrera eraman ditzakete, pertsonen irudi edo bideo hiperrealistak sortu eta biktimak umiliatzeko erabil baitaitezke.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Makinekiko gehiegizko konfiantza</strong>
+                <p>Gizarteak teknologia horien emaitzak itsu-itsuan sinesteko arriskua du, giza ikuskapenaren beharra eta makinen akatsak alboratuz. Bizitza errealeko edo osasuneko erabaki kritikoetan adimen artifizialarengan soilik fidatzeak (adibidez, mediku baten diagnostikoa ordezkatuz) ondorio kaltegarriak eragin ditzake.</p>
+              </div>
+
+              <div class="concept-box reveal delay-6">
+                <strong>Jasangarritasuna eta ingurumen-eragina</strong>
+                <p>Adimen artifizialaren eta datu-zentroen hazkunde azkarrak karbono-aztarna izugarria sortzen du. Ereduak (ChatGPT bezalakoak) entrenatzeko eta exekutatzeko, teknologia-enpresa handiek ehunka etxebizitzak adinako elektrizitate-kontsumoa behar dute milaka prozesadore elikatzeko. Gainera, Nazio Batuen Erakundeak ohartarazi duen moduan, zerbitzari-sare horiek hozteko ur-eskari kezkagarria behar izaten da; adibidez, ChatGPT-ri egiten zaizkion galdera gutxi batzuek litro erdi ur inguruko kontsumoa eragiten dutela estimatzen da. Egungo klima-larrialdian, baliabide hauen ustiapen masiboa mundu mailako jasangarritasun-erronka bilakatu da.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal delay-2" id="alborapena">
+            <h2>Zer da alborapena AAn?</h2>
+            <p>
+              Alborapena gertatzen da entrenamendu datuetan aurreiritziak, desorekak edo ordezkaritza falta daudenean,
+              eta horrek emaitza bidegabeak sortzen ditu talde jakin batzuentzat. Sistema batek ez du “nahita” egiten,
+              baina datuetatik ikasitakoa modu desorekatuan aplikatu dezake.
+            </p>
+            <p style="margin-top:1rem;">
+              Horren ondorioz, pertsona talde bati buruz okerrago funtzionatu dezake beste bati buruz baino.
+              Hori oso garrantzitsua da aurpegi-ezagutza, hautaketa automatikoak edo gomendio-sistemak bezalako eremuetan.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Datuen desoreka arriskutsua da</h2>
+            <p>
+              Entrenamendu datuetan talde batzuk gutxi ordezkatuta badaude, sistemak talde horiekin okerrago jardun dezake.
+              Horregatik, datuen kalitateaz gain, datuen aniztasuna eta oreka ere funtsezkoak dira.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="pribatutasuna">
+            <h2>Pribatutasuna: zer arriskutzen duzu?</h2>
+            <p>
+              AA tresnei datu pertsonalak ematen dizkiezunean, informazio hori gorde eta prozesatu egin daiteke.
+              Hor sartzen dira zure galderak, testuak, argazkiak, kokapena edo beste datu sentikorrak.
+            </p>
+            <p style="margin-top:1rem;">
+              Horregatik, ez da gomendagarria pasahitzak, osasun-informazioa, beste pertsonen datuak, helbideak edo
+              aurpegi-argazki pertsonalak partekatzea baimenik gabe. Datu horiek zerbitzarietan gorde daitezke eta
+              beste helburu batzuetarako ere erabil daitezke.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="eskola">
+            <h2>Erabilera arduratsua eskolan</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Gardentasuna</strong>
+                <p>Irakasleak jakin behar du nola eta zertan erabili duzun AA zure lanean.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Prozesu-ebidentzia</strong>
+                <p>Zirriborroak, ideien zerrendak edo bertsioak gordetzea lagungarria da zure ekarpena erakusteko.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Zure ahotsa</strong>
+                <p>Lanak zure pentsamendua eta estiloa islatu behar ditu, ez AAren testu generikoa.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Egiaztapena</strong>
+                <p>AAk emandako datuak beti egiaztatu behar dira, akatsak edo asmakizunak sar baitaitezke.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="deepfake">
+            <h2>Deepfake-ak eta desinformazioa</h2>
+            <p>
+              AA generatiboak irudi, audio eta bideo faltsuak sortzeko gaitasuna du. Deepfake-ak pertsona erreal baten
+              itxura edo ahotsa duten edukiz faltsuak dira, eta gero eta zailagoa izan daiteke benetakoetatik bereiztea.
+            </p>
+            <p style="margin-top:1rem;">
+              Horrek arrisku handiak dakarzkio gizarteari: baimenik gabeko irudi-erabilera, adierazpen faltsuak,
+              gezurrezko albisteak edo manipulazio politikoa. Horregatik, beti egiaztatu behar dira iturriak eta
+              jatorrizko edukia bilatu behar da.
+            </p>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal" id="arauak">
+            <h2>Zer egin dezakegu?</h2>
+            <p>
+              Erabiltzaile gisa, arau sinple batzuk hartu daitezke: datu pertsonalik ez partekatu, emaitzak egiaztatu,
+              iturriak aztertu, eta AAren erabilera modu gardenean azaltzea. Eskolan, gainera, erabilera-araudi argia
+              edukitzea lagungarria da.
+            </p>
+            <p style="margin-top:1rem;">
+              Hausnarketa interesgarri bat da zein arau ezarriko zenituzkeen zure ikastetxean AA modu justuan eta zintzoan
+              erabiltzeko. Horrek erakusten du tresna teknologiko bat ez dela neutroa: erabiltzeko moduak asko baldintzatzen du.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="7">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zer da alborapena AAn?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Sistemak azkarregi funtzionatzea.</button>
+                  <button class="mini-quiz-opt">Entrenamendu datuen aurreiritziek emaitza bidegabeak eragitea.</button>
+                  <button class="mini-quiz-opt">AAk soilik hizkuntza batean funtzionatzea.</button>
+                  <button class="mini-quiz-opt">Pantaila albo batera okertzea.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Alborapena datuen desoreka edo aurreiritziek eragindako joera bidegabea da.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Eskolako lan batean AA erabiltzean, zer da garrantzitsuena?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">AAk idatzitakoa zuzenean entregatzea.</button>
+                  <button class="mini-quiz-opt">Inori ez esatea erabili duzula.</button>
+                  <button class="mini-quiz-opt">Gardentasunez azaltzea nola eta zertan lagundu dizun.</button>
+                  <button class="mini-quiz-opt">Ahalik eta gehien erabiltzea nota hobea izateko.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Integritate akademikoak gardentasuna, egiaztapena eta zure ekarpen propioa eskatzen ditu.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Alborapena</strong>
+                <p>Entrenamendu datuen aurreiritziek eragindako joera bidegabea.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>GDPR</strong>
+                <p>Europako datu-babeserako erregulazio orokorra.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Deepfake</strong>
+                <p>AAk sortutako bideo edo audio faltsua, pertsona erreal baten itxurarekin edo ahotsarekin.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Integritate akademikoa</strong>
+                <p>Eskolako lanak modu zintzoan eta garden egitearen betebeharra.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Gardentasuna</strong>
+                <p>AAren erabilera azaltzeko eta justifikatzeko betebeharra.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-6.html">Itzuli 6. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-8.html">Joan 8. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+       <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

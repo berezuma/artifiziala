@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ikasgaiak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    .lessons-page {
+      background: var(--purple);
+      min-height: 100vh;
+    }
+
+    .lessons-hero {
+      padding: 3rem 0 2rem;
+      color: white;
+    }
+
+    .lessons-hero .badge {
+      display: inline-block;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .lessons-hero h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+      max-width: 18ch;
+    }
+
+    .lessons-hero p {
+      color: rgba(255,255,255,.85);
+      max-width: 60ch;
+      margin-bottom: 1.25rem;
+      font-size: 1.02rem;
+    }
+
+    .lessons-actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .lessons-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .lessons-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .lessons-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      margin-bottom: .25rem;
+      color: white;
+    }
+
+    .lessons-section {
+      padding: 2rem 0 4rem;
+    }
+
+    .lessons-head {
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .lessons-head h2 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -.03em;
+      margin-bottom: .5rem;
+    }
+
+    .lessons-head p {
+      color: rgba(255,255,255,.8);
+      max-width: 62ch;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .lesson-card-custom {
+      background: var(--bg);
+      padding: 1.4rem;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
+    .lesson-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .lesson-number {
+      font-size: .85rem;
+      font-weight: 800;
+      color: var(--text-soft);
+      letter-spacing: .08em;
+    }
+
+    .lesson-level-custom {
+      display: inline-block;
+      padding: .3rem .6rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 700;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .lesson-card-custom h3 {
+      font-size: 1.35rem;
+      font-family: var(--font-display);
+      margin: 0;
+      color: var(--text);
+    }
+
+    .lesson-card-custom p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .lesson-tags {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .lesson-tags span {
+      display: inline-block;
+      padding: .32rem .55rem;
+      border-radius: 999px;
+      font-size: .74rem;
+      font-weight: 600;
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    .lesson-card-custom .btn {
+      margin-top: .35rem;
+      align-self: flex-start;
+    }
+
+    .bottom-cta {
+      margin-top: 2.25rem;
+      background: var(--bg);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .bottom-cta h3 {
+      margin-bottom: .25rem;
+      font-family: var(--font-display);
+      color: var(--text);
+    }
+
+    .bottom-cta p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 900px) {
+      .lesson-grid,
+      .lessons-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CSS Animazioetarako (Scroll Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Karta-saretarako atzerapen sekuentzialak */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* Ertz borobilagoak irudiko estiloari jarraituz */
+    .lesson-card-custom,
+    .lessons-stat,
+    .bottom-cta {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body class="lessons-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="lessons-hero reveal">
+      <div class="container">
+        <span class="badge">8 ikasgai · mailakatuta</span>
+        <h1>Ikasgai guztiak, oinarrizkotik aurreratura</h1>
+        <p>
+          Aukeratu modulu bat, ikasi kontzeptu nagusiak, eta osatu ibilbidea laborategiko praktikekin eta erronka gidatuekin.
+        </p>
+
+        <div class="lessons-actions">
+          <a class="btn btn-primary" href="#moduluak">Moduluak ikusi</a>
+          <a class="btn btn-secondary" href="laborategia.html">Laborategira joan</a>
+          <a class="btn btn-secondary" href="erronkak.html">Erronkak egin</a>
+        </div>
+
+        <div class="lessons-stats">
+          <div class="lessons-stat reveal delay-1">
+            <strong>8</strong>
+            <span>Ikasgai</span>
+          </div>
+          <div class="lessons-stat reveal delay-2">
+            <strong>3</strong>
+            <span>Maila</span>
+          </div>
+          <div class="lessons-stat reveal delay-3">
+            <strong>4</strong>
+            <span>Laborategi</span>
+          </div>
+          <div class="lessons-stat reveal delay-4">
+            <strong>8</strong>
+            <span>Erronka</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lessons-section reveal" id="moduluak">
+      <div class="container">
+        <div class="lessons-head">
+          <h2>Moduluen ibilbidea</h2>
+          <p>Hasi oinarrietatik, eta joan pixkanaka adimen artifiziala ulertzeko gai nagusiak eraikitzen.</p>
+        </div>
+
+        <div class="lesson-grid">
+          <article class="lesson-card-custom reveal delay-1">
+            <div class="lesson-top">
+              <span class="lesson-number">01</span>
+              <span class="lesson-level-custom">Oinarrizkoa</span>
+            </div>
+            <h3>🤖 Zer da adimen artifiziala?</h3>
+            <p>AA zer den eta zer ez den ulertzeko lehen urratsa, adibide argi eta errealekin.</p>
+            <div class="lesson-tags">
+              <span>15 min</span>
+              <span>Oinarriak</span>
+              <span>Mini-quiz</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-1.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-2">
+            <div class="lesson-top">
+              <span class="lesson-number">02</span>
+              <span class="lesson-level-custom">Oinarrizkoa</span>
+            </div>
+            <h3>📊 Datuak eta ereduak</h3>
+            <p>Datuak nola prestatzen diren eta nola aurkitzen diren patroiak modu bisualean.</p>
+            <div class="lesson-tags">
+              <span>18 min</span>
+              <span>Datuak</span>
+              <span>Praktikoa</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-2.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-3">
+            <div class="lesson-top">
+              <span class="lesson-number">03</span>
+              <span class="lesson-level-custom">Ertaina</span>
+            </div>
+            <h3>👁️ Nola ikusten dute makinek?</h3>
+            <p>Irudiak ez dituzte guk bezala ikusten: pixelak, ezaugarriak eta patroiak aztertzen dituzte.</p>
+            <div class="lesson-tags">
+              <span>16 min</span>
+              <span>Irudiak</span>
+              <span>Patroiak</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-3.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-4">
+            <div class="lesson-top">
+              <span class="lesson-number">04</span>
+              <span class="lesson-level-custom">Ertaina</span>
+            </div>
+            <h3>🗣️ Nola ulertzen dute hizkuntza?</h3>
+            <p>Chatbot-ek testu-patroiak eta probabilitateak erabiltzen dituzte hurrengo hitza aurresateko.</p>
+            <div class="lesson-tags">
+              <span>18 min</span>
+              <span>Hizkuntza</span>
+              <span>Chatbot-ak</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-4.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-1">
+            <div class="lesson-top">
+              <span class="lesson-number">05</span>
+              <span class="lesson-level-custom">Ertaina</span>
+            </div>
+            <h3>✨ Eredu generatiboak</h3>
+            <p>ChatGPT, irudi-sortzaileak eta antzeko sistemek edukia nola sortzen duten ulertzeko.</p>
+            <div class="lesson-tags">
+              <span>20 min</span>
+              <span>LLM-ak</span>
+              <span>Sorkuntza</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-5.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-2">
+            <div class="lesson-top">
+              <span class="lesson-number">06</span>
+              <span class="lesson-level-custom">Ertaina</span>
+            </div>
+            <h3>💬 Prompt onak idazten</h3>
+            <p>Helburua, testuingurua, formatua eta mugak hobeto adierazteko teknikak.</p>
+            <div class="lesson-tags">
+              <span>15 min</span>
+              <span>Promptak</span>
+              <span>Praktika</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-6.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-3">
+            <div class="lesson-top">
+              <span class="lesson-number">07</span>
+              <span class="lesson-level-custom">Aurreratua</span>
+            </div>
+            <h3>🔍 Arriskuak eta egiaztapena</h3>
+            <p>Fidagarritasuna, deepfake-ak eta informazioa egiaztatzeko teknikak.</p>
+            <div class="lesson-tags">
+              <span>18 min</span>
+              <span>Egiaztapena</span>
+              <span>Hausnarketa</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-7.html">Ireki modulua</a>
+          </article>
+
+          <article class="lesson-card-custom reveal delay-4">
+            <div class="lesson-top">
+              <span class="lesson-number">08</span>
+              <span class="lesson-level-custom">Aurreratua</span>
+            </div>
+            <h3>⚖️ Etika, pribatutasuna eta alborapena</h3>
+            <p>AA sistemek aurreiritziak birsortu ditzakete, eta datuen erabilerak arriskuak sortzen ditu.</p>
+            <div class="lesson-tags">
+              <span>22 min</span>
+              <span>Etika</span>
+              <span>Hausnarketa</span>
+            </div>
+            <a class="btn btn-primary btn-sm" href="ikasgaia-8.html">Ireki modulua</a>
+          </article>
+        </div>
+
+        <div class="bottom-cta reveal">
+          <div>
+            <h3>Teoriatik praktikarantz</h3>
+            <p>Ikasgaiak amaitu ondoren, laborategia eta erronkak dira hurrengo pausorik onena.</p>
+          </div>
+          <div class="lessons-actions" style="margin:0;">
+            <a class="btn btn-primary" href="laborategia.html">Ireki laborategia</a>
+            <a class="btn btn-outline" href="erronkak.html">Joan erronketara</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nabigazio menuaren funtzionalitatea
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

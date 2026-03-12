@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irakasleak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    /* ── Hero ── */
+    .teach-hero {
+      background: var(--purple);
+      padding: 3rem 0 2rem;
+      color: white;
+    }
+
+    .teach-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .teach-hero .badge {
+      display: inline-block;
+      padding: .35rem .7rem;
+      background: rgba(255,255,255,.12);
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .teach-hero h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+    }
+
+    .teach-hero p {
+      color: rgba(255,255,255,.85);
+      max-width: 54ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .teach-hero-visual {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 260px;
+    }
+
+    .teach-hero-icon {
+      font-family: var(--font-display);
+      font-size: 10rem;
+      line-height: 1;
+      color: rgba(255,255,255,.12);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      user-select: none;
+    }
+
+    .teach-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .teach-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .teach-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      margin-bottom: .25rem;
+      color: white;
+    }
+
+    /* ── Layout ── */
+    .teach-shell {
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 0 4rem;
+    }
+
+    .teach-layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .teach-sidebar {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .teach-side-card {
+      background: var(--paper);
+      border-left: 8px solid var(--purple);
+      padding: 1.5rem;
+    }
+
+    .teach-side-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: .8rem;
+      color: var(--text);
+    }
+
+    .teach-side-card p,
+    .teach-side-card li {
+      color: var(--text-soft);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .teach-side-card ul {
+      list-style: none;
+      display: grid;
+      gap: .55rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .teach-side-card li a {
+      color: var(--text-soft);
+      font-weight: 600;
+      transition: color .15s ease;
+    }
+
+    .teach-side-card li a:hover {
+      color: var(--text);
+    }
+
+    .teach-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    .teach-stat-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .teach-stat-box strong {
+      display: block;
+      font-size: 1.6rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: .15rem;
+    }
+
+    .teach-stat-box span {
+      color: var(--text-soft);
+      font-size: .82rem;
+    }
+
+    .teach-cta {
+      border-top: 1px solid var(--line);
+      padding-top: .9rem;
+      margin-top: .9rem;
+    }
+
+    .teach-cta p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+      margin-bottom: .75rem;
+    }
+
+    /* ── Main ── */
+    .teach-main {
+      display: grid;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .teach-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 2rem;
+    }
+
+    .teach-card-head {
+      margin-bottom: 1rem;
+    }
+
+    .teach-card-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1.1;
+      margin-bottom: .4rem;
+      color: var(--text);
+      letter-spacing: -.02em;
+    }
+
+    .teach-card-head p {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.6;
+      max-width: 66ch;
+    }
+
+    /* ── Info grid ── */
+    .teach-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    .teach-info-box {
+      border: 1px solid var(--line);
+      padding: 1rem;
+      background: var(--bg);
+    }
+
+    .teach-info-box strong {
+      display: block;
+      margin-bottom: .25rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .95rem;
+    }
+
+    .teach-info-box p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    /* ── Accordion ── */
+    .teach-accordion {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .teach-accordion + .teach-accordion {
+      margin-top: .85rem;
+    }
+
+    .teach-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--text);
+      font-size: .95rem;
+    }
+
+    .teach-accordion summary::-webkit-details-marker { display: none; }
+
+    .teach-accordion summary::after {
+      content: "+";
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .teach-accordion[open] summary {
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .teach-accordion[open] summary::after { content: "\2212"; }
+
+    .teach-accordion-body {
+      padding: 1rem 1.15rem 1.15rem;
+    }
+
+    .teach-accordion-body p {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+    }
+
+    .teach-accordion-body ul,
+    .teach-accordion-body ol {
+      padding-left: 1.05rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: .24rem;
+      margin-bottom: .75rem;
+      font-size: .86rem;
+    }
+
+    .teach-accordion-body ul { list-style: disc; }
+    .teach-accordion-body ol { list-style: decimal; }
+
+    /* ── Sequence ── */
+    .teach-sequence {
+      display: grid;
+      gap: .7rem;
+    }
+
+    .teach-step {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      border: 1px solid var(--line);
+      padding: .95rem;
+      background: var(--bg);
+    }
+
+    .teach-step .num {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: var(--purple);
+      color: white;
+      font-weight: 700;
+      font-size: .8rem;
+      font-family: var(--font-display);
+    }
+
+    .teach-step strong {
+      display: block;
+      margin-bottom: .15rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .95rem;
+    }
+
+    .teach-step p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    /* ── Level grid ── */
+    .teach-level-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    .teach-level-card {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      padding: 1rem;
+    }
+
+    .teach-level-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: .35rem;
+      color: var(--text);
+    }
+
+    .teach-level-card p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+      margin-bottom: .65rem;
+    }
+
+    .teach-level-card ul {
+      list-style: disc;
+      padding-left: 1rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: .22rem;
+      font-size: .8rem;
+    }
+
+    /* ── Rubric ── */
+    .teach-rubric-table {
+      display: grid;
+      gap: .5rem;
+    }
+
+    .teach-rubric-head,
+    .teach-rubric-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr 1fr;
+      gap: 0;
+    }
+
+    .teach-rubric-head div {
+      padding: .7rem .8rem;
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      font-family: var(--font-display);
+    }
+
+    .teach-rubric-row {
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .teach-rubric-row div {
+      padding: .8rem .9rem;
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .teach-rubric-row .criterion {
+      background: var(--bg);
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--text);
+      border-right: 1px solid var(--line);
+    }
+
+    .teach-rubric-row .cell {
+      color: var(--text-soft);
+    }
+
+    /* ── Checklist ── */
+    .teach-checklist {
+      display: grid;
+      gap: .55rem;
+    }
+
+    .teach-check-item {
+      border-left: 4px solid var(--teal);
+      background: var(--bg);
+      padding: .85rem .95rem;
+    }
+
+    .teach-check-item strong {
+      display: block;
+      margin-bottom: .15rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .9rem;
+    }
+
+    .teach-check-item p {
+      color: var(--text-soft);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .teach-layout,
+      .teach-hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .teach-sidebar { position: static; }
+    }
+
+    @media (max-width: 900px) {
+      .teach-stats,
+      .teach-info-grid,
+      .teach-level-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .teach-stat-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .teach-stats,
+      .teach-info-grid,
+      .teach-level-grid {
+        grid-template-columns: 1fr;
+      }
+      .teach-hero-icon { font-size: 6rem; }
+
+      .teach-rubric-head,
+      .teach-rubric-row {
+        grid-template-columns: 1fr;
+      }
+      .teach-rubric-head { display: none; }
+      .teach-rubric-row .criterion {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body data-page="teachers">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Irakasleak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html" class="active">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="teach-hero">
+      <div class="container">
+        <div class="teach-hero-grid">
+          <div>
+            <span class="badge">Irakasleak · Orientazio didaktikoa</span>
+            <h1>AA lantzeko gida praktikoa ikasgelarako</h1>
+            <p>
+              Plataforma ikasgelan txertatzeko marko argi bat: helburu didaktikoak, adinaren araberako egokitzapena,
+              saio-sekuentzia, ebaluazio orientabideak eta erabilera arduratsurako gomendioak.
+            </p>
+          </div>
+          <div class="teach-hero-visual">
+            <span class="teach-hero-icon">Ir.</span>
+          </div>
+        </div>
+
+        <div class="teach-stats">
+          <div class="teach-stat">
+            <strong>8</strong>
+            <span>Ikasgai</span>
+          </div>
+          <div class="teach-stat">
+            <strong>4</strong>
+            <span>Laborategi</span>
+          </div>
+          <div class="teach-stat">
+            <strong>6-10</strong>
+            <span>Saio gomendatu</span>
+          </div>
+          <div class="teach-stat">
+            <strong>12-18</strong>
+            <span>Urte-tartea</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Body ── -->
+    <section class="teach-shell">
+      <div class="container">
+        <div class="teach-layout">
+          <!-- Sidebar -->
+          <aside class="teach-sidebar">
+            <div class="teach-side-card">
+              <h3>Ibilbide azkarra</h3>
+              <p style="margin-bottom:.8rem;">Ikastalde batekin hasteko modu erraz eta praktikoa.</p>
+              <ul>
+                <li><a href="ikasgaiak.html">1. Ikasgaiak irakurri</a></li>
+                <li><a href="laborategia.html">2. Laborategian praktikatu</a></li>
+                <li><a href="erronkak.html">3. Erronkekin ebaluatu</a></li>
+              </ul>
+            </div>
+
+            <div class="teach-side-card">
+              <h3>Zifrak</h3>
+              <div class="teach-stat-grid">
+                <div class="teach-stat-box">
+                  <strong>8</strong>
+                  <span>Ikasgai</span>
+                </div>
+                <div class="teach-stat-box">
+                  <strong>4</strong>
+                  <span>Laborategi</span>
+                </div>
+                <div class="teach-stat-box">
+                  <strong>8</strong>
+                  <span>Erronka</span>
+                </div>
+                <div class="teach-stat-box">
+                  <strong>6-10</strong>
+                  <span>Saio</span>
+                </div>
+              </div>
+              <div class="teach-cta">
+                <p>Sekuentzia didaktikoa, errubrika inprimagarria edo saio-fitxa prestak gehi daitezke hurrengo bertsioan.</p>
+                <a class="btn btn-outline btn-sm" href="gurasoak.html">Familien atala</a>
+              </div>
+            </div>
+
+            <div class="teach-side-card">
+              <h3>Lotutako atalak</h3>
+              <ul>
+                <li><a href="ikasgaiak.html">Ikasgaiak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+                <li><a href="gurasoak.html">Gurasoak</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- Main content -->
+          <div class="teach-main">
+            <!-- Zer eskaintzen du -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Zer eskaintzen du plataformak?</h2>
+                <p>Plataformaren egiturak ulermena, esperimentazioa eta hausnarketa uztartzen ditu, ikasgaiak, laborategiak eta erronkak lotuz.</p>
+              </div>
+
+              <div class="teach-info-grid">
+                <article class="teach-info-box">
+                  <strong>Ikasgaiak</strong>
+                  <p>8 moduluk adimen artifizialaren kontzeptu nagusiak azaltzen dituzte, hizkera ulerterrazean eta adibide errealekin.</p>
+                </article>
+                <article class="teach-info-box">
+                  <strong>Laborategia</strong>
+                  <p>4 simulazio didaktikok etiketatzea, promptak, alborapena eta fidagarritasuna modu praktikoan lantzen dituzte.</p>
+                </article>
+                <article class="teach-info-box">
+                  <strong>Erronkak</strong>
+                  <p>8 galderako autoebaluazioak kontzeptuen ulermena indartzen du, feedback azalduarekin eta berriz saiatzeko aukerarekin.</p>
+                </article>
+              </div>
+            </article>
+
+            <!-- Helburu pedagogikoak -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Helburu pedagogikoak</h2>
+                <p>Helburua ez da tresna batzuk erabiltzen ikastea bakarrik, baizik eta ikasleek AA zer den, nola dabilen eta zein mugak dituen ulertzea.</p>
+              </div>
+
+              <details class="teach-accordion" open>
+                <summary>Zer gaitasun garatzen dira?</summary>
+                <div class="teach-accordion-body">
+                  <ul>
+                    <li>Kontzeptu teknologikoen oinarrizko ulermena: datuak, ereduak, entrenamendua, inferentzia eta promptak.</li>
+                    <li>Pentsamendu kritikoa: erantzun sinesgarriak eta erantzun fidagarriak ez direla beti gauza bera ulertzea.</li>
+                    <li>Etika digitala: alborapena, pribatutasuna, justizia eta erabilera arduratsua lantzea.</li>
+                    <li>Komunikazio gaitasuna: ikasitakoa ahoz, idatziz edo proiektu txiki baten bidez azaltzea.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="teach-accordion">
+                <summary>Zein ikuspegi metodologiko proposatzen da?</summary>
+                <div class="teach-accordion-body">
+                  <p>Oinarri nagusia ikaskuntza aktiboa da: lehenik kontzeptua ulertu, gero simulazio edo jarduera baten bidez probatu, eta azkenik eztabaidatu edo hausnartu.</p>
+                  <p>Horregatik, gunearen egitura bera sekuentzia didaktiko bihur daiteke: ikasgaiak azalpenetarako, laborategia esperimentaziorako, eta erronkak egiaztapen eta itxiera modura.</p>
+                </div>
+              </details>
+            </article>
+
+            <!-- Saio-sekuentzia -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Saio-sekuentzia proposatua</h2>
+                <p>Hona hemen 6-10 saiotarako erabil daitekeen proposamen malgu bat, ikastaldearen adinaren eta denboraren arabera moldagarria.</p>
+              </div>
+
+              <div class="teach-sequence">
+                <article class="teach-step">
+                  <div class="num">1</div>
+                  <div>
+                    <strong>Sarrera eta aurre-ezagutzak</strong>
+                    <p>Galdetu ikasleei non ikusten duten AA egunerokoan, zer uste duten egiten duela, eta zer kezka edo itxaropen dituzten.</p>
+                  </div>
+                </article>
+                <article class="teach-step">
+                  <div class="num">2</div>
+                  <div>
+                    <strong>Oinarrizko moduluak</strong>
+                    <p>Landu zer den AA, datuen garrantzia, nola ikasten duten makinek eta zergatik ez duten "ulertzen" pertsona batek bezala.</p>
+                  </div>
+                </article>
+                <article class="teach-step">
+                  <div class="num">3</div>
+                  <div>
+                    <strong>Laborategi gidatua</strong>
+                    <p>Egin gutxienez bi simulazio: datuak etiketatzea eta prompt laborategia, edo taldearen mailaren arabera alborapen simulagailua ere.</p>
+                  </div>
+                </article>
+                <article class="teach-step">
+                  <div class="num">4</div>
+                  <div>
+                    <strong>Hausnarketa eta eztabaida</strong>
+                    <p>Aztertu zergatik egiten duen huts sistema batek, zer arrisku sor daitezkeen, eta noiz laguntzen duen benetan AAk.</p>
+                  </div>
+                </article>
+                <article class="teach-step">
+                  <div class="num">5</div>
+                  <div>
+                    <strong>Proiektu praktikoa (LearningML / Teachable Machine)</strong>
+                    <p>Ikasleek taldeka ML eredu bat sortzen dute: datuak bildu, entrenatu, probatu eta emaitzak aurkeztu. LearningML testurako eta Teachable Machine irudietarako.</p>
+                  </div>
+                </article>
+                <article class="teach-step">
+                  <div class="num">6</div>
+                  <div>
+                    <strong>Erronka edo ebaluazioa</strong>
+                    <p>Itxi sekuentzia erronken atalarekin, edo eskatu ikasleei azalpen labur bat, poster bat edo aurkezpen bat prestatzea.</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <!-- Adinaren araberako egokitzapena -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Adinaren araberako egokitzapena</h2>
+                <p>Edukia ez da berdin landu behar DBH hasierako mailetan eta Batxilergoan.</p>
+              </div>
+
+              <div class="teach-level-grid">
+                <article class="teach-level-card">
+                  <h3>DBH 1-2</h3>
+                  <p>Kontzeptu bisualak eta intuitiboak lehenetsi, eguneroko adibideekin eta jarduera gidatuekin.</p>
+                  <ul>
+                    <li>Zer den AA eta zer ez den.</li>
+                    <li>Datuak sailkatzeko jarduera errazak eta Teachable Machine-rekin objektuak ezagutu.</li>
+                    <li>Galdera gutxiago eta azalpen gehiago.</li>
+                  </ul>
+                </article>
+                <article class="teach-level-card">
+                  <h3>DBH 3-4</h3>
+                  <p>Plataformako 8 moduluak eta 4 laborategiak erabiltzeko maila egokia da, aplikazio kritikoarekin.</p>
+                  <ul>
+                    <li>Prompt diseinua eta haluzinazioak.</li>
+                    <li>Erronkak autoebaluazio moduan.</li>
+                    <li>LearningML edo Teachable Machine proiektua eta ahozko aurkezpena.</li>
+                  </ul>
+                </article>
+                <article class="teach-level-card">
+                  <h3>Batxilergoa</h3>
+                  <p>Analisi kritiko sakonagoa egin daiteke: alborapena, pribatutasuna, erabilera akademikoa eta inpaktu soziala.</p>
+                  <ul>
+                    <li>Eztabaida gidatuak eta kasu praktikoak.</li>
+                    <li>Iturrien egiaztapena modu zorrotzagoan.</li>
+                    <li>Talde-proiektu sakona LearningML/Teachable Machine-rekin eta txosten laburra.</li>
+                  </ul>
+                </article>
+              </div>
+            </article>
+
+            <!-- Proiektuak LearningML eta Teachable Machine -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Proiektuak: LearningML eta Teachable Machine</h2>
+                <p>Ikasleek ikasketa automatikoaren zikloa zuzenean esperimentatu dezakete bi tresna doako hauekin, programaziorik jakin gabe.</p>
+              </div>
+
+              <details class="teach-accordion" open>
+                <summary>LearningML.org — Testuarekin lan egin</summary>
+                <div class="teach-accordion-body">
+                  <p>
+                    <a href="https://learningml.org/" target="_blank" rel="noopener noreferrer">LearningML</a> 10-18 urteko ikasleentzat diseinatutako
+                    plataforma da. Testuak edo zenbakiak kategoriatan sailkatzeko ereduak entrenatzeko aukera ematen du, erregistrorik gabe.
+                  </p>
+                  <p><strong>Proiektu gomendatuak:</strong></p>
+                  <ul>
+                    <li><strong>Sentimenduen sailkatzailea:</strong> iruzkin positiboak vs negatiboak bereizten dituen eredua (DBH 1-4).</li>
+                    <li><strong>Spam detektagailua:</strong> mezu normalak eta spam bereizten dituen eredua (DBH 3-4).</li>
+                    <li><strong>Hizkuntza detektagailua:</strong> euskara, gaztelania eta ingelesa bereizten dituen eredua (DBH 2-4).</li>
+                    <li><strong>Gai-sailkatzailea:</strong> berri-titularrak gaien arabera sailkatzen dituen eredua (Batxilergoa).</li>
+                  </ul>
+                  <p><strong>Lotura ikasgaiekin:</strong> 2. ikasgaia (datuak eta entrenamendua) eta 8. ikasgaia (alborapena, datuen eragina).</p>
+                </div>
+              </details>
+
+              <details class="teach-accordion">
+                <summary>Teachable Machine — Irudia, soinua eta gorputzarekin lan egin</summary>
+                <div class="teach-accordion-body">
+                  <p>
+                    <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener noreferrer">Teachable Machine</a> Google-ren tresna doakoa da.
+                    Webcama edo mikrofonoa erabiliz irudi, soinu edo gorputz-jarrera ereduak entrenatzen dira nabigatzailean bertan.
+                  </p>
+                  <p><strong>Proiektu gomendatuak:</strong></p>
+                  <ul>
+                    <li><strong>Objektu sailkatzailea:</strong> webcamarekin 3-4 objektu desberdin ezagutzen dituen eredua (DBH 1-2).</li>
+                    <li><strong>Keinu ezagutzailea:</strong> eskuko keinuak identifikatzen dituen eredua (DBH 2-4).</li>
+                    <li><strong>Soinu sailkatzailea:</strong> txaloak, txistuak eta beste soinuak bereizten dituen eredua (DBH 1-4).</li>
+                    <li><strong>Gorputz-jarrera detektagailua:</strong> jarrera desberdinak ezagutzen dituen eredua (Batxilergoa).</li>
+                  </ul>
+                  <p><strong>Lotura ikasgaiekin:</strong> 2. ikasgaia (entrenamendua), 3. ikasgaia (ikusmen artifiziala) eta 8. ikasgaia (etika).</p>
+                </div>
+              </details>
+
+              <details class="teach-accordion">
+                <summary>Nola antolatu proiektuak ikasgelan?</summary>
+                <div class="teach-accordion-body">
+                  <p>Proiektu bakoitzak 2-3 saio behar ditu (50 minutukoak). Gomendatutako metodologia:</p>
+                  <ol>
+                    <li><strong>1. saioa:</strong> Tresna ezagutu, helburua definitu eta entrenamendu-datuak bildu.</li>
+                    <li><strong>2. saioa:</strong> Eredua entrenatu, probatu eta hobetu (datu gehiago, kategoria berriak).</li>
+                    <li><strong>3. saioa:</strong> Emaitzak aurkeztu, mugak azaldu eta hausnarketa egin taldean.</li>
+                  </ol>
+                  <p>Talde txikietan (2-3 ikasle) lan egitea gomendatzen da. Aurkezpenean, ikasleek azaldu beharko lukete:</p>
+                  <ul>
+                    <li>Zer eredu sortu duten eta zertarako.</li>
+                    <li>Zein datu erabili dituzten eta zergatik.</li>
+                    <li>Zein muga edo akats aurkitu dituzten.</li>
+                    <li>Zer ikasi duten prozesuari buruz.</li>
+                  </ul>
+                </div>
+              </details>
+            </article>
+
+            <!-- Ebaluazio proposamena -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Ebaluazio proposamena</h2>
+                <p>Ebaluazioa ulermen kontzeptualean, erabilera arduratsuan eta azalpen-gaitasunean oinarritu daiteke.</p>
+              </div>
+
+              <details class="teach-accordion" open>
+                <summary>Errubrika sinple bat</summary>
+                <div class="teach-accordion-body">
+                  <div class="teach-rubric-head">
+                    <div></div>
+                    <div>Hasierakoa</div>
+                    <div>Erdi-mailakoa</div>
+                    <div>Sendoa</div>
+                  </div>
+
+                  <div class="teach-rubric-table">
+                    <div class="teach-rubric-row">
+                      <div class="criterion">Kontzeptuen ulermena</div>
+                      <div class="cell">AA zer den azaltzen du, baina nahasketekin.</div>
+                      <div class="cell">Kontzeptu nagusiak bereizten ditu adibideekin.</div>
+                      <div class="cell">Argi azaltzen ditu eta mugak ere identifikatzen ditu.</div>
+                    </div>
+                    <div class="teach-rubric-row">
+                      <div class="criterion">Pentsamendu kritikoa</div>
+                      <div class="cell">Erantzunak onartzen ditu ia zalantzarik gabe.</div>
+                      <div class="cell">Batzuetan zalantzan jartzen ditu eta egiaztatzen saiatzen da.</div>
+                      <div class="cell">Modu sistematikoan kontrastatzen du informazioa.</div>
+                    </div>
+                    <div class="teach-rubric-row">
+                      <div class="criterion">Erabilera arduratsua</div>
+                      <div class="cell">Arrisku batzuk ezagutzen ditu.</div>
+                      <div class="cell">Pribatutasuna eta alborapena aipatzen ditu.</div>
+                      <div class="cell">Arriskuak azaltzeaz gain, prebentzio-neurriak proposatzen ditu.</div>
+                    </div>
+                    <div class="teach-rubric-row">
+                      <div class="criterion">Komunikazioa</div>
+                      <div class="cell">Ideiak modu zatituan azaltzen ditu.</div>
+                      <div class="cell">Azalpen ulergarria ematen du adibide batzuekin.</div>
+                      <div class="cell">Azalpen argia, antolatua eta egokia ematen du.</div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="teach-accordion">
+                <summary>Zer ebidentzia jaso daiteke?</summary>
+                <div class="teach-accordion-body">
+                  <ul>
+                    <li>Erronken puntuazioa eta ikaslearen azalpen osagarria.</li>
+                    <li>Laborategiko jardueraren ondorengo hausnarketa laburra.</li>
+                    <li>Taldeko eztabaidan parte-hartzea.</li>
+                    <li>Poster digitala, ahozko aurkezpena edo testu laburra.</li>
+                  </ul>
+                </div>
+              </details>
+            </article>
+
+            <!-- Erabilera arduratsua -->
+            <article class="teach-card">
+              <div class="teach-card-head">
+                <h2>Erabilera arduratsurako orientabideak</h2>
+                <p>Ikasleek oso argi izan behar dute AA ez dela iturri perfektua, eta laguntza-tresna gisa ulertu behar dela.</p>
+              </div>
+
+              <div class="teach-checklist">
+                <article class="teach-check-item">
+                  <strong>Egiaztatu beti</strong>
+                  <p>Tonu segurua ez da egiazkotasunaren froga; informazio garrantzitsua iturri fidagarrietan kontrastatu behar da.</p>
+                </article>
+                <article class="teach-check-item">
+                  <strong>Ez sartu datu sentikorrik</strong>
+                  <p>Ez da komeni izen-abizenak, osasun-datuak, notak edo bestelako informazio pertsonala AA tresnetan sartzea.</p>
+                </article>
+                <article class="teach-check-item">
+                  <strong>Azaldu nola erabili den</strong>
+                  <p>Ikasleek adierazi behar dute noiz erabili duten AA, zertarako, eta zer zatitan jarri duten beren ekarpena.</p>
+                </article>
+                <article class="teach-check-item">
+                  <strong>Ez ordezkatu pentsamendua</strong>
+                  <p>AA lagungarria izan daiteke ideiak sortzeko edo azalpenak berridazteko, baina ez luke ikaskuntza-prozesua ordezkatu behar.</p>
+                </article>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

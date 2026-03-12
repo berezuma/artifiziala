@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nola idatzi prompt onak? · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* CSS Animazioetarako (Scroll Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Ertz borobilagoak */
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    /* process-step elementuarentzat ez da overflow:hidden erabiltzen markatzailea ez ebakitzeko */
+    .process-step {
+      border-radius: 24px !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Nola idatzi prompt onak?</strong>
+          </div>
+
+          <span class="lesson-kicker">6. modulua / 8</span>
+          <h1>Nola idatzi prompt onak?</h1>
+          <p>
+            AA tresna batek hobeto erantzuten du eskaera argia, zehatza eta testuinguruduna jasotzen duenean.
+            Prompt on batek helburua, formatua eta hartzailea ondo markatzen ditu.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Praktikoa</span>
+            <span>16 min</span>
+            <span>Prompt diseinua + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">06</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#zerda">Zer da prompt bat?</a></li>
+              <li><a href="#kontzeptuak">Kontzeptu klabeak</a></li>
+              <li><a href="#osagaiak">Prompt on baten osagaiak</a></li>
+              <li><a href="#adibideak">Adibide praktikoak</a></li>
+              <li><a href="#irudiak">Irudien promptak</a></li>
+              <li><a href="#ikusaudio">Audio/Bideo promptak</a></li>
+              <li><a href="#akatsak">Akats ohikoak</a></li>
+              <li><a href="#hausnarketa">Hausnarketa</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau zuzenean lotzen da prompten laborategiarekin, non prompt lausoak eta prompt zehatzak
+              alderatzen diren adibide errealekin.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="zerda">
+            <h2>Zer da prompt bat?</h2>
+            <p>
+              Prompt bat da AA sistema bati ematen diozun instrukzioa, galdera edo eskaera. Tresnak jasotzen duen
+              informazio horren arabera erabakitzen du nola erantzun, zer tonu erabili eta zer motatako edukia sortu.
+            </p>
+            <p style="margin-top:1rem;">
+              Horregatik, prompt on batek ez du soilik “zerbait eskatu” behar. Helburua argitu behar du, norentzat den,
+              zer formatuan nahi duzun eta zein muga edo baldintza bete behar diren. Laborategiko adibideek erakusten dute
+              prompt lausoa baino prompt egituratua askoz eraginkorragoa dela.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Prompt zehatzak hobeto funtzionatzen du</h2>
+            <p>
+              “Azaldu klima aldaketa” bezalako prompt orokor bat baino, “Azaldu klima aldaketa 14 urteko ikasle bati,
+              4 puntutan eta adibide batekin” bezalako eskaera zehatz batek emaitza erabilgarriagoa ematen du.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="kontzeptuak">
+            <h2>Kontzeptu klabeak</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Prompta</strong>
+                <p>AAri ematen zaion instrukzio edo galdera, erantzunaren abiapuntua dena.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Testuingurua</strong>
+                <p>Eskari bat hobeto ulertzeko behar den informazio gehigarria: gaia, egoera edo helburua.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Formatua</strong>
+                <p>Erantzuna nola nahi duzun: puntuz, taulan, gutun moduan edo laburpen gisa.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Hartzailea</strong>
+                <p>Norentzat den zehaztea, adibidez ikasle batentzat, irakasle batentzat edo familia batentzat.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="osagaiak">
+            <h2>Prompt on baten osagaiak</h2>
+
+            <div class="process-steps" style="margin-top:1rem;">
+              <div class="process-step reveal delay-1">
+                <div class="process-marker">1</div>
+                <div>
+                  <strong>Helburua argitu</strong>
+                  <p>Zer nahi duzun zehaztu: azalpena, laburpena, zerrenda, ideia berriak edo zuzenketa.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-2">
+                <div class="process-marker">2</div>
+                <div>
+                  <strong>Hartzailea definitu</strong>
+                  <p>Esan norentzat den edukia, adibidez 12 urteko ikasle batentzat edo irakasle talde batentzat.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-3">
+                <div class="process-marker">3</div>
+                <div>
+                  <strong>Formatua markatu</strong>
+                  <p>Eskatu puntuz, taula batean, paragrafo laburretan edo adibide batekin erantzutea.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-4">
+                <div class="process-marker">4</div>
+                <div>
+                  <strong>Mugak eman</strong>
+                  <p>Hizkuntza, luzera, tonua edo baliatu beharreko baldintzak adierazi, emaitza doitua lortzeko.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-5">
+                <div class="process-marker">5</div>
+                <div>
+                  <strong>Berrikusi eta hobetu</strong>
+                  <p>Lehen erantzuna ez bada egokia, prompta findu eta xehetasun gehiago gehitu.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="adibideak">
+            <h2>Adibide praktikoak</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Prompt lausoa</strong>
+                <p>“Azaldu klima aldaketa” bezalako eskaerek ez dute publikoa, formatua edo helburua argitzen.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Prompt zehatza</strong>
+                <p>“Azaldu klima aldaketa 14 urteko ikasle bati, 4 puntutan, adibide batekin” bezalako promptak askoz erabilgarriagoak dira.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Prompt hutsa</strong>
+                <p>“Idatzi zerbait” bezalako formulazioek ez dute ez helbururik, ez gairik, ezta espero den formaturik ere.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Prompt egituratua</strong>
+                <p>Hartzailea, tonua, arrazoia eta hizkuntza zehazten dituen eskaerak emaitza sendoagoak sortzen ditu.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="irudiak">
+            <h2>Irudi-sorgailuentzako promptak</h2>
+            <p>
+              Irudiak sortzeko AA modeloek (DALL-E, Midjourney, Stable Diffusion...) testu-deskribapenetan oinarrituta marrazten dute. Hauek kontrolatzeko egitura espezifiko bat jarraitzea komeni da:
+            </p>
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Gaia (Subjektua)</strong>
+                <p>Zer agertzen da? (Katu bat, astronauta bat, paisaia bat...)</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Estilo artistikoa</strong>
+                <p>Nolako itxura du? (Olio-pintura, 3D renderra, anime, argazki errealista...)</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Argiztapena</strong>
+                <p>Nolakoa da argia? (Zinematografikoa, eguzki-argia, neoia, iluna...)</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Kameraren angelua</strong>
+                <p>Nondik ikusten da? (Lehen planoa, goitik beherako ikuspegia, angelu zabala...)</p>
+              </div>
+            </div>
+            <div class="example-item reveal delay-5" style="margin-top: 1.5rem;">
+              <strong>Adibide egituratua:</strong>
+              <p><em>"Astronauta bat kafea edaten ilargian (Gaia), argazki errealista estilokoa (Estiloa), eguzki-argi dramatikoarekin (Argiztapena), angelu zabaleko plano batean aterata (Kameraren angelua)."</em></p>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="ikusaudio">
+            <h2>Audio eta Bideo sorgailuentzako adibideak</h2>
+            <p>
+              Bideo eta audio ereduekin (Sora, Runway, Suno...), denbora eta mugimendua ere deskribatu behar dira:
+            </p>
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Bideoa: Mugimendua deskribatu</strong>
+                <p>Ez esan bakarrik "txakur bat". Esan: <em>"Kamera mantso hurbiltzen da (Kameraren mugimendua) urrezko erretriever batengana. Txakurra parkean dabil korrika, belar altuen artean (Ekintza), arratsaldeko argiarekin (Argiztapena)."</em></p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Audioa/Musika: Erritmoa eta instrumentuak</strong>
+                <p>Estiloa eta emozioa zehaztu: <em>"Abesti elektroniko azkar bat (Generoa), 120 BPM-koa (Erritmoa), sintetizadore sakonekin eta bateria indartsuarekin (Instrumentuak). Tonu epiko eta motibatzailea du (Emozioa)."</em></p>
+              </div>
+            </div>
+          </article>
+
+
+          <article class="page-card lesson-warning-card reveal" id="akatsak">
+            <h2>Akats ohikoak</h2>
+            <p>
+              Prompt orokorregiek erantzun lausoak sortzen dituzte. Helburua, testuingurua edo formatua falta bada,
+              AA sistemak hutsune horiek bere kabuz betetzen saiatzen da, eta emaitza ez da beti nahi zenuena izaten.
+            </p>
+            <p style="margin-top:1rem;">
+              Beste akats arrunt bat da lehen erantzuna azkena balitz bezala hartzea. Prompting-a elkarrizketa iteratibo bat da:
+              lehen bertsioa probatu, hobetu, mugatu edo berrantolatu daiteke emaitza hobea lortzeko.
+            </p>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
+            <h2>Hausnarketa</h2>
+            <p>
+              Pentsatu noizbait AAri egin diozun galdera batean eta alderatu bi bertsio: bata oso laburra eta bestea zehatza.
+              Zein izango litzateke erabilgarriagoa? Zer xehetasun gehituko zenituzke emaitza hobetzeko?
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="6">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zer du prompt on batek normalean?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Soilik hitz bakarra.</button>
+                  <button class="mini-quiz-opt">Helburua, testuingurua, formatua eta hartzailea argi azaltzen ditu.</button>
+                  <button class="mini-quiz-opt">Ez du inolako xehetasunik behar.</button>
+                  <button class="mini-quiz-opt">Beti oso luzea izan behar du.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Prompt on batek ez du zertan luzea izan, baina bai argia eta egituratua.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Zer egin daiteke lehen erantzuna egokia ez bada?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Sistema itxi eta utzi.</button>
+                  <button class="mini-quiz-opt">Erantzuna zuzena dela onartu.</button>
+                  <button class="mini-quiz-opt">Prompta berridatzi, zehaztu edo mugatu, emaitza hobetzeko.</button>
+                  <button class="mini-quiz-opt">Beti beste tresna batera joan berehala.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Prompting-a prozesu iteratiboa da: doitu, berridatzi eta zehaztu daiteke emaitza hobea lortzeko.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Prompta</strong>
+                <p>AAri ematen zaion instrukzioa edo galdera.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Testuingurua</strong>
+                <p>Eskari bat hobeto ulertzeko ematen den informazio osagarria.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Formatua</strong>
+                <p>Erantzunak izan behar duen egitura edo aurkezteko modua.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Hartzailea</strong>
+                <p>Edukia norentzat sortzen den adierazten duen erreferentzia.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Iterazioa</strong>
+                <p>Eskaria behin eta berriz doitzea emaitza hobea lortzeko.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-5.html">Itzuli 5. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-7.html">Joan 7. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

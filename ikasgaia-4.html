@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nola ulertzen dute hizkuntza? · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .visualizer-container {
+      margin-top: 2rem;
+      color: #ffffff;
+    }
+
+    .visualizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .visualizer-section {
+      background: var(--color-surface, #1e293b);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .visualizer-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+
+    .visualizer-section > p {
+      color: #ffffff !important;
+    }
+
+    .prompt-display {
+      padding: 1.25rem;
+      background: var(--color-background, #0f172a);
+      border-radius: 8px;
+      border: 2px solid var(--color-border, rgba(203, 213, 225, 0.2));
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .visualizer-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .visualizer-controls button {
+      background: var(--color-primary, #38bdf8);
+      color: #0f172a;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+      font-family: inherit;
+    }
+
+    .visualizer-controls button:hover {
+      opacity: 0.9;
+    }
+
+    .visualizer-controls button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .visualizer-controls button.secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .token-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      min-height: 90px;
+      padding: 1rem;
+      background: var(--color-background, #0f172a);
+      border-radius: 8px;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+      align-items: center;
+      justify-content: center;
+    }
+
+    .token {
+      padding: 0.5rem 1rem;
+      background: var(--color-primary, #38bdf8);
+      color: #0f172a;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      animation: tokenAppear 0.3s ease;
+    }
+
+    @keyframes tokenAppear {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .step-indicator {
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      background: var(--color-background, #0f172a);
+      border-radius: 8px;
+      border-left: 4px solid transparent;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      color: #ffffff;
+    }
+
+    .step-indicator.active {
+      border-left-color: var(--color-primary, #38bdf8);
+      background: rgba(56, 189, 248, 0.1);
+      color: #ffffff;
+    }
+
+    .step-indicator strong {
+      color: #ffffff;
+    }
+
+    .probability-bar {
+      height: 40px;
+      background: var(--color-background, #0f172a);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+
+    .probability-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary, #38bdf8), #0ea5e9);
+      display: flex;
+      align-items: center;
+      padding-left: 0.75rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: width 0.8s ease;
+      position: relative;
+      color: #0f172a;
+    }
+
+    .probability-label {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      font-weight: 700;
+      z-index: 2;
+      color: #0f172a;
+    }
+
+    .probability-percent {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      z-index: 2;
+      color: #0f172a;
+    }
+
+    .output-text {
+      padding: 1.5rem;
+      background: var(--color-background, #0f172a);
+      border-radius: 8px;
+      border: 2px solid var(--color-border, rgba(203, 213, 225, 0.2));
+      min-height: 100px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .output-text .original {
+      color: #ffffff;
+    }
+
+    .output-text .generated {
+      color: var(--color-primary, #38bdf8);
+      font-weight: 600;
+      animation: wordAppear 0.5s ease;
+    }
+
+    @keyframes wordAppear {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .visualizer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CSS Animazioetarako (Scroll Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Ertz borobilagoak */
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card,
+    .visualizer-section,
+    .result-display {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    /* process-step elementuarentzat ez da overflow:hidden erabiltzen markatzailea ez ebakitzeko */
+    .process-step {
+      border-radius: 24px !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Nola ulertzen dute hizkuntza?</strong>
+          </div>
+
+          <span class="lesson-kicker">4. modulua / 8</span>
+          <h1>Nola ulertzen dute hizkuntza?</h1>
+          <p>
+            Chatbot-ek eta hizkuntza-ereduek ez dute hizkuntza guk bezala ulertzen. Testu askotan agertzen diren
+            patroietan eta hitzen arteko probabilitateetan oinarrituta sortzen dituzte erantzunak.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Ertaina</span>
+            <span>18 min</span>
+            <span>Hizkuntza-ereduak + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">04</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#hizkuntza">Zer egiten du hizkuntza-eredu batek?</a></li>
+              <li><a href="#kontzeptuak">Kontzeptu klabeak</a></li>
+              <li><a href="#prozesua">Nola sortzen du erantzuna?</a></li>
+              <li><a href="#bisualizadorea">Bisualizadore interaktiboa</a></li>
+              <li><a href="#adibideak">Eguneroko adibideak</a></li>
+              <li><a href="#mugak">Mugak eta gaizki-ulertuak</a></li>
+              <li><a href="#hausnarketa">Hausnarketa</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau zuzenean lotuta dago prompten laborategiarekin. Zenbat eta hobeto ulertu nola erantzuten duen
+              hizkuntza-eredu batek, orduan eta prompt hobeak idatziko dituzu.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="hizkuntza">
+            <h2>Zer egiten du hizkuntza-eredu batek?</h2>
+            <p>
+              Hizkuntza-eredu batek testu kopuru handiak aztertzen ditu, eta hitzak edo esaldi zatiak elkarrekin
+              nola agertzen diren ikasten du. Horrela, galdera edo testu baten ondoren zein hitz etor daitekeen
+              probableena den kalkulatzen saiatzen da.
+            </p>
+            <p style="margin-top:1rem;">
+              Horrek esan nahi du sistema batek ez duela benetako ulermen kontzienterik. Ez daki zer den "egia",
+              ez du esperientziarik, eta ez du asmorik. Baina patroi estatistiko askoren bidez, oso erantzun sinesgarriak
+              sor ditzake, eta horregatik ematen du batzuetan benetan ulertzen duela.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Tonu segurua ez da ulermenaren froga</h2>
+            <p>
+              Chatbot batek tonu ziur eta argian idatz dezake, baina horrek ez du esan nahi esandakoa egia denik
+              edo benetan "ulertu" duenik. Askotan, probabilitate handieneko hitz-segida osatzen ari da.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="kontzeptuak">
+            <h2>Kontzeptu klabeak</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Hizkuntza-eredua</strong>
+                <p>Testu askotatik ikasitako patroietan oinarrituta hurrengo hitza aurresaten duen sistema.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Tokenak</strong>
+                <p>Testua zatitan banatzeko unitateak dira; hitz osoak edo hitz zatiak izan daitezke.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Probabilitatea</strong>
+                <p>Ereduak kalkulatzen du zein hitz edo token den probableena aurreko testuinguruan.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Testuingurua</strong>
+                <p>Aurreko hitzek eta esaldiek baldintzatzen dute zer erantzun emango duen sistemak.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="prozesua">
+            <h2>Nola sortzen du erantzuna?</h2>
+
+            <div class="process-steps" style="margin-top:1rem;">
+              <div class="process-step reveal delay-1">
+                <div class="process-marker">1</div>
+                <div>
+                  <strong>Testua jasotzea</strong>
+                  <p>Sistemak galdera edo prompt bat jasotzen du, eta testuingurua identifikatzen hasten da.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-2">
+                <div class="process-marker">2</div>
+                <div>
+                  <strong>Tokenetan zatitzea</strong>
+                  <p>Testua unitate txikiagotan banatzen da, hitzak edo hitz-zatiak modu eraginkorrean tratatzeko.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-3">
+                <div class="process-marker">3</div>
+                <div>
+                  <strong>Patroiak aktibatzea</strong>
+                  <p>Entrenamenduan ikasitako milioika lotura estatistiko erabiltzen ditu testuinguru horri erantzuteko.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-4">
+                <div class="process-marker">4</div>
+                <div>
+                  <strong>Hurrengo hitza aurresatea</strong>
+                  <p>Une horretan probableena den tokena aukeratzen du, eta prozesua berriro errepikatzen da.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-5">
+                <div class="process-marker">5</div>
+                <div>
+                  <strong>Esaldia osatzea</strong>
+                  <p>Tokenak bata bestearen atzetik eraikiz, erantzun luze eta kohesionatu bat sortzen da.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="bisualizadorea">
+            <h2>🔬 Bisualizadore interaktiboa</h2>
+            <p>
+              Ikusi zuzenean nola sortzen duen hizkuntza-eredu batek testua, token bakoitza pauso batean
+              aukeratuz. Sakatu "Analisia hasi" prozesua ikusteko.
+            </p>
+
+            <div class="visualizer-container">
+              <div class="visualizer-grid">
+                <div class="visualizer-section reveal delay-1">
+                  <h3>Hasierako testua (prompt-a)</h3>
+                  <div class="prompt-display">
+                    Adimen artifiziala teknologia bat da
+                  </div>
+                  <div class="visualizer-controls">
+                    <button onclick="startGeneration()" id="startBtn">▶️ Analisia hasi</button>
+                    <button class="secondary" onclick="resetAll()">🔄 Berrabiarazi</button>
+                  </div>
+                </div>
+
+                <div class="visualizer-section reveal delay-2">
+                  <h3>Prozesuaren pausoak</h3>
+                  <div class="step-indicator" id="step1">
+                    <strong>1. Testua jasotzea:</strong> Prompt-a irakurri
+                  </div>
+                  <div class="step-indicator" id="step2">
+                    <strong>2. Tokenetan zatitzea:</strong> Unitatetan banatu
+                  </div>
+                  <div class="step-indicator" id="step3">
+                    <strong>3. Patroiak aktibatzea:</strong> Testuingurua aztertu
+                  </div>
+                  <div class="step-indicator" id="step4">
+                    <strong>4. Aurreikuspena:</strong> Hurrengo tokena aukeratu
+                  </div>
+                  <div class="step-indicator" id="step5">
+                    <strong>5. Esaldia osatzea:</strong> Prozesua errepikatu
+                  </div>
+                </div>
+              </div>
+
+              <div class="visualizer-grid">
+                <div class="visualizer-section reveal delay-1">
+                  <h3>2. Tokenetan zatitzea</h3>
+                  <div class="token-container" id="tokenDisplay">
+                    <span style="color: #ffffff; font-size: 0.9rem;">
+                      Tokenak hemen agertuko dira...
+                    </span>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+                    Sistemak testua unitate txikiagotan banatzen du (tokenak).
+                  </p>
+                </div>
+
+                <div class="visualizer-section reveal delay-2">
+                  <h3>3-4. Hurrengo tokenaren probabilitatea</h3>
+                  <div id="probabilityDisplay">
+                    <p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 1rem;">
+                      Probabilitate handienak kalkulatzen...
+                    </p>
+                  </div>
+                  <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+                    Ereduak tokenen probabilitateak kalkulatzen ditu testuinguruan oinarrituta.
+                  </p>
+                </div>
+              </div>
+
+              <div class="visualizer-section reveal delay-3">
+                <h3>5. Sortutako testua osoa</h3>
+                <div class="output-text" id="outputText">
+                  <span style="color: #ffffff;">Sortutako testua hemen agertuko da...</span>
+                </div>
+                <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+                  Ereduak token bat hautatzen du, gero beste bat, eta horrela jarraitzen du esaldia osatu arte.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="adibideak">
+            <h2>Eguneroko adibideak</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Txatbot-ak</strong>
+                <p>Galdera bati testu bidez erantzuten diote, aurreko testuaren probabilitate-patroiak erabiliz.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Itzultzaile automatikoak</strong>
+                <p>Hizkuntza batetik bestera pasatzean, esaldi egokien aukerak kalkulatzen dituzte.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Testu-autobetetzea</strong>
+                <p>Mugikorreko teklatuak edo posta elektronikoko iradokizunak hurrengo hitza asmatzen saiatzen dira.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Laburpen automatikoak</strong>
+                <p>Testu luze baten puntu nagusiak berrantolatzen dituzte, aurretik ikasitako egituren bidez.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="mugak">
+            <h2>Mugak eta gaizki-ulertuak</h2>
+            <p>
+              Hizkuntza-eredu batek ez du egia eta gezurra berez bereizten. Testu sinesgarria sor dezake,
+              baina akatsekin, asmakizunekin edo erreferentzia faltsuekin. Horregatik, bere erantzunak ezin dira
+              automatikoki egiazkotzat hartu.
+            </p>
+            <p style="margin-top:1rem;">
+              Gainera, testuingurua nahasia bada edo galdera lausoa bada, erantzuna ere lausoagoa edo okerragoa izan daiteke.
+              Hori dela eta, prompt argiak idaztea eta informazioa iturri fidagarrietan egiaztatzea funtsezkoa da.
+            </p>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
+            <h2>Hausnarketa</h2>
+            <p>
+              Pentsatu chatbot bati egin diozun azken galderan. Zergatik ematen zuen ulertu zintuela? Zer seinale
+              erabiltzen dituzu zuk "ulermen" hori benetakoa dela pentsatzeko? Eta zer arrisku dago hori gehiegi sinestean?
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="4">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zer egiten du hizkuntza-eredu batek batez ere?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Benetan pentsatu eta arrazoitu pertsona batek bezala.</button>
+                  <button class="mini-quiz-opt">Hurrengo hitz edo token probableena aurresaten du testuinguruaren arabera.</button>
+                  <button class="mini-quiz-opt">Internet zuzenean arakatu beti.</button>
+                  <button class="mini-quiz-opt">Sentimenduak bizi eta adierazi.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Hizkuntza-ereduek testu-patroi estatistikoak erabiltzen dituzte hurrengo token probableena aukeratzeko.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Zergatik dira arriskutsuak batzuetan chatbot-en erantzunak?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Beti oso laburrak direlako.</button>
+                  <button class="mini-quiz-opt">Ez dutelako inoiz testurik sortzen.</button>
+                  <button class="mini-quiz-opt">Sinesgarriak izan daitezke, baina akatsak edo asmakizunak eduki ditzaketelako.</button>
+                  <button class="mini-quiz-opt">Soilik matematikan funtzionatzen dutelako.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Tonu seguruak eta estilo zainduak ez dute egiazkotasuna bermatzen; horregatik behar da egiaztapena.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Hizkuntza-eredua</strong>
+                <p>Testu patroietan oinarrituta hitz-segidak sortzen dituen AA sistema.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Tokena</strong>
+                <p>Testua prozesatzeko erabiltzen den unitate txikia, hitza edo hitz-zatia izan daitekeena.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Testuingurua</strong>
+                <p>Aurreko testuak eta egoerak baldintzatzen duten informazio multzoa.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Probabilitatea</strong>
+                <p>Hurrengo elementu bat agertzeko aukera estatistikoa.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Haluzinazioa</strong>
+                <p>AAk sinesgarria dirudien baina okerra edo asmatua den informazioa sortzea.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-3.html">Itzuli 3. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-5.html">Joan 5. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+
+    // Visualizer code
+    let isGenerating = false;
+    const prompt = "Adimen artifiziala teknologia bat da";
+
+    async function startGeneration() {
+      if (isGenerating) return;
+      
+      isGenerating = true;
+      document.getElementById('startBtn').disabled = true;
+      resetSteps();
+
+      document.getElementById('step1').classList.add('active');
+      await sleep(1000);
+
+      document.getElementById('step1').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+      await sleep(500);
+      tokenizeText(prompt);
+      await sleep(1500);
+
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step3').classList.add('active');
+      await sleep(1000);
+
+      document.getElementById('outputText').innerHTML = `<span class="original">${prompt}</span>`;
+
+      document.getElementById('step3').classList.remove('active');
+      document.getElementById('step4').classList.add('active');
+      
+      const candidates = [
+        { word: "eta", prob: 67 },
+        { word: "baina", prob: 18 },
+        { word: "zergatik", prob: 9 },
+        { word: "patata", prob: 6 }
+      ];
+      
+      showProbabilities(candidates);
+      await sleep(2000);
+
+      document.getElementById('outputText').innerHTML = 
+        `<span class="original">${prompt}</span> <span class="generated">eta</span>`;
+      
+      await sleep(800);
+
+      document.getElementById('step4').classList.remove('active');
+      document.getElementById('step5').classList.add('active');
+
+      const remainingWords = ["ulertu", "behar", "dugu"];
+      let currentText = prompt + " eta";
+
+      for (let word of remainingWords) {
+        await sleep(600);
+        currentText += " " + word;
+        const generated = currentText.substring(prompt.length).trim();
+        document.getElementById('outputText').innerHTML = 
+          `<span class="original">${prompt}</span> <span class="generated">${generated}</span>`;
+      }
+
+      isGenerating = false;
+      document.getElementById('startBtn').disabled = false;
+    }
+
+    function tokenizeText(text) {
+      const tokens = text.split(' ');
+      const tokenDisplay = document.getElementById('tokenDisplay');
+      tokenDisplay.innerHTML = '';
+      
+      tokens.forEach((token, index) => {
+        setTimeout(() => {
+          const tokenEl = document.createElement('span');
+          tokenEl.className = 'token';
+          tokenEl.textContent = token;
+          tokenDisplay.appendChild(tokenEl);
+        }, index * 150);
+      });
+    }
+
+    function showProbabilities(candidates) {
+      const probabilityDisplay = document.getElementById('probabilityDisplay');
+      probabilityDisplay.innerHTML = '';
+
+      candidates.forEach((candidate, i) => {
+        const barEl = document.createElement('div');
+        barEl.className = 'probability-bar';
+        barEl.innerHTML = `
+          <div class="probability-fill" style="width: 0%">
+            <span class="probability-label">"${candidate.word}"</span>
+            <span class="probability-percent">${candidate.prob}%</span>
+          </div>
+        `;
+        probabilityDisplay.appendChild(barEl);
+
+        setTimeout(() => {
+          barEl.querySelector('.probability-fill').style.width = candidate.prob + '%';
+        }, i * 100 + 50);
+      });
+    }
+
+    function resetAll() {
+      document.getElementById('tokenDisplay').innerHTML = '<span style="color: #ffffff; font-size: 0.9rem;">Tokenak hemen agertuko dira...</span>';
+      document.getElementById('probabilityDisplay').innerHTML = '<p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 1rem;">Probabilitate handienak kalkulatzen...</p>';
+      document.getElementById('outputText').innerHTML = '<span style="color: #ffffff;">Sortutako testua hemen agertuko da...</span>';
+      resetSteps();
+      document.getElementById('startBtn').disabled = false;
+      isGenerating = false;
+    }
+
+    function resetSteps() {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`step${i}`).classList.remove('active');
+      }
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
+</body>
+</html>

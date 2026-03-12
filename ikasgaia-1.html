@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zer da adimen artifiziala? · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card,
+    .video-embed {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Zer da adimen artifiziala?</strong>
+          </div>
+
+          <span class="lesson-kicker">1. modulua / 8</span>
+          <h1>Zer da adimen artifiziala?</h1>
+          <p>
+            Lehen urratsa da ulertzea zer den AA eta zer ez den: makinek zeregin jakin batzuk egiten ikas dezakete,
+            baina horrek ez du esan nahi pentsatzen dutenik edo kontzientzia dutenik.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Oinarrizkoa</span>
+            <span>15 min</span>
+            <span>Mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">01</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#bideoak">Sarrerako bideoak</a></li>
+              <li><a href="#oinarria">Zer da benetan AA?</a></li>
+              <li><a href="#kontzeptuak">Kontzeptu klabeak</a></li>
+              <li><a href="#motak">AI mota desberdinak</a></li>
+              <li><a href="#adibideak">Eguneroko adibideak</a></li>
+              <li><a href="#ez-da">Zer ez da AA?</a></li>
+              <li><a href="#konparazioa">AA vs gizakia</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Hurrengo pausoa</h3>
+            <p>
+              Oinarriak ulertuta, hurrengo moduluan ikusiko duzu makinek nola ikasten duten datuetatik eta zergatik den hain garrantzitsua datuen kalitatea.
+            </p>
+            <a class="btn btn-ghost" href="ikasgaia-2.html">Hurrengo modulua</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="bideoak">
+            <h2>Sarrerako bideoak</h2>
+            <p>
+              Bideo hauetan azaltzen da zer den adimen artifiziala eta nola ulertu behar dugun lehen ikuspegi batean.
+            </p>
+
+            <div class="video-grid">
+              <div class="video-embed">
+                <div style="padding:56.25% 0 0 0; position:relative;">
+                  <iframe
+                    src="https://player.vimeo.com/video/904731779?badge=0&autopause=0&player_id=0&app_id=58479"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                    title='Topagune birtualak: Adimen Artifiziala (I) "Zer da adimen artifiziala?"'
+                    loading="lazy">
+                  </iframe>
+                </div>
+              </div>
+              <div class="video-embed" style="background-color: #f1f5f9; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center;">
+                <div>
+                  <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Ikusgela (YouTube)</h3>
+                  <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #475569;">Bideo hau ezin da zuzenean txertatu. Ikusteko, erabili beheko esteka:</p>
+                  <a href="https://youtu.be/ZOFTBCjEo6I" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="white-space: normal; line-height: 1.4;">
+                    Adimen artifiziala: zertarako da gai? Eta noraino hel daiteke?
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="oinarria">
+            <h2>Zer da benetan AA?</h2>
+            <p>
+              Adimen artifiziala (AA) ordenagailuek datuetatik patroiak antzemateko eta horren arabera erabaki edo iragarpen batzuk egiteko duten gaitasuna da.
+              Gizakiok naturalki egiten dugu hori — aurpegi bat ezagutu, hizkuntza bat ulertu, irudi batean zer dagoen identifikatu — baina makinek milioika adibide behar dituzte gauza bera egiten ikasteko.
+            </p>
+            <p style="margin-top:1rem;">
+              Funtsean, AAk ez du pentsatzen pertsona batek bezala. Ez du kontzientziarik, ez du sentimendurik, ez du helburuak aukeratzen, eta ez daki zer egiten ari den benetan.
+              Baina zeregin jakin batzuetan oso ondo aritu daiteke: hizkuntzak itzuli, irudiak ezagutu, jokuetan irabazi, edo testuak sortu.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Terminoaren jatorria</h2>
+            <p>
+              “Adimen artifiziala” terminoa 1956an sortu zuen John McCarthy-k, Dartmouth-eko konferentzia batean.
+              Orduan uste zuten 20 urtean makinek gizakien mailan pentsatuko zutela; 70 urte geroago, oraindik ez dugu lortu.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="kontzeptuak">
+            <h2>Kontzeptu klabeak</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>🧠 Adimen artifiziala</strong>
+                <p>Ordenagailuek datuetatik patroiak antzemanez erabakiak hartzeko duten gaitasuna.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>📏 AA zabala vs estua</strong>
+                <p>AI estua zeregin jakinetan aritzen da; AA zabala, ordea, orokorra izango litzateke, baina ez da existitzen.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>⚙️ Automatizazioa</strong>
+                <p>Lanak arau finkoekin egitea da; horrek ez du zertan AA izan behar.</p>
+              </div>
+              <div class="concept-box reveal delay-1">
+                <strong>🔎 Patroien ezagutza</strong>
+                <p>AAren oinarria da datuetan erregulartasunak aurkitu eta horietatik ikastea.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="motak">
+            <h2>AI mota desberdinak</h2>
+            <p>
+              Bi mota nagusi bereizten dira. Alde batetik, <strong>AI estua</strong> dago: zeregin jakin batean aritzeko diseinatuta dago,
+              adibidez xakean aritzea edo mezuak spam diren ala ez sailkatzea.
+            </p>
+            <p style="margin-top:1rem;">
+              Bestetik, <strong>AA zabala</strong> legoke: edozein zereginetan gizakien mailan aritzeko gai izango litzatekeen sistema bat.
+              Hori, ordea, momentuz ez da existitzen, eta ez dakigu noiz edo ea existituko den.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="adibideak">
+            <h2>Non aurkitzen duzu AA egunerokoan?</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>🎵 Musika gomendatzea</strong>
+                <p>Spotify, YouTube Music eta Apple Music-ek zure ohiturak aztertzen dituzte eta antzeko kantak proposatzen dizkizute.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>📱 Teklatu prediktiboa</strong>
+                <p>Mugikorrean idaztean, hurrengo hitza iradokitzen dizun sistema askotan AAn oinarritzen da.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>📸 Aurpegi ezagutza</strong>
+                <p>Telefonoaren kamerak aurpegiak bereizteko gaitasuna izan dezake, argazkiak antolatzeko edo gailua desblokeatzeko.</p>
+              </div>
+              <div class="example-item reveal delay-1">
+                <strong>🗺️ GPS nabigazioa</strong>
+                <p>Mapek trafikoa eta ibilbideak aztertzen dituzte biderik egokiena proposatzeko.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>🎮 Bideojoko arerioak</strong>
+                <p>Joko askotan aurkari digitalek zure jokatzeko modura egokitzen dute erantzuna.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>🛒 Erosketa gomendioak</strong>
+                <p>Denda digital askok “hau ere gustatu dakizuke” motako proposamenak egiten dituzte zure portaeran oinarrituta.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="ez-da">
+            <h2>Kontuz: zer EZ da AA?</h2>
+            <p>
+              AA ez da pentsatzen duen izaki bat. Ez du nahi, desio edo helbururik. Ez daki zer esan duen edo zergatik.
+              Filmek eta telesailek askotan erakusten digute gizakien mailan pentsatzen duen AA, baina hori fikzioa da.
+            </p>
+
+            <ul>
+              <li>Ez du kontzientziarik.</li>
+              <li>Ez du nahirik edo helbururik.</li>
+              <li>Ez du sentimendurik.</li>
+              <li>Ez du gizakien mailako ulermenik.</li>
+            </ul>
+          </article>
+
+          <article class="page-card reveal" id="konparazioa">
+            <h2>AA vs gizakia</h2>
+
+            <div class="lesson-compare-table">
+              <div class="lesson-compare-row lesson-compare-head">
+                <div>Ezaugarria</div>
+                <div>AA</div>
+                <div>Gizakia</div>
+              </div>
+
+              <div class="lesson-compare-row">
+                <div>Kalkuluaren abiadura</div>
+                <div>Milioika eragiketa segundoko</div>
+                <div>Motelagoa, baina malgua</div>
+              </div>
+
+              <div class="lesson-compare-row">
+                <div>Esperientzia berria</div>
+                <div>Ez daki zer egin datu berririk gabe</div>
+                <div>Egoera berrietara egokitzen da</div>
+              </div>
+
+              <div class="lesson-compare-row">
+                <div>Sormena</div>
+                <div>Patroiak konbinatu</div>
+                <div>Ideia berriak sor ditzake</div>
+              </div>
+
+              <div class="lesson-compare-row">
+                <div>Emozioak</div>
+                <div>Ez du sentitzen</div>
+                <div>Funtsezko parte bat dira</div>
+              </div>
+
+              <div class="lesson-compare-row">
+                <div>Akatsak</div>
+                <div>Ziurtasunez huts egin dezake</div>
+                <div>Normalean akatsez ohartzen da</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal">
+            <h2>Hausnartu</h2>
+            <p>
+              Pentsatu zure egunerokoan: zein momentutan erabili duzu gaur AAk bultzatutako tresna bat, konturatu gabe ere?
+              Zerrendatu gutxienez 3 adibide eta galdetu zeure buruari ea sistema horiek AArik gabe modu berean funtzionatuko luketen.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="1">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zein da adimen artifizialaren oinarrizko ideia?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Ordenagailuek sentitzen dutela.</button>
+                  <button class="mini-quiz-opt">Datuetatik patroiak antzemanez erabakiak hartzea.</button>
+                  <button class="mini-quiz-opt">Ordenagailuek gizakiak baino hobeto pentsatzea.</button>
+                  <button class="mini-quiz-opt">Makinek kontzientzia izatea.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  AAren oinarria da datuetatik patroiak aurkitzea eta horiek erabakiak hartzeko erabiltzea, ez pentsatzea edo sentitzea.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Gaur egun existitzen al da gizakien mailan pentsatzen duen AA sistema bat?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Bai, ChatGPT.</button>
+                  <button class="mini-quiz-opt">Bai, Google.</button>
+                  <button class="mini-quiz-opt">Ez, AA zabala oraindik ez da existitzen.</button>
+                  <button class="mini-quiz-opt">Bai, baina isilean gordetzen dute.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Gaur egungo AI guztia “estua” da: zeregin jakin batzuetan ondo aritu daiteke, baina ez du ulermen orokorrik.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>AI estua</strong>
+                <p>Zeregin jakin baterako prestatutako AA sistema.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>AA zabala</strong>
+                <p>Edozein zereginetan gizakien mailan aritzeko gai izango litzatekeen sistema; oraindik ez da existitzen.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Patroia</strong>
+                <p>Datuetan errepikatzen den erregulartasun bat.</p>
+              </div>
+              <div class="concept-box reveal delay-1">
+                <strong>Automatizazioa</strong>
+                <p>Lanak arau finkoekin automatikoki egitea, nahitaez AArik gabe.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaiak.html">Itzuli ikasgaietara</a>
+            <a class="btn btn-primary" href="ikasgaia-2.html">Joan 2. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

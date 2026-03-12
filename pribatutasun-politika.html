@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pribatutasun politika · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* Hondo grisa orrialde osorako */
+    .page-surface {
+      background-color: #f8fafc; /* Hondo gris oso argia */
+      min-height: 100vh;
+      padding-bottom: 4rem;
+    }
+
+    .legal-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 2rem;
+    }
+
+    /* Txartelen estiloa: zuriak, ertz borobilak, itzala */
+    .page-card {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+      background-color: #ffffff;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    
+    .page-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 1rem;
+    }
+
+    .icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: #f1f5f9;
+      color: #475569;
+    }
+
+    .page-card h2 {
+      margin: 0;
+      color: #0f172a; /* Testu ia beltza */
+      font-size: 1.35rem;
+      text-align: left;
+    }
+
+    .page-card p, .page-card li {
+      color: #334155; /* Testu gris iluna / beltza */
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      text-align: left;
+    }
+
+    .page-card ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .page-card p:last-child, .page-card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-card a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .page-card a:hover {
+      text-decoration: underline;
+    }
+
+    .legal-nav-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .legal-nav-links a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .legal-nav-links a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #e0e7ff;
+      color: #4338ca;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Pribatutasuna</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero reveal" style="background-color: #4b5563;">
+      <div class="container lesson-hero-grid" style="grid-template-columns: 1fr;">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Hasiera</a>
+            <span>›</span>
+            <strong>Pribatutasun politika</strong>
+          </div>
+          <h1>Pribatutasun politika</h1>
+          <p>artifiziala.eus webgunean datuen tratamenduari buruzko informazioa.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container legal-container">
+        
+        <div class="reveal">
+          <span class="pill-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Azken eguneraketa: 2026ko martxoaren 16a
+          </span>
+        </div>
+
+        <article class="page-card reveal delay-1">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #d1fae5; color: #059669;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h2>Konpromiso Orokorra</h2>
+          </div>
+          <p><strong>artifiziala.eus</strong> atariak ez du datu pertsonalik biltzen. Erabiltzaileen pribatutasuna errespetatzea funtsezko printzipio bat da proiektu honentzat.</p>
+          <p>Webgune honetan ez da erregistro-sistemarik, erabiltzaile-konturik, posta-harpidetza sistemarik, formulariorik edo datu pertsonalak jasotzeko beste mekanismo bat ere existitzen.</p>
+        </article>
+
+        <article class="page-card reveal delay-2">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #ffedd5; color: #ea580c;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </div>
+            <h2>Cookieak eta Jarraipen-Tresnak</h2>
+          </div>
+          <p><strong>artifiziala.eus</strong>-ek ez du cookierik erabiltzen erabiltzaileak jarraitzeko edo identifikatzeko. Ez da analitika-tresnarik (Google Analytics edo antzekoak) edo publizitate-jarraipen sistemarik erabiltzen.</p>
+          <p>Hosting hornitzaileak (Vercel) teknikoki beharrezko cookieak erabil ditzake zerbitzuaren funtzionamendu egokirako, baina hauek ez dute erabiltzaileak identifikatzen edo jarraitzen.</p>
+        </article>
+
+        <article class="page-card reveal delay-3">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #e0f2fe; color: #0284c7;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            </div>
+            <h2>Hosting Hornitzailea</h2>
+          </div>
+          <p><strong>artifiziala.eus</strong> webgunea Vercel Inc.-en zerbitzarietan ostatatuta dago.</p>
+          <ul>
+            <li><strong>Enpresa:</strong> Vercel Inc.</li>
+            <li><strong>Helbidea:</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, Ameriketako Estatu Batuak</li>
+            <li><strong>Pribatutasun politika:</strong> <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/legal/privacy-policy</a></li>
+          </ul>
+          <p>Vercel-ek zerbitzariaren erregistroak (log fitxategiak) gorde ditzake, IP helbideak eta sarbide-datuak barne, plataformaren segurtasuna eta funtzionamendua bermatzeko. Datu hauek Vercel-en pribatutasun politikaren arabera kudeatzen dira.</p>
+        </article>
+
+        <article class="page-card reveal delay-4">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #fce7f3; color: #db2777;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </div>
+            <h2>Hirugarrenen Zerbitzuak</h2>
+          </div>
+          <p><strong>artifiziala.eus</strong>-ek ez du hirugarrenen zerbitzu integratuek biltzen duten daturik kontrolatzen. Webguneak kanpoko baliabideak kargatzea saihestu egiten du erabiltzaileen pribatutasuna bermatzeko.</p>
+        </article>
+
+        <article class="page-card reveal delay-5">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #fef08a; color: #ca8a04;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h2>Adingabekoen Babesa</h2>
+          </div>
+          <p><strong>artifiziala.eus</strong> hezkuntza-plataforma bat izanik, adingabekoek erabil dezakete. Datu pertsonalik biltzen ez denez, ez da adingabekoei buruzko informazio berezirik jasotzen edo tratatzen.</p>
+        </article>
+
+        <article class="page-card reveal delay-6">
+          <div class="page-card-header">
+            <div class="icon-box" style="background-color: #f3e8ff; color: #9333ea;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><path d="m2 4 10 8 10-8"></path></svg>
+            </div>
+            <h2>Harremanetarako</h2>
+          </div>
+          <p>Pribatutasunarekin lotutako edozein galdera edo eskaera egiteko, jarri harremanetan helbide honetan:</p>
+          <p><a href="mailto:info@berezuma.com">info@berezuma.com</a></p>
+          <p style="margin-top: 1rem;"><strong>Arduraduna:</strong> Beñat Erezuma</p>
+          
+          <div class="legal-nav-links">
+            <a href="lege-oharra.html">Lege Oharra →</a>
+            <a href="lizentzia.html">Lizentzia →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+       <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

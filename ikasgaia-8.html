@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Etorkizuna eta azken gakoak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* CSS Animazioetarako (Scroll Reveal) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* Ertz borobilagoak */
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .process-step {
+      border-radius: 24px !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Etorkizuna eta azken gakoak</strong>
+          </div>
+
+          <span class="lesson-kicker">8. modulua / 8</span>
+          <h1>Etorkizuna eta azken gakoak</h1>
+          <p>
+            Azken modulu honetan, ikasitako guztia lotuko dugu: zer den AA, nola ikasten duen, zer muga dituen,
+            nola erabili behar den modu kritikoan eta zer paper izan dezakeen etorkizunean gure egunerokoan.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Oinarrizkoa</span>
+            <span>15 min</span>
+            <span>Berrikuspena + etorkizuna + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">08</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#bideoa">Sarrerako bideoa</a></li>
+              <li><a href="#berrikusi">Ikasitakoa berrikusten</a></li>
+              <li><a href="#gaur">AA gaur egun</a></li>
+              <li><a href="#etorkizuna">AA etorkizunean</a></li>
+              <li><a href="#gakoak">Erabiltzaile kritiko baten gakoak</a></li>
+              <li><a href="#hausnarketa">Azken hausnarketa</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau ikastaro osoaren amaiera da, eta laborategiko jarduerekin osatzen da: etiketatzea,
+              promptak, alborapena eta egiaztapena bateratuz ikuspegi osoago bat lortzen da.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="bideoa">
+            <h2>Sarrerako bideoa</h2>
+            <p>
+              Bideo honetan azaltzen da adimen artifizialak hezkuntzan dituen aukerak eta erronkak, ikastaro osoaren amaierako ikuspegi gisa.
+            </p>
+
+            <div class="video-embed">
+              <div style="padding:56.25% 0 0 0; position:relative;">
+                <iframe
+                  src="https://player.vimeo.com/video/925862981?badge=0&autopause=0&player_id=0&app_id=58479"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  title='Topagune birtualak: Adimen Artifiziala (III) "Adimen artifiziala hezkuntzan, aukerak eta erronkak?"'>
+                </iframe>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="berrikusi">
+            <h2>Ikasitakoa berrikusten</h2>
+            <p>
+              Ikastaroan zehar ikusi dugu AA ez dela kontzientzia duen adimen bat, baizik eta datuetatik patroiak
+              ikasten dituen sistema bat. Ikusi dugu nola ikasten duten makinek, nola aztertzen dituzten irudiak,
+              nola sortzen duten testua eta zergatik egin ditzaketen akats sinesgarriak.
+            </p>
+            <p style="margin-top:1rem;">
+              Halaber, prompt onen garrantzia, datuen kalitatea, alborapenaren arriskua, pribatutasunaren babesa
+              eta erabilera akademiko arduratsua landu dira. Horrek guztiak erakusten du AA tresna indartsua dela,
+              baina ez neutroa eta ez infaliblea.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Gako nagusia</span>
+            <h2>AA ez da magikoa</h2>
+            <p>
+              Askotan oso emaitza ikusgarriak eskaintzen ditu, baina beti dago datuen, ereduaren eta diseinuaren menpe.
+              Horregatik, ulermena, egiaztapena eta pentsamendu kritikoa ezinbestekoak dira.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="gaur">
+            <h2>AA gaur egun</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Ikaskuntza</strong>
+                <p>Laburpenak, ideiak, ariketak edo azalpen egokituak sortzeko erabil daiteke.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Sormena</strong>
+                <p>Testua, irudiak, audioa edo diseinu-proposamenak sortzen lagun dezake.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Automatizazioa</strong>
+                <p>Zeregin errepikakorrak azkartzeko balio du, baina ez du beti ordezkatzen giza erabakia.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Arriskuak</strong>
+                <p>Haluzinazioak, alborapena eta pribatutasun-arazoak ekar ditzake, erabilera zaindurik ez badago.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="etorkizuna">
+            <h2>AA etorkizunean</h2>
+            <p>
+              Etorkizunean, ziurrenik AA gero eta presenteago egongo da hezkuntzan, osasunean, sorkuntzan,
+              administrazioan eta eguneroko aplikazioetan. Horrek aukerak ekarriko ditu, baina baita galdera berriak ere:
+              zer erabaki utzi behar zaizkio makinei, zer kontrol behar da, eta nola bermatu erabilera justua.
+            </p>
+            <p style="margin-top:1rem;">
+              Horregatik, etorkizuneko erronka ez da tresnak erabiltzea bakarrik, baizik eta tresna horiek ondo ulertu,
+              mugak ezagutu eta ardura sozialarekin erabiltzea. Ikasle, irakasle eta herritar gisa, hori izango da gaitasun garrantzitsuenetako bat.
+            </p>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="gakoak">
+            <h2>Erabiltzaile kritiko baten gakoak</h2>
+            <p>
+              AA ondo erabiltzeko, komeni da hainbat ohitura hartzea: datu sentikorrik ez ematea, erantzunak iturri fidagarrietan
+              egiaztatzea, prompt zehatzak erabiltzea, eta emaitzak ez hartzea automatikoki egia edo neutraltzat.
+            </p>
+            <p style="margin-top:1rem;">
+              Gainera, garrantzsrcitzeko da zure ekarpena eta zure irizpidea mantentzea. AA laguntzaile ona izan daiteke,
+              baina ez du ordezkatzen pentsamendu kritikoa, sormena edo erantzukizun etikoa.
+            </p>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
+            <h2>Azken hausnarketa</h2>
+            <p>
+              Pentsatu nola erabiliko zenukeen AA hemendik aurrera: zertan lagundu diezazuke, non ibili behar duzun kontuz,
+              eta zer arau pertsonal jarriko zenituzkeen tresna horiek modu arduratsuan erabiltzeko.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="8">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zein da ikastaro osoaren ideia nagusietako bat?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">AAk beti egia esaten duela.</button>
+                  <button class="mini-quiz-opt">AA tresna indartsua dela, baina mugak eta arriskuak dituela.</button>
+                  <button class="mini-quiz-opt">AAk gizakia ordezkatuko duela beti.</button>
+                  <button class="mini-quiz-opt">Promptak ez duela axolarik.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Ikastaro osoan zehar ikusi da AA erabilgarria dela, baina datuen, patroien eta diseinuaren menpe dagoela.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Zer egin behar du erabiltzaile arduratsu batek?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Edozein erantzun zuzena dela onartu.</button>
+                  <button class="mini-quiz-opt">Datu pertsonal guztiak eman.</button>
+                  <button class="mini-quiz-opt">Emaitzak egiaztatu, datuak zaindu eta pentsamendu kritikoa erabili.</button>
+                  <button class="mini-quiz-opt">AAk sortutakoa zuzenean kopiatu.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Erabilera arduratsuak egiaztapena, pribatutasunaren babesa eta irizpide propioa eskatzen ditu.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Patroia</strong>
+                <p>Datuetan errepikatzen den egitura edo erregulartasuna.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Prompta</strong>
+                <p>AAri ematen zaion instrukzioa edo galdera.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Haluzinazioa</strong>
+                <p>AAk sinesgarria dirudien baina faltsua den informazioa sortzea.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Alborapena</strong>
+                <p>Datuen aurreiritziek edo desorekek sortutako joera bidegabea.</p>
+              </div>
+              <div class="concept-box reveal delay-5">
+                <strong>Pentsamendu kritikoa</strong>
+                <p>Informazioa zalantzan jartzeko, egiaztatzeko eta zentzuz baloratzeko gaitasuna.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-7.html">Itzuli 7. modulura</a>
+            <a class="btn btn-primary" href="ikasgaiak.html">Amaitu ikastaroa</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+       <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    // Scroll Animazioak - Intersection Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

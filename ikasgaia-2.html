@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nola ikasten dute makinek? · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card,
+    .video-embed {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+
+    .neural-screen {
+      background:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, rgba(124,77,255,0.10), transparent 60%);
+      background-size: 32px 32px, 32px 32px, auto;
+      position: relative;
+      height: 315px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background-color: #0A0A0C;
+      margin-top: 1.5rem;
+    }
+
+    .neural-network {
+      position: absolute;
+      inset: 0;
+    }
+
+    .network-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .network-lines line {
+      stroke: rgba(255,255,255,0.14);
+      stroke-width: 1.6;
+    }
+
+    .line-group {
+      opacity: 0.6;
+    }
+
+    .line-group line {
+      stroke-dasharray: 10 14;
+      animation: dashFlow 7s linear infinite;
+    }
+
+    .line-group-2 line {
+      animation-duration: 6s;
+    }
+
+    .line-group-3 line {
+      animation-duration: 5s;
+    }
+
+    .layer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      z-index: 2;
+    }
+
+    .layer-1 { left: 14%; }
+    .layer-2 { left: 38%; }
+    .layer-3 { left: 64%; }
+    .layer-4 { left: 86%; }
+
+    .neuron {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(167,139,250,0.95);
+      box-shadow:
+        0 0 0 6px rgba(124,77,255,0.08),
+        0 0 14px rgba(167,139,250,0.85);
+      animation: neuronPulse 3.6s ease-in-out infinite;
+    }
+
+    .layer-1 .neuron:nth-child(1) { animation-delay: 0.1s; }
+    .layer-1 .neuron:nth-child(2) { animation-delay: 0.5s; }
+    .layer-1 .neuron:nth-child(3) { animation-delay: 0.9s; }
+    .layer-1 .neuron:nth-child(4) { animation-delay: 1.3s; }
+
+    .layer-2 .neuron:nth-child(1) { animation-delay: 0.2s; }
+    .layer-2 .neuron:nth-child(2) { animation-delay: 0.6s; }
+    .layer-2 .neuron:nth-child(3) { animation-delay: 1s; }
+    .layer-2 .neuron:nth-child(4) { animation-delay: 1.4s; }
+    .layer-2 .neuron:nth-child(5) { animation-delay: 1.8s; }
+
+    .layer-3 .neuron:nth-child(1) { animation-delay: 0.3s; }
+    .layer-3 .neuron:nth-child(2) { animation-delay: 0.7s; }
+    .layer-3 .neuron:nth-child(3) { animation-delay: 1.1s; }
+    .layer-3 .neuron:nth-child(4) { animation-delay: 1.5s; }
+
+    .layer-4 .neuron:nth-child(1) { animation-delay: 0.4s; }
+    .layer-4 .neuron:nth-child(2) { animation-delay: 0.8s; }
+    .layer-4 .neuron:nth-child(3) { animation-delay: 1.2s; }
+
+    @keyframes neuronPulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.45);
+        opacity: 1;
+        box-shadow:
+          0 0 0 10px rgba(124,77,255,0.10),
+          0 0 22px rgba(192,132,252,1);
+      }
+    }
+
+    @keyframes dashFlow {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: -240; }
+    }
+
+    .layer-label {
+      position: absolute;
+      top: 20px;
+      color: #A78BFA;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transform: translateX(-50%);
+      z-index: 3;
+      background: rgba(10, 10, 12, 0.8);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(167,139,250,0.2);
+    }
+    .label-1 { left: 14%; }
+    .label-2 { left: 51%; }
+    .label-3 { left: 86%; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Nola ikasten dute makinek?</strong>
+          </div>
+
+          <span class="lesson-kicker">2. modulua / 8</span>
+          <h1>Nola ikasten dute makinek?</h1>
+          <p>
+            Makinek adibideetatik ikasten dute: datu asko ikusita patroiak antzematen dituzte, baina
+            datuen kalitateak zuzenean baldintzatzen du zer ikasiko duten eta zein ondo arituko diren.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Oinarrizkoa</span>
+            <span>18 min</span>
+            <span>Prozesua + mini-quiz + glosarioa</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">02</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#bideoa">Sarrerako bideoa</a></li>
+              <li><a href="#ml">Machine Learning</a></li>
+              <li><a href="#sare-neuronalak">Sare neuronalak</a></li>
+              <li><a href="#printzipioak">Printzipioak</a></li>
+              <li><a href="#datuak">Datuen garrantzia</a></li>
+              <li><a href="#prozesua">Entrenamendu prozesua</a></li>
+              <li><a href="#adibideak">Adibide errealak</a></li>
+              <li><a href="#arazoak">Datuen arazoak</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau zuzenean lotzen da etiketatze-laborategiarekin, non ikusiko duzun nola eragiten duen datuen sailkapenak sistemaren ikaskuntzan.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="bideoa">
+            <h2>Sarrerako bideoa</h2>
+            <p>
+              Bideo honetan azaltzen da AAren atzean dagoen teknologia eta nola ikasten duten sistemek datuetatik.
+            </p>
+
+            <div class="video-embed">
+              <div style="padding:56.25% 0 0 0; position:relative;">
+                <iframe
+                  src="https://player.vimeo.com/video/916496237?badge=0&autopause=0&player_id=0&app_id=58479"
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  style="position:absolute; top:0; left:0; width:100%; height:100%;"
+                  title='Topagune birtualak: Adimen Artifiziala (II) "AAren atzean dagoen teknologia"'
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="ml">
+            <h2>Machine Learning (Ikaskuntza Automatikoa)</h2>
+            <p>
+              Adimen Artifizialaren adar bat da. Makinei pausoz pausoko arauak programatu beharrean, datu-multzoak ematen zaizkie ereduak eta patroiak inferitu ditzaten.
+            </p>
+            <ul class="simple-list" style="margin-top: 1rem;">
+              <li>
+                <strong>Prozesua:</strong> Datu-sarrera &rarr; Algoritmoaren entrenamendua &rarr; Ereduaren sorrera &rarr; Iragarpena edo sailkapena.
+              </li>
+              <li>
+                <strong>Aplikazioa:</strong> Ordenagailu bati katu bat identifikatzen irakasteko, ez zaizkio katu baten ezaugarri geometrikoak programatzen. Milaka katu-irudi prozesatzen ditu, ezaugarri komunak estatistikoki identifikatu arte.
+              </li>
+            </ul>
+          </article>
+
+          <article class="page-card reveal" id="sare-neuronalak">
+            <h2>Sare Neuronalak eta Deep Learning</h2>
+            <p>
+              Ikaskuntza automatikoaren azpisistema aurreratua da, giza burmuineko neuronen egitura biologikoan formalki oinarritua, baina funtzionamendu matematiko hutsekoa.
+            </p>
+
+            <div class="neural-screen">
+              <div class="neural-network">
+                <span class="layer-label label-1">Sarrera</span>
+                <span class="layer-label label-2">Ezkutuko geruzak</span>
+                <span class="layer-label label-3">Irteera</span>
+
+                <div class="layer layer-1">
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                </div>
+                <div class="layer layer-2">
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                </div>
+                <div class="layer layer-3">
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                </div>
+                <div class="layer layer-4">
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                  <span class="neuron"></span>
+                </div>
+
+                <svg class="network-lines" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
+                  <g class="line-group line-group-1">
+                    <line x1="120" y1="90"  x2="360" y2="70"></line>
+                    <line x1="120" y1="90"  x2="360" y2="165"></line>
+                    <line x1="120" y1="90"  x2="360" y2="260"></line>
+                    <line x1="120" y1="90"  x2="360" y2="355"></line>
+                    <line x1="120" y1="90"  x2="360" y2="450"></line>
+                    <line x1="120" y1="200" x2="360" y2="70"></line>
+                    <line x1="120" y1="200" x2="360" y2="165"></line>
+                    <line x1="120" y1="200" x2="360" y2="260"></line>
+                    <line x1="120" y1="200" x2="360" y2="355"></line>
+                    <line x1="120" y1="200" x2="360" y2="450"></line>
+                    <line x1="120" y1="310" x2="360" y2="70"></line>
+                    <line x1="120" y1="310" x2="360" y2="165"></line>
+                    <line x1="120" y1="310" x2="360" y2="260"></line>
+                    <line x1="120" y1="310" x2="360" y2="355"></line>
+                    <line x1="120" y1="310" x2="360" y2="450"></line>
+                    <line x1="120" y1="420" x2="360" y2="70"></line>
+                    <line x1="120" y1="420" x2="360" y2="165"></line>
+                    <line x1="120" y1="420" x2="360" y2="260"></line>
+                    <line x1="120" y1="420" x2="360" y2="355"></line>
+                    <line x1="120" y1="420" x2="360" y2="450"></line>
+                  </g>
+                  <g class="line-group line-group-2">
+                    <line x1="360" y1="70"  x2="620" y2="100"></line>
+                    <line x1="360" y1="70"  x2="620" y2="200"></line>
+                    <line x1="360" y1="70"  x2="620" y2="320"></line>
+                    <line x1="360" y1="70"  x2="620" y2="430"></line>
+                    <line x1="360" y1="165" x2="620" y2="100"></line>
+                    <line x1="360" y1="165" x2="620" y2="200"></line>
+                    <line x1="360" y1="165" x2="620" y2="320"></line>
+                    <line x1="360" y1="165" x2="620" y2="430"></line>
+                    <line x1="360" y1="260" x2="620" y2="100"></line>
+                    <line x1="360" y1="260" x2="620" y2="200"></line>
+                    <line x1="360" y1="260" x2="620" y2="320"></line>
+                    <line x1="360" y1="260" x2="620" y2="430"></line>
+                    <line x1="360" y1="355" x2="620" y2="100"></line>
+                    <line x1="360" y1="355" x2="620" y2="200"></line>
+                    <line x1="360" y1="355" x2="620" y2="320"></line>
+                    <line x1="360" y1="355" x2="620" y2="430"></line>
+                    <line x1="360" y1="450" x2="620" y2="100"></line>
+                    <line x1="360" y1="450" x2="620" y2="200"></line>
+                    <line x1="360" y1="450" x2="620" y2="320"></line>
+                    <line x1="360" y1="450" x2="620" y2="430"></line>
+                  </g>
+                  <g class="line-group line-group-3">
+                    <line x1="620" y1="100" x2="860" y2="145"></line>
+                    <line x1="620" y1="100" x2="860" y2="260"></line>
+                    <line x1="620" y1="100" x2="860" y2="375"></line>
+                    <line x1="620" y1="200" x2="860" y2="145"></line>
+                    <line x1="620" y1="200" x2="860" y2="260"></line>
+                    <line x1="620" y1="200" x2="860" y2="375"></line>
+                    <line x1="620" y1="320" x2="860" y2="145"></line>
+                    <line x1="620" y1="320" x2="860" y2="260"></line>
+                    <line x1="620" y1="320" x2="860" y2="375"></line>
+                    <line x1="620" y1="430" x2="860" y2="145"></line>
+                    <line x1="620" y1="430" x2="860" y2="260"></line>
+                    <line x1="620" y1="430" x2="860" y2="375"></line>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <div class="concept-grid" style="margin-top:2rem;">
+              <div class="concept-box reveal delay-1">
+                <strong>Sarrera-geruza (Input layer)</strong>
+                <p>Datu gordinak (irudi baten pixelak, adibidez) jasotzen dituen nodo-multzoa.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Ezkutuko geruzak (Hidden layers)</strong>
+                <p>Datuen ezaugarri konplexuak erauzten dituzten nodoak. Zenbat eta geruza gehiago, orduan eta "sakonagoa" da sarea (Deep Learning). Geruza batek ertzak detektatzen ditu, hurrengoak formak, eta hurrengoak objektuak.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Irteera-geruza (Output layer)</strong>
+                <p>Probabilitate altuena duen erantzuna itzultzen du.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="printzipioak">
+            <h2>Funtsezko Printzipioak Ikasleentzat</h2>
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Datuen dependentzia</strong>
+                <p>Eredu baten ahalmena zuzenki proportzionala da entrenamendu-datuen kantitateari eta kalitateari. Datu barik ez dago ikaskuntzarik.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Oinarri matematikoa</strong>
+                <p>Adimen artifizialak ez du "ulertzen". Probabilitate eta estatistika aurreratua erabiltzen ditu hurrengo hitza, pixela edo erabakia kalkulatzeko.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Alborapen algoritmikoa (Bias)</strong>
+                <p>Entrenamendu-datuek giza-aurreiritziak edo akatsak badituzte, eredu matematikoak akats horiek erreproduzitu eta anplifikatuko ditu emaitzetan.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="datuak">
+            <h2>Datuen garrantzia kritikoa</h2>
+            <p>
+              Datuak ML sistemen “elikagaia” dira, eta haien kalitateak zuzenean eragiten du emaitzetan.
+              Datu gutxi badaude, sistemak ez du behar adina patroi aurkituko; datuak txarrak badira,
+              emaitzak ere txarrak izango dira.
+            </p>
+
+            <div class="examples-grid-lesson" style="margin-top:1rem;">
+              <div class="example-item reveal delay-1">
+                <strong>Datu gutxi</strong>
+                <p>Sistemak ez du behar adina adibide ikusiko eta ezin izango du ondo orokortu.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Datu kalitate txarrekoak</strong>
+                <p>Argazki lausoak, etiketak okerrak edo informazio zaharkitua badago, emaitzak okertu egingo dira.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Datu desorekatuak</strong>
+                <p>Talde baten adibide gehiago badaude, sistemak talde horri buruz gehiago ikasiko du eta besteekin okerrago ibiliko da.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>Aniztasun falta</strong>
+                <p>Egoera mota gutxirekin entrenatzen bada, testuinguru berrietan huts egiteko arriskua handitzen da.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="prozesua">
+            <h2>Nola entrenatzen da sistema bat?</h2>
+
+            <div class="process-steps" style="margin-top:1rem;">
+              <div class="process-step reveal delay-1">
+                <div class="process-marker">1</div>
+                <div>
+                  <strong>Datuak bildu</strong>
+                  <p>Milaka edo milioika adibide biltzen dira, ahalik eta askotarikoenak izan daitezen.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-2">
+                <div class="process-marker">2</div>
+                <div>
+                  <strong>Datuak etiketatu</strong>
+                  <p>Adibide bakoitzari zer den esaten zaio, esaterako “hau katua da” edo “hau spam mezua da”.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-3">
+                <div class="process-marker">3</div>
+                <div>
+                  <strong>Entrenamendua</strong>
+                  <p>Sistemak asmatzen du, akatsa neurtzen da, eta parametroak doitzen dira gutxiago huts egiteko; hori berriro eta berriro egiten da.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal delay-4">
+                <div class="process-marker">4</div>
+                <div>
+                  <strong>Balioztapena</strong>
+                  <p>Inoiz ikusi ez dituen datuekin probatzen da ea benetan ikasi duen ala entrenamenduko adibideak buruz ikasi dituen.</p>
+                </div>
+              </div>
+
+              <div class="process-step reveal">
+                <div class="process-marker">5</div>
+                <div>
+                  <strong>Inferentzia</strong>
+                  <p>Sistema prest dago orain datu berrien aurrean erabakiak edo sailkapenak egiteko.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="adibideak">
+            <h2>Eguneroko adibide errealak</h2>
+
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>📧 Spam detekzioa</strong>
+                <p>Email sistemek milioika mezuren patroietan oinarrituta erabakitzen dute zer den spam.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>🏥 Irudi medikoak</strong>
+                <p>Erradiografietan edo bestelako irudietan patroiak ikasiz, sistemek anomaliak detektatzen lagun dezakete.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>🚗 Kotxe autonomoak</strong>
+                <p>Bideo eta sentsore datu askotatik ikasten dute errepideko egoerak interpretatzen.</p>
+              </div>
+              <div class="example-item reveal delay-4">
+                <strong>💬 Itzultzaileak</strong>
+                <p>Milioika testu eleanitzen patroiak baliatzen dituzte hizkuntza batetik bestera itzultzeko.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-warning-card reveal" id="arazoak">
+            <h2>Datuen arazo ohikoenak</h2>
+            <p>
+              Sistemek ikasten dutena datuen menpekoa da guztiz. Soilik eguzki-argiko argazkiekin entrenatzen bada,
+              ilunpean ez du ondo funtzionatuko; talde bat gutxi ordezkatuta badago, talde horrekin okerrago arituko da.
+            </p>
+            <p style="margin-top:1rem;">
+              Datu zaharrak erabiltzen badira, sistemak ez du egungo errealitatea ondo islatuko. Horregatik erabiltzen da:
+              askotan esaldi hau: “Zaborra sartu, zaborra atera” — hau da, sarrerako datuak txarrak badira, irteerako emaitzak ere bai.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+
+            <div class="mini-quiz" data-lesson="2">
+              <div class="mini-quiz-q" data-correct="1">
+                <strong>1. Zer behar du ML sistema batek ongi ikasteko?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Arau zehatzak programatzaile batek idatzita.</button>
+                  <button class="mini-quiz-opt">Adibide anitz, kalitate onekoak eta orekatuak.</button>
+                  <button class="mini-quiz-opt">Konexio oso azkarra internetera.</button>
+                  <button class="mini-quiz-opt">Sistema oso garestia.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  ML sistemek adibide asko, kalitate onekoak eta orekatuak behar dituzte patroiak ondo ikasteko.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>2. Zer da inferentzia?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Datuak biltzeko prozesua.</button>
+                  <button class="mini-quiz-opt">Sistemak entrenamenduan akatsak egitea.</button>
+                  <button class="mini-quiz-opt">Ikasitako patroiak datu berriekin aplikatzea.</button>
+                  <button class="mini-quiz-opt">Etiketak kentzeko teknika.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Inferentzia da entrenatutako eredu batek datu berrien aurrean ikasitakoa aplikatzea, adibidez irudi berri bat sailkatzea.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Machine learning</strong>
+                <p>Makinek datuetatik patroiak ikasteko eta erabakiak hartzeko teknika.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Entrenamendua</strong>
+                <p>Sistemari adibideak erakusten zaizkion fasea, patroiak ikas ditzan.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Inferentzia</strong>
+                <p>Entrenatutako ereduak datu berriekin ikasitakoa aplikatzea.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Etiketatzea</strong>
+                <p>Datu bakoitzari kategoria bat esleitzea, adibidez “katua” edo “txakurra”.</p>
+              </div>
+              <div class="concept-box reveal">
+                <strong>Overfitting</strong>
+                <p>Sistemak entrenamendu datuak buruz ikastea, baina datu berriekin gaizki aritzea.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-1.html">Itzuli 1. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-3.html">Joan 3. modulura</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

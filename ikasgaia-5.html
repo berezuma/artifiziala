@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eredu generatiboak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+
+    /* Bisualizadorearen estiloak */
+    .diffusion-demo {
+      background: var(--color-surface, #1e293b);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      border: 1px solid var(--color-border, rgba(203, 213, 225, 0.2));
+    }
+    .diffusion-stage {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .diffusion-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      filter: blur(30px) grayscale(100%);
+      transition: all 0.8s ease;
+    }
+    .diffusion-noise {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 1;
+      mix-blend-mode: overlay;
+      transition: opacity 0.8s ease;
+    }
+    .diffusion-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .diffusion-status {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      font-family: monospace;
+      text-align: left;
+      min-height: 1.5rem;
+    }
+
+        /* Quiz estiloak */
+    .quiz-option {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      color: #334155;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .quiz-option:hover {
+      background: #f8fafc;
+      border-color: #38bdf8;
+    }
+    .quiz-option.correct {
+      background: #dcfce7;
+      border-color: #22c55e;
+      color: #166534;
+    }
+    .quiz-option.incorrect {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+    .quiz-option:disabled {
+      cursor: default;
+    }
+
+  /* Ertz borobilagoak */
+    .page-card,
+    .lesson-side-card,
+    .concept-box,
+    .example-item,
+    .lesson-warning-card,
+    .lesson-reflect-card,
+    .lesson-callout-card,
+    .visualizer-section,
+    .result-display,
+    .diffusion-container {
+      border-radius: 24px !important;
+      overflow: hidden !important;
+    }
+
+    .process-step {
+      border-radius: 24px !important;
+    }
+
+    .btn {
+      border-radius: 999px !important;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Ikasgaiak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html" class="active">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg reveal">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <a href="ikasgaiak.html">Ikasgaiak</a>
+            <span>›</span>
+            <strong>Eredu generatiboak</strong>
+          </div>
+
+          <span class="lesson-kicker">5. modulua / 8</span>
+          <h1>Eredu generatiboak</h1>
+          <p>
+            Chatbot-ek, irudi-sortzaileek eta ahots-sistemek eduki berria sortzen dute ikasitako patroietan oinarrituta.
+            Ez dute “ulertzen”, baina oso emaitza sinesgarriak sor ditzakete.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>Ertaina</span>
+            <span>20 min</span>
+            <span>Sorkuntza multimodala + Bisualizadorea</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">05</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lesson-layout">
+        <aside class="lesson-sidebar reveal delay-1">
+          <div class="lesson-side-card">
+            <h3>Atal honetan</h3>
+            <ul>
+              <li><a href="#zerdira">Zer dira eredu generatiboak?</a></li>
+              <li><a href="#kontzeptuak">Kontzeptu klabeak</a></li>
+              <li><a href="#testua">Nola sortzen dute testua?</a></li>
+              <li><a href="#difusio-ereduak">Difusio-ereduak (Irudiak)</a></li>
+              <li><a href="#bisualizadorea-difusioa">Bisualizadorea: Katua</a></li>
+              <li><a href="#audio-bideo-ereduak">Ikus-entzunezkoak</a></li>
+              <li><a href="#haluzinazioak">Haluzinazioak</a></li>
+              <li><a href="#konparaketa">AA vs gizaki sorkuntza</a></li>
+              <li><a href="#quiz">Mini-quiza</a></li>
+              <li><a href="#glosarioa">Glosarioa</a></li>
+            </ul>
+          </div>
+
+          <div class="lesson-side-card">
+            <h3>Lotura praktikoa</h3>
+            <p>
+              Modulu hau zuzenean lotuta dago prompten laborategiarekin eta egiaztapen kritikoarekin. Eduki generatua
+              ona izan daiteke, baina egiaztapena eta argitasuna beti behar dira.
+            </p>
+            <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
+          </div>
+        </aside>
+
+        <div class="lesson-main">
+          <article class="page-card reveal delay-2" id="zerdira">
+            <h2>Zer dira eredu generatiboak?</h2>
+            <p>
+              Eredu generatiboak dira ikasitako patroietan oinarrituta eduki berria sortzen duten sistemak.
+              Hor sartzen dira testua sortzen duten chatbot-ak, irudi sortzaileak, musika edo audio sistemak,
+              eta baita ahotsa edo bideoa sortzen duten tresnak ere.
+            </p>
+            <p style="margin-top:1rem;">
+              Garrantzitsuena da ulertzea ez dutela edukia zuzenean kopiatzen. Entrenamenduan ikusitako egitura,
+              estilo eta harreman estatistikoak erabiltzen dituzte antzeko baina berria den zerbait osatzeko.
+              Hala ere, ez dakite zer esan nahi duen sortzen duten horrek.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Badakizu?</span>
+            <h2>Sinesgarritasuna ez da ulermena</h2>
+            <p>
+              Eredu generatibo batek oso testu ona, irudi ikusgarria edo ahots naturala sor dezake.
+              Hori ez da ulermen sakonaren seinale, baizik eta patroi estatistiko konplexuen erabilera oso eraginkorra.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="kontzeptuak">
+            <h2>Kontzeptu klabeak</h2>
+
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Eredu generatiboa</strong>
+                <p>Eduki berria sortzen duen sistema: testua, irudiak, audioa edo bideoa.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>LLM</strong>
+                <p>Large Language Model, testua sortzeko entrenatutako hizkuntza-eredu handia.</p>
+              </div>
+              <div class="concept-box reveal delay-3">
+                <strong>Tokenak</strong>
+                <p>Testua zatitan prozesatzeko erabiltzen diren unitate txikiak.</p>
+              </div>
+              <div class="concept-box reveal delay-4">
+                <strong>Haluzinazioa</strong>
+                <p>AAk sinesgarria dirudien baina faltsua den informazioa sortzea.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="testua">
+            <h2>Nola sortzen dute testua?</h2>
+            <p>
+              Testu-sorkuntzarako eredu handi batek aurreko hitzak eta testuingurua prozesatzen ditu hurrengo tokena 
+              (hitza edo hitz zatia) zein izango den probabilitateen arabera iragartzeko.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="difusio-ereduak">
+            <h2>Difusio-ereduak: Irudien sorkuntza</h2>
+            <p>
+              Testu-ereduek hitzak aurreikusten dituzten bezala, irudi-sorgailuek difusio-arkitekturak erabiltzen dituzte. Funtzionamendu-sekuentzia:
+            </p>
+            <ul style="margin-bottom: 2rem;">
+              <li><strong>Zarata gehitzea (Forward Diffusion):</strong> Eredua irudi errealekin entrenatzen da, pixkanaka zarata gehituz irudia ezagutezina bihurtu arte.</li>
+              <li><strong>Zarata kentzea (Reverse Diffusion):</strong> Ereduak prozesua alderantzikatzen ikasten du. Zarata hutsetik abiatuta, pixkanaka pizelak berreraikitzen ditu, testu-eskaerari lotutako patroi bisualak osatuz.</li>
+            </ul>
+          </article>
+
+          <article class="page-card reveal" id="bisualizadorea-difusioa">
+            <h2>Bisualizadorea: Zarata kentzeko prozesua (Reverse Diffusion)</h2>
+            <p>Prozesu honek probabilitate matematikoak erabiltzen ditu zarata hutsa irudi egituratu bihurtzeko. Faseen banaketa teknikoa:</p>
+            <ul style="margin-bottom: 2rem;">
+              <li><strong>T=0 (Zarata absolutua):</strong> Ereduak ez du irudirik, pizel aleatorioen matrize matematiko bat baizik.</li>
+              <li><strong>T=1-2 (Egituraketa espaziala):</strong> Testu-aginduaren arabera, ereduak formen eta silueten kokapen probableena kalkulatzen du.</li>
+              <li><strong>T=3-4 (Xehetasunak eta argia):</strong> Inguruko pixelen koherentziaren bidez, koloreak eta argiztapena finkatzen dira.</li>
+              <li><strong>T=5 (Emaitza finala):</strong> Algoritmoak zarata matematiko guztia ezabatzen du (kasu honetan, katu bat).</li>
+            </ul>
+
+            <div class="diffusion-demo">
+              <div class="diffusion-stage">
+                <div class="diffusion-noise" id="diffNoise"></div>
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop" class="diffusion-image" id="diffImage" alt="Katu baten irudia" />
+              </div>
+              <div class="diffusion-controls">
+                <button class="btn btn-primary" id="startDiffusionBtn">Exekutatu difusio-prozesua</button>
+                <div class="diffusion-status" id="diffStatus">Sistemak prest.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="audio-bideo-ereduak">
+            <h2>Ikus-entzunezkoen eta soinuaren sorkuntza</h2>
+            <p>
+              Bideo eta audio eredu generatiboen arkitekturak dimentsio anitzeko aldagaiak prozesatzen ditu:
+            </p>
+            <ul>
+              <li><strong>Bideo-sorkuntza:</strong> Eredu hauek frame-en (fotogramen) arteko koherentzia tenporala kalkulatzen dute. Mugimenduaren dinamika eta objektuen 3D egitura simulatzen dute denboran zehar.</li>
+              <li><strong>Soinu- eta musika-sorkuntza:</strong> Audio-ereduek uhin-formak edo espektrogramak modelatzen dituzte. Ahotsaren tinbrea, instrumentuen maiztasunak eta egitura erritmikoa iragartzen dituzte.</li>
+            </ul>
+          </article>
+
+          <article class="page-card reveal" id="haluzinazioak">
+            <h2>Haluzinazioak</h2>
+            <p>
+              Eredu generatiboek hitz probableena bilatzen dute, eta batzuetan hori sekuentzia faltsu baina oso konbentzigarri batean amaitzen da. Horregatik, egiaztapena ezinbestekoa da.
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="konparaketa">
+            <h2>AA sorkuntza vs gizaki sorkuntza</h2>
+            <div class="examples-grid-lesson">
+              <div class="example-item reveal delay-1">
+                <strong>Prozesua</strong>
+                <p>AAk patroi estatistikoak konbinatzen ditu; gizakiak esperientzia, emozio eta asmoarekin sortzen du.</p>
+              </div>
+              <div class="example-item reveal delay-2">
+                <strong>Ulermena</strong>
+                <p>AAk ez du benetako ulermenik; gizakiak badaki zer esan nahi duen sortzen duenak.</p>
+              </div>
+              <div class="example-item reveal delay-3">
+                <strong>Originalitatea</strong>
+                <p>AAk ikasitako patroiak jarraitzen ditu; gizakiak arauak apurtu eta guztiz egitura berriak sortzeko gaitasuna dauka.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
+            <span class="lesson-note-label">Hausnarketa</span>
+            <h2>Sorkuntza ala Kalkulua?</h2>
+            <p>
+              Irudi bat ikusten duzunean, gogoratu AAk ez duela "irudikatzen". Milioika pixelen arteko harreman estatistikoak kalkulatzen ari da. Zer esan nahi du horrek gure sormenari buruz? AA tresna bat da ala sortzaile bat?
+            </p>
+          </article>
+
+          <article class="page-card reveal" id="quiz">
+            <h2>Mini-quiza</h2>
+            <div id="quizContainer" style="margin-bottom: 1.5rem;">
+              <p><strong>1. Zer egiten du difusio-eredu batek irudi bat sortzeko?</strong></p>
+              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback1')">Milioika irudi artean bat aukeratu eta erakutsi.</button>
+              <button class="quiz-option" onclick="checkQuiz(this, true, 'quizFeedback1')">Zarata matematikoa pixkanaka kendu irudi garbi bat lortu arte.</button>
+              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback1')">Interneteko irudiak moztu eta collage bat egin.</button>
+              <p id="quizFeedback1" style="margin-top: 1rem; display: none;"></p>
+            </div>
+
+            <div id="quizContainer2">
+              <p><strong>2. Zer da haluzinazioa eredu generatibo baten testuinguruan?</strong></p>
+              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak giza emozioetan oinarrituta sortzen duen irudia.</button>
+              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak sortutako irudi bat bere memorian gordetzea.</button>
+              <button class="quiz-option" onclick="checkQuiz(this, true, 'quizFeedback2')">Ereduak sinesgarria den baina faltsua den informazioa sortzea.</button>
+              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak zarata kentzeko erabiltzen duen teknika.</button>
+              <p id="quizFeedback2" style="margin-top: 1rem; display: none;"></p>
+            </div>
+          </article>
+
+          <article class="page-card reveal" id="glosarioa">
+            <h2>Glosarioa</h2>
+            <div class="concept-grid">
+              <div class="concept-box reveal delay-1">
+                <strong>Probabilitate-mapa</strong>
+                <p>Irudi baten barruan pixel bakoitzak izan behar duen kolorea zehazteko kalkulu estatistikoa.</p>
+              </div>
+              <div class="concept-box reveal delay-2">
+                <strong>Koherentzia tenporala</strong>
+                <p>Bideo-ereduetan, fotograma batetik bestera mugimenduak logikoa izaten laguntzen duen teknika.</p>
+              </div>
+            </div>
+          </article>
+
+          <nav class="lesson-bottom-nav reveal">
+            <a class="btn btn-ghost" href="ikasgaia-4.html">Itzuli 4. modulura</a>
+            <a class="btn btn-primary" href="ikasgaia-6.html">Joan 6. modulura</a>
+          </nav>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="site-footer reveal">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOptions = {
+        root: null,
+        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    });
+
+    // Bisualizadorearen logika
+    document.getElementById('startDiffusionBtn').addEventListener('click', async function() {
+      const btn = this;
+      const noise = document.getElementById('diffNoise');
+      const image = document.getElementById('diffImage');
+      const status = document.getElementById('diffStatus');
+
+      btn.disabled = true;
+      noise.style.transition = 'none';
+      image.style.transition = 'none';
+      noise.style.opacity = '1';
+      image.style.opacity = '0';
+      image.style.filter = 'blur(40px) grayscale(100%)';
+      void noise.offsetWidth; 
+      
+      noise.style.transition = 'opacity 1s ease';
+      image.style.transition = 'all 1s ease';
+
+      const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+      
+      status.innerText = "T=0: Hasierako tentsore zaratatsua...";
+      await sleep(1000);
+
+      image.style.opacity = '0.2';
+      status.innerText = "T=1: Dimentsio baxuko egiturak antzematen (silueta)...";
+      await sleep(1000);
+
+      noise.style.opacity = '0.7';
+      image.style.opacity = '0.5';
+      image.style.filter = 'blur(20px) grayscale(60%)';
+      status.innerText = "T=2: Kolore-probabilitateak ebazten...";
+      await sleep(1000);
+
+      noise.style.opacity = '0.4';
+      image.style.opacity = '0.8';
+      image.style.filter = 'blur(8px) grayscale(20%)';
+      status.innerText = "T=3: Xehetasunak finkatzen (begiak, ilea)...";
+      await sleep(1000);
+
+      noise.style.opacity = '0.1';
+      image.style.opacity = '0.9';
+      image.style.filter = 'blur(2px) grayscale(0%)';
+      status.innerText = "T=4: Zarata hondarra ezabatzen...";
+      await sleep(1000);
+
+      noise.style.opacity = '0';
+      image.style.opacity = '1';
+      image.style.filter = 'blur(0px) grayscale(0%)';
+      status.innerText = "T=5: Iterazio prozesua burututa. Katuaren irudia prest.";
+      btn.disabled = false;
+    });
+
+    // Quiz funtzioa
+    function checkQuiz(btn, isCorrect, feedbackId) {
+      const feedback = document.getElementById(feedbackId || 'quizFeedback1');
+      const container = btn.closest('div');
+      const options = container.querySelectorAll('.quiz-option');
+
+      options.forEach(opt => {
+        opt.disabled = true;
+        opt.classList.remove('correct', 'incorrect');
+      });
+
+      const messages = {
+        'quizFeedback1': {
+          correct: "Zuzen! Difusio-ereduek pixkanaka 'garbitzen' dute zarata irudia agertu arte.",
+          incorrect: "Ez da zuzena. AAk ez du irudirik bilatzen, hutsetik eraikitzen du zarata kenduz."
+        },
+        'quizFeedback2': {
+          correct: "Zuzen! Haluzinazioa da ereduak sinesgarria dirudien baina okerra den informazioa sortzea.",
+          incorrect: "Ez da zuzena. Haluzinazioa probabilitate-kalkuluen ondoriozko akats mota bat da."
+        }
+      };
+
+      const key = feedbackId || 'quizFeedback1';
+      if (isCorrect) {
+        btn.classList.add('correct');
+        feedback.innerText = messages[key]?.correct || "Zuzen!";
+        feedback.style.color = "#22c55e";
+      } else {
+        btn.classList.add('incorrect');
+        feedback.innerText = messages[key]?.incorrect || "Ez da zuzena.";
+        feedback.style.color = "#ef4444";
+      }
+      feedback.style.display = "block";
+    }
+  </script>
+</body>
+</html>

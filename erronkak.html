@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erronkak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    .erronka-page {
+      background: var(--purple);
+      min-height: 100vh;
+    }
+
+    .erronka-hero {
+      padding: 3rem 0 2rem;
+      color: white;
+    }
+
+    .erronka-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .erronka-hero .badge {
+      display: inline-block;
+      padding: .35rem .7rem;
+      background: rgba(255,255,255,.12);
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .erronka-hero h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+    }
+
+    .erronka-hero p {
+      color: rgba(255,255,255,.85);
+      max-width: 54ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .erronka-hero-visual {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 260px;
+    }
+
+    .erronka-hero-icon {
+      font-family: var(--font-display);
+      font-size: 10rem;
+      line-height: 1;
+      color: rgba(255,255,255,.12);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      user-select: none;
+    }
+
+    .erronka-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .erronka-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .erronka-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      margin-bottom: .25rem;
+      color: white;
+    }
+
+    .erronka-shell {
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 0 4rem;
+    }
+
+    .erronka-layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .erronka-sidebar {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .erronka-side-card {
+      background: var(--paper);
+      border-left: 8px solid var(--purple);
+      padding: 1.5rem;
+    }
+
+    .erronka-side-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: .8rem;
+      color: var(--text);
+    }
+
+    .erronka-side-card p,
+    .erronka-side-card li {
+      color: var(--text-soft);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .erronka-side-card ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+      display: grid;
+      gap: .4rem;
+    }
+
+    .erronka-stat-grid {
+      display: grid;
+      gap: .75rem;
+    }
+
+    .erronka-stat-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+    }
+
+    .erronka-stat-box strong {
+      display: block;
+      font-size: 1.6rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: .15rem;
+    }
+
+    .erronka-stat-box span {
+      color: var(--text-soft);
+      font-size: .82rem;
+    }
+
+    .erronka-last-score {
+      border-top: 1px solid var(--line);
+      padding-top: .9rem;
+      margin-top: .9rem;
+    }
+
+    .erronka-main {
+      min-width: 0;
+    }
+
+    .erronka-quiz-area {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 2rem;
+    }
+
+    .erronka-progress {
+      margin-bottom: 1.25rem;
+    }
+
+    .erronka-progress strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .9rem;
+      margin-bottom: .4rem;
+      color: var(--text);
+    }
+
+    .erronka-progress-line {
+      display: flex;
+      gap: .3rem;
+      margin-bottom: .35rem;
+    }
+
+    .erronka-progress-dot {
+      flex: 1;
+      height: 5px;
+      background: var(--line);
+    }
+
+    .erronka-progress-dot.done { background: var(--teal); }
+    .erronka-progress-dot.current { background: var(--purple); }
+
+    .erronka-progress span {
+      color: var(--text-soft);
+      font-size: .82rem;
+    }
+
+    .erronka-question h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+      color: var(--text);
+      letter-spacing: -.02em;
+    }
+
+    .erronka-question p {
+      color: var(--text-soft);
+      line-height: 1.65;
+      font-size: .95rem;
+    }
+
+    .erronka-options {
+      display: grid;
+      gap: .6rem;
+      margin-top: 1rem;
+    }
+
+    .erronka-option {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: border-color .15s ease, background .15s ease;
+      font-size: .92rem;
+      line-height: 1.55;
+      font-weight: 500;
+      font-family: var(--font-body);
+    }
+
+    .erronka-option:hover:not(:disabled) {
+      border-color: var(--purple);
+      background: var(--card-soft);
+    }
+
+    .erronka-option.zuzen {
+      background: #eefcf8;
+      border-color: var(--teal);
+      color: #0d7366;
+      font-weight: 600;
+    }
+
+    .erronka-option.oker {
+      background: #fff1f3;
+      border-color: var(--pink);
+      color: #b91c3a;
+    }
+
+    .erronka-option:disabled { cursor: default; }
+
+    .erronka-feedback { margin-top: 1rem; }
+
+    .erronka-feedback-box {
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+    }
+
+    .erronka-feedback-box.zuzen-fb {
+      background: #eefcf8;
+      border-color: var(--teal);
+    }
+
+    .erronka-feedback-box.oker-fb {
+      background: #fff1f3;
+      border-color: var(--pink);
+    }
+
+    .erronka-feedback-box strong {
+      display: block;
+      margin-bottom: .3rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .erronka-feedback-box p {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .erronka-feedback-actions {
+      display: flex;
+      gap: .7rem;
+      flex-wrap: wrap;
+      margin-top: .9rem;
+    }
+
+    .erronka-result {
+      text-align: center;
+      padding: 1rem 0 .5rem;
+    }
+
+    .erronka-result .big-score {
+      display: inline-block;
+      font-size: 3.5rem;
+      line-height: 1;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--purple);
+      margin-bottom: .5rem;
+      letter-spacing: -.04em;
+    }
+
+    .erronka-result > p {
+      color: var(--text-soft);
+      max-width: 48ch;
+      margin: 0 auto 1rem;
+      line-height: 1.65;
+    }
+
+    .erronka-result-actions {
+      display: flex;
+      gap: .7rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .erronka-review {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: .75rem;
+      text-align: left;
+    }
+
+    .erronka-review-item {
+      border: 1px solid var(--line);
+      padding: 1.1rem;
+      background: var(--bg);
+    }
+
+    .erronka-review-item strong {
+      display: block;
+      margin-bottom: .3rem;
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--text);
+    }
+
+    .erronka-review-item p {
+      color: var(--text-soft);
+      font-size: .85rem;
+      line-height: 1.55;
+    }
+
+    .erronka-empty {
+      background: var(--paper);
+      border-left: 8px solid var(--pink);
+      padding: 1.5rem;
+    }
+
+    .erronka-empty strong {
+      display: block;
+      font-family: var(--font-display);
+      margin-bottom: .3rem;
+    }
+
+    .erronka-empty p { color: var(--text-soft); }
+
+    @media (max-width: 1100px) {
+      .erronka-layout,
+      .erronka-hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .erronka-sidebar { position: static; }
+    }
+
+    @media (max-width: 900px) {
+      .erronka-stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .erronka-stats { grid-template-columns: 1fr; }
+      .erronka-hero-icon { font-size: 6rem; }
+    }
+  </style>
+</head>
+<body class="erronka-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Erronkak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html" class="active">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="erronka-hero">
+      <div class="container">
+        <div class="erronka-hero-grid">
+          <div>
+            <span class="badge">Autoebaluazioa · 8 galdera</span>
+            <h1>Probatu ikasitakoa</h1>
+            <p>
+              8 galdera ikasgaietako kontzeptu nagusiei buruz. Erantzun, feedback-a jaso eta ikusi
+              zenbat menderatzen duzun. Helburua ez da soilik asmatzea, baizik eta ulertzea.
+            </p>
+          </div>
+          <div class="erronka-hero-visual">
+            <span class="erronka-hero-icon">?!</span>
+          </div>
+        </div>
+
+        <div class="erronka-stats">
+          <div class="erronka-stat">
+            <strong>8</strong>
+            <span>Galdera</span>
+          </div>
+          <div class="erronka-stat">
+            <strong>1</strong>
+            <span>Erantzun zuzena</span>
+          </div>
+          <div class="erronka-stat">
+            <strong id="heroScore">0</strong>
+            <span>Zure puntuazioa</span>
+          </div>
+          <div class="erronka-stat">
+            <strong id="heroProgress">0%</strong>
+            <span>Aurrerapena</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="erronka-shell">
+      <div class="container">
+        <div class="erronka-layout">
+          <aside class="erronka-sidebar">
+            <div class="erronka-side-card">
+              <h3>Nola funtzionatzen du?</h3>
+              <ul>
+                <li>Galdera bakoitzean aukera bakarra da zuzena.</li>
+                <li>Erantzun ondoren azalpena jasoko duzu.</li>
+                <li>Amaieran zure puntuazioa ikusiko duzu.</li>
+                <li>Nahi adina aldiz errepika dezakezu.</li>
+              </ul>
+            </div>
+
+            <div class="erronka-side-card">
+              <h3>Zure emaitzak</h3>
+              <div class="erronka-stat-grid">
+                <div class="erronka-stat-box">
+                  <strong id="sideCurrent">1/8</strong>
+                  <span>Uneko galdera</span>
+                </div>
+                <div class="erronka-stat-box">
+                  <strong id="sideScore">0</strong>
+                  <span>Zuzenak</span>
+                </div>
+              </div>
+              <div class="erronka-last-score">
+                <p id="lastScoreText">Oraindik ez duzu erronka amaitu.</p>
+              </div>
+            </div>
+
+            <div class="erronka-side-card">
+              <h3>Lotutako atalak</h3>
+              <ul style="list-style:none; padding-left:0;">
+                <li><a href="ikasgaiak.html" style="color:var(--text-soft); font-weight:600;">Ikasgaiak</a></li>
+                <li><a href="laborategia.html" style="color:var(--text-soft); font-weight:600;">Laborategia</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <div class="erronka-main">
+            <div id="challengeApp"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const host = document.getElementById("challengeApp");
+      const sideCurrent = document.getElementById("sideCurrent");
+      const sideScore = document.getElementById("sideScore");
+      const heroScore = document.getElementById("heroScore");
+      const heroProgress = document.getElementById("heroProgress");
+      const lastScoreText = document.getElementById("lastScoreText");
+      const AA = window.AA || {};
+
+      function safeText(text = "") {
+        return String(text)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function shuffle(arr = []) {
+        const copy = [...arr];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+      }
+
+      function loadQuestions() {
+        if (Array.isArray(AA.challenges) && AA.challenges.length) return AA.challenges;
+        if (Array.isArray(AA.quiz) && AA.quiz.length) return AA.quiz;
+        return [];
+      }
+
+      const baseQuestions = loadQuestions();
+      let questions = shuffle(baseQuestions).slice(0, 8);
+      let idx = 0;
+      let score = 0;
+      let answers = [];
+
+      function updateSidebar() {
+        const total = questions.length || 0;
+        sideCurrent.textContent = total ? `${Math.min(idx + 1, total)}/${total}` : "0/0";
+        sideScore.textContent = String(score);
+        heroScore.textContent = String(score);
+        heroProgress.textContent = total ? Math.round((Math.min(idx, total) / total) * 100) + "%" : "0%";
+
+        const state = Store.get();
+        if (state.lastChallengeTotal > 0) {
+          lastScoreText.textContent = `Azken emaitza: ${state.lastChallengeScore}/${state.lastChallengeTotal}`;
+        } else {
+          lastScoreText.textContent = "Oraindik ez duzu erronka amaitu.";
+        }
+      }
+
+      function saveFinalScore() {
+        const state = Store.get();
+        Store.set({
+          ...state,
+          lastChallengeScore: score,
+          lastChallengeTotal: questions.length
+        });
+      }
+
+      function render() {
+        updateSidebar();
+
+        if (!questions.length) {
+          host.innerHTML = `
+            <div class="erronka-empty">
+              <strong>Ez dago galderarik kargatuta</strong>
+              <p>Begiratu data.js fitxategiko quiz edo challenges egitura.</p>
+            </div>
+          `;
+          return;
+        }
+
+        if (idx >= questions.length) {
+          const total = questions.length;
+          const pct = Math.round((score / total) * 100);
+
+          let message = "Berrikusi moduluak eta saiatu berriro.";
+          if (pct >= 50) message = "Oinarri ona duzu eta ideia nagusiak ulertzen hasi zara.";
+          if (pct >= 75) message = "Oso ondo. Kontzeptu nagusiak sendo dituzu.";
+          if (pct === 100) message = "Bikain. Erronka osoa primeran menderatu duzu.";
+
+          saveFinalScore();
+          updateSidebar();
+
+          host.innerHTML = `
+            <div class="erronka-quiz-area">
+              <div class="erronka-result">
+                <span class="big-score">${score}/${total}</span>
+                <p>${safeText(message)}</p>
+
+                <div class="erronka-result-actions">
+                  <button class="btn btn-primary" id="restartChallenge">Berriz hasi</button>
+                  <a class="btn btn-ghost" href="ikasgaiak.html">Ikasgaietara itzuli</a>
+                </div>
+
+                <div class="erronka-review">
+                  ${answers.map((item, i) => `
+                    <article class="erronka-review-item">
+                      <strong>${i + 1}. ${safeText(item.question)}</strong>
+                      <p>Zuk aukeratua: ${safeText(item.chosen)}</p>
+                      <p>Zuzena: ${safeText(item.correct)}</p>
+                      <p>${safeText(item.explanation)}</p>
+                    </article>
+                  `).join("")}
+                </div>
+              </div>
+            </div>
+          `;
+
+          document.getElementById("restartChallenge").addEventListener("click", () => {
+            questions = shuffle(baseQuestions).slice(0, 8);
+            idx = 0;
+            score = 0;
+            answers = [];
+            render();
+          });
+
+          return;
+        }
+
+        const current = questions[idx];
+        const options = Array.isArray(current.options) ? current.options : [];
+        const correctIndex = Number(current.answer);
+
+        host.innerHTML = `
+          <div class="erronka-quiz-area">
+            <div class="erronka-progress">
+              <strong>Aurrerapena</strong>
+              <div class="erronka-progress-line">
+                ${questions.map((_, i) => `
+                  <span class="erronka-progress-dot ${i < idx ? "done" : ""} ${i === idx ? "current" : ""}"></span>
+                `).join("")}
+              </div>
+              <span>${idx + 1}/${questions.length} galdera</span>
+            </div>
+
+            <div class="erronka-question">
+              <h2>Galdera ${idx + 1}</h2>
+              <p>${safeText(current.question || "Galderarik ez")}</p>
+            </div>
+
+            <div class="erronka-options">
+              ${options.map((option, i) => `
+                <button class="erronka-option" data-index="${i}">
+                  ${safeText(option)}
+                </button>
+              `).join("")}
+            </div>
+
+            <div class="erronka-feedback" id="challengeFeedback"></div>
+          </div>
+        `;
+
+        host.querySelectorAll(".erronka-option").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const chosenIndex = Number(btn.dataset.index);
+            const ok = chosenIndex === correctIndex;
+
+            host.querySelectorAll(".erronka-option").forEach((b, i) => {
+              b.disabled = true;
+              if (i === correctIndex) b.classList.add("zuzen");
+              if (i === chosenIndex && i !== correctIndex) b.classList.add("oker");
+            });
+
+            if (ok) score++;
+
+            answers.push({
+              question: current.question || "",
+              chosen: options[chosenIndex] || "",
+              correct: options[correctIndex] || "",
+              explanation: current.explanation || ""
+            });
+
+            document.getElementById("challengeFeedback").innerHTML = `
+              <div class="erronka-feedback-box ${ok ? "zuzen-fb" : "oker-fb"}">
+                <strong>${ok ? "Zuzen!" : "Ez da zuzena"}</strong>
+                <p>${safeText(current.explanation || "")}</p>
+                <div class="erronka-feedback-actions">
+                  <button class="btn btn-primary btn-sm" id="nextChallenge">
+                    ${idx < questions.length - 1 ? "Hurrengo galdera" : "Emaitzak ikusi"}
+                  </button>
+                </div>
+              </div>
+            `;
+
+            updateSidebar();
+
+            document.getElementById("nextChallenge").addEventListener("click", () => {
+              idx++;
+              render();
+            });
+          });
+        });
+      }
+
+      render();
+    })();
+  </script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

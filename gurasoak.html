@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurasoak · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    /* ── Hero ── */
+    .family-hero {
+      background: var(--purple);
+      padding: 3rem 0 2rem;
+      color: white;
+    }
+
+    .family-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .family-hero .badge {
+      display: inline-block;
+      padding: .35rem .7rem;
+      background: rgba(255,255,255,.12);
+      font-size: .82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .family-hero h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+    }
+
+    .family-hero p {
+      color: rgba(255,255,255,.88);
+      max-width: 56ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .family-hero-visual {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 260px;
+    }
+
+    .family-hero-icon {
+      font-family: var(--font-display);
+      font-size: 9rem;
+      line-height: 1;
+      color: rgba(255,255,255,.14);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      user-select: none;
+    }
+
+    .family-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .family-stat {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .family-stat strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      margin-bottom: .25rem;
+      color: white;
+    }
+
+    /* ── Layout ── */
+    .family-shell {
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 0 4rem;
+    }
+
+    .family-layout {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .family-sidebar {
+      position: sticky;
+      top: 110px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .family-side-card {
+      background: var(--paper);
+      border-left: 8px solid var(--purple);
+      padding: 1.5rem;
+    }
+
+    .family-side-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: .8rem;
+      color: var(--text);
+    }
+
+    .family-side-card p,
+    .family-side-card li {
+      color: var(--text-soft);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .family-side-card ul {
+      list-style: none;
+      display: grid;
+      gap: .55rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .family-side-card li a {
+      color: var(--text-soft);
+      font-weight: 600;
+      transition: color .15s ease;
+    }
+
+    .family-side-card li a:hover {
+      color: var(--text);
+    }
+
+    .family-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    .family-stat-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .family-stat-box strong {
+      display: block;
+      font-size: 1.6rem;
+      font-family: var(--font-display);
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: .15rem;
+    }
+
+    .family-stat-box span {
+      color: var(--text-soft);
+      font-size: .82rem;
+    }
+
+    .family-cta {
+      border-top: 1px solid var(--line);
+      padding-top: .9rem;
+      margin-top: .9rem;
+    }
+
+    .family-cta p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+      margin-bottom: .75rem;
+    }
+
+    /* ── Main ── */
+    .family-main {
+      display: grid;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .family-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 2rem;
+    }
+
+    .family-card-head {
+      margin-bottom: 1rem;
+    }
+
+    .family-card-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1.1;
+      margin-bottom: .4rem;
+      color: var(--text);
+      letter-spacing: -.02em;
+    }
+
+    .family-card-head p {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.6;
+      max-width: 66ch;
+    }
+
+    /* ── Info grid ── */
+    .family-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    .family-info-box {
+      border: 1px solid var(--line);
+      padding: 1rem;
+      background: var(--bg);
+    }
+
+    .family-info-box strong {
+      display: block;
+      margin-bottom: .25rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .95rem;
+    }
+
+    .family-info-box p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    /* ── Accordion ── */
+    .family-accordion {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .family-accordion + .family-accordion {
+      margin-top: .85rem;
+    }
+
+    .family-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      color: var(--text);
+      font-size: .95rem;
+    }
+
+    .family-accordion summary::-webkit-details-marker { display: none; }
+
+    .family-accordion summary::after {
+      content: "+";
+      color: var(--text-soft);
+      font-size: 1.08rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .family-accordion[open] summary {
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+    }
+
+    .family-accordion[open] summary::after { content: "-"; }
+
+    .family-accordion-body {
+      padding: 1rem 1.15rem 1.15rem;
+    }
+
+    .family-accordion-body p {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+    }
+
+    .family-accordion-body ul,
+    .family-accordion-body ol {
+      padding-left: 1.05rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: .24rem;
+      margin-bottom: .75rem;
+      font-size: .86rem;
+    }
+
+    .family-accordion-body ul { list-style: disc; }
+    .family-accordion-body ol { list-style: decimal; }
+
+    /* ── Sequence ── */
+    .family-sequence {
+      display: grid;
+      gap: .7rem;
+    }
+
+    .family-step {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      border: 1px solid var(--line);
+      padding: .95rem;
+      background: var(--bg);
+    }
+
+    .family-step .num {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: var(--teal);
+      color: white;
+      font-weight: 700;
+      font-size: .8rem;
+      font-family: var(--font-display);
+    }
+
+    .family-step strong {
+      display: block;
+      margin-bottom: .15rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .95rem;
+    }
+
+    .family-step p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+    }
+
+    /* ── Level grid ── */
+    .family-level-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+
+    .family-level-card {
+      border: 1px solid var(--line);
+      background: var(--bg);
+      padding: 1rem;
+    }
+
+    .family-level-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: .35rem;
+      color: var(--text);
+    }
+
+    .family-level-card p {
+      color: var(--text-soft);
+      font-size: .84rem;
+      line-height: 1.55;
+      margin-bottom: .65rem;
+    }
+
+    .family-level-card ul {
+      list-style: disc;
+      padding-left: 1rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: .22rem;
+      font-size: .8rem;
+    }
+
+    /* ── Checklist ── */
+    .family-checklist {
+      display: grid;
+      gap: .55rem;
+    }
+
+    .family-check-item {
+      border-left: 4px solid var(--purple);
+      background: var(--bg);
+      padding: .85rem .95rem;
+    }
+
+    .family-check-item strong {
+      display: block;
+      margin-bottom: .15rem;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: .9rem;
+    }
+
+    .family-check-item p {
+      color: var(--text-soft);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .family-layout,
+      .family-hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .family-sidebar { position: static; }
+    }
+
+    @media (max-width: 900px) {
+      .family-stats,
+      .family-info-grid,
+      .family-level-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .family-stat-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .family-stats,
+      .family-info-grid,
+      .family-level-grid {
+        grid-template-columns: 1fr;
+      }
+      .family-hero-icon { font-size: 6rem; }
+    }
+  </style>
+</head>
+<body data-page="families">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Gurasoak</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html">Ikasgaiak</a>
+          <a href="laborategia.html">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html" class="active">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Hero ── -->
+    <section class="family-hero">
+      <div class="container">
+        <div class="family-hero-grid">
+          <div>
+            <span class="badge">Gurasoak · Orientazio praktikoa</span>
+            <h1>AA ulertzeko gida argia familientzat</h1>
+            <p>
+              Helburua ez da teknologia guztia kontrolatzea, baizik eta seme-alabek erabiltzen duten hori ulertzen laguntzea,
+              galdera egokiak egitea eta erabilera zentzuduna sustatzea etxean.
+            </p>
+          </div>
+          <div class="family-hero-visual">
+            <span class="family-hero-icon">Gu.</span>
+          </div>
+        </div>
+
+        <div class="family-stats">
+          <div class="family-stat">
+            <strong>3</strong>
+            <span>Ideia nagusi</span>
+          </div>
+          <div class="family-stat">
+            <strong>4</strong>
+            <span>Arrisku nagusi</span>
+          </div>
+          <div class="family-stat">
+            <strong>5</strong>
+            <span>Ohitura on</span>
+          </div>
+          <div class="family-stat">
+            <strong>Etxea</strong>
+            <span>Testuingurua</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Body ── -->
+    <section class="family-shell">
+      <div class="container">
+        <div class="family-layout">
+          <!-- Sidebar -->
+          <aside class="family-sidebar">
+            <div class="family-side-card">
+              <h3>Irakurketa azkarra</h3>
+              <p style="margin-bottom:.8rem;">Familia moduan oinarrizko ideia nagusiak ulertzeko ibilbide sinplea.</p>
+              <ul>
+                <li><a href="#oinarriak">1. Oinarriak ulertu</a></li>
+                <li><a href="#arriskuak">2. Arriskuak identifikatu</a></li>
+                <li><a href="#etxean">3. Etxeko ohiturak adostu</a></li>
+              </ul>
+            </div>
+
+            <div class="family-side-card">
+              <h3>Begirada azkarra</h3>
+              <div class="family-stat-grid">
+                <div class="family-stat-box">
+                  <strong>Ez</strong>
+                  <span>da magikoa</span>
+                </div>
+                <div class="family-stat-box">
+                  <strong>Bai</strong>
+                  <span>izan daiteke lagungarri</span>
+                </div>
+                <div class="family-stat-box">
+                  <strong>Kontuz</strong>
+                  <span>datu pertsonalekin</span>
+                </div>
+                <div class="family-stat-box">
+                  <strong>Beti</strong>
+                  <span>egiaztatu</span>
+                </div>
+              </div>
+              <div class="family-cta">
+                <p>Familiek ez dute aditu izan behar; oinarrizko irizpide batzuk argi izatea nahikoa izaten da askotan.</p>
+                <a class="btn btn-outline btn-sm" href="irakasleak.html">Irakasleen atala</a>
+              </div>
+            </div>
+
+            <div class="family-side-card">
+              <h3>Lotutako atalak</h3>
+              <ul>
+                <li><a href="ikasgaiak.html">Ikasgaiak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+                <li><a href="irakasleak.html">Irakasleak</a></li>
+              </ul>
+            </div>
+          </aside>
+
+          <!-- Main content -->
+          <div class="family-main">
+            <article class="family-card" id="oinarriak">
+              <div class="family-card-head">
+                <h2>Zer da garrantzitsuena?</h2>
+                <p>
+                  Helburua ez da teknologia guztia kontrolatzea, baizik eta seme-alabek erabiltzen duten hori ulertzen laguntzea eta zentzuz erabiltzea. 
+                </p>
+              </div>
+
+              <div class="family-info-grid">
+                <article class="family-info-box">
+                  <strong>Ez da magikoa</strong>
+                  <p>AAk patroiak erabiltzen ditu eta batzuetan oso sinesgarri hitz egiten du, baina horrek ez du esan nahi beti zuzen dagoenik. </p>
+                </article>
+                <article class="family-info-box">
+                  <strong>Lagungarria izan daiteke</strong>
+                  <p>Ondo erabilita, ideiak antolatzeko, azalpenak ulertzeko edo lehen zirriborro bat egiteko laguntza eman dezake. </p>
+                </article>
+                <article class="family-info-box">
+                  <strong>Mugak eta arriskuak ditu</strong>
+                  <p>Desinformazioa, aurreiritziak eta datu pertsonalen esposizioa dira arreta handienarekin zaindu behar diren arloak. </p>
+                </article>
+              </div>
+            </article>
+
+            <article class="family-card">
+              <div class="family-card-head">
+                <h2>Nola ulertu etxean?</h2>
+                <p>
+                  Familia giroan ez da beharrezkoa funtzionamendu teknikoa xehe ulertzea; nahikoa da tresnak zertan lagun dezakeen eta non ibili behar den kontuz jakitea.
+                </p>
+              </div>
+
+              <details class="family-accordion" open>
+                <summary>Zertan izan daiteke lagungarria?</summary>
+                <div class="family-accordion-body">
+                  <ul>
+                    <li>Azalpen bat beste modu batean emateko edo ulermena sendotzeko.</li>
+                    <li>Ideiak antolatzeko, galderak sortzeko edo lan baten hasiera prestatzeko.</li>
+                    <li>Lehen zirriborro bat egiteko, ondoren berrikusi eta pertsonalizatzeko.</li>
+                    <li>Ikasketa-prozesuan laguntza osagarri moduan aritzeko, ez ordezko moduan.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="family-accordion">
+                <summary>Zergatik ez da fidatu behar itsu-itsuan?</summary>
+                <div class="family-accordion-body">
+                  <p>AAk erantzun zuzenak eman ditzake, baina baita oso sinesgarriak diren akatsak ere. Horregatik, tonu segurua ez da beti egiazkotasunaren seinale.</p>
+                  <p>Haurrek eta nerabeek garrantzitsua dute ulertzea tresna laguntzailea dela, eta ez dela automatikoki autoritate fidagarria.</p>
+                </div>
+              </details>
+            </article>
+
+            <article class="family-card" id="arriskuak">
+              <div class="family-card-head">
+                <h2>Zein arrisku zaindu behar dira?</h2>
+                <p>
+                  Arrisku nagusiak informazioaren kalitatearekin, aurreiritziekin eta pribatutasunarekin lotuta daude. 
+                </p>
+              </div>
+
+              <div class="family-sequence">
+                <article class="family-step">
+                  <div class="num">1</div>
+                  <div>
+                    <strong>Desinformazioa</strong>
+                    <p>Erantzun sinesgarriak eman ditzake, baina okerrak, osatu gabeak edo asmatuak ere izan daitezke. </p>
+                  </div>
+                </article>
+
+                <article class="family-step">
+                  <div class="num">2</div>
+                  <div>
+                    <strong>Aurreiritziak</strong>
+                    <p>Entrenamendu-datuetan dauden joera edo desorekak erantzunetan islatu daitezke. </p>
+                  </div>
+                </article>
+
+                <article class="family-step">
+                  <div class="num">3</div>
+                  <div>
+                    <strong>Datu pertsonalen esposizioa</strong>
+                    <p>Ez da komeni izen-abizenak, helbideak, pasahitzak edo bestelako informazio sentikorra sartzea. </p>
+                  </div>
+                </article>
+
+                <article class="family-step">
+                  <div class="num">4</div>
+                  <div>
+                    <strong>Gehiegizko mendekotasuna</strong>
+                    <p>Tresna honek lagun dezake, baina pentsamendua, sormena eta autonomia ordezkatzen hasten bada, ikaskuntza kaltetu dezake.</p>
+                  </div>
+                </article>
+              </div>
+            </article>
+
+            <article class="family-card">
+              <div class="family-card-head">
+                <h2>Adinaren arabera zer zaindu?</h2>
+                <p>
+                  Elkarrizketa eta orientazioa adinaren arabera egokitzea komeni da, haur txikienetatik nerabeetaraino.
+                </p>
+              </div>
+
+              <div class="family-level-grid">
+                <article class="family-level-card">
+                  <h3>Lehen adinak</h3>
+                  <p>Erabilera partekatua eta helduaren azalpen sinplea dira egokienak.</p>
+                  <ul>
+                    <li>Elkarrekin erabiltzea.</li>
+                    <li>Zer den eta zer ez den azaltzea.</li>
+                    <li>Pantailako informazioa ez sinestea automatikoki.</li>
+                  </ul>
+                </article>
+
+                <article class="family-level-card">
+                  <h3>DBH</h3>
+                  <p>Autonomia handiagoa dago, baina orientazio argia behar da oraindik.</p>
+                  <ul>
+                    <li>Egiaztatzeko ohiturak landu.</li>
+                    <li>Kopiatzearen eta ikastearen arteko aldea azaldu.</li>
+                    <li>Datu pertsonalekin kontuz ibili.</li>
+                  </ul>
+                </article>
+
+                <article class="family-level-card">
+                  <h3>Nerabezaro aurreratua</h3>
+                  <p>Erabilera akademikoa, etikoa eta soziala modu kritikoan lantzeko une egokia da.</p>
+                  <ul>
+                    <li>Iturrien fidagarritasuna kontrastatu.</li>
+                    <li>Erabilera arduratsuaren ondorioak ulertu.</li>
+                    <li>AAren laguntza eta norberaren ekarpena bereizi.</li>
+                  </ul>
+                </article>
+              </div>
+            </article>
+
+            <article class="family-card" id="etxean">
+              <div class="family-card-head">
+                <h2>Etxean laguntzeko pauso errazak</h2>
+                <p>
+                  Elkarrizketa lasaia eta ohitura txiki argiak izatea askotan nahikoa da erabilera osasuntsua bultzatzeko.
+                </p>
+              </div>
+
+              <div class="family-checklist">
+                <article class="family-check-item">
+                  <strong>Galdetu zertarako erabili duten</strong>
+                  <p>Ez bakarrik ea erabili duten, baizik eta zer lortu nahi zuten eta ea benetan lagundu dien.</p>
+                </article>
+
+                <article class="family-check-item">
+                  <strong>Egiaztatu informazio garrantzitsua</strong>
+                  <p>Definizioak, datuak edo azalpen garrantzitsuak beste iturri batekin alderatzea komeni da.</p>
+                </article>
+
+                <article class="family-check-item">
+                  <strong>Azpimarratu ikastea dela helburua</strong>
+                  <p>Tresna lagungarria izan daiteke, baina ez luke pentsatzea edo ikaskuntza-prozesua ordezkatu behar.</p>
+                </article>
+
+                <article class="family-check-item">
+                  <strong>Ez partekatu datu sentikorrik</strong>
+                  <p>Pribatutasuna oinarrizko araua da: informazio pertsonala ez sartzea plataforma hauetan.</p>
+                </article>
+
+                <article class="family-check-item">
+                  <strong>Baloratu prozesua, ez emaitza bakarrik</strong>
+                  <p>Garrantzitsua da seme-alabak nola iritsi diren erantzun batera ulertzea, ez bakarrik azken emaitza ikustea.</p>
+                </article>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top: 5rem; margin-bottom: 5rem;">
+      <div class="family-card" style="border-top: 4px solid var(--primary); padding: 2rem;">
+        <div class="family-card-head" style="margin: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--text);">Gomendio praktikoa: Etxean batera ikusteko</h2>
+          <p style="color: var(--text-soft); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+            Adimen artifizialari eta teknologia berriei buruzko elkarrizketa aberasgarriak sortzeko, <strong>Ikusgela</strong> YouTubeko kanalaren bideoak gomendatzen dizkizuegu. 
+          </p>
+          <p style="color: var(--text-soft); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 0;">
+            Familian elkarrekin ikusteko ezin hobea da haien <strong>"Erronka digitalak"</strong> izeneko bilduma. Gai konplexuak modu ulergarri eta atseginean azaltzen dituzte, eta abiapuntu bikaina izan daitezke etxean gai hauen inguruan hitz egiten hasteko.
+          </p>
+          <div style="margin-top: 2rem;">
+            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=oUqhkphV8mA&list=PLs5yjBIvuIiCgsG68R5rNQnGD-MLklQcQ" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem; padding: 0.8rem 1.5rem;">
+              Ikusi "Erronka digitalak" YouTuben &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>
+

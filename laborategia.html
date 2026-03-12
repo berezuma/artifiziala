@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laborategia · artifiziala.eus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    /* ── Layout ── */
+    .lab-shell {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .lab-sidebar {
+      display: grid;
+      gap: 1rem;
+      position: sticky;
+      top: 110px;
+    }
+
+    .lab-side-card {
+      background: var(--paper);
+      border-left: 8px solid var(--purple);
+      padding: 1.5rem;
+    }
+
+    .lab-side-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: .8rem;
+    }
+
+    .lab-side-card p,
+    .lab-side-card li {
+      color: var(--text-soft);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
+
+    .lab-side-card ul {
+      list-style: none;
+      display: grid;
+      gap: .55rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .lab-side-card li a {
+      color: var(--text-soft);
+      font-weight: 600;
+      transition: color .15s ease;
+    }
+
+    .lab-side-card li a:hover {
+      color: var(--text);
+    }
+
+    .lab-side-card p {
+      color: var(--text-soft);
+      margin-bottom: 0;
+    }
+
+    /* ── Main column ── */
+    .lab-main {
+      display: grid;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .lab-intro-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 2rem;
+    }
+
+    .lab-intro-card > p {
+      color: var(--text-soft);
+      line-height: 1.65;
+      font-size: 1rem;
+      max-width: 68ch;
+    }
+
+    .lab-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .lab-highlight {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1.1rem;
+    }
+
+    .lab-highlight strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: .95rem;
+      color: var(--text);
+      margin-bottom: .25rem;
+    }
+
+    .lab-highlight span {
+      font-size: .85rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    /* ── Tabs ── */
+    .lab-tabs-wrap {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1rem;
+    }
+
+    .lab-tabs-title {
+      margin-bottom: .75rem;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .tabs {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: .55rem 1rem;
+      border: 2px solid var(--line);
+      background: transparent;
+      color: var(--text-soft);
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      border-color: var(--purple-soft);
+    }
+
+    .tab-btn.active {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+    }
+
+    /* ── Panels ── */
+    .lab-panel-card {
+      display: none;
+      background: var(--paper);
+      border-left: 8px solid var(--teal);
+      padding: 2rem;
+    }
+
+    .lab-panel-card.active {
+      display: block;
+    }
+
+    .lab-panel-card h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: .8rem;
+      letter-spacing: -.04em;
+    }
+
+    .lab-panel-card > p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .lab-aims {
+      margin: 1.25rem 0;
+      padding: 1.25rem;
+      background: #f2eefb;
+      border-left: 4px solid #8b7ae0;
+    }
+
+    .lab-aims h3 {
+      font-size: .95rem;
+      font-family: var(--font-display);
+      margin-bottom: .5rem;
+    }
+
+    .lab-aims ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+      color: var(--text-soft);
+      display: grid;
+      gap: .3rem;
+    }
+
+    .lab-aims li {
+      font-size: .92rem;
+      line-height: 1.55;
+    }
+
+    .lab-caption {
+      margin-top: 1rem;
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .lab-inline-link {
+      color: var(--purple);
+      font-weight: 600;
+    }
+
+    .lab-inline-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── External tools ── */
+    .external-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .external-tool-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+      transition: transform .15s ease;
+    }
+
+    .external-tool-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .external-tool-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: .65rem;
+    }
+
+    .external-tool-top h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: .15rem;
+    }
+
+    .external-tool-top p {
+      color: var(--text-soft);
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .external-tool-badge {
+      display: inline-flex;
+      padding: .3rem .6rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    .external-tool-body {
+      display: grid;
+      gap: .65rem;
+      margin-top: .75rem;
+    }
+
+    .external-tool-note {
+      padding: .85rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+    }
+
+    .external-tool-note strong {
+      display: block;
+      font-size: .82rem;
+      margin-bottom: .2rem;
+      color: var(--text);
+    }
+
+    .external-tool-note p {
+      font-size: .85rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .external-tools-callout {
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      background: #eefcf8;
+      border-left: 4px solid var(--teal);
+    }
+
+    .external-tools-callout p {
+      color: var(--text);
+      font-size: .92rem;
+      line-height: 1.6;
+    }
+
+    /* ── Demo shell (truth lab) ── */
+    .demo-shell {
+      overflow: hidden;
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,.08);
+      margin-top: .75rem;
+    }
+
+    .demo-header {
+      background: #1e293b;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .demo-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .demo-dot.red { background: #ef4444; }
+    .demo-dot.yellow { background: #f59e0b; }
+    .demo-dot.green { background: #22c55e; }
+
+    .demo-title {
+      margin-left: auto;
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .demo-body {
+      padding: 2rem;
+    }
+
+    .demo-question {
+      font-size: 1.1rem;
+      color: #f1f5f9;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .demo-options {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .demo-btn {
+      flex: 1;
+      min-width: 140px;
+      padding: 0.875rem 1.25rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .demo-btn:hover:not(:disabled) {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+    }
+
+    .demo-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .demo-feedback {
+      display: none;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .demo-feedback.correct {
+      display: block;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgb(34, 197, 94);
+      color: #f1f5f9;
+    }
+
+    .demo-feedback.wrong {
+      display: block;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgb(239, 68, 68);
+      color: #f1f5f9;
+    }
+
+    .demo-feedback strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .demo-feedback p {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .demo-next {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: #38bdf8;
+      color: #0f172a;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: opacity 0.2s;
+    }
+
+    .demo-next:hover {
+      opacity: 0.9;
+    }
+
+    /* ── Labeling lab ── */
+    .labeling-item {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .labeling-item.answered {
+      opacity: 0.65;
+    }
+
+    .item-text {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .item-desc {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .option-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .option-btn {
+      padding: 0.6rem 1.2rem;
+      border: 2px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.15s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--purple);
+      background: var(--card-soft);
+    }
+
+    .option-btn:disabled {
+      cursor: not-allowed;
+    }
+
+    .option-btn.correct {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgb(34, 197, 94);
+      color: #059669;
+    }
+
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgb(239, 68, 68);
+      color: #dc2626;
+    }
+
+    .lab-score {
+      background: var(--card-soft);
+      border-left: 4px solid var(--teal);
+      padding: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* ── Prompt lab ── */
+    .prompt-lab {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .prompt-examples {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .prompt-example {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      position: relative;
+    }
+
+    .prompt-example:hover {
+      border-color: var(--purple);
+      background: var(--card-soft);
+    }
+
+    .prompt-example .tag {
+      display: inline-block;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .prompt-example.poor .tag {
+      background: rgba(239, 68, 68, 0.1);
+      color: #dc2626;
+    }
+
+    .prompt-example.medium .tag {
+      background: rgba(245, 158, 11, 0.1);
+      color: #d97706;
+    }
+
+    .prompt-example.good .tag {
+      background: rgba(34, 197, 94, 0.1);
+      color: #059669;
+    }
+
+    #promptInput {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem;
+      border: 2px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+    }
+
+    #promptInput:focus {
+      outline: none;
+      border-color: var(--purple);
+    }
+
+    .feedback-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .feedback-box h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--purple);
+    }
+
+    /* ── Bias lab ── */
+    .stats-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--purple);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .lab-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .lab-sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .lab-highlight-grid,
+      .external-tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab-btn {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body data-page="lab">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-dot-sm"></span>
+          <span class="brand-dot-lg"></span>
+        </span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">Laborategia</span>
+        </span>
+      </a>
+
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html">Hasiera</a>
+          <a href="ikasgaiak.html">Ikasgaiak</a>
+          <a href="laborategia.html" class="active">Laborategia</a>
+          <a href="erronkak.html">Erronkak</a>
+          <a href="irakasleak.html">Irakasleak</a>
+          <a href="gurasoak.html">Gurasoak</a>
+        </nav>
+
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-surface">
+    <section class="inner-hero teal-bg">
+      <div class="container lesson-hero-grid">
+        <div class="lesson-hero-copy">
+          <div class="lesson-breadcrumb">
+            <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
+            <span>›</span>
+            <strong>Laborategia</strong>
+          </div>
+
+          <span class="lesson-kicker">Praktika gunea</span>
+          <h1>Esperimentatu adimen artifizialarekin</h1>
+          <p>
+            Kontzeptuak praktikan ikusiko dituzu simulazio didaktikoen bidez. Jarduerak ez dira benetako AI eredu osoak,
+            baina bai ideiak modu argi, bisual eta interaktiboan ulertzeko tresnak.
+          </p>
+
+          <div class="lesson-meta-line">
+            <span>4 simulazio + proiektuak</span>
+            <span>+ kanpoko tresnak</span>
+            <span>Nabigatzailean bertan</span>
+          </div>
+        </div>
+
+        <div class="lesson-hero-visual" aria-hidden="true">
+          <div class="lesson-hero-emoji">LAB</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container lab-shell">
+        <aside class="lab-sidebar">
+          <div class="lab-side-card">
+            <h3>Laborategi honetan</h3>
+            <ul>
+              <li><a href="#tab-labeling">1. Datuak etiketatu</a></li>
+              <li><a href="#tab-prompt">2. Prompt laborategia</a></li>
+              <li><a href="#tab-bias">3. Alborapena</a></li>
+              <li><a href="#tab-truth">4. Egia ala fikzioa?</a></li>
+              <li><a href="#tab-external">5. Ikusi barrutik</a></li>
+              <li><a href="#tab-projects">6. Proiektuak</a></li>
+            </ul>
+          </div>
+
+          <div class="lab-side-card">
+            <h3>Nola erabili</h3>
+            <p>
+              Hautatu fitxa bat, egin jarduera lasai, eta irakurri emaitzaren azalpena. Helburua ez da asmatzea bakarrik,
+              baizik eta ulertzea zergatik gertatzen den emaitza hori.
+            </p>
+          </div>
+
+          <div class="lab-side-card">
+            <h3>Lotura didaktikoa</h3>
+            <p>
+              Laborategiak ikasgaietako ideiak finkatzeko balio du: datuak, promptak, alborapena, haluzinazioak eta
+              erabilera arduratsua elkartzen ditu.
+            </p>
+          </div>
+        </aside>
+
+        <div class="lab-main">
+          <article class="lab-intro-card">
+            <p>
+              Jarduera hauek guztiak zure nabigatzailean exekutatzen dira eta ez dute erregistrorik behar.
+              Esperimentatzeko espazio bat dira: probatu, huts egin, berriz saiatu eta azalpenarekin lotu ikasitakoa.
+            </p>
+
+            <div class="lab-highlight-grid">
+              <div class="lab-highlight">
+                <strong>4 simulazio</strong>
+                <span>Etiketatzea, promptak, alborapena eta egiaztapena lantzeko.</span>
+              </div>
+              <div class="lab-highlight">
+                <strong>Kanpoko bistaratzeak</strong>
+                <span>Sare neuronalak eta CNN-ak barrutik hobeto ikusteko.</span>
+              </div>
+              <div class="lab-highlight">
+                <strong>0 erregistro</strong>
+                <span>Dena zuzenean probatzeko pentsatua, frikziorik gabe.</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="lab-tabs-wrap">
+            <div class="lab-tabs-title">Aukeratu jarduera</div>
+            <div class="tabs" id="labTabs">
+              <button class="tab-btn active" data-tab="labeling">1. Datuak etiketatu</button>
+              <button class="tab-btn" data-tab="prompt">2. Prompt laborategia</button>
+              <button class="tab-btn" data-tab="bias">3. Alborapena</button>
+              <button class="tab-btn" data-tab="truth">4. Egia ala fikzioa?</button>
+              <button class="tab-btn" data-tab="external">5. Ikusi barrutik</button>
+              <button class="tab-btn" data-tab="projects">6. Proiektuak</button>
+            </div>
+          </div>
+
+          <article class="lab-panel-card active" id="tab-labeling">
+            <h2>Datuak etiketatzen ikasi</h2>
+            <p>
+              Machine learning-en oinarrietako bat da adibideak kategoriatan sailkatzea. Eredu batek milioika adibide ikus ditzake;
+              hemen ideia hori ulertzeko bertsio txiki eta bisual bat probatuko duzu.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Helburu didaktikoak</h3>
+              <ul>
+                <li>Ulertzea zer den datuak etiketatzea eta zergatik behar den.</li>
+                <li>Ikustea nola ikasten duen eredu batek adibideetatik.</li>
+                <li>Pentsatzea zer gertatzen den datu gutxi, oker edo nahasgarriak daudenean.</li>
+              </ul>
+            </div>
+
+            <p>
+              <strong>Nola jokatu:</strong> Sailkatu pantailan agertuko diren adibideak dagokien kategoriatan.
+              Amaieran ikusiko duzu zergatik den hain garrantzitsua etiketak ondo jartzea.
+            </p>
+
+            <div class="lab-area" id="labelingLab"></div>
+
+            <p class="lab-caption">
+              <strong>Lotura ikasgaiekin:</strong> jarduera honek bereziki lotzen ditu
+              <a class="lab-inline-link" href="ikasgaia-2.html">Nola ikasten dute makinek?</a> eta
+              <a class="lab-inline-link" href="ikasgaia-3.html">Nola ikusten dute makinek?</a> moduluak.
+            </p>
+          </article>
+
+          <article class="lab-panel-card" id="tab-prompt">
+            <h2>Prompt laborategia</h2>
+            <p>
+              Prompt zehatz batek normalean emaitza erabilgarriagoa ematen du. Hemen zure promptak bost irizpiderekin
+              aztertuko dituzu: helburua, testuingurua, formatua, mugak eta argitasuna.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Helburu didaktikoak</h3>
+              <ul>
+                <li>Prompt on baten osagai nagusiak identifikatzea.</li>
+                <li>Prompt lauso eta zehatz baten arteko aldea ikustea.</li>
+                <li>Iterazioa praktikan jartzea: idatzi, aztertu, hobetu eta berriz probatu.</li>
+              </ul>
+            </div>
+
+            <p>
+              <strong>Nola jokatu:</strong> aukeratu adibide bat edo idatzi zure prompt propioa.
+              Sistemak irizpideen arabera baloratuko du eta hobekuntza aholkuak emango dizkizu.
+            </p>
+
+            <div class="lab-area" id="promptLab"></div>
+
+            <p class="lab-caption">
+              <strong>Aholkua:</strong> lehen promptaren emaitza ikusi ondoren, hobetu eta berriz probatu.
+              Iterazioa da prompt diseinuaren gakoa.
+            </p>
+
+            <p class="lab-caption">
+              <strong>Lotura ikasgaiekin:</strong> jarduera hau zuzenean lotuta dago
+              <a class="lab-inline-link" href="ikasgaia-4.html">Nola ulertzen dute hizkuntza?</a> eta
+              <a class="lab-inline-link" href="ikasgaia-6.html">Nola idatzi prompt onak?</a> moduluekin.
+            </p>
+          </article>
+
+          <article class="lab-panel-card" id="tab-bias">
+            <h2>Alborapen simulagailua</h2>
+            <p>
+              Eredu batek bi talderen inguruan ikasten badu baina talde baten adibide gehiago baditu, emaitzak desorekatuak
+              izan daitezke. Hemen ikusiko duzu nola eragiten duen datu banaketak sistemaren zehaztasunean.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Helburu didaktikoak</h3>
+              <ul>
+                <li>Ulertzea datuen desoreka nola islatzen den emaitzetan.</li>
+                <li>Adibide errealak gogoratzea: aurpegi-ezagutza, kontratazio algoritmoak eta antzekoak.</li>
+                <li>Pentsatzea zer egin daitekeen alborapena murrizteko.</li>
+              </ul>
+            </div>
+
+            <p>
+              <strong>Nola funtzionatzen du:</strong> mugitu graduatzaileak bi talderen arteko adibide kopurua aldatzeko.
+              Gero sakatu <em>Simulatu emaitza</em> eta ikusi nola eragiten duen desorekak.
+            </p>
+
+            <div class="lab-area" id="biasLab"></div>
+
+            <p class="lab-caption">
+              <strong>Probatu hau:</strong> hasi 50-50 inguruan, gero eraman banaketa 90-10 egoerara eta konparatu emaitzak.
+            </p>
+
+            <p class="lab-caption">
+              <strong>Lotura ikasgaiekin:</strong> jarduera hau bereziki lotuta dago
+              <a class="lab-inline-link" href="ikasgaia-2.html">Nola ikasten dute makinek?</a> eta
+              <a class="lab-inline-link" href="ikasgaia-7.html">Arriskuak eta erabilera arduratsua</a> moduluekin.
+            </p>
+          </article>
+
+          <article class="lab-panel-card" id="tab-truth">
+            <h2>Egia ala fikzioa?</h2>
+            <p>
+              AAk informazio sinesgarria baina faltsua sor dezake; horri askotan haluzinazioa deitzen zaio.
+              Hemen hainbat baieztapen ikusiko dituzu eta zuk erabaki beharko duzu zein diren egiazkoak eta zein asmatuak.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Helburu didaktikoak</h3>
+              <ul>
+                <li>AAren haluzinazioak identifikatzen ikastea.</li>
+                <li>Pentsamendu kritikoa praktikatzea.</li>
+                <li>Ulertzea zergatik diren tonu segurua eta datu zehatzak batzuetan engainagarriak.</li>
+              </ul>
+            </div>
+
+            <p>
+              <strong>Nola jokatu:</strong> baieztapen bakoitzean aukeratu egia den ala faltsua den.
+              Emaitza ikustean, irakurri azalpena eta pentsatu zein arrasto izan diren lagungarri.
+            </p>
+
+            <div class="lab-area" id="truthLab"></div>
+
+            <p class="lab-caption">
+              <strong>Pista:</strong> zenbaki oso zehatzak edo tonu oso segurua ez dira nahitaez egiazkotasunaren froga.
+            </p>
+
+            <p class="lab-caption">
+              <strong>Lotura ikasgaiekin:</strong> jarduera hau lotuta dago
+              <a class="lab-inline-link" href="ikasgaia-4.html">Nola ulertzen dute hizkuntza?</a>,
+              <a class="lab-inline-link" href="ikasgaia-5.html">Eredu generatiboak</a> eta
+              <a class="lab-inline-link" href="ikasgaia-7.html">Arriskuak eta erabilera arduratsua</a> moduluekin.
+            </p>
+          </article>
+
+          <article class="lab-panel-card" id="tab-external">
+            <h2>Ikusi AA barrutik</h2>
+            <p>
+              Gure simulazioek oinarrizko ideiak azaltzen dituzte; atal honetan, kanpoko tresna interaktibo batzuk aurkituko dituzu,
+              sare neuronalek, konboluzioek eta machine learning ereduek barrutik zer egiten duten hobeto ikusteko.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Zergatik da baliagarria?</h3>
+              <ul>
+                <li>Makinek ez dutela guk bezala ikusten ulertzen laguntzen du.</li>
+                <li>Geruzaz geruza zer gertatzen den bisualki erakusten du.</li>
+                <li>Parametroak aldatzean zer ondorio dagoen ikusten da denbora errealean.</li>
+              </ul>
+            </div>
+
+            <div class="external-tools-grid">
+              <article class="external-tool-card">
+                <div class="external-tool-top">
+                  <div>
+                    <h3>Adam Harley · CNN Visualization</h3>
+                    <p>Geruzaz geruza ikusteko nola pasatzen den informazioa sare konboluzional batean.</p>
+                  </div>
+                  <span class="external-tool-badge">CNN</span>
+                </div>
+
+                <div class="external-tool-body">
+                  <div class="external-tool-note">
+                    <strong>Zer ikusiko duzu</strong>
+                    <p>Feature map-ak, irudiaren eraldaketak eta geruza bakoitzean nabarmentzen den informazioa.</p>
+                  </div>
+
+                  <div class="external-tool-note">
+                    <strong>Zer galderari erantzuten dio</strong>
+                    <p>Nola pasatzen da irudi bat pixel-multzo soil batetik patroi konplexuagoak antzematera?</p>
+                  </div>
+
+                  <a class="btn btn-outline btn-sm" href="https://adamharley.com/nn_vis/cnn/2d.html" target="_blank" rel="noopener noreferrer">
+                    Ireki tresna
+                  </a>
+                </div>
+              </article>
+
+              <article class="external-tool-card">
+                <div class="external-tool-top">
+                  <div>
+                    <h3>CNN Explainer</h3>
+                    <p>Konboluzioa, pooling-a eta aktivazio-funtzioak modu didaktiko eta interaktiboan azaltzen dituen tresna.</p>
+                  </div>
+                  <span class="external-tool-badge">Didaktikoa</span>
+                </div>
+
+                <div class="external-tool-body">
+                  <div class="external-tool-note">
+                    <strong>Zer ikusiko duzu</strong>
+                    <p>CNN baten pauso nagusiak, animazioekin eta azalpen progresiboekin.</p>
+                  </div>
+
+                  <div class="external-tool-note">
+                    <strong>Zer galderari erantzuten dio</strong>
+                    <p>Zer egiten du benetan konboluzioak eta zergatik erabiltzen da hainbeste irudietan?</p>
+                  </div>
+
+                  <a class="btn btn-outline btn-sm" href="https://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener noreferrer">
+                    Ireki tresna
+                  </a>
+                </div>
+              </article>
+
+              <article class="external-tool-card">
+                <div class="external-tool-top">
+                  <div>
+                    <h3>ML Visualizer</h3>
+                    <p>Machine learning algoritmo desberdinak parametroekin esperimentatuz ulertzeko ingurune bisuala.</p>
+                  </div>
+                  <span class="external-tool-badge">ML</span>
+                </div>
+
+                <div class="external-tool-body">
+                  <div class="external-tool-note">
+                    <strong>Zer ikusiko duzu</strong>
+                    <p>Linear regression, decision boundary-ak, neural networks eta CNN moduluak denbora errealean.</p>
+                  </div>
+
+                  <div class="external-tool-note">
+                    <strong>Zer galderari erantzuten dio</strong>
+                    <p>Zer aldatzen da parametro bat ukitzen dudanean, eta nola moldatzen da eredua datuetara?</p>
+                  </div>
+
+                  <a class="btn btn-outline btn-sm" href="https://ml-visualiser.vercel.app" target="_blank" rel="noopener noreferrer">
+                    Ireki tresna
+                  </a>
+                </div>
+              </article>
+
+              <article class="external-tool-card">
+                <div class="external-tool-top">
+                  <div>
+                    <h3>CNN Playground</h3>
+                    <p>Irudiak igo, zifrak marraztu eta sareak zer antzematen duen ikusteko ingurune esperimentala.</p>
+                  </div>
+                  <span class="external-tool-badge">Irudiak</span>
+                </div>
+
+                <div class="external-tool-body">
+                  <div class="external-tool-note">
+                    <strong>Zer ikusiko duzu</strong>
+                    <p>Predikzioak, detekzioa eta arreta-bistaratzeak, sareak non begiratzen duen ulertzeko.</p>
+                  </div>
+
+                  <div class="external-tool-note">
+                    <strong>Zer galderari erantzuten dio</strong>
+                    <p>Irudi baten zein zatik eramaten dute eredua erantzun jakin batera?</p>
+                  </div>
+
+                  <a class="btn btn-outline btn-sm" href="https://cnn-playground.live" target="_blank" rel="noopener noreferrer">
+                    Ireki tresna
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="external-tools-callout">
+              <p>
+                <strong>Erabilera gomendioa ikasgelan:</strong> ez utzi tresnak esteka huts gisa. Eman ikasleei behaketa-zeregin txiki bat:
+                azaldu zer aldatu den geruza batetik bestera, ikusi zer gertatzen den parametroak mugitzean, edo azaldu
+                zergatik ez duen makinak gizaki batek bezala ikusten.
+              </p>
+            </div>
+          </article>
+
+          <!-- ── Projects panel ── -->
+          <article class="lab-panel-card" id="tab-projects">
+            <h2>Proiektuak: sortu zure ML ereduak</h2>
+            <p>
+              Ikasgaietan ikasitakoa praktikan jartzeko modurik onena zure ikasketa automatikoko ereduak sortzea da.
+              Bi tresna erratz eta doan hauek erabiliz, ikasleek ereduak entrenatu, probatu eta ebaluatu ditzakete
+              programaziorik jakin gabe.
+            </p>
+
+            <div class="lab-aims">
+              <h3>Helburu didaktikoak</h3>
+              <ul>
+                <li>Ikasketa automatikoko zikloa praktikan bizitzea: datuak bildu, eredua entrenatu, probatu eta hobetu.</li>
+                <li>Entrenamendu-datuen kalitatearen eta kantitatearen garrantzia esperimentatzea.</li>
+                <li>Sailkapen-eredu baten mugak eta akatsak zuzenean ikustea.</li>
+                <li>Talde-lana eta proiektu txikien aurkezpena praktikatzea.</li>
+              </ul>
+            </div>
+
+            <!-- LearningML -->
+            <div style="margin-top: 1.5rem;">
+              <h3 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--purple);">
+                LearningML.org — Testu, irudi eta zenbakiekin ikasi
+              </h3>
+              <p style="margin-bottom: 1rem; color: var(--text-soft); font-size: 0.9rem; line-height: 1.6;">
+                <a href="https://learningml.org/" target="_blank" rel="noopener noreferrer" class="lab-inline-link">LearningML</a>
+                ikasketa automatikoa irakasteko diseinatutako plataforma da (10-18 urte). Ikasleek testu, irudi edo zenbakiekin
+                entrenamendu-datuak ematen dituzte, eredua entrenatzen dute eta gero probatzen dute. Erregistrorik gabe erabil daiteke.
+              </p>
+
+              <div class="external-tools-grid">
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Sentimenduen sailkatzailea</h3>
+                      <p>Iruzkin positiboak eta negatiboak bereizten dituen eredu bat entrenatu.</p>
+                    </div>
+                    <span class="external-tool-badge">Testua</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Sortu bi kategoria (positiboa / negatiboa). Idatzi 10-15 adibide kategoria bakoitzeko (filmei, janariari edo musikari buruzko iruzkinak). Entrenatu eta probatu esaldi berriekin.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Zer gertatzen da ironia edo esaldi anbiguoak probatzen dituzunean? Zergatik huts egiten du batzuetan?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Spam detektagailua</h3>
+                      <p>Mezu normalak eta spam mezuak bereizten dituen eredu bat sortu.</p>
+                    </div>
+                    <span class="external-tool-badge">Testua</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Sortu bi kategoria: "normala" eta "spam". Eman adibideak: mezu arruntak alde batetik, eta publizitate/iruzur mezuak bestetik. Probatu muga-kasuak.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Zer hitz edo patroietan oinarritzen da eredua? Zer gertatzen da spam itxura duen baina ez den mezu bat sartzen badugu?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Gai-sailkatzailea</h3>
+                      <p>Testuak gai desberdinetan automatikoki sailkatzeko eredu bat sortu.</p>
+                    </div>
+                    <span class="external-tool-badge">Testua</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Hautatu 3-4 gai (kirola, zientzia, musika, teknologia). Eman gai bakoitzeko 10-15 esaldi laburren adibideak. Entrenatu eta probatu berri-titularrekin.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Zer gertatzen da gai bati adibide gutxiago ematen badizkiogu? Alborapena sortu al da?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Hizkuntza detektagailua</h3>
+                      <p>Euskara, gaztelania eta ingelesa bereizten dituen eredu bat entrenatu.</p>
+                    </div>
+                    <span class="external-tool-badge">Testua</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Sortu 3 kategoria (euskara, gaztelania, ingelesa). Eman hizkuntza bakoitzeko esaldi desberdinak. Probatu hitz bakanekin edo hizkuntza nahasiekin.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Zer gertatzen da esaldi oso labur batekin? Eta bi hizkuntzak nahasten dituen esaldi batekin?</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Teachable Machine -->
+            <div style="margin-top: 2rem;">
+              <h3 style="font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--teal);">
+                Google Teachable Machine — Irudi, soinu eta gorputzarekin ikasi
+              </h3>
+              <p style="margin-bottom: 1rem; color: var(--text-soft); font-size: 0.9rem; line-height: 1.6;">
+                <a href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener noreferrer" class="lab-inline-link">Teachable Machine</a>
+                Google-ren tresna doako bat da, nabigatzailean bertan irudi, soinu edo gorputz-jarrera ereduak entrenatzeko webcam
+                edo mikrofonoa erabiliz. Oso bisuala eta berehalakoa: entrenatu eta emaitza segundotan ikusi.
+              </p>
+
+              <div class="external-tools-grid">
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Objektu sailkatzailea</h3>
+                      <p>Webcamarekin objektu desberdinak ezagutzen dituen eredu bat entrenatu.</p>
+                    </div>
+                    <span class="external-tool-badge">Irudia</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Sortu 3-4 klase (adibidez: boligrafoa, guraizeak, mugikorra, giltza). Klase bakoitzeko 30-50 argazki atera webcamarekin angelu desberdinetatik. Entrenatu eta probatu denbora errealean.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Zer gertatzen da argia aldatzen bada? Eta ereduak inoiz ikusi ez duen objektu bat jartzen badiogu?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Keinu ezagutzailea</h3>
+                      <p>Eskuko keinuak (ados, atzera, gelditu...) identifikatzen dituen eredu bat sortu.</p>
+                    </div>
+                    <span class="external-tool-badge">Irudia</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Definitu 3-5 keinu (adibidez: erpurua gora, eskua irekia, ukabila, adio-keinua). Grabatu keinu bakoitza pertsona desberdinekin zehaztasuna hobetzeko.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Pertsona berri batekin probatzean, zein ondo funtzionatzen du? Zer erakusten digu horrek entrenamenduko aniztasunari buruz?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Soinu sailkatzailea</h3>
+                      <p>Soinu desberdinak bereizten dituen eredu bat entrenatu mikrofonoarekin.</p>
+                    </div>
+                    <span class="external-tool-badge">Soinua</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Sortu kategoriak: txaloak, txistuak, mahai-kolpeak, isiltasuna. Grabatu soinu bakoitzaren 20-30 lagin. Entrenatu eta probatu denbora errealean.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Nola eragiten du inguruko zarataak? Zergatik da garrantzitsua "isiltasuna" klase gisa sartzea?</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="external-tool-card">
+                  <div class="external-tool-top">
+                    <div>
+                      <h3>Gorputz-jarrera detektagailua</h3>
+                      <p>Gorputz-jarrera desberdinak (eserita, zutik, besoak altxatuta...) ezagutzen dituen eredua.</p>
+                    </div>
+                    <span class="external-tool-badge">Jarrera</span>
+                  </div>
+                  <div class="external-tool-body">
+                    <div class="external-tool-note">
+                      <strong>Nola egin</strong>
+                      <p>Hautatu 3-4 jarrera (zutik, eserita, besoak altxatuta, makurtuta). Grabatu jarrera bakoitza 20-30 aldiz. Entrenatu eta probatu ikaskideekin.</p>
+                    </div>
+                    <div class="external-tool-note">
+                      <strong>Hausnartzeko</strong>
+                      <p>Nola eragiten du arroparen koloreak edo atzeko planoak? Zer aplikazio errealak ikusten dituzu (kirola, osasuna, segurtasuna)?</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Project methodology callout -->
+            <div class="external-tools-callout" style="margin-top: 1.5rem;">
+              <p>
+                <strong>Proiektuen metodologia:</strong> ikasleek taldeka (2-3 pertsona) lan egin dezakete. Proiektu bakoitzak
+                4 fase izan behar ditu: (1) Helburua definitu, (2) Datuak bildu eta etiketatu, (3) Eredua entrenatu eta probatu,
+                (4) Emaitzak aurkeztu eta mugak azaldu. Azken fasean, ikaskideei aurkeztea gomendatzen da.
+              </p>
+            </div>
+
+            <div class="external-tools-callout" style="margin-top: 0.75rem; background: #eff6ff; border-left-color: #3b82f6;">
+              <p>
+                <strong>Ikasgaiekin lotura:</strong> proiektu hauek zuzenean lotzen dituzte
+                <a class="lab-inline-link" href="ikasgaia-2.html">Nola ikasten dute makinek?</a> (datuak eta entrenamendua),
+                <a class="lab-inline-link" href="ikasgaia-3.html">Nola ikusten dute makinek?</a> (ikusmen artifiziala) eta
+                <a class="lab-inline-link" href="ikasgaia-8.html">Etika, pribatutasuna eta alborapena</a> (datuen kalitateak eta aniztasunak emaitzetan duen eragina) moduluak.
+              </p>
+            </div>
+
+            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a class="btn btn-primary btn-sm" href="https://learningml.org/" target="_blank" rel="noopener noreferrer">
+                Ireki LearningML
+              </a>
+              <a class="btn btn-outline btn-sm" href="https://teachablemachine.withgoogle.com/" target="_blank" rel="noopener noreferrer">
+                Ireki Teachable Machine
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">
+            Adimen Artifiziala ikasteko plataforma digitala, euskaraz eta interaktiboa.
+            DBH eta Batxilergoko ikasleentzat pentsatua.
+          </p>
+          <p class="footer-author">
+            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+          </p>
+        </div>
+
+        <div class="footer-topics">
+          <h4>Gaiak</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group">
+              <p>Oinarriak</p>
+              <ul>
+                <li><a href="ikasgaia-1.html">Zer da AA?</a></li>
+                <li><a href="ikasgaia-2.html">Datuak eta ereduak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Teknologiak</p>
+              <ul>
+                <li><a href="ikasgaia-3.html">Ikusmen artifiziala</a></li>
+                <li><a href="ikasgaia-4.html">Hizkuntza naturala</a></li>
+                <li><a href="ikasgaia-5.html">Eredu generatiboak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Praktika</p>
+              <ul>
+                <li><a href="ikasgaia-6.html">Prompt onak</a></li>
+                <li><a href="laborategia.html">Laborategia</a></li>
+                <li><a href="erronkak.html">Erronkak</a></li>
+              </ul>
+            </div>
+            <div class="footer-topic-group">
+              <p>Etika</p>
+              <ul>
+                <li><a href="ikasgaia-7.html">Arriskuak</a></li>
+                <li><a href="ikasgaia-8.html">Etika eta pribatutasuna</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <a href="lege-oharra.html">Lege oharra</a>
+          <a href="pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // DATUAK
+    window.AA = window.AA || {};
+
+    AA.labelingItems = [
+      { text: "🐕", desc: "Lau hankadun biziduna", correct: "Animalia" },
+      { text: "🍎", desc: "Gorri koloreko jatekoa", correct: "Fruta" },
+      { text: "🚗", desc: "Lau gurpil dituen garraioa", correct: "Ibilgailua" },
+      { text: "🐱", desc: "Etxeko lagun txikia", correct: "Animalia" },
+      { text: "🍌", desc: "Hori koloreko fruktosaduna", correct: "Fruta" },
+      { text: "🚲", desc: "Bi gurpileko garraioa", correct: "Ibilgailua" },
+      { text: "🦁", desc: "Hartz handia, basoko errege", correct: "Animalia" },
+      { text: "🍇", desc: "More koloreko plazer borobil txikiak", correct: "Fruta" }
+    ];
+
+    AA.labelingOptions = ["Animalia", "Fruta", "Ibilgailua"];
+
+    AA.promptExamples = [
+      { title: "Prompt lausoa", text: "Azaldu adimen artifiziala", prompt: "Azaldu adimen artifiziala", quality: "poor" },
+      { title: "Prompt ertaina", text: "Azaldu adimen artifiziala DBHko ikasle batentzat", prompt: "Azaldu adimen artifiziala DBHko ikasle batentzat", quality: "medium" },
+      { title: "Prompt ona", text: "Azaldu adimen artifiziala 14 urteko ikasle batentzat, 5 puntutan, hizkera informalean", prompt: "Azaldu adimen artifiziala 14 urteko ikasle batentzat euskaraz, 5 puntutan, hizkera informalean eta adibide errazak erabiliz", quality: "good" }
+    ];
+
+    AA.truthStatements = [
+      { text: "GPT-4k 1.76 trilioi parametro ditu.", isTrue: false, explanation: "OpenAI-k ez du inoiz argitaratu GPT-4ren parametro kopuru zehatza. Zenbaki hau asmatua da, baina sinesgarria ematen du." },
+      { text: "Hizkuntza-ereduek testuen patroi estatistikoak erabiltzen dituzte.", isTrue: true, explanation: "Egia da. Hizkuntza-ereduek testu handietatik ikasitako patroietan oinarritzen dira hurrengo tokena aurresateko." },
+      { text: "Convolutional Neural Networks (CNN) 1998. urtean sortu ziren Yann LeCun-ek.", isTrue: true, explanation: "Egia da. LeNet-5 arkitektura 1998an argitaratu zen eta CNN modernoaren oinarria da." },
+      { text: "AI sistemek %97.3ko zehaztasuna dute aurpegiak detektatzean.", isTrue: false, explanation: "Zenbaki zehatza asmatua da. Zehaztasuna ereduaren, datasetaren eta egoeraren araberakoa da. Ehuneko zehatzak ez dira beti egiazkoak." },
+      { text: "Machine learning ereduak datuekin entrenatzen dira.", isTrue: true, explanation: "Egia da. Ereduek adibideetatik ikasten dute, eta entrenamendurako datu kalitatedunak behar dituzte." },
+      { text: "Google Translate-k 243 hizkuntza onartzen ditu gaur egun.", isTrue: false, explanation: "Asmatua da. Google Translate-k 100 hizkuntza inguru onartzen ditu. Zenbaki zehatz bat jartzeak sinesgarritasuna ematen du, baina hori ez da beti egia." }
+    ];
+
+    window.Store = {
+      get: function() {
+        try { return JSON.parse(localStorage.getItem('aa_eus_lab') || '{}'); }
+        catch(e) { return {}; }
+      },
+      set: function(data) {
+        try { localStorage.setItem('aa_eus_lab', JSON.stringify(data)); }
+        catch(e) { console.warn('Could not save to localStorage'); }
+      }
+    };
+
+    // TABS
+    const tabs = document.querySelectorAll("#labTabs .tab-btn");
+    const panels = document.querySelectorAll(".lab-panel-card");
+
+    tabs.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        tabs.forEach(b => b.classList.toggle("active", b === btn));
+        panels.forEach(panel => {
+          panel.classList.toggle("active", panel.id === `tab-${tab}`);
+        });
+      });
+    });
+
+    // 1. LABELING LAB
+    function renderLabelingLab() {
+      const host = document.getElementById("labelingLab");
+      const items = AA.labelingItems;
+      const options = AA.labelingOptions;
+      if (!host) return;
+
+      host.innerHTML = items.map((item, idx) => `
+        <div class="labeling-item" data-correct="${item.correct}">
+          <div>
+            <div class="item-text">${item.text}</div>
+            <div class="item-desc">${item.desc}</div>
+          </div>
+          <div class="option-row">
+            ${options.map(opt => `<button class="option-btn" data-choice="${opt}" data-index="${idx}">${opt}</button>`).join("")}
+          </div>
+        </div>
+      `).join("") + `<div id="labelingScore"></div>`;
+
+      let correct = 0;
+      let answered = 0;
+
+      host.querySelectorAll(".labeling-item").forEach(itemEl => {
+        const right = itemEl.dataset.correct;
+        itemEl.querySelectorAll(".option-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            if (itemEl.classList.contains("answered")) return;
+            itemEl.classList.add("answered");
+            answered++;
+
+            const choice = btn.dataset.choice;
+            if (choice === right) {
+              btn.classList.add("correct");
+              correct++;
+            } else {
+              btn.classList.add("wrong");
+              itemEl.querySelectorAll(".option-btn").forEach(b => {
+                if (b.dataset.choice === right) b.classList.add("correct");
+              });
+            }
+
+            itemEl.querySelectorAll(".option-btn").forEach(b => b.disabled = true);
+
+            if (answered === items.length) {
+              document.getElementById("labelingScore").innerHTML =
+                `<div class="lab-score">Emaitza: ${correct}/${items.length}. Etiketa onek ikaskuntza hobea ahalbidetzen dute.</div>`;
+            }
+          });
+        });
+      });
+    }
+
+    // 2. PROMPT LAB
+    function analyzePrompt(text) {
+      const lower = text.toLowerCase();
+      let score = 0;
+      const feedback = [];
+
+      const hasGoal = /(azaldu|konparatu|idatzi|laburtu|sortu|eman|prestatu)/.test(lower);
+      const hasAudience = /(ikasle|irakasle|14 urte|dbh|batxilergo|ume)/.test(lower);
+      const hasFormat = /(puntu|zerrenda|taula|paragrafo|adibide)/.test(lower);
+      const hasLimits = /(labur|max|hitz|euskaraz|tonu|formal|informal)/.test(lower);
+      const isClear = text.trim().length > 20;
+
+      if (hasGoal) { score++; feedback.push("Helburua nahiko argi dago."); }
+      else feedback.push("Zehaztu zer nahi duzun: azaldu, konparatu, sortu edo laburtu.");
+
+      if (hasAudience) { score++; feedback.push("Hartzailea edo maila adierazita dago."); }
+      else feedback.push("Gehitu norentzat den: adibidez, DBHko ikasle batentzat.");
+
+      if (hasFormat) { score++; feedback.push("Emaitzaren formatua zehaztu duzu."); }
+      else feedback.push("Adierazi formatua: puntutan, taulan edo paragrafo laburrean.");
+
+      if (hasLimits) { score++; feedback.push("Mugak edo baldintzak sartu dituzu."); }
+      else feedback.push("Zehaztu hizkuntza, luzera edo tonua.");
+
+      if (isClear) { score++; feedback.push("Promptak nahiko garapen du."); }
+      else feedback.push("Prompta orokorregia da; gehitu testuinguru gehiago.");
+
+      return { score, feedback };
+    }
+
+    function renderPromptLab() {
+      const host = document.getElementById("promptLab");
+      if (!host) return;
+      const examples = AA.promptExamples;
+
+      host.innerHTML = `
+        <div class="prompt-lab">
+          <div class="prompt-examples">
+            ${examples.map(ex => `
+              <button class="prompt-example ${ex.quality}" data-prompt="${ex.prompt.replace(/"/g, "&quot;")}">
+                <span class="tag">${ex.title}</span>
+                ${ex.text}
+              </button>
+            `).join("")}
+          </div>
+
+          <textarea id="promptInput" placeholder="Idatzi hemen zure prompta..."></textarea>
+
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" id="analyzePromptBtn">Aztertu prompta</button>
+            <button class="btn btn-outline btn-sm" id="clearPromptBtn">Garbitu</button>
+          </div>
+
+          <div id="promptResult"></div>
+        </div>
+      `;
+
+      const input = document.getElementById("promptInput");
+      const result = document.getElementById("promptResult");
+
+      host.querySelectorAll(".prompt-example").forEach(btn => {
+        btn.addEventListener("click", () => {
+          input.value = btn.dataset.prompt;
+        });
+      });
+
+      document.getElementById("analyzePromptBtn").addEventListener("click", () => {
+        const text = input.value.trim();
+        if (!text) {
+          result.innerHTML = `<div class="feedback-box"><h4>Ezer ez dago aztertzeko</h4><p>Idatzi prompt bat edo aukeratu adibide bat.</p></div>`;
+          return;
+        }
+
+        const analysis = analyzePrompt(text);
+        result.innerHTML = `
+          <div class="feedback-box">
+            <h4>Puntuazioa: ${analysis.score}/5</h4>
+            <ul style="list-style:disc; padding-left:1rem; color:var(--text-soft); display:grid; gap:.22rem;">
+              ${analysis.feedback.map(f => `<li>${f}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+      });
+
+      document.getElementById("clearPromptBtn").addEventListener("click", () => {
+        input.value = "";
+        result.innerHTML = "";
+      });
+    }
+
+    // 3. BIAS LAB
+    function renderBiasLab() {
+      const host = document.getElementById("biasLab");
+      if (!host) return;
+
+      host.innerHTML = `
+        <div class="feedback-box">
+          <h4>Datu banaketa</h4>
+          <div style="display:grid; gap:1rem; margin-top:.75rem;">
+            <label style="display:grid; gap:.35rem;">
+              <span style="color:var(--text-soft); font-size:.9rem;">Talde A: <strong style="color:var(--text);" id="biasAVal">50</strong>%</span>
+              <input type="range" id="biasA" min="10" max="90" value="50" style="accent-color:var(--purple);" />
+            </label>
+            <label style="display:grid; gap:.35rem;">
+              <span style="color:var(--text-soft); font-size:.9rem;">Talde B: <strong style="color:var(--text);" id="biasBVal">50</strong>%</span>
+              <input type="range" id="biasB" min="10" max="90" value="50" style="accent-color:var(--purple);" />
+            </label>
+            <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" id="simulateBiasBtn">Simulatu emaitza</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-banner" style="margin-top:1.25rem;">
+          <div class="stat-item">
+            <div class="stat-num" id="accA">95%</div>
+            <div class="stat-label">Talde A zehaztasuna</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="accB">95%</div>
+            <div class="stat-label">Talde B zehaztasuna</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="gapBias">0%</div>
+            <div class="stat-label">Aldea</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" id="biasHint">Orekatua</div>
+            <div class="stat-label">Interpretazioa</div>
+          </div>
+        </div>
+      `;
+
+      const inputA = document.getElementById("biasA");
+      const inputB = document.getElementById("biasB");
+      const labelA = document.getElementById("biasAVal");
+      const labelB = document.getElementById("biasBVal");
+
+      function syncValues() {
+        const a = Number(inputA.value);
+        const b = 100 - a;
+        inputB.value = b;
+        labelA.textContent = a;
+        labelB.textContent = b;
+      }
+
+      inputA.addEventListener("input", syncValues);
+      inputB.addEventListener("input", () => {
+        const b = Number(inputB.value);
+        const a = 100 - b;
+        inputA.value = a;
+        labelA.textContent = a;
+        labelB.textContent = b;
+      });
+
+      syncValues();
+
+      document.getElementById("simulateBiasBtn").addEventListener("click", () => {
+        const a = Number(inputA.value);
+        const b = Number(inputB.value);
+
+        const accMajor = 88 + Math.round(Math.abs(a - b) * 0.08);
+        const accMinor = 88 - Math.round(Math.abs(a - b) * 0.28);
+
+        const accA = a >= b ? accMajor : accMinor;
+        const accB = b > a ? accMajor : accMinor;
+        const gap = Math.abs(accA - accB);
+
+        document.getElementById("accA").textContent = `${accA}%`;
+        document.getElementById("accB").textContent = `${accB}%`;
+        document.getElementById("gapBias").textContent = `${gap}%`;
+        document.getElementById("biasHint").textContent =
+          gap < 5 ? "Nahiko orekatua" :
+          gap < 12 ? "Aldea nabarmena" : "Alborapen arriskua";
+      });
+    }
+
+    // 4. TRUTH LAB
+    function renderTruthLab() {
+      const host = document.getElementById("truthLab");
+      const items = AA.truthStatements;
+      if (!host) return;
+
+      let index = 0;
+      let score = 0;
+
+      function draw() {
+        if (index >= items.length) {
+          host.innerHTML = `<div class="lab-score">Amaitu duzu: ${score}/${items.length}. Fidagarritasuna beti egiaztatuz lantzen da.</div>`;
+          return;
+        }
+
+        const item = items[index];
+
+        host.innerHTML = `
+          <div class="demo-shell">
+            <div class="demo-header">
+              <span class="demo-dot red"></span>
+              <span class="demo-dot yellow"></span>
+              <span class="demo-dot green"></span>
+              <span class="demo-title">Egia ala fikzioa? · ${index + 1}/${items.length}</span>
+            </div>
+            <div class="demo-body">
+              <div class="demo-question">${item.text}</div>
+              <div class="demo-options">
+                <button class="demo-btn" data-answer="true">Egia</button>
+                <button class="demo-btn" data-answer="false">Asmatua / faltsua</button>
+              </div>
+              <div class="demo-feedback" id="truthFeedback"></div>
+            </div>
+          </div>
+        `;
+
+        host.querySelectorAll(".demo-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const user = btn.dataset.answer === "true";
+            const ok = user === !!item.isTrue;
+            if (ok) score++;
+
+            host.querySelectorAll(".demo-btn").forEach(b => b.disabled = true);
+
+            const feedback = document.getElementById("truthFeedback");
+            feedback.className = `demo-feedback ${ok ? "correct" : "wrong"}`;
+            feedback.innerHTML = `
+              <strong>${ok ? "Zuzen" : "Ez da zuzena"}</strong>
+              <p>${item.explanation}</p>
+              <button class="demo-next" id="nextTruthBtn">${index < items.length - 1 ? "Hurrengoa" : "Amaitu"}</button>
+            `;
+
+            document.getElementById("nextTruthBtn").addEventListener("click", () => {
+              index++;
+              draw();
+            });
+          });
+        });
+      }
+
+      draw();
+    }
+
+    // HASIERATU
+    renderLabelingLab();
+    renderPromptLab();
+    renderBiasLab();
+    renderTruthLab();
+
+    // NAV TOGGLE
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+    if (navToggle && siteNav) {
+      navToggle.addEventListener('click', () => {
+        siteNav.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

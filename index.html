@@ -358,6 +358,151 @@
         height: 13px;
       }
     }
+
+    /* CTA Download Section */
+    .cta-download {
+      padding: 2rem 0 3.5rem;
+    }
+
+    .cta-download-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      border-radius: 28px;
+      padding: 3.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-download-card::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      right: -100px;
+      top: -200px;
+      background: radial-gradient(circle, rgba(167,139,250,0.15), transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-download-card::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: -60px;
+      bottom: -120px;
+      background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-download-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-download-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-download-content h2 {
+      color: #fff;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      line-height: 1.15;
+      margin: 0 0 0.8rem 0;
+      max-width: 22ch;
+    }
+
+    .cta-download-content p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 52ch;
+      margin: 0 0 2rem 0;
+    }
+
+    .cta-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 1rem 2rem;
+      background: #fff;
+      color: #312e81;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+
+    .cta-download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+
+    .cta-download-btn:active {
+      transform: translateY(0);
+    }
+
+    .cta-download-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-doc-icon {
+      width: 140px;
+      height: 140px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+    }
+
+    @media (max-width: 768px) {
+      .cta-download-card {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 2rem;
+        text-align: center;
+      }
+
+      .cta-download-content h2 {
+        max-width: 100%;
+      }
+
+      .cta-download-content p {
+        max-width: 100%;
+      }
+
+      .cta-download-visual {
+        display: none;
+      }
+
+      .cta-download-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -903,6 +1048,27 @@
         </div>
       </div>
     </section>
+
+    <section class="cta-download reveal" aria-label="Eskuliburua deskargatu">
+      <div class="container">
+        <div class="cta-download-card">
+          <div class="cta-download-content">
+            <span class="cta-download-badge">PDF · Doakoa · Euskaraz</span>
+            <h2>Deskargatu plataformaren eskuliburua</h2>
+            <p>8 ikasgaien laburpena, laborategien azalpena, irakasle eta gurasoentzako gidak, Europako gidalerroan oinarritutako MEG atala, eta lizentzia-informazioa. Guztia dokumentu bakarrean.</p>
+            <a class="cta-download-btn" href="assets/docs/artifiziala-eus-eskuliburua.pdf" download>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Eskuliburua deskargatu (PDF)
+            </a>
+          </div>
+          <div class="cta-download-visual" aria-hidden="true">
+            <div class="cta-doc-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer reveal">
@@ -1004,15 +1170,5 @@
       });
     });
   </script>
-   <body>
-   
-
-  </body>
-   <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

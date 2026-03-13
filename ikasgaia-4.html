@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nola ulertzen dute hizkuntza? · artifiziala.eus</title>
+  <title>Nola ulertzen dute hizkuntza? - artifiziala.eus</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
@@ -32,7 +32,7 @@
       color: #ffffff;
     }
 
-    .visualizer-section > p {
+    .visualizer-section p {
       color: #ffffff !important;
     }
 
@@ -203,12 +203,8 @@
     }
 
     @keyframes wordAppear {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (max-width: 768px) {
@@ -217,24 +213,24 @@
       }
     }
 
-    /* CSS Animazioetarako (Scroll Reveal) */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       will-change: opacity, transform;
     }
+
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
+
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
     .delay-5 { transition-delay: 0.5s; }
 
-    /* Ertz borobilagoak */
     .page-card,
     .lesson-side-card,
     .concept-box,
@@ -248,7 +244,6 @@
       overflow: hidden !important;
     }
 
-    /* process-step elementuarentzat ez da overflow:hidden erabiltzen markatzailea ez ebakitzeko */
     .process-step {
       border-radius: 24px !important;
     }
@@ -297,26 +292,24 @@
         <div class="lesson-hero-copy">
           <div class="lesson-breadcrumb">
             <a href="index.html">Ikastaroaren ikuspegi orokorra</a>
-            <span>›</span>
+            <span>/</span>
             <a href="ikasgaiak.html">Ikasgaiak</a>
-            <span>›</span>
+            <span>/</span>
             <strong>Nola ulertzen dute hizkuntza?</strong>
           </div>
-
-          <span class="lesson-kicker">4. modulua / 8</span>
+          <span class="lesson-kicker">4. modulua · 8+</span>
           <h1>Nola ulertzen dute hizkuntza?</h1>
           <p>
-            Chatbot-ek eta hizkuntza-ereduek ez dute hizkuntza guk bezala ulertzen. Testu askotan agertzen diren
-            patroietan eta hitzen arteko probabilitateetan oinarrituta sortzen dituzte erantzunak.
+            txatbot-ek eta hizkuntza-ereduek ez dute hizkuntza guk bezala ulertzen.
+            Testu askotan agertzen diren patroietan eta hitzen arteko probabilitateetan
+            oinarrituta sortzen dituzte erantzunak.
           </p>
-
           <div class="lesson-meta-line">
             <span>Ertaina</span>
             <span>18 min</span>
-            <span>Hizkuntza-ereduak + mini-quiz + glosarioa</span>
+            <span>Hizkuntza-ereduak · mini-quiz · glosarioa</span>
           </div>
         </div>
-
         <div class="lesson-hero-visual" aria-hidden="true">
           <div class="lesson-hero-emoji">04</div>
         </div>
@@ -344,8 +337,8 @@
           <div class="lesson-side-card">
             <h3>Lotura praktikoa</h3>
             <p>
-              Modulu hau zuzenean lotuta dago prompten laborategiarekin. Zenbat eta hobeto ulertu nola erantzuten duen
-              hizkuntza-eredu batek, orduan eta prompt hobeak idatziko dituzu.
+              Modulu hau zuzenean lotuta dago prompten laborategiarekin. Zenbat eta hobeto ulertu
+              nola erantzuten duen hizkuntza-eredu batek, orduan eta prompt hobeak idatziko dituzu.
             </p>
             <a class="btn btn-ghost" href="laborategia.html">Joan laborategira</a>
           </div>
@@ -355,29 +348,43 @@
           <article class="page-card reveal delay-2" id="hizkuntza">
             <h2>Zer egiten du hizkuntza-eredu batek?</h2>
             <p>
-              Hizkuntza-eredu batek testu kopuru handiak aztertzen ditu, eta hitzak edo esaldi zatiak elkarrekin
-              nola agertzen diren ikasten du. Horrela, galdera edo testu baten ondoren zein hitz etor daitekeen
-              probableena den kalkulatzen saiatzen da.
+              Hizkuntza-eredu batek testu kopuru handiak aztertzen ditu, eta hitzak edo esaldi zatiak
+              elkarrekin nola agertzen diren ikasten du. Horrela, galdera edo testu baten ondoren zein
+              hitz etor daitekeen probableena den kalkulatzen saiatzen da.
             </p>
             <p style="margin-top:1rem;">
-              Horrek esan nahi du sistema batek ez duela benetako ulermen kontzienterik. Ez daki zer den "egia",
-              ez du esperientziarik, eta ez du asmorik. Baina patroi estatistiko askoren bidez, oso erantzun sinesgarriak
-              sor ditzake, eta horregatik ematen du batzuetan benetan ulertzen duela.
+              Horrek esan nahi du sistema batek ez duela benetako ulermen kontzienterik. Ez daki zer den
+              egia, ez du esperientziarik, eta ez du asmorik. Baina patroi estatistiko askoren bidez,
+              oso erantzun sinesgarriak sor ditzake, eta horregatik ematen du batzuetan benetan
+              ulertzen duela.
+            </p>
+          </article>
+
+          <article class="page-card lesson-callout-card reveal">
+            <span class="lesson-note-label">Euskara eta AA</span>
+            <h2>Euskarak ere baditu bere txatbot-ak</h2>
+            <p>
+              ChatGPT edo antzeko tresnak ez dira soilik hizkuntza handietarako, euskaraz ere egiten dute. Baina badira euskaraz berariaz prestatutako ereduak. Adibidez, Latxa eta Kimu euskaraz hobeto lan egiteko sortu
+              diren AA sistemak dira.
+            </p>
+            <p>
+              Latxa euskarazko hizkuntza-eredu handi bat da. Kimu, berriz, arinagoa da, eta enpresa edo
+              erakunde batek bere ordenagailu edo zerbitzarietan instala dezake. Horrek laguntzen du
+              datuak pribatuago mantentzen. Bi ereduen atzean EHUko Hitz zentroa eta Elhuyar fundazioaren Orai zentroa daude.
             </p>
           </article>
 
           <article class="page-card lesson-callout-card reveal">
             <span class="lesson-note-label">Badakizu?</span>
-            <h2>Tonu segurua ez da ulermenaren froga</h2>
+            <h2>Tonu segurua ez da ulermenaren frogа</h2>
             <p>
-              Chatbot batek tonu ziur eta argian idatz dezake, baina horrek ez du esan nahi esandakoa egia denik
-              edo benetan "ulertu" duenik. Askotan, probabilitate handieneko hitz-segida osatzen ari da.
+              Txatbot batek tonu ziur eta argian idatz dezake, baina horrek ez du esan nahi esandakoa egia
+              denik edo benetan ulertu duenik. Askotan, probabilitate handieneko hitz-segida osatzen ari da.
             </p>
           </article>
 
           <article class="page-card reveal" id="kontzeptuak">
             <h2>Kontzeptu klabeak</h2>
-
             <div class="concept-grid">
               <div class="concept-box reveal delay-1">
                 <strong>Hizkuntza-eredua</strong>
@@ -400,7 +407,6 @@
 
           <article class="page-card reveal" id="prozesua">
             <h2>Nola sortzen du erantzuna?</h2>
-
             <div class="process-steps" style="margin-top:1rem;">
               <div class="process-step reveal delay-1">
                 <div class="process-marker">1</div>
@@ -445,42 +451,30 @@
           </article>
 
           <article class="page-card reveal" id="bisualizadorea">
-            <h2>🔬 Bisualizadore interaktiboa</h2>
+            <h2>Bisualizadore interaktiboa</h2>
             <p>
               Ikusi zuzenean nola sortzen duen hizkuntza-eredu batek testua, token bakoitza pauso batean
-              aukeratuz. Sakatu "Analisia hasi" prozesua ikusteko.
+              aukeratuz. Sakatu Analisia hasi prozesua ikusteko.
             </p>
 
             <div class="visualizer-container">
               <div class="visualizer-grid">
                 <div class="visualizer-section reveal delay-1">
                   <h3>Hasierako testua (prompt-a)</h3>
-                  <div class="prompt-display">
-                    Adimen artifiziala teknologia bat da
-                  </div>
+                  <div class="prompt-display">Adimen artifiziala teknologia bat da</div>
                   <div class="visualizer-controls">
-                    <button onclick="startGeneration()" id="startBtn">▶️ Analisia hasi</button>
-                    <button class="secondary" onclick="resetAll()">🔄 Berrabiarazi</button>
+                    <button onclick="startGeneration()" id="startBtn">Analisia hasi</button>
+                    <button class="secondary" onclick="resetAll()">Berrabiarazi</button>
                   </div>
                 </div>
 
                 <div class="visualizer-section reveal delay-2">
                   <h3>Prozesuaren pausoak</h3>
-                  <div class="step-indicator" id="step1">
-                    <strong>1. Testua jasotzea:</strong> Prompt-a irakurri
-                  </div>
-                  <div class="step-indicator" id="step2">
-                    <strong>2. Tokenetan zatitzea:</strong> Unitatetan banatu
-                  </div>
-                  <div class="step-indicator" id="step3">
-                    <strong>3. Patroiak aktibatzea:</strong> Testuingurua aztertu
-                  </div>
-                  <div class="step-indicator" id="step4">
-                    <strong>4. Aurreikuspena:</strong> Hurrengo tokena aukeratu
-                  </div>
-                  <div class="step-indicator" id="step5">
-                    <strong>5. Esaldia osatzea:</strong> Prozesua errepikatu
-                  </div>
+                  <div class="step-indicator" id="step1"><strong>1. Testua jasotzea</strong> Prompt-a irakurri</div>
+                  <div class="step-indicator" id="step2"><strong>2. Tokenetan zatitzea</strong> Unitatetan banatu</div>
+                  <div class="step-indicator" id="step3"><strong>3. Patroiak aktibatzea</strong> Testuingurua aztertu</div>
+                  <div class="step-indicator" id="step4"><strong>4. Aurreikuspena</strong> Hurrengo tokena aukeratu</div>
+                  <div class="step-indicator" id="step5"><strong>5. Esaldia osatzea</strong> Prozesua errepikatu</div>
                 </div>
               </div>
 
@@ -488,23 +482,21 @@
                 <div class="visualizer-section reveal delay-1">
                   <h3>2. Tokenetan zatitzea</h3>
                   <div class="token-container" id="tokenDisplay">
-                    <span style="color: #ffffff; font-size: 0.9rem;">
-                      Tokenak hemen agertuko dira...
-                    </span>
+                    <span style="color:#ffffff; font-size:0.9rem;">Tokenak hemen agertuko dira...</span>
                   </div>
-                  <p style="font-size: 0.875rem; margin-top: 0.75rem;">
-                    Sistemak testua unitate txikiagotan banatzen du (tokenak).
+                  <p style="font-size:0.875rem; margin-top:0.75rem;">
+                    Sistemak testua unitate txikiagotan banatzen du: tokenak.
                   </p>
                 </div>
 
                 <div class="visualizer-section reveal delay-2">
                   <h3>3-4. Hurrengo tokenaren probabilitatea</h3>
                   <div id="probabilityDisplay">
-                    <p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 1rem;">
+                    <p style="color:#ffffff; font-size:0.9rem; margin-bottom:1rem;">
                       Probabilitate handienak kalkulatzen...
                     </p>
                   </div>
-                  <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+                  <p style="font-size:0.875rem; margin-top:0.75rem;">
                     Ereduak tokenen probabilitateak kalkulatzen ditu testuinguruan oinarrituta.
                   </p>
                 </div>
@@ -513,9 +505,9 @@
               <div class="visualizer-section reveal delay-3">
                 <h3>5. Sortutako testua osoa</h3>
                 <div class="output-text" id="outputText">
-                  <span style="color: #ffffff;">Sortutako testua hemen agertuko da...</span>
+                  <span style="color:#ffffff;">Sortutako testua hemen agertuko da...</span>
                 </div>
-                <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+                <p style="font-size:0.875rem; margin-top:0.75rem;">
                   Ereduak token bat hautatzen du, gero beste bat, eta horrela jarraitzen du esaldia osatu arte.
                 </p>
               </div>
@@ -524,7 +516,6 @@
 
           <article class="page-card reveal" id="adibideak">
             <h2>Eguneroko adibideak</h2>
-
             <div class="examples-grid-lesson">
               <div class="example-item reveal delay-1">
                 <strong>Txatbot-ak</strong>
@@ -549,20 +540,22 @@
             <h2>Mugak eta gaizki-ulertuak</h2>
             <p>
               Hizkuntza-eredu batek ez du egia eta gezurra berez bereizten. Testu sinesgarria sor dezake,
-              baina akatsekin, asmakizunekin edo erreferentzia faltsuekin. Horregatik, bere erantzunak ezin dira
-              automatikoki egiazkotzat hartu.
+              baina akatsekin, asmakizunekin edo erreferentzia faltsuekin. Horregatik, bere erantzunak ezin
+              dira automatikoki egiazkotzat hartu.
             </p>
             <p style="margin-top:1rem;">
-              Gainera, testuingurua nahasia bada edo galdera lausoa bada, erantzuna ere lausoagoa edo okerragoa izan daiteke.
-              Hori dela eta, prompt argiak idaztea eta informazioa iturri fidagarrietan egiaztatzea funtsezkoa da.
+              Gainera, testuingurua nahasia bada edo galdera lausoa bada, erantzuna ere lausoagoa edo
+              okerragoa izan daiteke. Hori dela eta, prompt argiak idaztea eta informazioa iturri
+              fidagarrietan egiaztatzea funtsezkoa da.
             </p>
           </article>
 
           <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
             <h2>Hausnarketa</h2>
             <p>
-              Pentsatu chatbot bati egin diozun azken galderan. Zergatik ematen zuen ulertu zintuela? Zer seinale
-              erabiltzen dituzu zuk "ulermen" hori benetakoa dela pentsatzeko? Eta zer arrisku dago hori gehiegi sinestean?
+              Pentsatu txatbot bati egin diozun azken galderan. Zergatik ematen zuen ulertu zintuela?
+              Zer seinale erabiltzen dituzu zuk ulermen hori benetakoa dela pentsatzeko? Eta zer arrisku
+              dago hori gehiegi sinestean?
             </p>
           </article>
 
@@ -584,7 +577,7 @@
               </div>
 
               <div class="mini-quiz-q" data-correct="2">
-                <strong>2. Zergatik dira arriskutsuak batzuetan chatbot-en erantzunak?</strong>
+                <strong>2. Zergatik dira arriskutsuak batzuetan txatbot-en erantzunak?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Beti oso laburrak direlako.</button>
                   <button class="mini-quiz-opt">Ez dutelako inoiz testurik sortzen.</button>
@@ -600,7 +593,6 @@
 
           <article class="page-card reveal" id="glosarioa">
             <h2>Glosarioa</h2>
-
             <div class="concept-grid">
               <div class="concept-box reveal delay-1">
                 <strong>Hizkuntza-eredua</strong>
@@ -634,7 +626,7 @@
     </section>
   </main>
 
-<footer class="site-footer reveal">
+  <footer class="site-footer reveal">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -644,7 +636,8 @@
             DBH eta Batxilergoko ikasleentzat pentsatua.
           </p>
           <p class="footer-author">
-            Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
+            Egilea
+            <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a>
           </p>
         </div>
 
@@ -692,30 +685,27 @@
           <a href="lizentzia.html">Lizentzia</a>
         </div>
         <div class="footer-copy">
-          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>&copy; 2026 artifiziala.eus · Beñat Erezumak egina</span>
           <span>CC BY-NC-SA 4.0</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/app.js"></script>
   <script>
     const navToggle = document.getElementById('navToggle');
     const siteNav = document.getElementById('siteNav');
+
     if (navToggle && siteNav) {
-      navToggle.addEventListener('click', () => {
-        siteNav.classList.toggle('open');
-      });
+      navToggle.addEventListener('click', () => siteNav.classList.toggle('open'));
     }
 
-    // Scroll Animazioak - Intersection Observer
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       const revealElements = document.querySelectorAll('.reveal');
 
       const revealOptions = {
         root: null,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: '0px 0px -50px 0px',
         threshold: 0.15
       };
 
@@ -729,20 +719,18 @@
         });
       }, revealOptions);
 
-      revealElements.forEach(el => {
-        revealObserver.observe(el);
-      });
+      revealElements.forEach(el => revealObserver.observe(el));
     });
 
-    // Visualizer code
     let isGenerating = false;
-    const prompt = "Adimen artifiziala teknologia bat da";
+    const prompt = 'Adimen artifiziala teknologia bat da';
 
     async function startGeneration() {
       if (isGenerating) return;
-      
+
       isGenerating = true;
       document.getElementById('startBtn').disabled = true;
+
       resetSteps();
 
       document.getElementById('step1').classList.add('active');
@@ -751,6 +739,7 @@
       document.getElementById('step1').classList.remove('active');
       document.getElementById('step2').classList.add('active');
       await sleep(500);
+
       tokenizeText(prompt);
       await sleep(1500);
 
@@ -758,38 +747,39 @@
       document.getElementById('step3').classList.add('active');
       await sleep(1000);
 
-      document.getElementById('outputText').innerHTML = `<span class="original">${prompt}</span>`;
+      document.getElementById('outputText').innerHTML =
+        '<span class="original">' + prompt + '</span>';
 
       document.getElementById('step3').classList.remove('active');
       document.getElementById('step4').classList.add('active');
-      
+
       const candidates = [
-        { word: "eta", prob: 67 },
-        { word: "baina", prob: 18 },
-        { word: "zergatik", prob: 9 },
-        { word: "patata", prob: 6 }
+        { word: 'eta', prob: '67%' },
+        { word: 'baina', prob: '18%' },
+        { word: 'zergatik', prob: '9%' },
+        { word: 'patata', prob: '6%' }
       ];
-      
+
       showProbabilities(candidates);
       await sleep(2000);
 
-      document.getElementById('outputText').innerHTML = 
-        `<span class="original">${prompt}</span> <span class="generated">eta</span>`;
-      
+      document.getElementById('outputText').innerHTML =
+        '<span class="original">' + prompt + '</span> <span class="generated">eta</span>';
+
       await sleep(800);
 
       document.getElementById('step4').classList.remove('active');
       document.getElementById('step5').classList.add('active');
 
-      const remainingWords = ["ulertu", "behar", "dugu"];
-      let currentText = prompt + " eta";
+      const remainingWords = ['ulertu', 'behar', 'dugu'];
+      let currentText = prompt + ' eta';
 
       for (let word of remainingWords) {
         await sleep(600);
-        currentText += " " + word;
+        currentText += ' ' + word;
         const generated = currentText.substring(prompt.length).trim();
-        document.getElementById('outputText').innerHTML = 
-          `<span class="original">${prompt}</span> <span class="generated">${generated}</span>`;
+        document.getElementById('outputText').innerHTML =
+          '<span class="original">' + prompt + '</span> <span class="generated">' + generated + '</span>';
       }
 
       isGenerating = false;
@@ -800,7 +790,7 @@
       const tokens = text.split(' ');
       const tokenDisplay = document.getElementById('tokenDisplay');
       tokenDisplay.innerHTML = '';
-      
+
       tokens.forEach((token, index) => {
         setTimeout(() => {
           const tokenEl = document.createElement('span');
@@ -820,22 +810,26 @@
         barEl.className = 'probability-bar';
         barEl.innerHTML = `
           <div class="probability-fill" style="width: 0%">
-            <span class="probability-label">"${candidate.word}"</span>
-            <span class="probability-percent">${candidate.prob}%</span>
+            <span class="probability-label">${candidate.word}</span>
+            <span class="probability-percent">${candidate.prob}</span>
           </div>
         `;
         probabilityDisplay.appendChild(barEl);
 
         setTimeout(() => {
-          barEl.querySelector('.probability-fill').style.width = candidate.prob + '%';
+          barEl.querySelector('.probability-fill').style.width = candidate.prob;
         }, i * 100 + 50);
       });
     }
 
     function resetAll() {
-      document.getElementById('tokenDisplay').innerHTML = '<span style="color: #ffffff; font-size: 0.9rem;">Tokenak hemen agertuko dira...</span>';
-      document.getElementById('probabilityDisplay').innerHTML = '<p style="color: #ffffff; font-size: 0.9rem; margin-bottom: 1rem;">Probabilitate handienak kalkulatzen...</p>';
-      document.getElementById('outputText').innerHTML = '<span style="color: #ffffff;">Sortutako testua hemen agertuko da...</span>';
+      document.getElementById('tokenDisplay').innerHTML =
+        '<span style="color:#ffffff; font-size:0.9rem;">Tokenak hemen agertuko dira...</span>';
+      document.getElementById('probabilityDisplay').innerHTML =
+        '<p style="color:#ffffff; font-size:0.9rem; margin-bottom:1rem;">Probabilitate handienak kalkulatzen...</p>';
+      document.getElementById('outputText').innerHTML =
+        '<span style="color:#ffffff;">Sortutako testua hemen agertuko da...</span>';
+
       resetSteps();
       document.getElementById('startBtn').disabled = false;
       isGenerating = false;
@@ -843,7 +837,7 @@
 
     function resetSteps() {
       for (let i = 1; i <= 5; i++) {
-        document.getElementById(`step${i}`).classList.remove('active');
+        document.getElementById('step' + i).classList.remove('active');
       }
     }
 
@@ -853,3 +847,4 @@
   </script>
 </body>
 </html>
+

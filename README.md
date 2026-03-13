@@ -1,4 +1,4 @@
-# aa-eus
+# artifiziala.eus
 
 **Adimen Artifiziala euskaraz** — 12-18 urteko ikasleentzat AI literacy plataforma interaktiboa.
 

@@ -7,6 +7,10 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
+
   <style>
     /* ── Hero ── */
     .teach-hero {
@@ -200,6 +204,7 @@
       background: var(--paper);
       border: 1px solid var(--line);
       padding: 2rem;
+      min-width: 0;
     }
 
     .teach-card-head {
@@ -233,6 +238,7 @@
       border: 1px solid var(--line);
       padding: 1rem;
       background: var(--bg);
+      min-width: 0;
     }
 
     .teach-info-box strong {
@@ -247,13 +253,14 @@
       color: var(--text-soft);
       font-size: .84rem;
       line-height: 1.55;
+      overflow-wrap: anywhere;
     }
 
     /* ── Accordion ── */
     .teach-accordion {
       background: var(--paper);
       border: 1px solid var(--line);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .teach-accordion + .teach-accordion {
@@ -289,10 +296,11 @@
       background: var(--bg);
     }
 
-    .teach-accordion[open] summary::after { content: "\2212"; }
+    .teach-accordion[open] summary::after { content: "−"; }
 
     .teach-accordion-body {
       padding: 1rem 1.15rem 1.15rem;
+      overflow-x: auto;
     }
 
     .teach-accordion-body p {
@@ -300,6 +308,7 @@
       font-size: .9rem;
       line-height: 1.65;
       margin-bottom: .75rem;
+      overflow-wrap: anywhere;
     }
 
     .teach-accordion-body ul,
@@ -328,6 +337,7 @@
       border: 1px solid var(--line);
       padding: .95rem;
       background: var(--bg);
+      min-width: 0;
     }
 
     .teach-step .num {
@@ -355,6 +365,7 @@
       color: var(--text-soft);
       font-size: .84rem;
       line-height: 1.55;
+      overflow-wrap: anywhere;
     }
 
     /* ── Level grid ── */
@@ -368,6 +379,7 @@
       border: 1px solid var(--line);
       background: var(--bg);
       padding: 1rem;
+      min-width: 0;
     }
 
     .teach-level-card h3 {
@@ -382,6 +394,7 @@
       font-size: .84rem;
       line-height: 1.55;
       margin-bottom: .65rem;
+      overflow-wrap: anywhere;
     }
 
     .teach-level-card ul {
@@ -394,9 +407,16 @@
     }
 
     /* ── Rubric ── */
+    .teach-rubric-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .teach-rubric-table {
       display: grid;
       gap: .5rem;
+      min-width: 0;
     }
 
     .teach-rubric-head,
@@ -404,6 +424,7 @@
       display: grid;
       grid-template-columns: 180px 1fr 1fr 1fr;
       gap: 0;
+      min-width: 720px;
     }
 
     .teach-rubric-head div {
@@ -462,7 +483,31 @@
       color: var(--text-soft);
       font-size: .82rem;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
+
+    /* ── Reveal fallback segurua ── */
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .js .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.4s; }
+    .delay-4 { transition-delay: 0.6s; }
 
     /* ── Responsive ── */
     @media (max-width: 1100px) {
@@ -470,7 +515,10 @@
       .teach-hero-grid {
         grid-template-columns: 1fr;
       }
-      .teach-sidebar { position: static; }
+
+      .teach-sidebar {
+        position: static;
+      }
     }
 
     @media (max-width: 900px) {
@@ -479,7 +527,10 @@
       .teach-level-grid {
         grid-template-columns: 1fr 1fr;
       }
-      .teach-stat-grid { grid-template-columns: 1fr; }
+
+      .teach-stat-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -488,35 +539,35 @@
       .teach-level-grid {
         grid-template-columns: 1fr;
       }
-      .teach-hero-icon { font-size: 6rem; }
+
+      .teach-hero-icon {
+        font-size: 6rem;
+      }
+
+      .teach-card,
+      .teach-side-card {
+        padding: 1.2rem;
+      }
+
+      .teach-rubric-wrap {
+        overflow-x: visible;
+      }
 
       .teach-rubric-head,
       .teach-rubric-row {
         grid-template-columns: 1fr;
+        min-width: 0;
       }
-      .teach-rubric-head { display: none; }
+
+      .teach-rubric-head {
+        display: none;
+      }
+
       .teach-rubric-row .criterion {
         border-right: none;
         border-bottom: 1px solid var(--line);
       }
     }
-  
-    /* Reveal Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.4s; }
-    .delay-4 { transition-delay: 0.6s; }
-
   </style>
 </head>
 <body data-page="teachers">
@@ -553,7 +604,6 @@
   </header>
 
   <main>
-    <!-- ── Hero ── -->
     <section class="teach-hero">
       <div class="container">
         <div class="teach-hero-grid">
@@ -591,11 +641,9 @@
       </div>
     </section>
 
-    <!-- ── Body ── -->
     <section class="teach-shell">
       <div class="container">
         <div class="teach-layout">
-          <!-- Sidebar -->
           <aside class="teach-sidebar reveal delay-1">
             <div class="teach-side-card">
               <h3>Ibilbide azkarra</h3>
@@ -644,9 +692,7 @@
             </div>
           </aside>
 
-          <!-- Main content -->
           <div class="teach-main reveal delay-2">
-            <!-- Zer eskaintzen du -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Zer eskaintzen du plataformak?</h2>
@@ -669,7 +715,6 @@
               </div>
             </article>
 
-            <!-- Helburu pedagogikoak -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Helburu pedagogikoak</h2>
@@ -697,7 +742,6 @@
               </details>
             </article>
 
-            <!-- Saio-sekuentzia -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Saio-sekuentzia proposatua</h2>
@@ -712,6 +756,7 @@
                     <p>Galdetu ikasleei non ikusten duten AA egunerokoan, zer uste duten egiten duela, eta zer kezka edo itxaropen dituzten.</p>
                   </div>
                 </article>
+
                 <article class="teach-step">
                   <div class="num">2</div>
                   <div>
@@ -719,6 +764,7 @@
                     <p>Landu zer den AA, datuen garrantzia, nola ikasten duten makinek eta zergatik ez duten "ulertzen" pertsona batek bezala.</p>
                   </div>
                 </article>
+
                 <article class="teach-step">
                   <div class="num">3</div>
                   <div>
@@ -726,6 +772,7 @@
                     <p>Egin gutxienez bi simulazio: datuak etiketatzea eta prompt laborategia, edo taldearen mailaren arabera alborapen simulagailua ere.</p>
                   </div>
                 </article>
+
                 <article class="teach-step">
                   <div class="num">4</div>
                   <div>
@@ -733,6 +780,7 @@
                     <p>Aztertu zergatik egiten duen huts sistema batek, zer arrisku sor daitezkeen, eta noiz laguntzen duen benetan AAk.</p>
                   </div>
                 </article>
+
                 <article class="teach-step">
                   <div class="num">5</div>
                   <div>
@@ -740,6 +788,7 @@
                     <p>Ikasleek taldeka ML eredu bat sortzen dute: datuak bildu, entrenatu, probatu eta emaitzak aurkeztu. LearningML testurako eta Teachable Machine irudietarako.</p>
                   </div>
                 </article>
+
                 <article class="teach-step">
                   <div class="num">6</div>
                   <div>
@@ -750,7 +799,6 @@
               </div>
             </article>
 
-            <!-- Adinaren araberako egokitzapena -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Adinaren araberako egokitzapena</h2>
@@ -767,6 +815,7 @@
                     <li>Galdera gutxiago eta azalpen gehiago.</li>
                   </ul>
                 </article>
+
                 <article class="teach-level-card">
                   <h3>DBH 3-4</h3>
                   <p>Plataformako 8 moduluak eta 4 laborategiak erabiltzeko maila egokia da, aplikazio kritikoarekin.</p>
@@ -776,6 +825,7 @@
                     <li>LearningML edo Teachable Machine proiektua eta ahozko aurkezpena.</li>
                   </ul>
                 </article>
+
                 <article class="teach-level-card">
                   <h3>Batxilergoa</h3>
                   <p>Analisi kritiko sakonagoa egin daiteke: alborapena, pribatutasuna, erabilera akademikoa eta inpaktu soziala.</p>
@@ -788,7 +838,6 @@
               </div>
             </article>
 
-            <!-- Proiektuak LearningML eta Teachable Machine -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Proiektuak: LearningML eta Teachable Machine</h2>
@@ -851,7 +900,6 @@
               </details>
             </article>
 
-            <!-- Ebaluazio proposamena -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Ebaluazio proposamena</h2>
@@ -861,37 +909,39 @@
               <details class="teach-accordion" open>
                 <summary>Errubrika sinple bat</summary>
                 <div class="teach-accordion-body">
-                  <div class="teach-rubric-head">
-                    <div></div>
-                    <div>Hasierakoa</div>
-                    <div>Erdi-mailakoa</div>
-                    <div>Sendoa</div>
-                  </div>
+                  <div class="teach-rubric-wrap">
+                    <div class="teach-rubric-head">
+                      <div></div>
+                      <div>Hasierakoa</div>
+                      <div>Erdi-mailakoa</div>
+                      <div>Sendoa</div>
+                    </div>
 
-                  <div class="teach-rubric-table">
-                    <div class="teach-rubric-row">
-                      <div class="criterion">Kontzeptuen ulermena</div>
-                      <div class="cell">AA zer den azaltzen du, baina nahasketekin.</div>
-                      <div class="cell">Kontzeptu nagusiak bereizten ditu adibideekin.</div>
-                      <div class="cell">Argi azaltzen ditu eta mugak ere identifikatzen ditu.</div>
-                    </div>
-                    <div class="teach-rubric-row">
-                      <div class="criterion">Pentsamendu kritikoa</div>
-                      <div class="cell">Erantzunak onartzen ditu ia zalantzarik gabe.</div>
-                      <div class="cell">Batzuetan zalantzan jartzen ditu eta egiaztatzen saiatzen da.</div>
-                      <div class="cell">Modu sistematikoan kontrastatzen du informazioa.</div>
-                    </div>
-                    <div class="teach-rubric-row">
-                      <div class="criterion">Erabilera arduratsua</div>
-                      <div class="cell">Arrisku batzuk ezagutzen ditu.</div>
-                      <div class="cell">Pribatutasuna eta alborapena aipatzen ditu.</div>
-                      <div class="cell">Arriskuak azaltzeaz gain, prebentzio-neurriak proposatzen ditu.</div>
-                    </div>
-                    <div class="teach-rubric-row">
-                      <div class="criterion">Komunikazioa</div>
-                      <div class="cell">Ideiak modu zatituan azaltzen ditu.</div>
-                      <div class="cell">Azalpen ulergarria ematen du adibide batzuekin.</div>
-                      <div class="cell">Azalpen argia, antolatua eta egokia ematen du.</div>
+                    <div class="teach-rubric-table">
+                      <div class="teach-rubric-row">
+                        <div class="criterion">Kontzeptuen ulermena</div>
+                        <div class="cell">AA zer den azaltzen du, baina nahasketekin.</div>
+                        <div class="cell">Kontzeptu nagusiak bereizten ditu adibideekin.</div>
+                        <div class="cell">Argi azaltzen ditu eta mugak ere identifikatzen ditu.</div>
+                      </div>
+                      <div class="teach-rubric-row">
+                        <div class="criterion">Pentsamendu kritikoa</div>
+                        <div class="cell">Erantzunak onartzen ditu ia zalantzarik gabe.</div>
+                        <div class="cell">Batzuetan zalantzan jartzen ditu eta egiaztatzen saiatzen da.</div>
+                        <div class="cell">Modu sistematikoan kontrastatzen du informazioa.</div>
+                      </div>
+                      <div class="teach-rubric-row">
+                        <div class="criterion">Erabilera arduratsua</div>
+                        <div class="cell">Arrisku batzuk ezagutzen ditu.</div>
+                        <div class="cell">Pribatutasuna eta alborapena aipatzen ditu.</div>
+                        <div class="cell">Arriskuak azaltzeaz gain, prebentzio-neurriak proposatzen ditu.</div>
+                      </div>
+                      <div class="teach-rubric-row">
+                        <div class="criterion">Komunikazioa</div>
+                        <div class="cell">Ideiak modu zatituan azaltzen ditu.</div>
+                        <div class="cell">Azalpen ulergarria ematen du adibide batzuekin.</div>
+                        <div class="cell">Azalpen argia, antolatua eta egokia ematen du.</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -910,7 +960,6 @@
               </details>
             </article>
 
-            <!-- Erabilera arduratsua -->
             <article class="teach-card reveal">
               <div class="teach-card-head">
                 <h2>Erabilera arduratsurako orientabideak</h2>
@@ -942,7 +991,7 @@
     </section>
   </main>
 
-<footer class="site-footer reveal">
+  <footer class="site-footer reveal">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -1008,10 +1057,11 @@
   </footer>
 
   <script src="assets/js/data.js"></script>
-  
+
   <script>
     const navToggle = document.getElementById('navToggle');
     const siteNav = document.getElementById('siteNav');
+
     if (navToggle && siteNav) {
       navToggle.addEventListener('click', () => {
         siteNav.classList.toggle('open');
@@ -1020,24 +1070,41 @@
   </script>
 
   <script>
-    // Reveal Animations
     document.addEventListener('DOMContentLoaded', () => {
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.15
-        };
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, revealOptions);
-        revealElements.forEach(el => revealObserver.observe(el));
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window)) {
+        revealElements.forEach(el => el.classList.add('active'));
+        return;
+      }
+
+      const revealOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+      };
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else if (window.innerWidth > 768) {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      window.addEventListener('load', () => {
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('active');
+          }
+        });
+      });
     });
   </script>
 </body>
 </html>
-

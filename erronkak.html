@@ -393,23 +393,6 @@
       .erronka-stats { grid-template-columns: 1fr; }
       .erronka-hero-icon { font-size: 6rem; }
     }
-  
-    /* Reveal Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.4s; }
-    .delay-4 { transition-delay: 0.6s; }
-
   </style>
 </head>
 <body class="erronka-page">
@@ -449,7 +432,7 @@
     <section class="erronka-hero">
       <div class="container">
         <div class="erronka-hero-grid">
-          <div class="reveal delay-1">
+          <div>
             <span class="badge">Autoebaluazioa · 8 galdera</span>
             <h1>Probatu ikasitakoa</h1>
             <p>
@@ -457,25 +440,25 @@
               zenbat menderatzen duzun. Helburua ez da soilik asmatzea, baizik eta ulertzea.
             </p>
           </div>
-          <div class="erronka-hero-visual reveal delay-2">
+          <div class="erronka-hero-visual">
             <span class="erronka-hero-icon">?!</span>
           </div>
         </div>
 
         <div class="erronka-stats">
-          <div class="erronka-stat reveal delay-1">
+          <div class="erronka-stat">
             <strong>8</strong>
             <span>Galdera</span>
           </div>
-          <div class="erronka-stat reveal delay-2">
+          <div class="erronka-stat">
             <strong>1</strong>
             <span>Erantzun zuzena</span>
           </div>
-          <div class="erronka-stat reveal delay-3">
+          <div class="erronka-stat">
             <strong id="heroScore">0</strong>
             <span>Zure puntuazioa</span>
           </div>
-          <div class="erronka-stat reveal delay-4">
+          <div class="erronka-stat">
             <strong id="heroProgress">0%</strong>
             <span>Aurrerapena</span>
           </div>
@@ -486,7 +469,7 @@
     <section class="erronka-shell">
       <div class="container">
         <div class="erronka-layout">
-          <aside class="erronka-sidebar reveal delay-1">
+          <aside class="erronka-sidebar">
             <div class="erronka-side-card">
               <h3>Nola funtzionatzen du?</h3>
               <ul>
@@ -523,7 +506,7 @@
             </div>
           </aside>
 
-          <div class="erronka-main reveal delay-2">
+          <div class="erronka-main">
             <div id="challengeApp"></div>
           </div>
         </div>
@@ -531,7 +514,7 @@
     </section>
   </main>
 
-<footer class="site-footer reveal">
+<footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -597,6 +580,7 @@
   </footer>
 
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
   <script>
     (function () {
       const host = document.getElementById("challengeApp");
@@ -809,26 +793,5 @@
       });
     }
   </script>
-
-  <script>
-    // Reveal Animations
-    document.addEventListener('DOMContentLoaded', () => {
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOptions = {
-            root: null,
-            rootMargin: '0px 0px -50px 0px',
-            threshold: 0.15
-        };
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, revealOptions);
-        revealElements.forEach(el => revealObserver.observe(el));
-    });
-  </script>
 </body>
 </html>
-

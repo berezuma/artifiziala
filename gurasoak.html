@@ -419,6 +419,89 @@
       line-height: 1.5;
     }
 
+    /* ── Recommendations section ── */
+    .family-reco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .family-reco-item {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .family-reco-item .reco-tag {
+      display: inline-block;
+      padding: .25rem .6rem;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .family-reco-item .reco-tag--book {
+      background: var(--purple);
+      color: white;
+    }
+
+    .family-reco-item .reco-tag--video {
+      background: var(--teal);
+      color: white;
+    }
+
+    .family-reco-book-visual {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .family-reco-book-visual img {
+      max-height: 240px;
+      width: auto;
+      object-fit: contain;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+
+    .family-reco-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: .5rem;
+      letter-spacing: -.02em;
+    }
+
+    .family-reco-item .reco-authors {
+      color: var(--text-soft);
+      font-size: .84rem;
+      font-weight: 600;
+      margin-bottom: .75rem;
+    }
+
+    .family-reco-item .reco-desc {
+      color: var(--text-soft);
+      font-size: .9rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .family-reco-item .reco-action {
+      margin-top: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .family-reco-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1100px) {
       .family-layout,
@@ -768,21 +851,56 @@
       </div>
     </section>
 
+    <!-- ── Gomendio praktikoak ── -->
     <section class="container" style="margin-top: 5rem; margin-bottom: 5rem;">
       <div class="family-card reveal" style="border-top: 4px solid var(--primary); padding: 2rem;">
         <div class="family-card-head" style="margin: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 1rem; color: var(--text);">Gomendio praktikoa: Etxean batera ikusteko</h2>
-          <p style="color: var(--text-soft); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
-            Adimen artifizialari eta teknologia berriei buruzko elkarrizketa aberasgarriak sortzeko, <strong>Ikusgela</strong> YouTubeko kanalaren bideoak gomendatzen dizkizuegu. 
+          <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: .5rem; color: var(--text);">Gomendio praktikoak: Etxean irakurri eta ikusteko</h2>
+          <p style="color: var(--text-soft); font-size: 1rem; line-height: 1.6; max-width: 720px; margin: 0 auto;">
+            Adimen artifiziala hobeto ulertzeko bi baliabide paregabeak gomendatzen dizkizuegu: liburu bat euskaraz eta bideo-bilduma bat familian ikusteko.
           </p>
-          <p style="color: var(--text-soft); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 0;">
-            Familian elkarrekin ikusteko ezin hobea da haien <strong>"Erronka digitalak"</strong> izeneko bilduma. Gai konplexuak modu ulergarri eta atseginean azaltzen dituzte, eta abiapuntu bikaina izan daitezke etxean gai hauen inguruan hitz egiten hasteko.
-          </p>
-          <div style="margin-top: 2rem;">
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=oUqhkphV8mA&list=PLs5yjBIvuIiCgsG68R5rNQnGD-MLklQcQ" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem; padding: 0.8rem 1.5rem;">
-              Ikusi "Erronka digitalak" YouTuben &rarr;
-            </a>
-          </div>
+        </div>
+
+        <div class="family-reco-grid">
+          <!-- Liburua -->
+          <article class="family-reco-item">
+            <span class="reco-tag reco-tag--book">Liburua</span>
+            <div class="family-reco-book-visual">
+              <img src="assets/img/liburua.jpeg" alt="Adimen artifiziala denok ulertzeko moduan liburuaren azala" />
+            </div>
+            <h3>Adimen artifiziala denok ulertzeko moduan</h3>
+            <p class="reco-authors">Lorena Fernández Álvarez &amp; Pablo Garaizar Sagarminaga · Ilustrazioak: Denisse Beltrán</p>
+            <p class="reco-desc">
+              AA zer den, nola funtzionatzen duen eta zer dilema etiko dakartzan azaltzen duen liburu ilustratua, 
+              azalpen argi eta ulergarrien bitartez. Ez da aurretiko ezagutza teknikorik behar, eta familiek elkarrekin 
+              irakurtzeko eta eztabaidatzeko bikaina da. Euskaraz, Amaia Apalauza Olloren itzulpenarekin.
+            </p>
+            <div class="reco-action">
+              <a class="btn btn-primary btn-sm" href="https://www.agapea.com/Pablo-Garaizar-Sagarminaga/Adimen-artifiziala-denok-ulertzeko-moduan-9788419684264-i.htm" target="_blank" rel="noopener noreferrer">
+                Liburuaren informazioa &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Ikusgela bideoak -->
+          <article class="family-reco-item">
+            <span class="reco-tag reco-tag--video">Bideoak</span>
+            <div class="family-reco-book-visual">
+              <img src="assets/img/ikusgela.jpg" alt="Ikusgela YouTube kanalaren irudia" />
+            </div>
+            <h3>Ikusgela — "Erronka digitalak" bilduma</h3>
+            <p class="reco-authors">Ikusgela YouTube kanala</p>
+            <p class="reco-desc">
+              Adimen artifizialari eta teknologia berriei buruzko bideo-bilduma, gai konplexuak modu ulergarri eta atseginean 
+              azaltzen dituena. Familian elkarrekin ikusteko ezin hobea da, eta abiapuntu bikaina izan daiteke etxean 
+              gai hauen inguruan hitz egiten hasteko.
+            </p>
+            <div class="reco-action">
+              <a class="btn btn-primary btn-sm" href="https://www.youtube.com/watch?v=oUqhkphV8mA&list=PLs5yjBIvuIiCgsG68R5rNQnGD-MLklQcQ" target="_blank" rel="noopener noreferrer">
+                Ikusi YouTuben &rarr;
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -886,4 +1004,3 @@
   </script>
 </body>
 </html>
-

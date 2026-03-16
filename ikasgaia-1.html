@@ -48,6 +48,27 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .mini-quiz-exp {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f1f5f9;
+      border-left: 4px solid #3b82f6;
+      border-radius: 4px;
+    }
+
+    .mini-quiz-opt.correct {
+      background-color: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+
+    .mini-quiz-opt.incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
+    }
   </style>
 </head>
 <body>
@@ -330,7 +351,7 @@
             <h2>Mini-quiza</h2>
 
             <div class="mini-quiz" data-lesson="1">
-              <div class="mini-quiz-q" data-correct="1">
+              <div class="mini-quiz-q" data-correct="2">
                 <strong>1. Zein da adimen artifizialaren oinarrizko ideia?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Ordenagailuek sentitzen dutela.</button>
@@ -343,7 +364,7 @@
                 </p>
               </div>
 
-              <div class="mini-quiz-q" data-correct="2">
+              <div class="mini-quiz-q" data-correct="3">
                 <strong>2. Gaur egun existitzen al da gizakien mailan pentsatzen duen AA sistema bat?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Bai, ChatGPT.</button>
@@ -390,7 +411,7 @@
     </section>
   </main>
 
-<footer class="site-footer reveal">
+  <footer class="site-footer reveal">
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -487,6 +508,38 @@
 
       revealElements.forEach(el => {
         revealObserver.observe(el);
+      });
+
+      const galdetegiak = document.querySelectorAll('.mini-quiz-q');
+
+      galdetegiak.forEach(galdera => {
+        const erantzunZuzena = parseInt(galdera.getAttribute('data-correct')) - 1;
+        const aukerak = galdera.querySelectorAll('.mini-quiz-opt');
+        const azalpena = galdera.querySelector('.mini-quiz-exp');
+
+        aukerak.forEach((aukera, indizea) => {
+          aukera.addEventListener('click', () => {
+            aukerak.forEach(botoia => {
+              botoia.disabled = true;
+              botoia.style.cursor = 'not-allowed';
+              botoia.style.opacity = '0.6';
+            });
+
+            if (indizea === erantzunZuzena) {
+              aukera.classList.add('correct');
+              aukera.style.opacity = '1';
+            } else {
+              aukera.classList.add('incorrect');
+              aukera.style.opacity = '1';
+              aukerak[erantzunZuzena].classList.add('correct');
+              aukerak[erantzunZuzena].style.opacity = '1';
+            }
+
+            if (azalpena) {
+              azalpena.style.display = 'block';
+            }
+          });
+        });
       });
     });
   </script>

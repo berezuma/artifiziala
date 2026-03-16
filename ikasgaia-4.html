@@ -251,6 +251,26 @@
     .btn {
       border-radius: 999px !important;
     }
+
+    /* Quiz-arako CSS espezifikoa */
+    .mini-quiz-exp {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #A78BFA;
+      border-radius: 8px;
+    }
+    .mini-quiz-opt.correct {
+      background-color: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+    .mini-quiz-opt.incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
+    }
   </style>
 </head>
 <body>
@@ -553,7 +573,7 @@
           <article class="page-card lesson-reflect-card reveal" id="hausnarketa">
             <h2>Hausnarketa</h2>
             <p>
-              Pentsatu txatbot bati egin diozun azken galderan. Zergatik ematen zuen ulertu zintuela?
+              Pentsatu txatbot bati egin diozun azken galderan. Zergatik ematen zuen ulertu zintzuela?
               Zer seinale erabiltzen dituzu zuk ulermen hori benetakoa dela pentsatzeko? Eta zer arrisku
               dago hori gehiegi sinestean?
             </p>
@@ -563,7 +583,7 @@
             <h2>Mini-quiza</h2>
 
             <div class="mini-quiz" data-lesson="4">
-              <div class="mini-quiz-q" data-correct="1">
+              <div class="mini-quiz-q" data-correct="2">
                 <strong>1. Zer egiten du hizkuntza-eredu batek batez ere?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Benetan pentsatu eta arrazoitu pertsona batek bezala.</button>
@@ -576,7 +596,7 @@
                 </p>
               </div>
 
-              <div class="mini-quiz-q" data-correct="2">
+              <div class="mini-quiz-q" data-correct="3">
                 <strong>2. Zergatik dira arriskutsuak batzuetan txatbot-en erantzunak?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Beti oso laburrak direlako.</button>
@@ -720,7 +740,38 @@
       }, revealOptions);
 
       revealElements.forEach(el => revealObserver.observe(el));
+
+      initQuiz();
     });
+
+    function initQuiz() {
+      const questions = document.querySelectorAll('.mini-quiz-q');
+      questions.forEach(q => {
+        const options = q.querySelectorAll('.mini-quiz-opt');
+        const correctIdx = parseInt(q.getAttribute('data-correct')) - 1;
+        const explanation = q.querySelector('.mini-quiz-exp');
+
+        options.forEach((opt, idx) => {
+          opt.addEventListener('click', () => {
+            options.forEach(o => {
+              o.disabled = true;
+              o.style.cursor = 'default';
+            });
+
+            if (idx === correctIdx) {
+              opt.classList.add('correct');
+            } else {
+              opt.classList.add('incorrect');
+              options[correctIdx].classList.add('correct');
+            }
+
+            if (explanation) {
+              explanation.style.display = 'block';
+            }
+          });
+        });
+      });
+    }
 
     let isGenerating = false;
     const prompt = 'Adimen artifiziala teknologia bat da';
@@ -847,4 +898,3 @@
   </script>
 </body>
 </html>
-

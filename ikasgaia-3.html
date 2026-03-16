@@ -168,54 +168,24 @@
       border-radius: 999px !important;
     }
 
-    /* Quiz Styles */
-    .mini-quiz-q {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(203, 213, 225, 0.1);
-    }
-    .mini-quiz-q:last-child { border-bottom: none; }
-    .mini-quiz-options {
-      display: grid;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-    }
-    .mini-quiz-opt {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(203, 213, 225, 0.2);
-      color: white;
-      padding: 1rem 1.25rem;
-      border-radius: 12px;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
-      width: 100%;
-      font-family: inherit;
-    }
-    .mini-quiz-opt:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #38bdf8;
-    }
-    .mini-quiz-opt.correct {
-      background: rgba(16, 185, 129, 0.15) !important;
-      border-color: #10b981 !important;
-      color: #34d399;
-    }
-    .mini-quiz-opt.incorrect {
-      background: rgba(239, 68, 68, 0.15) !important;
-      border-color: #ef4444 !important;
-      color: #f87171;
-    }
+    /* Quiz-arako CSS espezifikoa */
     .mini-quiz-exp {
       display: none;
-      margin-top: 1.25rem;
-      padding: 1.25rem;
-      background: rgba(56, 189, 248, 0.05);
-      border-radius: 12px;
-      border-left: 4px solid #38bdf8;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #A78BFA;
+      border-radius: 8px;
+    }
+    .mini-quiz-opt.correct {
+      background-color: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+    .mini-quiz-opt.incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
     }
   </style>
 </head>
@@ -566,7 +536,7 @@
             <h2>Mini-quiza</h2>
 
             <div class="mini-quiz" data-lesson="3">
-              <div class="mini-quiz-q" data-correct="1">
+              <div class="mini-quiz-q" data-correct="2">
                 <strong>1. Zer da makina batek irudi batean zuzenean "ikusten" duena?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Objektuak guk bezala.</button>
@@ -579,7 +549,7 @@
                 </p>
               </div>
 
-              <div class="mini-quiz-q" data-correct="2">
+              <div class="mini-quiz-q" data-correct="3">
                 <strong>2. Zergatik huts egin dezake ikusmen artifizialak?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Makina nekatzen delako.</button>
@@ -734,21 +704,26 @@
       const questions = document.querySelectorAll('.mini-quiz-q');
       questions.forEach(q => {
         const options = q.querySelectorAll('.mini-quiz-opt');
-        const correct = parseInt(q.dataset.correct);
-        const exp = q.querySelector('.mini-quiz-exp');
-        
-        options.forEach((opt, i) => {
+        const correctIdx = parseInt(q.getAttribute('data-correct')) - 1;
+        const explanation = q.querySelector('.mini-quiz-exp');
+
+        options.forEach((opt, idx) => {
           opt.addEventListener('click', () => {
-            if (q.dataset.answered === 'true') return;
-            q.dataset.answered = 'true';
-            
-            if (i === correct) {
+            options.forEach(o => {
+              o.disabled = true;
+              o.style.cursor = 'default';
+            });
+
+            if (idx === correctIdx) {
               opt.classList.add('correct');
             } else {
               opt.classList.add('incorrect');
-              options[correct].classList.add('correct');
+              options[correctIdx].classList.add('correct');
             }
-            if (exp) exp.style.display = 'block';
+
+            if (explanation) {
+              explanation.style.display = 'block';
+            }
           });
         });
       });

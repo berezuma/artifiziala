@@ -84,41 +84,6 @@
       min-height: 1.5rem;
     }
 
-        /* Quiz estiloak */
-    .quiz-option {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 0.5rem;
-      background: white;
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      text-align: left;
-      cursor: pointer;
-      color: #334155;
-      font-size: 1rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    .quiz-option:hover {
-      background: #f8fafc;
-      border-color: #38bdf8;
-    }
-    .quiz-option.correct {
-      background: #dcfce7;
-      border-color: #22c55e;
-      color: #166534;
-    }
-    .quiz-option.incorrect {
-      background: #fee2e2;
-      border-color: #ef4444;
-      color: #991b1b;
-    }
-    .quiz-option:disabled {
-      cursor: default;
-    }
-
-  /* Ertz borobilagoak */
     .page-card,
     .lesson-side-card,
     .concept-box,
@@ -141,6 +106,25 @@
       border-radius: 999px !important;
     }
 
+    /* Quiz-arako CSS espezifikoa */
+    .mini-quiz-exp {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #A78BFA;
+      border-radius: 8px;
+    }
+    .mini-quiz-opt.correct {
+      background-color: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+    .mini-quiz-opt.incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
+    }
   </style>
 </head>
 <body>
@@ -371,21 +355,32 @@
 
           <article class="page-card reveal" id="quiz">
             <h2>Mini-quiza</h2>
-            <div id="quizContainer" style="margin-bottom: 1.5rem;">
-              <p><strong>1. Zer egiten du difusio-eredu batek irudi bat sortzeko?</strong></p>
-              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback1')">Milioika irudi artean bat aukeratu eta erakutsi.</button>
-              <button class="quiz-option" onclick="checkQuiz(this, true, 'quizFeedback1')">Zarata matematikoa pixkanaka kendu irudi garbi bat lortu arte.</button>
-              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback1')">Interneteko irudiak moztu eta collage bat egin.</button>
-              <p id="quizFeedback1" style="margin-top: 1rem; display: none;"></p>
-            </div>
 
-            <div id="quizContainer2">
-              <p><strong>2. Zer da haluzinazioa eredu generatibo baten testuinguruan?</strong></p>
-              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak giza emozioetan oinarrituta sortzen duen irudia.</button>
-              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak sortutako irudi bat bere memorian gordetzea.</button>
-              <button class="quiz-option" onclick="checkQuiz(this, true, 'quizFeedback2')">Ereduak sinesgarria den baina faltsua den informazioa sortzea.</button>
-              <button class="quiz-option" onclick="checkQuiz(this, false, 'quizFeedback2')">Ereduak zarata kentzeko erabiltzen duen teknika.</button>
-              <p id="quizFeedback2" style="margin-top: 1rem; display: none;"></p>
+            <div class="mini-quiz" data-lesson="5">
+              <div class="mini-quiz-q" data-correct="2">
+                <strong>1. Zer egiten du difusio-eredu batek irudi bat sortzeko?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Milioika irudi artean bat aukeratu eta erakutsi.</button>
+                  <button class="mini-quiz-opt">Zarata matematikoa pixkanaka kendu irudi garbi bat lortu arte.</button>
+                  <button class="mini-quiz-opt">Interneteko irudiak moztu eta collage bat egin.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Difusio-ereduek zarata hutsetik hasten dira eta pixkanaka egitura bisuala berreraikitzen dute irudi koherente bat osatu arte.
+                </p>
+              </div>
+
+              <div class="mini-quiz-q" data-correct="3">
+                <strong>2. Zer da haluzinazioa eredu generatibo baten testuinguruan?</strong>
+                <div class="mini-quiz-options">
+                  <button class="mini-quiz-opt">Ereduak giza emozioetan oinarrituta sortzen duen irudia.</button>
+                  <button class="mini-quiz-opt">Ereduak sortutako irudi bat bere memorian gordetzea.</button>
+                  <button class="mini-quiz-opt">Ereduak sinesgarria den baina faltsua den informazioa sortzea.</button>
+                  <button class="mini-quiz-opt">Ereduak zarata kentzeko erabiltzen duen teknika.</button>
+                </div>
+                <p class="mini-quiz-exp">
+                  Haluzinazioa da sistemak tonu sinesgarriz informazio okerra, asmatua edo egiaztatu gabea sortzea.
+                </p>
+              </div>
             </div>
           </article>
 
@@ -510,6 +505,8 @@
       }, revealOptions);
 
       revealElements.forEach(el => revealObserver.observe(el));
+
+      initQuiz();
     });
 
     // Bisualizadorearen logika
@@ -564,39 +561,33 @@
       btn.disabled = false;
     });
 
-    // Quiz funtzioa
-    function checkQuiz(btn, isCorrect, feedbackId) {
-      const feedback = document.getElementById(feedbackId || 'quizFeedback1');
-      const container = btn.closest('div');
-      const options = container.querySelectorAll('.quiz-option');
+    function initQuiz() {
+      const questions = document.querySelectorAll('.mini-quiz-q');
+      questions.forEach(q => {
+        const options = q.querySelectorAll('.mini-quiz-opt');
+        const correctIdx = parseInt(q.getAttribute('data-correct')) - 1;
+        const explanation = q.querySelector('.mini-quiz-exp');
 
-      options.forEach(opt => {
-        opt.disabled = true;
-        opt.classList.remove('correct', 'incorrect');
+        options.forEach((opt, idx) => {
+          opt.addEventListener('click', () => {
+            options.forEach(o => {
+              o.disabled = true;
+              o.style.cursor = 'default';
+            });
+
+            if (idx === correctIdx) {
+              opt.classList.add('correct');
+            } else {
+              opt.classList.add('incorrect');
+              options[correctIdx].classList.add('correct');
+            }
+
+            if (explanation) {
+              explanation.style.display = 'block';
+            }
+          });
+        });
       });
-
-      const messages = {
-        'quizFeedback1': {
-          correct: "Zuzen! Difusio-ereduek pixkanaka 'garbitzen' dute zarata irudia agertu arte.",
-          incorrect: "Ez da zuzena. AAk ez du irudirik bilatzen, hutsetik eraikitzen du zarata kenduz."
-        },
-        'quizFeedback2': {
-          correct: "Zuzen! Haluzinazioa da ereduak sinesgarria dirudien baina okerra den informazioa sortzea.",
-          incorrect: "Ez da zuzena. Haluzinazioa probabilitate-kalkuluen ondoriozko akats mota bat da."
-        }
-      };
-
-      const key = feedbackId || 'quizFeedback1';
-      if (isCorrect) {
-        btn.classList.add('correct');
-        feedback.innerText = messages[key]?.correct || "Zuzen!";
-        feedback.style.color = "#22c55e";
-      } else {
-        btn.classList.add('incorrect');
-        feedback.innerText = messages[key]?.incorrect || "Ez da zuzena.";
-        feedback.style.color = "#ef4444";
-      }
-      feedback.style.display = "block";
     }
   </script>
 </body>

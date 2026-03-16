@@ -44,6 +44,26 @@
     .btn {
       border-radius: 999px !important;
     }
+
+    /* Quiz-arako CSS espezifikoa */
+    .mini-quiz-exp {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(167, 139, 250, 0.1);
+      border-left: 4px solid #A78BFA;
+      border-radius: 8px;
+    }
+    .mini-quiz-opt.correct {
+      background-color: #10b981 !important;
+      color: white !important;
+      border-color: #10b981 !important;
+    }
+    .mini-quiz-opt.incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+      border-color: #ef4444 !important;
+    }
   </style>
 </head>
 <body>
@@ -326,7 +346,7 @@
             <h2>Mini-quiza</h2>
 
             <div class="mini-quiz" data-lesson="6">
-              <div class="mini-quiz-q" data-correct="1">
+              <div class="mini-quiz-q" data-correct="2">
                 <strong>1. Zer du prompt on batek normalean?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Soilik hitz bakarra.</button>
@@ -339,7 +359,7 @@
                 </p>
               </div>
 
-              <div class="mini-quiz-q" data-correct="2">
+              <div class="mini-quiz-q" data-correct="3">
                 <strong>2. Zer egin daiteke lehen erantzuna egokia ez bada?</strong>
                 <div class="mini-quiz-options">
                   <button class="mini-quiz-opt">Sistema itxi eta utzi.</button>
@@ -488,7 +508,38 @@
       revealElements.forEach(el => {
         revealObserver.observe(el);
       });
+
+      initQuiz();
     });
+
+    function initQuiz() {
+      const questions = document.querySelectorAll('.mini-quiz-q');
+      questions.forEach(q => {
+        const options = q.querySelectorAll('.mini-quiz-opt');
+        const correctIdx = parseInt(q.getAttribute('data-correct')) - 1;
+        const explanation = q.querySelector('.mini-quiz-exp');
+
+        options.forEach((opt, idx) => {
+          opt.addEventListener('click', () => {
+            options.forEach(o => {
+              o.disabled = true;
+              o.style.cursor = 'default';
+            });
+
+            if (idx === correctIdx) {
+              opt.classList.add('correct');
+            } else {
+              opt.classList.add('incorrect');
+              options[correctIdx].classList.add('correct');
+            }
+
+            if (explanation) {
+              explanation.style.display = 'block';
+            }
+          });
+        });
+      });
+    }
   </script>
 </body>
 </html>

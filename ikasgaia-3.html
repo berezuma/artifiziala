@@ -170,46 +170,52 @@
 
     /* Quiz Styles */
     .mini-quiz-q {
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid rgba(203, 213, 225, 0.1);
     }
+    .mini-quiz-q:last-child { border-bottom: none; }
     .mini-quiz-options {
       display: grid;
       gap: 0.75rem;
-      margin-top: 1rem;
+      margin-top: 1.25rem;
     }
     .mini-quiz-opt {
-      background: var(--color-surface, #1e293b);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(203, 213, 225, 0.2);
       color: white;
-      padding: 1rem;
+      padding: 1rem 1.25rem;
       border-radius: 12px;
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      width: 100%;
+      font-family: inherit;
     }
     .mini-quiz-opt:hover {
-      background: rgba(203, 213, 225, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #38bdf8;
     }
     .mini-quiz-opt.correct {
-      background: #10b981 !important;
-      border-color: #059669 !important;
-      color: white;
+      background: rgba(16, 185, 129, 0.15) !important;
+      border-color: #10b981 !important;
+      color: #34d399;
     }
     .mini-quiz-opt.incorrect {
-      background: #ef4444 !important;
-      border-color: #dc2626 !important;
-      color: white;
+      background: rgba(239, 68, 68, 0.15) !important;
+      border-color: #ef4444 !important;
+      color: #f87171;
     }
     .mini-quiz-exp {
       display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(56, 189, 248, 0.1);
-      border-radius: 8px;
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      background: rgba(56, 189, 248, 0.05);
+      border-radius: 12px;
       border-left: 4px solid #38bdf8;
       font-size: 0.9rem;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -521,7 +527,7 @@
             </p>
             <p style="margin-top:1rem;">
               Gainera, entrenamendu irudietan aniztasun falta badago, sistema batzuek pertsona edo egoera batzuekin
-              beste batzuekin baino hobeto funtzionatuko dute. Horregatik, datuen kalitatea eta ordezkaritza funtsezkoak dira.
+              beste batzuekin baino hobeto funtkionatzen dute. Horregatik, datuen kalitatea eta ordezkaritza funtsezkoak dira.
             </p>
           </article>
 
@@ -689,7 +695,6 @@
     </div>
   </footer>
 
-  
   <script>
     const navToggle = document.getElementById('navToggle');
     const siteNav = document.getElementById('siteNav');
@@ -699,7 +704,6 @@
       });
     }
 
-    // Scroll Animazioak - Intersection Observer
     document.addEventListener("DOMContentLoaded", () => {
       const revealElements = document.querySelectorAll('.reveal');
 
@@ -723,39 +727,33 @@
         revealObserver.observe(el);
       });
 
-      // Quiz Logic initialization
       initQuiz();
     });
 
     function initQuiz() {
-      const quizQuestions = document.querySelectorAll('.mini-quiz-q');
-      
-      quizQuestions.forEach(quiz => {
-        const options = quiz.querySelectorAll('.mini-quiz-opt');
-        const correctIndex = parseInt(quiz.getAttribute('data-correct'));
-        const explanation = quiz.querySelector('.mini-quiz-exp');
-
-        options.forEach((opt, index) => {
+      const questions = document.querySelectorAll('.mini-quiz-q');
+      questions.forEach(q => {
+        const options = q.querySelectorAll('.mini-quiz-opt');
+        const correct = parseInt(q.dataset.correct);
+        const exp = q.querySelector('.mini-quiz-exp');
+        
+        options.forEach((opt, i) => {
           opt.addEventListener('click', () => {
-            // Disable further clicks
-            options.forEach(o => o.style.pointerEvents = 'none');
+            if (q.dataset.answered === 'true') return;
+            q.dataset.answered = 'true';
             
-            if (index === correctIndex) {
+            if (i === correct) {
               opt.classList.add('correct');
             } else {
               opt.classList.add('incorrect');
-              options[correctIndex].classList.add('correct');
+              options[correct].classList.add('correct');
             }
-            
-            if (explanation) {
-              explanation.style.display = 'block';
-            }
+            if (exp) exp.style.display = 'block';
           });
         });
       });
     }
 
-    // Visualizer code
     const inputCanvas = document.getElementById('inputCanvas');
     const pixelCanvas = document.getElementById('pixelCanvas');
     const edgeCanvas = document.getElementById('edgeCanvas');
@@ -809,7 +807,6 @@
     function loadSampleImage() {
       inputCtx.fillStyle = '#000';
       inputCtx.fillRect(0, 0, inputCanvas.width, inputCanvas.height);
-      
       inputCtx.fillStyle = '#1e40af';
       inputCtx.fillRect(100, 80, 100, 140);
       inputCtx.fillStyle = '#fbbf24';
@@ -880,26 +877,14 @@
       for (let y = 1; y < height - 1; y++) {
         for (let x = 1; x < width - 1; x++) {
           const idx = (y * width + x) * 4;
-          
-          const gx = 
-            -pixels[((y-1)*width + (x-1))*4] + pixels[((y-1)*width + (x+1))*4] +
-            -2*pixels[(y*width + (x-1))*4] + 2*pixels[(y*width + (x+1))*4] +
-            -pixels[((y+1)*width + (x-1))*4] + pixels[((y+1)*width + (x+1))*4];
-          
-          const gy = 
-            -pixels[((y-1)*width + (x-1))*4] - 2*pixels[((y-1)*width + x)*4] - pixels[((y-1)*width + (x+1))*4] +
-            pixels[((y+1)*width + (x-1))*4] + 2*pixels[((y+1)*width + x)*4] + pixels[((y+1)*width + (x+1))*4];
-          
+          const gx = -pixels[((y-1)*width + (x-1))*4] + pixels[((y-1)*width + (x+1))*4] + -2*pixels[(y*width + (x-1))*4] + 2*pixels[(y*width + (x+1))*4] + -pixels[((y+1)*width + (x-1))*4] + pixels[((y+1)*width + (x+1))*4];
+          const gy = -pixels[((y-1)*width + (x-1))*4] - 2*pixels[((y-1)*width + x)*4] - pixels[((y-1)*width + (x+1))*4] + pixels[((y+1)*width + (x-1))*4] + 2*pixels[((y+1)*width + x)*4] + pixels[((y+1)*width + (x+1))*4];
           const magnitude = Math.sqrt(gx * gx + gy * gy);
           const value = Math.min(255, magnitude);
-          
-          output.data[idx] = value;
-          output.data[idx + 1] = value;
-          output.data[idx + 2] = value;
-          output.data[idx + 3] = 255;
+          output.data[idx] = output.data[idx+1] = output.data[idx+2] = value;
+          output.data[idx+3] = 255;
         }
       }
-      
       edgeCtx.putImageData(output, 0, 0);
     }
 
@@ -907,18 +892,13 @@
       const width = patternCanvas.width;
       const height = patternCanvas.height;
       patternCtx.clearRect(0, 0, width, height);
-      
-      const imageData = inputCtx.getImageData(0, 0, width, height);
-      patternCtx.putImageData(imageData, 0, 0);
-      
+      patternCtx.putImageData(inputCtx.getImageData(0, 0, width, height), 0, 0);
       patternCtx.strokeStyle = '#38bdf8';
       patternCtx.lineWidth = 3;
-      
       for (let i = 0; i < 5; i++) {
         const x = Math.random() * (width - 60) + 30;
         const y = Math.random() * (height - 60) + 30;
         const size = Math.random() * 40 + 40;
-        
         patternCtx.strokeRect(x, y, size, size);
       }
     }
@@ -929,14 +909,9 @@
         { name: 'Forma geometrikoa', confidence: 0.65 },
         { name: 'Irudia', confidence: 0.52 }
       ];
-      
       const winner = categories[0];
       document.getElementById('resultText').textContent = `✅ Detektatua: "${winner.name}"`;
-      document.getElementById('confidence').innerHTML = 
-        `Ziurtasuna: ${(winner.confidence * 100).toFixed(0)}%<br><br>` +
-        categories.map(c => 
-          `${c.name}: ${(c.confidence * 100).toFixed(0)}%`
-        ).join('<br>');
+      document.getElementById('confidence').innerHTML = `Ziurtasuna: ${(winner.confidence * 100).toFixed(0)}%<br><br>` + categories.map(c => `${c.name}: ${(c.confidence * 100).toFixed(0)}%`).join('<br>');
     }
 
     clearCanvas();

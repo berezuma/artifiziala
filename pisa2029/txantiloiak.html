@@ -11,9 +11,10 @@
   <style>
     .tpl-filter{ display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1.5rem; }
     .tpl-card{ scroll-margin-top:150px; }
-    .tpl-card:target{ box-shadow:0 0 0 3px var(--teal), 0 16px 36px rgba(38,35,79,.1); }
+    .tpl-card:target{ box-shadow:0 0 0 3px var(--teal), 0 16px 36px rgba(19,38,46,.1); }
     .tpl-card .for{ display:flex; gap:.3rem; }
   </style>
+  <link rel="stylesheet" href="../assets/css/pro.css" />
 </head>
 <body class="pisa-page">
   <header class="site-header">
@@ -49,16 +50,16 @@
       <span class="tag">MAIL</span>
       <nav aria-label="PISA 2029 atala">
         <a href="index.html">Hasiera</a>
-        <a href="markoa.html">📘 Markoa</a>
-        <a href="etika.html">⚖️ Etika</a>
-        <a href="sarbidea.html">🧭 Eskuratu</a>
-        <a href="aztertu.html">🔎 Aztertu</a>
-        <a href="parte-hartu.html">🤝 Parte hartu</a>
-        <a href="sortu.html">✨ Sortu</a>
-        <a href="simulagailua.html">🖥️ Simulagailua</a>
-        <a href="ariketak.html">📝 Ariketak</a>
-        <a href="txantiloiak.html">📄 Txantiloiak</a>
-        <a href="irakasleak.html">🎓 Irakasleak</a>
+        <a href="markoa.html">Markoa</a>
+        <a href="etika.html">Etika</a>
+        <a href="sarbidea.html">Eskuratu</a>
+        <a href="aztertu.html">Aztertu</a>
+        <a href="parte-hartu.html">Parte hartu</a>
+        <a href="sortu.html">Sortu</a>
+        <a href="simulagailua.html">Simulagailua</a>
+        <a href="ariketak.html">Ariketak</a>
+        <a href="txantiloiak.html">Txantiloiak</a>
+        <a href="irakasleak.html">Irakasleak</a>
       </nav>
     </div>
   </div>
@@ -81,9 +82,9 @@
       <div class="container">
         <div class="tpl-filter" role="toolbar" aria-label="Iragazi txantiloiak">
           <button class="p-tab active" type="button" data-filter="">Denak</button>
-          <button class="p-tab" type="button" data-filter="ikasle">🎒 Ikasleentzat</button>
-          <button class="p-tab" type="button" data-filter="irakasle">🎓 Irakasleentzat</button>
-          <button class="p-tab" type="button" data-filter="talde">👥 Taldeentzat</button>
+          <button class="p-tab" type="button" data-filter="ikasle">Ikasleentzat</button>
+          <button class="p-tab" type="button" data-filter="irakasle">Irakasleentzat</button>
+          <button class="p-tab" type="button" data-filter="talde">Taldeentzat</button>
         </div>
         <div class="tpl-grid" id="tplGrid"></div>
 
@@ -106,7 +107,7 @@
         <div class="footer-topics">
           <h4>PISA 2029 · MAIL</h4>
           <div class="footer-topic-grid">
-            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
             <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
             <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
             <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
@@ -147,7 +148,7 @@
         { id: "diseinua", file: "T11-jarduera-diseinua", code: "T11", t: "MAIL jarduera diseinatzeko txantiloia", d: "Gaitasunak, testuingurua, hedabideak, tresnak eta zailtasun-eragileak kontuan hartuta.", c: "sarbidea", who: ["irakasle"] },
         { id: "unitatea", file: "T12-unitate-didaktikoa-10-saio", code: "T12", t: "Unitate didaktikoa: 10 saio", d: "DBH 3–4rako sekuentzia osoa, gune honetako baliabideekin lotuta. Horizontala.", c: "sortu", who: ["irakasle"] }
       ];
-      const WHO = { ikasle: "🎒 Ikasleak", irakasle: "🎓 Irakasleak", talde: "👥 Taldeak" };
+      const WHO = { ikasle: "Ikasleak", irakasle: "Irakasleak", talde: "Taldeak" };
       const grid = document.getElementById("tplGrid");
       grid.innerHTML = TPL.map((x) => `
         <article class="tpl-card" id="${x.id}" data-c="${x.c}" data-who="${x.who.join(" ")}">

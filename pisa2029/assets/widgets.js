@@ -12,12 +12,12 @@
      1. JARIO ALGORITMIKOA (Eskuratu eta erabili · Etika)
      ====================================================================== */
   const TOPICS = {
-    kirola: { l: "Kirola", e: "⚽", c: "#12a9a4" },
-    musika: { l: "Musika", e: "🎵", c: "#c95fc1" },
-    zientzia: { l: "Zientzia", e: "🔬", c: "#3d9fd6" },
-    jokoak: { l: "Bideojokoak", e: "🎮", c: "#4d49a8" },
-    moda: { l: "Moda", e: "👟", c: "#e9a24f" },
-    gizartea: { l: "Gizartea", e: "🗳️", c: "#ff5571" },
+    kirola: { l: "Kirola", e: "⚽", c: "#0e7a86" },
+    musika: { l: "Musika", e: "🎵", c: "#1d4e6e" },
+    zientzia: { l: "Zientzia", e: "🔬", c: "#2a6f97" },
+    jokoak: { l: "Bideojokoak", e: "🎮", c: "#123f50" },
+    moda: { l: "Moda", e: "👟", c: "#3a8a78" },
+    gizartea: { l: "Gizartea", e: "🗳️", c: "#5b8c4e" },
     animaliak: { l: "Animaliak", e: "🐶", c: "#2e9e5e" }
   };
   const POSTS = [
@@ -76,7 +76,7 @@
 
     host.innerHTML = `
       <div class="widget">
-        <div class="widget-head"><h3>📱 Jario-simulagailua: nork aukeratzen du zer ikusten duzun?</h3><span class="badge">Eskuratu · Etika</span></div>
+        <div class="widget-head"><h3>Jario-simulagailua: nork aukeratzen du zer ikusten duzun?</h3><span class="badge">Eskuratu · Etika</span></div>
         <div class="widget-body">
           <div class="feed-sim">
             <div>
@@ -275,10 +275,10 @@
      ====================================================================== */
   const PEOPLE = { Ane: "#ff5571", Unai: "#3d9fd6", Maddi: "#12a9a4" };
   const METERS = [
-    ["giro", "Giroa", "#c95fc1"],
-    ["lank", "Lankidetza", "#e9a24f"],
-    ["zin", "Zintzotasuna", "#12a9a4"],
-    ["zeh", "Zehaztasuna", "#3d9fd6"]
+    ["giro", "Giroa", "#1d4e6e"],
+    ["lank", "Lankidetza", "#2a6f97"],
+    ["zin", "Zintzotasuna", "#0e7a86"],
+    ["zeh", "Zehaztasuna", "#3a8a78"]
   ];
   const NODES = {
     start: {
@@ -408,7 +408,7 @@
     let M, log, busy;
     host.innerHTML = `
       <div class="widget">
-        <div class="widget-head"><h3>💬 Talde-txata: Historiako proiektua</h3><span class="badge">Parte hartu</span></div>
+        <div class="widget-head"><h3>Talde-txata: Historiako proiektua</h3><span class="badge">Parte hartu</span></div>
         <div class="gchat">
           <div class="gchat-main">
             <div class="gchat-top">
@@ -562,7 +562,7 @@
 
     host.innerHTML = `
       <div class="widget">
-        <div class="widget-head"><h3>🔐 Pribatutasun-panela: konfiguratu zure kontua</h3><span class="badge">Eskuratu eta erabili</span></div>
+        <div class="widget-head"><h3>Pribatutasun-panela: konfiguratu zure kontua</h3><span class="badge">Eskuratu eta erabili</span></div>
         <div class="widget-body">
           <div class="note" style="margin-bottom:1.2rem"><strong>Egoera</strong><p>Kontu berria sortu duzu «Klik» sare sozialean. <b>Bi helburu</b> dituzu: (1) lagunekin argazkiak partekatzea eta (2) institutuko antzerki-taldearen emanaldiak herrian iragartzea. Aldatu ezarpenak eta ikusi nola aldatzen diren zure esposizioa eta helburuen betetzea.</p></div>
           <div class="privacy-sim">
@@ -667,7 +667,7 @@
     let picked = null;
     host.innerHTML = `
       <div class="widget">
-        <div class="widget-head"><h3>🗂️ Digital declutter: antolatu proiektuaren karpeta</h3><span class="badge">Eskuratu eta erabili</span></div>
+        <div class="widget-head"><h3>Digital declutter: antolatu proiektuaren karpeta</h3><span class="badge">Eskuratu eta erabili</span></div>
         <div class="widget-body">
           <p style="color:var(--ink-soft);margin-bottom:1rem">Talde-proiektuaren karpeta partekatua nahaspilatuta dago. <b>Arrastatu</b> fitxategi bakoitza dagokion karpetara (edo <b>sakatu fitxategia eta gero karpeta</b>, mugikorrean).</p>
           <div class="declutter">
@@ -819,7 +819,7 @@
     const st = { bg: "morea", top: "", bottom: "", color: "#ffffff", sticker: "🍎", data: false, source: "", aiLabel: false };
     host.innerHTML = `
       <div class="widget">
-        <div class="widget-head"><h3>🎨 Editorea: sortu kanpaina-irudi bat</h3><span class="badge">Sortu</span></div>
+        <div class="widget-head"><h3>Editorea: sortu kanpaina-irudi bat</h3><span class="badge">Sortu</span></div>
         <div class="widget-body">
           <div class="note" style="margin-bottom:1.2rem"><strong>Erronka</strong><p>Institutuko jantokian <b>astean 45 kg janari</b> botatzen da (jantokiko neurketa, 2026ko urria). Sortu sare sozialetarako irudi bat <b>12–16 urteko ikasleei</b> zuzendua, janaria ez botatzera animatzeko. Zerrendak zure erabakiak ebaluatzen ditu zuzenean.</p></div>
           <div class="editor">

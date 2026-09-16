@@ -1,0 +1,227 @@
+/* ==========================================================================
+   artifiziala.eus · Itxura profesionala
+   Azken geruza: orri guztietan </head> aurretik kargatzen da, orrietako
+   <style> blokeen gainetik. Tokenak styles.css eta pisa.css fitxategietan.
+   ========================================================================== */
+
+/* ---------- Tipografia ---------- */
+body{
+  font-family:var(--font-body);
+  font-size:16.5px;
+  line-height:1.65;
+  color:var(--text);
+  font-variant-numeric:lining-nums;
+  font-feature-settings:"kern" 1, "lnum" 1;
+}
+strong, b{ font-weight:700; }
+
+h1, h2, h3,
+.hero-title,
+.course-intro-copy h1{
+  font-family:var(--font-display);
+  font-weight:700;
+  letter-spacing:-.015em;
+}
+h1{ line-height:1.06; }
+h2{ line-height:1.12; }
+h3{ line-height:1.25; }
+
+/* h4 eta etiketa txikiak: sans, lasai */
+h4, h5, h6{ font-family:var(--font-body); font-weight:600; letter-spacing:0; }
+
+.brand-text strong{
+  font-family:var(--font-body);
+  font-weight:700;
+  letter-spacing:-.01em;
+  font-size:1.35rem;
+}
+.brand-subtitle{ font-weight:500; }
+
+.cta-doc-icon{ font-family:var(--font-display) !important; }
+
+/* Etiketa tekniko-itxurakoak (mono, maiuskulak, tartekatuak) → testu arrunta */
+.pisa-eyebrow,
+.p-head .kicker,
+.course-kicker,
+.hero-tag,
+.def-box .label,
+.tt-card .lbl,
+.comp-card .top .num,
+.pisa-hero .label,
+.side-nav .ttl,
+.side-title{
+  font-family:var(--font-body) !important;
+  text-transform:none !important;
+  letter-spacing:0 !important;
+  font-weight:500;
+}
+.p-head .kicker{ font-size:.95rem; }
+.pisa-eyebrow .pulse{ animation:none; box-shadow:none; }
+
+/* ---------- Formak ---------- */
+.btn,
+.pisa-page .btn,
+.site-nav a,
+.pisa-subnav a,
+.chip,
+.p-tab,
+.pisa-eyebrow,
+.course-kicker{
+  border-radius:4px !important;
+}
+
+.course-meta-card,
+.section-block,
+.chapter-card,
+.ai-demo-card,
+.ai-demo-screen{
+  border-radius:10px !important;
+}
+
+.btn{
+  font-weight:600;
+  letter-spacing:0;
+  transition:background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn:hover{ transform:none; }
+
+.btn-primary{
+  background:var(--teal);
+  border-color:var(--teal);
+  color:#fff;
+}
+.btn-primary:hover{ background:var(--p-700); border-color:var(--p-700); }
+
+/* ---------- Dekorazio lausoak kendu ---------- */
+.pisa-hero::before,
+.pisa-hero::after,
+.course-intro::before,
+.course-intro::after,
+.cta-band::after{
+  display:none !important;
+}
+
+.site-footer,
+.course-intro,
+.inner-hero,
+.lessons-hero,
+.teach-hero,
+.family-hero,
+.erronka-hero,
+.lesson-hero-visual,
+.site-header{
+  background-color:var(--purple-deep) !important;
+}
+
+/* Hero-ak: kolore lau bat eta goiko marra mehe bat */
+.pisa-hero,
+.course-intro,
+.inner-hero,
+.lessons-hero,
+.teach-hero,
+.family-hero,
+.erronka-hero{
+  background-image:none !important;
+  box-shadow:inset 0 4px 0 var(--p-500);
+}
+
+/* Glow eta itzal handiak apaldu */
+.ai-demo-card{ box-shadow:0 1px 0 rgba(255,255,255,.06) inset, 0 12px 32px rgba(0,0,0,.18) !important; backdrop-filter:none !important; }
+
+/* ---------- PISA atala ---------- */
+.strategy{ grid-template-columns:minmax(0,1fr); border-left:3px solid var(--rule); border-radius:0 var(--r-md) var(--r-md) 0; }
+.fact > div:only-child{ grid-column:2; }
+.p-card > h3:first-child{ margin-top:0; }
+
+/* Gaitasun-txartelak: goiko kolore-marra, ikonorik gabe */
+.comp-card .top{ gap:.35rem; }
+
+/* Azpinabigazioa: testu hutsa, aktiboa azpimarratua */
+.pisa-subnav a.active,
+.pisa-subnav a[aria-current="page"]{
+  box-shadow:inset 0 -2px 0 currentColor;
+}
+
+/* ---------- Mugimendua ---------- */
+.reveal,
+.js .reveal{
+  transform:none !important;
+  transition:opacity .4s ease-out !important;
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal, .js .reveal{ opacity:1 !important; transition:none !important; }
+}
+
+/* ---------- Doikuntzak ---------- */
+/* Hero-etako testu nabarmendua: kolore argia hondo ilunean, ez azentu bakarra */
+.pisa-hero h1 em{ color:inherit; }
+
+.course-intro-copy h1{ max-width:14ch; font-size:clamp(2.6rem, 5vw, 4.4rem); line-height:1.04; }
+.course-kicker, .pisa-eyebrow{ border-color:rgba(255,255,255,.22) !important; }
+
+/* Hasierako PISA banda: kolore lau, "2029" elementu nagusi */
+.cta-download-card{
+  background:var(--p-700) !important;
+  border-radius:10px !important;
+  box-shadow:none !important;
+}
+.cta-download-card::before,
+.cta-download-card::after{ display:none !important; }
+.cta-download-badge{
+  text-transform:none !important;
+  letter-spacing:0 !important;
+  border-radius:4px !important;
+  background:rgba(255,255,255,.12) !important;
+  font-weight:500 !important;
+}
+.cta-download-btn{ border-radius:4px !important; color:var(--p-700) !important; }
+.cta-download-visual .cta-doc-icon{
+  width:auto !important; height:auto !important;
+  background:none !important; border:none !important; box-shadow:none !important;
+  font-family:var(--font-display) !important;
+  font-weight:300 !important;
+  font-size:clamp(4rem, 10vw, 8.5rem) !important;
+  line-height:1 !important;
+  color:rgba(255,255,255,.92) !important;
+  letter-spacing:-.03em;
+}
+
+/* Mono etiketa txikiak */
+.model-legend a em{ font-family:var(--font-body) !important; font-size:.78rem !important; }
+.pisa-subnav .tag{ font-family:var(--font-body); letter-spacing:0; border-radius:4px; }
+
+.comp-toc h4{ font-family:var(--font-body); font-size:.85rem; letter-spacing:0; text-transform:none; font-weight:600; color:var(--ink-soft); }
+.progress-cell .val{ font-family:var(--font-body); }
+.lesson-card-custom,
+.lessons-stat,
+.bottom-cta{ border-radius:10px !important; }
+
+/* Raleway: izenburu handiak arinago, estuago */
+.course-intro-copy h1,
+.pisa-hero h1,
+.hero-title{ font-weight:800; letter-spacing:-.025em; }
+.p-card, .fact, .strategy, .model-legend a{ color:var(--text); }
+
+/* Mugikorreko menu-botoia: testua eta marrak ez gainjartzeko */
+.nav-toggle{ align-items:center; gap:.6rem; border-radius:4px; font:inherit; font-weight:600; }
+
+/* Widget eta ariketetako etiketak: testu arrunta (simulatutako edukia ez) */
+.countdown-card .label,
+.stim-cap,
+.rubric .model b,
+.bank-toolbar label,
+.widget-head .badge,
+.feed-stat h4,
+.gchat-side h4{
+  font-family:var(--font-body) !important;
+  text-transform:none !important;
+  letter-spacing:0 !important;
+  font-weight:600;
+}
+@media (max-width: 420px){
+  .nav-wrap{ gap:.75rem; }
+  .brand{ gap:.6rem; min-width:0; }
+  .brand-text strong{ font-size:1.2rem; }
+  .nav-toggle{ padding:.45rem .65rem; flex:none; }
+}
+.desktop-top{ font-family:var(--font-body); }

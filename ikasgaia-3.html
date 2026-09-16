@@ -173,8 +173,8 @@
       display: none;
       margin-top: 1.5rem;
       padding: 1rem;
-      background: rgba(167, 139, 250, 0.1);
-      border-left: 4px solid #A78BFA;
+      background: rgba(46,151,160, 0.1);
+      border-left: 4px solid #5fb3ba;
       border-radius: 8px;
     }
     .mini-quiz-opt.correct {
@@ -188,6 +188,7 @@
       border-color: #ef4444 !important;
     }
   </style>
+  <link rel="stylesheet" href="assets/css/pro.css" />
 </head>
 <body>
   <header class="site-header">
@@ -377,7 +378,7 @@
           </article>
 
           <article class="page-card reveal" id="bisualizadorea">
-            <h2>🔬 Bisualizadore interaktiboa</h2>
+            <h2>Bisualizadore interaktiboa</h2>
             <p>
               Ikusi zuzenean nola analizatzen duen makina batek irudi bat, pauso bakoitzean zer gertatzen den
               ulertzeko. Kargatu irudi bat edo erabili adibidea eta sakatu "Analisia hasi".
@@ -391,9 +392,9 @@
                     <canvas id="inputCanvas" width="300" height="300"></canvas>
                   </div>
                   <div class="visualizer-controls">
-                    <button onclick="document.getElementById('fileInput').click()">📁 Irudia kargatu</button>
-                    <button class="secondary" onclick="clearCanvas()">🗑️ Garbitu</button>
-                    <button class="secondary" onclick="loadSampleImage()">🎨 Adibidea</button>
+                    <button onclick="document.getElementById('fileInput').click()">Irudia kargatu</button>
+                    <button class="secondary" onclick="clearCanvas()">Garbitu</button>
+                    <button class="secondary" onclick="loadSampleImage()">Adibidea</button>
                     <button onclick="startAnalysis()">▶️ Analisia hasi</button>
                   </div>
                   <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
@@ -454,7 +455,7 @@
                   <h3>4-5. Emaitza</h3>
                   <div class="result-display">
                     <div class="result-text" id="resultText">
-                      ⏳ Analisia abiarazi irudia aztertzeko
+                      Analisia abiarazi irudia aztertzeko
                     </div>
                     <div class="result-confidence" id="confidence"></div>
                   </div>
@@ -752,7 +753,7 @@
       edgeCtx.fillRect(0, 0, edgeCanvas.width, edgeCanvas.height);
       patternCtx.fillStyle = '#000';
       patternCtx.fillRect(0, 0, patternCanvas.width, patternCanvas.height);
-      document.getElementById('resultText').textContent = '⏳ Analisia abiarazi irudia aztertzeko';
+      document.getElementById('resultText').textContent = 'Analisia abiarazi irudia aztertzeko';
       document.getElementById('confidence').textContent = '';
       resetSteps();
     }
@@ -886,7 +887,7 @@
         { name: 'Irudia', confidence: 0.52 }
       ];
       const winner = categories[0];
-      document.getElementById('resultText').textContent = `✅ Detektatua: "${winner.name}"`;
+      document.getElementById('resultText').textContent = `Detektatua: "${winner.name}"`;
       document.getElementById('confidence').innerHTML = `Ziurtasuna: ${(winner.confidence * 100).toFixed(0)}%<br><br>` + categories.map(c => `${c.name}: ${(c.confidence * 100).toFixed(0)}%`).join('<br>');
     }
 

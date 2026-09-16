@@ -12,7 +12,7 @@
     .mode-cards{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.2rem; margin-bottom:2rem; }
     .mode-card{ text-align:left; cursor:pointer; border:2px solid var(--rule); border-radius:var(--r-lg); padding:1.4rem; background:#fff; display:grid; gap:.4rem; font:inherit; color:var(--ink); transition:border-color .15s, box-shadow .15s; }
     .mode-card:hover{ border-color:var(--purple-soft); }
-    .mode-card.active{ border-color:var(--ink); box-shadow:0 10px 26px rgba(38,35,79,.1); }
+    .mode-card.active{ border-color:var(--ink); box-shadow:0 10px 26px rgba(19,38,46,.1); }
     .mode-card b{ font-family:var(--font-display); font-size:1.35rem; }
     .mode-card span{ color:var(--ink-soft); font-size:.95rem; }
     .exam-setup{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; }
@@ -23,6 +23,7 @@
     .history li{ display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid var(--rule); font-size:.9rem; }
     @media (max-width:900px){ .mode-cards, .exam-setup{ grid-template-columns:1fr; } }
   </style>
+  <link rel="stylesheet" href="../assets/css/pro.css" />
 </head>
 <body class="pisa-page">
   <header class="site-header">
@@ -58,16 +59,16 @@
       <span class="tag">MAIL</span>
       <nav aria-label="PISA 2029 atala">
         <a href="index.html">Hasiera</a>
-        <a href="markoa.html">📘 Markoa</a>
-        <a href="etika.html">⚖️ Etika</a>
-        <a href="sarbidea.html">🧭 Eskuratu</a>
-        <a href="aztertu.html">🔎 Aztertu</a>
-        <a href="parte-hartu.html">🤝 Parte hartu</a>
-        <a href="sortu.html">✨ Sortu</a>
-        <a href="simulagailua.html">🖥️ Simulagailua</a>
-        <a href="ariketak.html">📝 Ariketak</a>
-        <a href="txantiloiak.html">📄 Txantiloiak</a>
-        <a href="irakasleak.html">🎓 Irakasleak</a>
+        <a href="markoa.html">Markoa</a>
+        <a href="etika.html">Etika</a>
+        <a href="sarbidea.html">Eskuratu</a>
+        <a href="aztertu.html">Aztertu</a>
+        <a href="parte-hartu.html">Parte hartu</a>
+        <a href="sortu.html">Sortu</a>
+        <a href="simulagailua.html">Simulagailua</a>
+        <a href="ariketak.html">Ariketak</a>
+        <a href="txantiloiak.html">Txantiloiak</a>
+        <a href="irakasleak.html">Irakasleak</a>
       </nav>
     </div>
   </div>
@@ -86,8 +87,8 @@
     <section class="p-section">
       <div class="container">
         <div class="mode-cards" role="tablist">
-          <button class="mode-card active" type="button" data-mode="free" role="tab" aria-selected="true"><b>📚 Praktika librea</b><span>Iragazi gaitasunaren, testuinguruaren, mailaren edo motaren arabera. Feedbacka berehala.</span></button>
-          <button class="mode-card" type="button" data-mode="exam" role="tab" aria-selected="false"><b>⏱️ Proba-saioa</b><span>Ausazko ariketak, denbora-mugarekin eta feedbackik gabe amaierara arte, benetako proban bezala.</span></button>
+          <button class="mode-card active" type="button" data-mode="free" role="tab" aria-selected="true"><b>Praktika librea</b><span>Iragazi gaitasunaren, testuinguruaren, mailaren edo motaren arabera. Feedbacka berehala.</span></button>
+          <button class="mode-card" type="button" data-mode="exam" role="tab" aria-selected="false"><b>Proba-saioa</b><span>Ausazko ariketak, denbora-mugarekin eta feedbackik gabe amaierara arte, benetako proban bezala.</span></button>
         </div>
 
         <!-- PRAKTIKA LIBREA -->
@@ -108,9 +109,9 @@
           <div id="examSetup">
             <div class="p-head"><span class="kicker">Aukeratu saioa</span><h2 style="font-size:1.9rem">Zenbat denbora duzu?</h2><p>Ariketak ausaz aukeratzen dira, PISAren denbora-banaketa gomendatua errespetatuz (aztertu eta sortu gehiago). Erantzun irekiak ez dira sartzen.</p></div>
             <div class="exam-setup">
-              <button class="exam-opt" type="button" data-exam="8,12"><b>⚡ Laburra</b><span>8 ariketa · 12 minutu</span></button>
-              <button class="exam-opt" type="button" data-exam="14,22"><b>🎯 Ertaina</b><span>14 ariketa · 22 minutu</span></button>
-              <button class="exam-opt" type="button" data-exam="20,32"><b>🏁 Osoa</b><span>20 ariketa · 32 minutu</span></button>
+              <button class="exam-opt" type="button" data-exam="8,12"><b>Laburra</b><span>8 ariketa · 12 minutu</span></button>
+              <button class="exam-opt" type="button" data-exam="14,22"><b>Ertaina</b><span>14 ariketa · 22 minutu</span></button>
+              <button class="exam-opt" type="button" data-exam="20,32"><b>Osoa</b><span>20 ariketa · 32 minutu</span></button>
             </div>
             <div class="grid-2" style="margin-top:2rem">
               <div class="p-card soft"><h3>Azken saioak</h3><ul class="history" data-history></ul></div>
@@ -151,7 +152,7 @@
         <div class="footer-topics">
           <h4>PISA 2029 · MAIL</h4>
           <div class="footer-topic-grid">
-            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
             <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
             <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
             <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
@@ -317,7 +318,7 @@
                 return `Zure gaitasunik ahulena: <b>${MAIL.COMP[weak].name}</b>. Landu <a href="${MAIL.COMP[weak].page}" style="font-weight:700;color:var(--purple)">haren orria</a> eta egin simulagailua.`;
               })()}</p></div>
               <div style="display:flex;gap:.6rem;flex-wrap:wrap">
-                <button class="btn btn-dark btn-sm" type="button" data-review>👀 Berrikusi erantzunak</button>
+                <button class="btn btn-dark btn-sm" type="button" data-review>Berrikusi erantzunak</button>
                 <button class="btn btn-ghost btn-sm" type="button" data-again>↺ Beste saio bat</button>
               </div>
             </div>

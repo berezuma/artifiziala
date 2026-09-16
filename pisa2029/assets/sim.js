@@ -351,8 +351,8 @@
     root.innerHTML = `
       <div class="desktop" role="application" aria-label="Mahaigain simulatua">
         <div class="desktop-top">
-          <span class="task-pill">🖥️ <b>${esc(sc.title)}</b> · ${esc(sc.role)}</span>
-          <span>⏱️ <span data-clock>00:00</span> · gomendatua 20 min</span>
+          <span class="task-pill"><b>${esc(sc.title)}</b><span class="role"> · ${esc(sc.role)}</span></span>
+          <span><span data-clock>00:00</span><span class="rec"> · gomendatua 20 min</span></span>
         </div>
         <div class="desktop-area">
           <section class="win" data-win="chat"><div class="win-bar"><span class="dots"><i></i><i></i><i></i></span>💬 Txata</div><div class="win-content" data-chat></div></section>
@@ -907,11 +907,11 @@
           <div>${MAIL.COMP_ORDER.map((c) => {
             const p = byComp[c];
             const l = MAIL.levelFromPct(p);
-            return `<div class="meter-row" style="margin-bottom:.7rem"><span class="name">${MAIL.COMP[c].glyph} ${esc(MAIL.COMP[c].short)}</span><div class="meter"><i style="width:${p}%;background:${MAIL.COMP[c].color}"></i></div><span class="lvl l${l}">${pts[c][0]}/${pts[c][1]} · ${MAIL.LEVEL[l]}</span></div>`;
+            return `<div class="meter-row" style="margin-bottom:.7rem"><span class="name">${esc(MAIL.COMP[c].short)}</span><div class="meter"><i style="width:${p}%;background:${MAIL.COMP[c].color}"></i></div><span class="lvl l${l}">${pts[c][0]}/${pts[c][1]} · ${MAIL.LEVEL[l]}</span></div>`;
           }).join("")}</div>
           <p style="font-size:.8rem;color:var(--ink-mute)">Marra zuriek maila-mugak adierazten dituzte (%40 tartekoa, %75 aurreratua). Puntuazioa orientagarria da, ez PISAren benetako eskala.</p>
           <div><h4 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:.6rem">Ebidentziak eta feedbacka</h4>
-            <ul class="evidence-list">${E.map((e) => `<li><span class="st ${e.st}">${e.st === "ok" ? "✓" : e.st === "mid" ? "~" : "✗"}</span><div><b>${esc(MAIL.COMP[e.c].glyph)} ${esc(e.title)}</b> <span class="mono" style="font-size:.75rem;color:var(--ink-mute)">${e.got}/${e.max}</span><small>${esc(e.text)}</small></div></li>`).join("")}</ul>
+            <ul class="evidence-list">${E.map((e) => `<li><span class="st ${e.st}">${e.st === "ok" ? "✓" : e.st === "mid" ? "~" : "✗"}</span><div><b>${esc(e.title)}</b> <span class="mono" style="font-size:.75rem;color:var(--ink-mute)">${e.got}/${e.max}</span><small>${esc(e.text)}</small></div></li>`).join("")}</ul>
           </div>
           <div class="note ok"><strong>Eredu-erantzuna (arduradunarentzako mezua)</strong><p>${esc(sc.model)}</p></div>
           <details class="acc"><summary>⏱️ Zure ekintzen sekuentzia (${lines.length})</summary><div class="acc-body"><ol style="list-style:none;display:grid;gap:.25rem;font-size:.88rem">${lines

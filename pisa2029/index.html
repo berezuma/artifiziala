@@ -13,13 +13,13 @@
       display:grid; gap:.25rem; background:#fff; border:1px solid var(--rule); border-radius:var(--r-md);
       padding:1rem 1.1rem; color:var(--ink); transition:border-color .15s, box-shadow .15s, transform .15s;
     }
-    .model-legend a:hover, .model-legend a:focus-visible, .model-legend a.on{ border-color:var(--ink); box-shadow:0 8px 20px rgba(38,35,79,.08); transform:translateX(4px); }
+    .model-legend a:hover, .model-legend a:focus-visible, .model-legend a.on{ border-color:var(--ink); box-shadow:0 8px 20px rgba(19,38,46,.08); transform:translateX(4px); }
     .model-legend a strong{ font-family:var(--font-display); font-size:1.05rem; display:flex; gap:.55rem; align-items:center; }
     .model-legend a span{ color:var(--ink-soft); font-size:.9rem; }
     .model-legend a em{ font-style:normal; font-family:var(--font-mono); font-size:.7rem; color:var(--ink-mute); margin-left:auto; }
     .model-svg .node{ transition:opacity .2s ease; }
     .model-svg.focus .node:not(.on){ opacity:.25; }
-    .model-svg .node.on circle{ filter:drop-shadow(0 6px 12px rgba(38,35,79,.25)); }
+    .model-svg .node.on circle{ filter:drop-shadow(0 6px 12px rgba(19,38,46,.25)); }
 
     .facts{ display:grid; gap:1rem; }
     .fact{ display:grid; grid-template-columns:56px minmax(0,1fr); gap:1rem; align-items:start; padding:1.2rem; border-radius:var(--r-md); background:var(--surface-2); }
@@ -50,6 +50,7 @@
     @media (max-width:1100px){ .demo-wrap{ grid-template-columns:1fr; } }
     @media (max-width:900px){ .task-types{ grid-template-columns:1fr; } }
   </style>
+  <link rel="stylesheet" href="../assets/css/pro.css" />
 </head>
 <body class="pisa-page">
   <header class="site-header">
@@ -85,16 +86,16 @@
       <span class="tag">MAIL</span>
       <nav aria-label="PISA 2029 atala">
         <a href="index.html">Hasiera</a>
-        <a href="markoa.html">📘 Markoa</a>
-        <a href="etika.html">⚖️ Etika</a>
-        <a href="sarbidea.html">🧭 Eskuratu</a>
-        <a href="aztertu.html">🔎 Aztertu</a>
-        <a href="parte-hartu.html">🤝 Parte hartu</a>
-        <a href="sortu.html">✨ Sortu</a>
-        <a href="simulagailua.html">🖥️ Simulagailua</a>
-        <a href="ariketak.html">📝 Ariketak</a>
-        <a href="txantiloiak.html">📄 Txantiloiak</a>
-        <a href="irakasleak.html">🎓 Irakasleak</a>
+        <a href="markoa.html">Markoa</a>
+        <a href="etika.html">Etika</a>
+        <a href="sarbidea.html">Eskuratu</a>
+        <a href="aztertu.html">Aztertu</a>
+        <a href="parte-hartu.html">Parte hartu</a>
+        <a href="sortu.html">Sortu</a>
+        <a href="simulagailua.html">Simulagailua</a>
+        <a href="ariketak.html">Ariketak</a>
+        <a href="txantiloiak.html">Txantiloiak</a>
+        <a href="irakasleak.html">Irakasleak</a>
       </nav>
     </div>
   </div>
@@ -112,7 +113,7 @@
             Hemen dituzu teoria, ariketa interaktiboak, simulagailuak eta txantiloi deskargagarriak.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="simulagailua.html">🖥️ Probatu simulagailua</a>
+            <a class="btn btn-primary" href="simulagailua.html">Probatu simulagailua</a>
             <a class="btn btn-secondary" href="ariketak.html">Ariketa-bankua</a>
             <a class="btn btn-secondary" href="irakasleak.html">Irakasleentzat</a>
           </div>
@@ -127,9 +128,9 @@
           <p style="font-size:.85rem;color:rgba(255,255,255,.7)">Proba 2029an egingo da; herrialde bakoitzak zehazten ditu data zehatzak.</p>
           <div class="comp-bars" aria-label="Ebaluazio-denboraren banaketa gomendatua">
             <div class="label" style="margin-top:.6rem">Denbora-banaketa gomendatua</div>
-            <div class="comp-bar"><span>🔎 Aztertu eta ebaluatu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#ff5571"></div></div></div>
-            <div class="comp-bar"><span>✨ Sortu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#18c3bd"></div></div></div>
-            <div class="comp-bar"><span>⚖️ 🧭 🤝 Beste hirurak</span><b>%50</b><div class="track"><div class="fill" style="width:50%;background:linear-gradient(90deg,#c95fc1,#62b9e7,#f4be7d)"></div></div></div>
+            <div class="comp-bar"><span>Aztertu eta ebaluatu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#0e7a86"></div></div></div>
+            <div class="comp-bar"><span>Sortu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#5b8c4e"></div></div></div>
+            <div class="comp-bar"><span>Beste hirurak</span><b>%50</b><div class="track"><div class="fill" style="width:50%;background:linear-gradient(90deg,#1d4e6e,#2a6f97,#3a8a78)"></div></div></div>
           </div>
         </aside>
       </div>
@@ -162,9 +163,9 @@
 
         <div class="facts reveal">
           <div class="fact"><span class="big" aria-hidden="true">15</span><div><h3>Nor ebaluatuko da?</h3><p>15 urteko ikasleak (Euskal Herrian, gehienak DBH 4. mailan). Ikasle bakoitzak domeinu batzuk egiten ditu; MAIL horietako bat izango da.</p></div></div>
-          <div class="fact"><span class="big" aria-hidden="true">💻</span><div><h3>Nola?</h3><p>Ordenagailuan. <strong>Ataza laburrak</strong> (aukera anitza, lotzea, erantzun laburrak) eta <strong>ataza luzeak</strong> ingurune simulatuetan: txata, nabigatzailea, bilatzailea, AA tresnak.</p></div></div>
+          <div class="fact"><div><h3>Nola?</h3><p>Ordenagailuan. <strong>Ataza laburrak</strong> (aukera anitza, lotzea, erantzun laburrak) eta <strong>ataza luzeak</strong> ingurune simulatuetan: txata, nabigatzailea, bilatzailea, AA tresnak.</p></div></div>
           <div class="fact"><span class="big" aria-hidden="true">5</span><div><h3>Zer neurtzen da?</h3><p>Bost gaitasun, hiru kontzeptu gakoren inguruan (egileak eta audientziak, mezuak eta esanahiak, irudikapenak eta errealitateak) eta bost testuingurutan.</p></div></div>
-          <div class="fact"><span class="big" aria-hidden="true">📋</span><div><h3>Eta galdetegia?</h3><p>Ikasleen jarrerak, ohiturak eta ikastetxean MAIL lantzeko izan dituzten aukerak ere jasoko dira. Irakasleen lanak garrantzia du!</p></div></div>
+          <div class="fact"><div><h3>Eta galdetegia?</h3><p>Ikasleen jarrerak, ohiturak eta ikastetxean MAIL lantzeko izan dituzten aukerak ere jasoko dira. Irakasleen lanak garrantzia du!</p></div></div>
         </div>
       </div>
     </section>
@@ -187,10 +188,10 @@
               <path id="arcC" d="M82.3,409.1 A232,232 0 0 0 437.7,409.1"/>
               <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a87a8"/></marker>
             </defs>
-            <circle cx="260" cy="260" r="222" fill="none" stroke="#ebe6f5" stroke-width="42"/>
-            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcA" startOffset="50%" text-anchor="middle">EGILEAK ETA AUDIENTZIAK</textPath></text>
-            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcB" startOffset="50%" text-anchor="middle">MEZUAK ETA ESANAHIAK</textPath></text>
-            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcC" startOffset="50%" text-anchor="middle">IRUDIKAPENAK ETA ERREALITATEAK</textPath></text>
+            <circle cx="260" cy="260" r="222" fill="none" stroke="#e3eef0" stroke-width="42"/>
+            <text font-size="13.5" font-weight="700" fill="#4f5470" letter-spacing="1.2"><textPath href="#arcA" startOffset="50%" text-anchor="middle">EGILEAK ETA AUDIENTZIAK</textPath></text>
+            <text font-size="13.5" font-weight="700" fill="#4f5470" letter-spacing="1.2"><textPath href="#arcB" startOffset="50%" text-anchor="middle">MEZUAK ETA ESANAHIAK</textPath></text>
+            <text font-size="13.5" font-weight="700" fill="#4f5470" letter-spacing="1.2"><textPath href="#arcC" startOffset="50%" text-anchor="middle">IRUDIKAPENAK ETA ERREALITATEAK</textPath></text>
 
             <g stroke="#8a87a8" stroke-width="2" stroke-dasharray="5 5" fill="none">
               <line x1="168.7" y1="236.7" x2="297.7" y2="175" marker-end="url(#arr)"/>
@@ -199,38 +200,38 @@
             </g>
 
             <a href="sarbidea.html"><g class="node" data-node="sarbidea">
-              <circle cx="120" cy="260" r="54" fill="#e7f3fb" stroke="#3d9fd6" stroke-width="3"/>
-              <text x="120" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Eskuratu</text>
-              <text x="120" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">eta erabili</text>
+              <circle cx="120" cy="260" r="54" fill="#eaf2f7" stroke="#2a6f97" stroke-width="3"/>
+              <text x="120" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">Eskuratu</text>
+              <text x="120" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">eta erabili</text>
             </g></a>
             <a href="etika.html"><g class="node" data-node="etika">
-              <circle cx="260" cy="260" r="76" fill="#f8eaf7" stroke="#c95fc1" stroke-width="4"/>
-              <text x="260" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Hausnartu eta</text>
-              <text x="260" y="263" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">jardun etikoki</text>
-              <text x="260" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">eta arduraz</text>
+              <circle cx="260" cy="260" r="76" fill="#eaf2f5" stroke="#1d4e6e" stroke-width="4"/>
+              <text x="260" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">Hausnartu eta</text>
+              <text x="260" y="263" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">jardun etikoki</text>
+              <text x="260" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">eta arduraz</text>
             </g></a>
             <a href="aztertu.html"><g class="node" data-node="aztertu">
-              <circle cx="350" cy="150" r="54" fill="#ffecef" stroke="#ff5571" stroke-width="3"/>
-              <text x="350" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Aztertu eta</text>
-              <text x="350" y="163" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">ebaluatu</text>
+              <circle cx="350" cy="150" r="54" fill="#e4f2f3" stroke="#0e7a86" stroke-width="3"/>
+              <text x="350" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">Aztertu eta</text>
+              <text x="350" y="163" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">ebaluatu</text>
             </g></a>
             <a href="parte-hartu.html"><g class="node" data-node="partehartu">
-              <circle cx="402" cy="260" r="54" fill="#fdf2e3" stroke="#e9a24f" stroke-width="3"/>
-              <text x="402" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Parte hartu</text>
-              <text x="402" y="273" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26234f">elkarlanean</text>
+              <circle cx="402" cy="260" r="54" fill="#e8f3f0" stroke="#3a8a78" stroke-width="3"/>
+              <text x="402" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#13262e">Parte hartu</text>
+              <text x="402" y="273" text-anchor="middle" font-size="12.5" font-weight="700" fill="#13262e">elkarlanean</text>
             </g></a>
             <a href="sortu.html"><g class="node" data-node="sortu">
-              <circle cx="350" cy="370" r="54" fill="#e3f7f6" stroke="#12a9a4" stroke-width="3"/>
-              <text x="350" y="375" text-anchor="middle" font-size="15" font-weight="700" fill="#26234f">Sortu</text>
+              <circle cx="350" cy="370" r="54" fill="#eef4ec" stroke="#5b8c4e" stroke-width="3"/>
+              <text x="350" y="375" text-anchor="middle" font-size="15" font-weight="700" fill="#13262e">Sortu</text>
             </g></a>
           </svg>
 
           <div class="model-legend" id="modelLegend">
-            <a href="etika.html" data-node="etika" class="reveal"><strong><span class="dot" style="background:#c95fc1"></span>Hausnartu eta jardun etikoki eta arduraz <em>zeharkakoa</em></strong><span>Erantzukizuna, zuzentasuna eta giza balioak kontuan hartzea: pribatutasuna, ongizatea, jasangarritasuna.</span></a>
-            <a href="sarbidea.html" data-node="sarbidea" class="reveal"><strong><span class="dot" style="background:#3d9fd6"></span>Eskuratu eta erabili <em>oinarria</em></strong><span>Bilatu, kontsultatu, AAri eskatu (prompt), kuratu, antolatu eta datuak babestu.</span></a>
-            <a href="aztertu.html" data-node="aztertu" class="reveal"><strong><span class="dot" style="background:#ff5571"></span>Aztertu eta ebaluatu <em>%25</em></strong><span>Gizakiek eta AAk sortutako edukien helburua, alborapena, garrantzia eta sinesgarritasuna ebaluatu.</span></a>
-            <a href="parte-hartu.html" data-node="partehartu" class="reveal"><strong><span class="dot" style="background:#e9a24f"></span>Parte hartu eta elkarlanean aritu</strong><span>Online komunitateetan errespetuz jardun, gatazkak baretu eta AAk elkarreraginetan duen eragina ulertu.</span></a>
-            <a href="sortu.html" data-node="sortu" class="reveal"><strong><span class="dot" style="background:#12a9a4"></span>Sortu <em>%25</em></strong><span>Komunikazio-beharra, edukia eta formatua identifikatu, AArekin edo gabe, modu etikoan.</span></a>
+            <a href="etika.html" data-node="etika" class="reveal"><strong><span class="dot" style="background:#1d4e6e"></span>Hausnartu eta jardun etikoki eta arduraz <em>zeharkakoa</em></strong><span>Erantzukizuna, zuzentasuna eta giza balioak kontuan hartzea: pribatutasuna, ongizatea, jasangarritasuna.</span></a>
+            <a href="sarbidea.html" data-node="sarbidea" class="reveal"><strong><span class="dot" style="background:#2a6f97"></span>Eskuratu eta erabili <em>oinarria</em></strong><span>Bilatu, kontsultatu, AAri eskatu (prompt), kuratu, antolatu eta datuak babestu.</span></a>
+            <a href="aztertu.html" data-node="aztertu" class="reveal"><strong><span class="dot" style="background:#0e7a86"></span>Aztertu eta ebaluatu <em>%25</em></strong><span>Gizakiek eta AAk sortutako edukien helburua, alborapena, garrantzia eta sinesgarritasuna ebaluatu.</span></a>
+            <a href="parte-hartu.html" data-node="partehartu" class="reveal"><strong><span class="dot" style="background:#3a8a78"></span>Parte hartu eta elkarlanean aritu</strong><span>Online komunitateetan errespetuz jardun, gatazkak baretu eta AAk elkarreraginetan duen eragina ulertu.</span></a>
+            <a href="sortu.html" data-node="sortu" class="reveal"><strong><span class="dot" style="background:#5b8c4e"></span>Sortu <em>%25</em></strong><span>Komunikazio-beharra, edukia eta formatua identifikatu, AArekin edo gabe, modu etikoan.</span></a>
           </div>
         </div>
       </div>
@@ -246,23 +247,23 @@
         </div>
         <div class="grid-5">
           <a class="comp-card reveal" data-c="etika" href="etika.html">
-            <div class="top"><span class="num">01 · ZEHARKAKOA</span><span class="glyph" aria-hidden="true">⚖️</span><h3>Hausnartu eta jardun etikoki</h3></div>
+            <div class="top"><span class="num">01 · ZEHARKAKOA</span><h3>Hausnartu eta jardun etikoki</h3></div>
             <div class="body"><p>Partekatu ala ez? AA erabili ala ez? Patroi ilunak, datu-minimizazioa, deepfake-ak.</p><span class="weight">9 ariketa · jario-simulagailua</span><span class="go">Hasi →</span></div>
           </a>
           <a class="comp-card reveal" data-c="sarbidea" href="sarbidea.html">
-            <div class="top"><span class="num">02 · OINARRIA</span><span class="glyph" aria-hidden="true">🧭</span><h3>Eskuratu eta erabili</h3></div>
+            <div class="top"><span class="num">02 · OINARRIA</span><h3>Eskuratu eta erabili</h3></div>
             <div class="body"><p>Bilaketa-operadoreak, promptak, gomendio-sistemak, pribatutasun-ezarpenak, fitxategiak.</p><span class="weight">9 ariketa · 2 simulagailu</span><span class="go">Hasi →</span></div>
           </a>
           <a class="comp-card reveal" data-c="aztertu" href="aztertu.html">
-            <div class="top"><span class="num">03 · %25</span><span class="glyph" aria-hidden="true">🔎</span><h3>Aztertu eta ebaluatu</h3></div>
+            <div class="top"><span class="num">03 · %25</span><h3>Aztertu eta ebaluatu</h3></div>
             <div class="body"><p>Irakurketa laterala, manipulazio-teknikak, haluzinazioak, grafiko engainagarriak.</p><span class="weight">11 ariketa · simulagailu nagusia</span><span class="go">Hasi →</span></div>
           </a>
           <a class="comp-card reveal" data-c="partehartu" href="parte-hartu.html">
-            <div class="top"><span class="num">04</span><span class="glyph" aria-hidden="true">🤝</span><h3>Parte hartu eta elkarlanean</h3></div>
+            <div class="top"><span class="num">04</span><h3>Parte hartu eta elkarlanean</h3></div>
             <div class="body"><p>Feedback eraikitzailea, talde-txatak, ziberjazarpena, phishing-a, herritartasun digitala.</p><span class="weight">8 ariketa · talde-txata</span><span class="go">Hasi →</span></div>
           </a>
           <a class="comp-card reveal" data-c="sortu" href="sortu.html">
-            <div class="top"><span class="num">05 · %25</span><span class="glyph" aria-hidden="true">✨</span><h3>Sortu</h3></div>
+            <div class="top"><span class="num">05 · %25</span><h3>Sortu</h3></div>
             <div class="body"><p>Helburua eta audientzia, AAren adierazpena, egile-eskubideak, sortze iteratiboa.</p><span class="weight">9 ariketa · meme-editorea</span><span class="go">Hasi →</span></div>
           </a>
         </div>
@@ -289,17 +290,17 @@
             <span class="lbl">Ataza luzeak</span>
             <h3>Ingurune simulatuak</h3>
             <p>Mahaigain birtual batean txata, nabigatzailea eta AA tresnak dituzu. Probak zure <strong>ekintza-sekuentzia</strong> behatzen du: zer bilatzen duzun, zein iturri irekitzen dituzun, nola justifikatzen duzun.</p>
-            <div class="chips"><span class="chip plain">💬 Txata</span><span class="chip plain">🌐 Nabigatzailea</span><span class="chip plain">🔍 Bilatzailea</span><span class="chip plain">✦ AA tresnak</span><span class="chip plain">📁 Fitxategiak</span></div>
+            <div class="chips"><span class="chip plain">Txata</span><span class="chip plain">Nabigatzailea</span><span class="chip plain">Bilatzailea</span><span class="chip plain">✦ AA tresnak</span><span class="chip plain">Fitxategiak</span></div>
             <a class="btn btn-dark btn-sm" href="simulagailua.html" style="justify-self:start">Probatu simulagailua →</a>
           </div>
         </div>
 
         <div class="grid-5" style="margin-top:1.25rem">
-          <div class="p-card reveal"><div style="font-size:1.6rem">💞</div><h3>Harremanak</h3><p style="font-size:.9rem">Lagunak, taldeak, lagun-txatbotak eta ongizatea.</p></div>
-          <div class="p-card reveal"><div style="font-size:1.6rem">📚</div><h3>Ikaskuntza</h3><p style="font-size:.9rem">Eskolako eta laneko egoerak: iturriak, AAren mugak.</p></div>
-          <div class="p-card reveal"><div style="font-size:1.6rem">🎮</div><h3>Aisialdia</h3><p style="font-size:.9rem">Sare sozialak, jokoak, gomendio-algoritmoak.</p></div>
-          <div class="p-card reveal"><div style="font-size:1.6rem">📣</div><h3>Limurtzea</h3><p style="font-size:.9rem">Publizitatea, desinformazioa, logos, pathos, ethos, kairos.</p></div>
-          <div class="p-card reveal"><div style="font-size:1.6rem">🗳️</div><h3>Herritartasuna</h3><p style="font-size:.9rem">Albisteak, parte-hartze zibikoa, demokrazia.</p></div>
+          <div class="p-card reveal"><h3>Harremanak</h3><p style="font-size:.9rem">Lagunak, taldeak, lagun-txatbotak eta ongizatea.</p></div>
+          <div class="p-card reveal"><h3>Ikaskuntza</h3><p style="font-size:.9rem">Eskolako eta laneko egoerak: iturriak, AAren mugak.</p></div>
+          <div class="p-card reveal"><h3>Aisialdia</h3><p style="font-size:.9rem">Sare sozialak, jokoak, gomendio-algoritmoak.</p></div>
+          <div class="p-card reveal"><h3>Limurtzea</h3><p style="font-size:.9rem">Publizitatea, desinformazioa, logos, pathos, ethos, kairos.</p></div>
+          <div class="p-card reveal"><h3>Herritartasuna</h3><p style="font-size:.9rem">Albisteak, parte-hartze zibikoa, demokrazia.</p></div>
         </div>
       </div>
     </section>
@@ -329,7 +330,7 @@
         </div>
         <div class="grid-2" style="gap:2rem">
           <div class="reveal">
-            <h3 class="route-title">🎒 Ikasleentzat</h3>
+            <h3 class="route-title">Ikasleentzat</h3>
             <ol class="route">
               <li><div><b>Ulertu zer den MAIL</b><span>Irakurri <a href="markoa.html">markoaren laburpena</a> eta ikusi hiru kontzeptu gakoak.</span></div></li>
               <li><div><b>Landu gaitasun bakoitza</b><span>Hasi <a href="sarbidea.html">Eskuratu eta erabili</a> gaitasunarekin (oinarria) eta jarraitu besteekin.</span></div></li>
@@ -338,7 +339,7 @@
             </ol>
           </div>
           <div class="reveal">
-            <h3 class="route-title">🎓 Irakasleentzat</h3>
+            <h3 class="route-title">Irakasleentzat</h3>
             <ol class="route">
               <li><div><b>Irakurri gida didaktikoa</b><span><a href="irakasleak.html">Irakasleentzako gidak</a> sekuentzia, ikasgaiekiko loturak eta 2029rako ibilbide-orria ditu.</span></div></li>
               <li><div><b>Deskargatu txantiloiak</b><span><a href="txantiloiak.html">12 txantiloi</a> editagarri (DOCX) eta inprimagarri (PDF): egiaztapen-fitxak, errubrikak, saio-planak.</span></div></li>
@@ -392,7 +393,7 @@
         <div class="footer-topics">
           <h4>PISA 2029 · MAIL</h4>
           <div class="footer-topic-grid">
-            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
             <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
             <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
             <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>

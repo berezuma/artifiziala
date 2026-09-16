@@ -16,8 +16,8 @@
       name: "Hausnartu eta jardun etikoki eta arduraz",
       short: "Etika eta ardura",
       en: "Reflect and Act Ethically and Responsibly",
-      color: "#c95fc1",
-      glyph: "⚖️",
+      color: "#1d4e6e",
+      glyph: "",
       page: "etika.html",
       weight: "Zeharkakoa"
     },
@@ -25,8 +25,8 @@
       name: "Eskuratu eta erabili",
       short: "Eskuratu eta erabili",
       en: "Access and Use",
-      color: "#3d9fd6",
-      glyph: "🧭",
+      color: "#2a6f97",
+      glyph: "",
       page: "sarbidea.html",
       weight: "~%17"
     },
@@ -34,8 +34,8 @@
       name: "Aztertu eta ebaluatu",
       short: "Aztertu eta ebaluatu",
       en: "Analyse and Evaluate",
-      color: "#ff5571",
-      glyph: "🔎",
+      color: "#0e7a86",
+      glyph: "",
       page: "aztertu.html",
       weight: "%25"
     },
@@ -43,8 +43,8 @@
       name: "Parte hartu eta elkarlanean aritu",
       short: "Parte hartu",
       en: "Participate and Collaborate",
-      color: "#e9a24f",
-      glyph: "🤝",
+      color: "#3a8a78",
+      glyph: "",
       page: "parte-hartu.html",
       weight: "~%17"
     },
@@ -52,8 +52,8 @@
       name: "Sortu",
       short: "Sortu",
       en: "Create",
-      color: "#12a9a4",
-      glyph: "✨",
+      color: "#5b8c4e",
+      glyph: "",
       page: "sortu.html",
       weight: "%25"
     }
@@ -210,7 +210,7 @@
       const pct = r.max ? Math.round((r.score / r.max) * 100) : 0;
       const info = MAIL.COMP[c];
       return `<div class="progress-cell">
-        <span class="nm">${info.glyph} ${esc(info.short)}</span>
+        <span class="nm">${esc(info.short)}</span>
         <div class="meter" role="img" aria-label="${esc(info.short)}: %${pct}"><i style="width:${pct}%;background:${info.color}"></i></div>
         <span class="val">${r.done}/${r.total || "–"} ariketa · %${pct}</span>
       </div>`;
@@ -353,7 +353,7 @@
         .map((b, i) => {
           const x = padL + step * i + (step - bw) / 2;
           const top = y(b.v);
-          return `<rect x="${x}" y="${top}" width="${bw}" height="${H - padB - top}" rx="4" fill="${b.c || "#4d49a8"}"/>
+          return `<rect x="${x}" y="${top}" width="${bw}" height="${H - padB - top}" rx="4" fill="${b.c || "#123f50"}"/>
             <text x="${x + bw / 2}" y="${top - 5}" text-anchor="middle" font-size="12" font-weight="700" fill="#1c1b2e">${esc(b.v)}${esc(s.unit || "")}</text>
             <text x="${x + bw / 2}" y="${H - padB + 16}" text-anchor="middle" font-size="11" fill="#4b4a60">${esc(b.l)}</text>`;
         })
@@ -428,7 +428,7 @@
       const title = pct >= 0.99 ? "Bikain!" : pct >= 0.5 ? "Ia-ia" : "Ez oraingoan";
       fb.className = "item-feedback " + cls;
       fb.innerHTML = `<b>${title} · ${result.score}/${result.max}</b>${item.explain ? `<p>${item.explain}</p>` : ""}${
-        item.tip ? `<p class="tip">💡 ${item.tip}</p>` : ""
+        item.tip ? `<p class="tip">${item.tip}</p>` : ""
       }`;
       btnCheck.hidden = true;
       if (!opts.exam) btnRetry.hidden = false;
@@ -439,7 +439,7 @@
     btnCheck.addEventListener("click", () => {
       const r = T.check(state, item, el);
       if (r === null) {
-        MAIL.toast("Erantzun lehenik ariketa 🙂");
+        MAIL.toast("Erantzun lehenik ariketa");
         return;
       }
       if (r && r.pending) return; // erantzun irekia: bi urrats

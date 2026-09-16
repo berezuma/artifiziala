@@ -2,9 +2,25 @@
 <html lang="eu">
 <head>
   <meta charset="UTF-8" />
+  <!--
+    /pisa2029 (barrarik gabe) -> /pisa2029/ birzuzenketa.
+    Barrarik gabe, esteka erlatibo guztiak (assets/pisa.css, simulagailua.html...)
+    domeinuaren errotik ebazten dira eta 404 ematen dute.
+    Garrantzitsua: CSS eta JS guztien AURRETIK egon behar du, eta inline izan behar du
+    (kanpoko fitxategi batean bide erlatiboak berak huts egingo luke).
+  -->
+  <script>
+    (function () {
+      var p = location.pathname;
+      if (/\/pisa2029$/.test(p)) {
+        location.replace(p + '/' + location.search + location.hash);
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PISA 2029 · MAIL prestatzeko gunea · artifiziala.eus</title>
   <meta name="description" content="PISA 2029ko Hedabideen eta Adimen Artifizialaren Alfabetatzea (MAIL) proba prestatzeko gunea, euskaraz: teoria, ariketa interaktiboak, simulagailuak eta txantiloi deskargagarriak ikasle eta irakasleentzat." />
+  <link rel="canonical" href="https://www.artifiziala.eus/pisa2029/" />
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
   <link rel="stylesheet" href="assets/pisa.css" />

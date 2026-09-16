@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAIL markoa eta teoria · PISA 2029 · artifiziala.eus</title>
+  <meta name="description" content="PISA 2029ko MAIL ebaluazio-markoa euskaraz: kontzeptu gakoak, gaitasunen definizioak eta maila-progresioak, testuinguruak, ataza motak, zailtasun-eragileak, ikasgaiekiko loturak eta glosarioa." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/pisa.css" />
+  <style>
+    .bigidea{ display:grid; grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr); gap:.6rem; align-items:stretch; }
+    .bigidea + .bigidea{ margin-top:.6rem; }
+    .bigidea > div{ padding:1rem 1.1rem; border-radius:var(--r-md); font-size:.96rem; }
+    .bigidea .ml{ background:var(--surface-2); color:var(--ink); }
+    .bigidea .ai{ background:#efeaff; color:var(--ink); }
+    .bigidea .plus{ display:grid; place-items:center; font-family:var(--font-mono); color:var(--ink-mute); padding:0 !important; }
+    .bigidea-head{ display:grid; grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr); gap:.6rem; margin-bottom:.5rem; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-mute); }
+    .qlist{ display:grid; gap:.4rem; margin-top:1rem; }
+    .qlist li{ padding:.65rem .9rem; border-radius:10px; background:#fff; border:1px solid var(--rule); font-size:.95rem; color:var(--ink); }
+    .qlist li::before{ content:"? "; font-family:var(--font-mono); color:var(--purple); font-weight:700; }
+    .flow{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.8rem; counter-reset:f; }
+    .flow li{ padding:1.1rem; border-radius:var(--r-md); background:#fff; border:1px solid var(--rule); position:relative; }
+    .flow li::before{ counter-increment:f; content:"0" counter(f); font-family:var(--font-mono); font-size:.75rem; color:var(--ink-mute); display:block; margin-bottom:.3rem; }
+    .flow li b{ font-family:var(--font-display); display:block; margin-bottom:.2rem; }
+    .flow li span{ font-size:.9rem; color:var(--ink-soft); }
+    .drivers{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:.7rem; }
+    .driver{ padding:1rem 1.1rem; border-radius:var(--r-md); background:var(--surface-2); }
+    .driver b{ font-family:var(--font-display); display:block; }
+    .driver p{ font-size:.92rem; color:var(--ink-soft); margin:.2rem 0 0; }
+    .driver small{ display:block; margin-top:.45rem; font-size:.84rem; color:var(--ink); }
+    .driver small::before{ content:"Prestatzeko: "; font-weight:700; }
+    .src-list{ list-style:none; display:grid; gap:.6rem; }
+    .src-list li{ font-size:.92rem; color:var(--ink-soft); padding-left:1rem; border-left:3px solid var(--rule); }
+    @media (max-width:900px){ .flow{ grid-template-columns:repeat(2, minmax(0,1fr)); } .drivers{ grid-template-columns:1fr; } }
+    @media (max-width:640px){ .bigidea, .bigidea-head{ grid-template-columns:1fr; } .bigidea .plus{ display:none; } .bigidea-head span:nth-child(2){ display:none; } .flow{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="pisa-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-dot-sm"></span><span class="brand-dot-lg"></span></span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">PISA 2029 · MAIL</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav" aria-label="Nabigazio nagusia">
+          <a href="../index.html">Hasiera</a>
+          <a href="../ikasgaiak.html">Ikasgaiak</a>
+          <a href="../laborategia.html">Laborategia</a>
+          <a href="../erronkak.html">Erronkak</a>
+          <a href="index.html" class="active" aria-current="page">PISA 2029</a>
+          <a href="../irakasleak.html">Irakasleak</a>
+          <a href="../gurasoak.html">Gurasoak</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pisa-subnav">
+    <div class="container">
+      <span class="tag">MAIL</span>
+      <nav aria-label="PISA 2029 atala">
+        <a href="index.html">Hasiera</a>
+        <a href="markoa.html">📘 Markoa</a>
+        <a href="etika.html">⚖️ Etika</a>
+        <a href="sarbidea.html">🧭 Eskuratu</a>
+        <a href="aztertu.html">🔎 Aztertu</a>
+        <a href="parte-hartu.html">🤝 Parte hartu</a>
+        <a href="sortu.html">✨ Sortu</a>
+        <a href="simulagailua.html">🖥️ Simulagailua</a>
+        <a href="ariketak.html">📝 Ariketak</a>
+        <a href="txantiloiak.html">📄 Txantiloiak</a>
+        <a href="irakasleak.html">🎓 Irakasleak</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="pisa-hero compact">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">PISA 2029</a><span>›</span><strong>Markoa eta teoria</strong></div>
+        <span class="pisa-eyebrow">Teoria · 25 min irakurketa</span>
+        <h1>MAIL markoa, euskaraz eta argi</h1>
+        <p class="lead">ELGAren ebaluazio-markoaren laburpen didaktikoa: zer den MAIL, zer gaitasun neurtzen diren, nola ebaluatuko diren eta nola lotzen diren ikasgaiekin. Iturri nagusia: <em>PISA 2029 MAIL Assessment Framework</em> (lehen zirriborroa, 2026).</p>
+        <div class="hero-meta"><span>10 atal</span><span>Maila-progresioak</span><span>Glosarioa</span></div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container comp-layout">
+        <aside class="comp-toc">
+          <div class="p-card">
+            <h4>Aurkibidea</h4>
+            <ol>
+              <li><a href="#zergatik">1. Zergatik orain?</a></li>
+              <li><a href="#kontzeptuak">2. Hiru kontzeptu gakoak</a></li>
+              <li><a href="#definizioa">3. Definizioa eta eredua</a></li>
+              <li><a href="#gaitasunak">4. Bost gaitasunak</a></li>
+              <li><a href="#ebaluazioa">5. Nola ebaluatuko da?</a></li>
+              <li><a href="#adibidea">6. Adibide-ataza</a></li>
+              <li><a href="#zailtasuna">7. Zailtasun-eragileak</a></li>
+              <li><a href="#galdetegia">8. Galdetegia</a></li>
+              <li><a href="#loturak">9. Loturak</a></li>
+              <li><a href="#glosarioa">10. Glosarioa</a></li>
+            </ol>
+          </div>
+          <div class="note warn">
+            <strong>Zirriborroa da</strong>
+            <p>ELGAk adierazi du markoa berrikusi egingo dela, eta maila-progresioak proba pilotuaren eta landa-probaren ondoren zuzenduko direla.</p>
+          </div>
+        </aside>
+
+        <div class="comp-main">
+          <!-- 1 -->
+          <section id="zergatik" class="reveal">
+            <div class="block-title"><span class="n">01</span><h2>Zergatik orain?</h2></div>
+            <div class="prose">
+              <p>Gazteek egunero erabiltzen dituzte hedabide-plataformak informazioa bilatzeko, gaiak esploratzeko eta besteekin elkarreragiteko. Gainera, AA sortzaileak testuak, irudiak, audioak eta bideoak <strong>segundotan</strong> sortzeko aukera ematen du.</p>
+              <p>Horrek aukera handiak dakartza (sormena, lankidetza, parte-hartze zibikoa, ikaskuntza pertsonalizatua), baina baita arriskuak ere: informazio ez-fidagarria, <strong>deepfake</strong> errealistak, akatsez betetako AA erantzunak, ziberjazarpena, pribatutasun-arazoak, arreta harrapatzeko diseinuak eta <strong>deskarga kognitiboa</strong> (pentsatzeko lana makinen esku uztea).</p>
+            </div>
+            <div class="grid-2" style="margin-top:1.2rem">
+              <div class="p-card soft">
+                <span class="chip plain" style="margin-bottom:.6rem">Hedabideen alfabetatzea</span>
+                <p>Hedabideak eskuratu, ulertu, aztertu eta sortzeko gaitasuna, gizabanakoengan, erakundeengan eta gizartean duten eraginaz hausnartuz. Muinean, irudi, hitz eta soinuekin jarduteko pentsamendu kritikoa dago.</p>
+              </div>
+              <div class="p-card soft">
+                <span class="chip plain" style="margin-bottom:.6rem">AA alfabetatzea</span>
+                <p>AAren eraginpeko munduan aurrera egiteko ezagutza teknikoa, gaitasun iraunkorrak eta etorkizunerako jarrerak. AArekin jardun, sortu, kudeatu eta hura moldatzeko aukera ematen du, onurak, arriskuak eta inplikazio etikoak kritikoki baloratuz (EB-ELGA, 2026).</p>
+              </div>
+            </div>
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;margin:1.8rem 0 .8rem">Non gurutzatzen dira? Hiru modutan:</h3>
+            <div class="grid-3">
+              <div class="strategy"><span class="ic" aria-hidden="true">✍️</span><div><h4>AAk edukia sortzen du</h4><p>Testua, irudia, soinua, musika eta bideoa: hedabideen ekoizpena eraldatu du.</p></div></div>
+              <div class="strategy"><span class="ic" aria-hidden="true">🧲</span><div><h4>AAk zer ikusten dugun aukeratzen du</h4><p>Gomendio-sistemek informazio-fluxuak kudeatzen dituzte eta gure ikuspegia moldatzen dute.</p></div></div>
+              <div class="strategy"><span class="ic" aria-hidden="true">💬</span><div><h4>AA bera hedabidea da</h4><p>Txatbotak eta «lagun» txatbotak gure bizitza sozial eta emozionalaren bitartekari bihurtu dira.</p></div></div>
+            </div>
+          </section>
+
+          <!-- 2 -->
+          <section id="kontzeptuak" class="reveal" data-tabs-scope>
+            <div class="block-title"><span class="n">02</span><h2>Hiru kontzeptu gakoak</h2></div>
+            <div class="prose"><p>Hiru dimentsio hauek dira MAILen «betaurrekoak». Bakoitzak hedabideen alfabetatzearen ideia klasikoak dituzte, eta AA alfabetatzeak ideia horietan egiten duen ekarpena.</p></div>
+            <div class="p-tabs" role="tablist" data-tabs>
+              <button class="p-tab active" role="tab" aria-selected="true" data-panel="k1">✍️ Egileak eta audientziak</button>
+              <button class="p-tab" role="tab" aria-selected="false" data-panel="k2">💬 Mezuak eta esanahiak</button>
+              <button class="p-tab" role="tab" aria-selected="false" data-panel="k3">🪞 Irudikapenak eta errealitateak</button>
+            </div>
+
+            <div class="p-panel active" id="k1" role="tabpanel">
+              <div class="bigidea-head"><span>Hedabideen alfabetatzearen ideia</span><span></span><span>AA alfabetatzearen ekarpena</span></div>
+              <div class="bigidea"><div class="ml">Egileek helburu desberdinetarako sortzen dituzte mezuak, audientzia jakinentzat.</div><div class="plus">+</div><div class="ai">AAk sortutako mezuak giza-makina lankidetzaz sortzen dira. Datuek, diseinuak eta erabiltzailearen sarrerak zehazten dituzte helburua eta audientzia.</div></div>
+              <div class="bigidea"><div class="ml">Testuinguru sozioekonomiko eta kulturalak eragina du nola sortzen diren mezuak eta nola interpretatzen diren.</div><div class="plus">+</div><div class="ai">Testuinguru horrek eragina du nola idazten ditugun promptak eta nola interpretatzen ditugun AAren erantzunak.</div></div>
+              <div class="bigidea"><div class="ml">Indar ekonomiko eta politikoek sortzaileen eta audientzien boterea, pizgarriak eta mugak baldintzatzen dituzte.</div><div class="plus">+</div><div class="ai">Teknologia-industriak, interes ekonomiko eta politikoek bultzatuta, zehazten du nola garatzen eta hedatzen diren AA sistemak eta nola sartzen, sortzen eta partekatzen dugun informazioa.</div></div>
+              <ul class="qlist">
+                <li>Nork edo zerk sortu du mezu hau? AA erabili al da, eta zein fasetan (sortzean, editatzean, kuratzean)?</li>
+                <li>Nor da audientzia, eta nola egokitu du AAk edukia hari iristeko?</li>
+                <li>Nork ateratzen du etekina: AA enpresek, plataformek, datu-biltzaileek?</li>
+              </ul>
+            </div>
+
+            <div class="p-panel" id="k2" role="tabpanel">
+              <div class="bigidea-head"><span>Hedabideen alfabetatzearen ideia</span><span></span><span>AA alfabetatzearen ekarpena</span></div>
+              <div class="bigidea"><div class="ml">Mezuak informatzeko, entretenitzeko eta/edo limurtzeko eraikitzen dira.</div><div class="plus">+</div><div class="ai">AA sistemek mezuak sortu, iragazi eta pertsonalizatzen dituzte, eta informazioa, entretenimendua eta limurtzea nola jasotzen ditugun moldatzen dute.</div></div>
+              <div class="bigidea"><div class="ml">Mezuek balioak, ideologia eta ikuspuntu jakinak dituzte.</div><div class="plus">+</div><div class="ai">Entrenamendu-datuek eta diseinu-erabakiek balioak eta alborapenak txertatzen dituzte erabiltzaileek jasotzen dituzten erantzunetan.</div></div>
+              <div class="bigidea"><div class="ml">Mezuek pertsonen sinesmenetan, jarreretan eta portaeretan eragiten dute.</div><div class="plus">+</div><div class="ai">AA sistemek eragina dute informazioa iragazteko, pertsonalizatzeko eta aurkezteko moduaren bidez.</div></div>
+              <div class="prose" style="margin-top:1rem"><p>AA sortzaileak kantitate handiko datuetatik <strong>patroi estatistikoak</strong> ikasten ditu, eta ondoren «hurrengo litekeena» aurreikusiz sortzen du eduki berria. Esanahia, ordea, ez dago mezuan bakarrik: <strong>audientziak interpretatzean</strong> sortzen da.</p></div>
+              <ul class="qlist">
+                <li>Zergatik ikusten dut mezu hau? Algoritmo batek aukeratu edo gomendatu al dit?</li>
+                <li>Zein da helburua, eta nola moldatu dute AA sistemek?</li>
+                <li>Nola interpreta daiteke mezu hau, eta zein alborapen anplifika ditzake?</li>
+              </ul>
+            </div>
+
+            <div class="p-panel" id="k3" role="tabpanel">
+              <div class="bigidea-head"><span>Hedabideen alfabetatzearen ideia</span><span></span><span>AA alfabetatzearen ekarpena</span></div>
+              <div class="bigidea"><div class="ml">Mezuak errealitatearen irudikapen hautatuak dira.</div><div class="plus">+</div><div class="ai">AAk sortutako mezuak giza erabakiek eta makina-prozesuek moldatutako errealitatearen irudikapen eraikiak dira.</div></div>
+              <div class="bigidea"><div class="ml">Mezuek orokortzeak erabiltzen dituzte ideiak adierazteko.</div><div class="plus">+</div><div class="ai">AA sistemek entrenamendu-datuetako eta diseinu-erabakietako alborapenak kodetu eta anplifikatzen dituzte.</div></div>
+              <div class="bigidea"><div class="ml">Mezuen sinesgarritasuna agintea eta benetakotasuna bezalako ezaugarrien bidez epaitzen da.</div><div class="plus">+</div><div class="ai">AA sistemen sinesgarritasuna gardentasuna eta azalgarritasuna bezalako ezaugarrien bidez epaitzen da.</div></div>
+              <div class="note" style="margin-top:1rem"><strong>Euskararentzat bereziki garrantzitsua</strong><p>Markoak ohartarazten du AA sistemek ez dituztela beti jasotzen hizkuntza txikien ñabardurak (adibidez, ironia edo sarkasmoa), eta sinplifikazio horiek «egiazko» gisa aurkezten dituztela. Euskaraz lan egiten dugunok arreta berezia jarri behar dugu.</p></div>
+              <ul class="qlist">
+                <li>Nola sortu da lan hau? Zein giza eta makina-prozesu nahasi dira?</li>
+                <li>Zein datu edo iturritan oinarritu dira egilea edo AA sistemak?</li>
+                <li>Nola irudikatzen dira balioak, ideologiak eta ikuspuntuak?</li>
+                <li>Nola eragiten dio AAren parte-hartzeak mezuaren sinesgarritasunari?</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 3 -->
+          <section id="definizioa" class="reveal">
+            <div class="block-title"><span class="n">03</span><h2>Definizioa eta gaitasun-eredua</h2></div>
+            <div class="def-box" style="--cc:#2f2b7a">
+              <span class="label">MAILen definizioa · PISA 2029</span>
+              <blockquote>Eduki digitalekin, hedabide-plataformekin eta AA sistemekin modu eraginkor, etiko eta arduratsuan jarduteko behar diren gaitasunen multzoa.</blockquote>
+            </div>
+            <div class="prose" style="margin-top:1.2rem">
+              <p>Gaitasunek ez dute alderdi <strong>kognitiboa</strong> bakarrik barne hartzen: alderdi <strong>sozialak, emozionalak eta motibazionalak</strong> ere bai. Jarduteko prest egotea eta autoerregulazioa ere gaitasunaren parte dira.</p>
+              <ol class="nums">
+                <li><strong>Eskuratu eta erabili</strong> gainerako gaitasunen <em>oinarrizko baldintza</em> da.</li>
+                <li>Hortik garatzen dira <strong>aztertu eta ebaluatu</strong>, <strong>parte hartu eta elkarlanean aritu</strong> eta <strong>sortu</strong>.</li>
+                <li><strong>Hausnartu eta jardun etikoki eta arduraz</strong> <em>zeharkakoa</em> da: ikasleek beren ekintza guztien inplikazio etikoak kontuan hartu behar dituzte.</li>
+              </ol>
+              <p>Ereduaren diagrama interaktiboa <a href="index.html" style="color:var(--purple);font-weight:700">atalaren hasieran</a> duzu.</p>
+            </div>
+          </section>
+
+          <!-- 4 -->
+          <section id="gaitasunak" class="reveal">
+            <div class="block-title"><span class="n">04</span><h2>Bost gaitasunak eta maila-progresioak</h2></div>
+            <div class="prose"><p>Gaitasun bakoitzerako, markoak ikasleen itxaropen-progresio bat proposatzen du hiru mailatan: <strong>oinarrizkoa</strong> (low), <strong>tartekoa</strong> (intermediate) eta <strong>aurreratua</strong> (high).</p></div>
+
+            <details class="acc" open>
+              <summary>⚖️ Hausnartu eta jardun etikoki eta arduraz <span class="chip" data-c="etika" style="margin-left:auto;margin-right:.6rem">Zeharkakoa</span></summary>
+              <div class="acc-body">
+                <p><b>Definizioa:</b> eduki digitalekin, hedabide-plataformekin eta AA sistemekin jardutean, erantzukizuna, zuzentasuna eta giza balioekiko errespetua kontuan hartzeko gaitasuna.</p>
+                <p>Plataformak arreta harrapatzeko diseinatuta daude (jakinarazpenak, sariak, «like»-ak) eta emozio biziak sortzen dituzten edukiak anplifikatzen dituzte. Ikasleek manipulaziotik distantzia hartzeko estrategiak behar dituzte, eta beren ekintzek ongizatean, identitate digitalean eta besteengan duten eragina ulertu. Etika gutxitan da arau-kontua: <strong>balio lehiakideen arteko orekak</strong> dira (pribatutasuna, irekitasuna, ekitatea, eraginkortasuna).</p>
+                <div class="levels">
+                  <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Pribatutasuna eta jasangarritasuna babesteko praktiken ulermen aurreratua du; etikoki jarduten daki, bere ekintzek bere ongizatean, ikaskideengan eta gizartean dituzten ondorioez hausnartuz, eta AA sistemen mugez eta gizarte-eraginaz hausnar dezake.</p></div>
+                  <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Segurtasun-, etika-, jasangarritasun- eta ospe-alderdiez jabetzen da. Truke sinpleak kontuan har ditzake (adib. denbora aurreztea vs. tranpa egitea) tresnak erabili ala ez, eta nola, erabakitzean.</p></div>
+                  <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Online arriskuen oinarrizko ulermena du, eta bere ekintza digitalen ondorio zabalagoez jabetzen hasi da: pribatutasuna, jasangarritasuna, etika eta ospean, garapen kognitiboan eta ongizatean epe luzeko eragina.</p></div>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="etika.html" style="margin-top:1rem">Landu gaitasun hau →</a>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>🧭 Eskuratu eta erabili <span class="chip" data-c="sarbidea" style="margin-left:auto;margin-right:.6rem">Oinarria</span></summary>
+              <div class="acc-body">
+                <p><b>Definizioa:</b> hedabide-plataformetan eta AAk bitartekotutako inguruneetan eduki digitala eraginkortasunez erabiltzeko, aurkitzeko, kontsultatzeko, AAri eskatzeko (<em>prompt</em>) eta kuratzeko gaitasuna.</p>
+                <p>Ikasle gaituek badakite bilaketa-emaitzak <strong>erabiltzailearen historiak, kokapenak, ospeak eta interes komertzialek</strong> baldintzatzen dituztela, ez zehaztasunak bakarrik. Informazioa kuratu, iragazi, antolatu eta gorde, datu pertsonalak AA entrenamendutik edo zaintzatik babestu, arazo teknikoak konpondu eta tresnak egokitu edo aldatu ere badakite.</p>
+                <div class="levels">
+                  <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Ingurune digitaletan modu estrategikoan nabigatzen du: bilaketa-metodoak kritikoki hautatzen ditu, datu pertsonalak babesten ditu eta arazo teknikoei eraginkortasunez aurre egiten die.</p></div>
+                  <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Informazioa iragazi, edukia antolatu eta ohiko arazoak identifikatu ditzake, baina hutsuneak ditu tresna konplexuagoetan, datuen kudeaketan, gomendio-sistemen ulermenean eta arazo konplexuen konponketan.</p></div>
+                  <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Tresna digital eta AA tresna arrunten oinarrizko ezagutza du, eta bilaketak egiteko, fitxategiak antolatzeko eta arazo teknikoak konpontzeko oinarrizko trebetasunak.</p></div>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="sarbidea.html" style="margin-top:1rem">Landu gaitasun hau →</a>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>🔎 Aztertu eta ebaluatu <span class="chip" data-c="aztertu" style="margin-left:auto;margin-right:.6rem">%25</span></summary>
+              <div class="acc-body">
+                <p><b>Definizioa:</b> gizakiek eta AAk sortutako hedabide-edukien helburua, alborapena, garrantzia eta sinesgarritasuna kritikoki ebaluatzeko gaitasuna.</p>
+                <p>Hizkuntza-eredu handiek ez dute informazioa «ulertzen»: litekeena dena aurreikusten dute. Horregatik <strong>haluzinatu</strong> dezakete (sinesgarria baina okerra den edukia sortu). Desinformazioa ez da asmo txarrez bakarrik zabaltzen: <strong>lasterbide kognitiboek</strong> (berrespen-alborapena, autoritate-heuristikoa) ere laguntzen dute. Ikasle gaituek egiletza identifikatu, iturriak triangulatu, <strong>laterala irakurri</strong>, alborapena eta aditutasuna ebaluatu, eta AAren erantzunak jatorrizko iturrietaraino jarraitzen dituzte.</p>
+                <div class="levels">
+                  <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Iturri eta ikuspegi anitz eta sinesgarriak bilatu eta ebaluatzen ditu, hedabide/AA tresnen mekanismoak eta alborapenak kritikoki aztertzen ditu, eta berrespen-alborapenaren eragina aktiboki kontuan hartzen du, ulermen oinarritu eta askotarikoa eraikitzeko.</p></div>
+                  <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Sinesgarritasunaz, alborapenaz eta kanpo-eraginez jabetzen da, irakurketa laterala egiten ohituta dago, eta informazio zuzena modu engainagarrian aurkezten denean identifikatzen du.</p></div>
+                  <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Fidagarritasuna eta asmoa ebaluatzeko oinarrizko estrategiak erabiltzen ditu (egiletza, iturriaren sinesgarritasuna), eta eduki digitalen eta AA mezuen zehaztasuna eta motibazioa zalantzan jartzearen garrantziaz jabetzen da.</p></div>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="aztertu.html" style="margin-top:1rem">Landu gaitasun hau →</a>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>🤝 Parte hartu eta elkarlanean aritu</summary>
+              <div class="acc-body">
+                <p><b>Definizioa:</b> testuinguru digitaletan aktiboki parte hartzeko eta besteekin lan egiteko gaitasuna, AAk elkarreraginak anplifikatzeko, bitartekotzeko edo distortsionatzeko duen eginkizunaz jabetuta; eta edukia modu egokian elkarlanean sortu edo partekatzeko.</p>
+                <p>Online elkarreraginak algoritmoek, plataformen arauek eta arau sozialek moldatzen dituzte, eta gero eta gehiago gizakiz eta AA sistemaz osatutako sare hibridoetan gertatzen dira. Ikasle gaituek espazio seguruak aukeratzen dituzte, komunikazioa testuingurura egokitzen dute, gatazkak baretzen eta biktimak babesten dituzte, eta beren erreakzio inpultsiboak kontrolatzen dituzte. Ulertzen dute gomendio-sistemek eta moderazioak <strong>zeinen ahotsak anplifikatzen diren</strong> erabakitzen dutela.</p>
+                <div class="levels">
+                  <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Trebetasunez nabigatzen du, komunikazioa egokitzen du, trukeak moderatzen ditu, besteen eskubideak babesten ditu, eta hedabide/AA tresnekin proiektuak elkarlanean diseinatzen ditu, gardentasuna, inklusioa eta justizia soziala sustatzen saiatuz.</p></div>
+                  <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Komunikaziorako, lankidetzarako eta aldarrikapenerako tresna egoki eta seguruak hautatzen ditu. Komunikazioa egokitzen, online gatazkak eta jazarpena prebenitu eta konpontzen, zereginak partekatzen eta proiektuak besteekin diseinatzen saiatzen da.</p></div>
+                  <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Ingurune digitaletan komunikazioa eta lankidetza egokitzeko lehen saiakerak egiten ditu, eta hedabide-plataformak edo AA sistemak parte hartzeko eta elkarlanean aritzeko nola erabili ulertzen ari da.</p></div>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="parte-hartu.html" style="margin-top:1rem">Landu gaitasun hau →</a>
+              </div>
+            </details>
+
+            <details class="acc">
+              <summary>✨ Sortu <span class="chip" data-c="sortu" style="margin-left:auto;margin-right:.6rem">%25</span></summary>
+              <div class="acc-body">
+                <p><b>Definizioa:</b> komunikazio-behar bat, eduki egokia eta helburu hori lortzen lagunduko duen formatua identifikatzeko gaitasuna, hedabideak eta AA sistemak erabiliz.</p>
+                <p>Remix kulturak, elkarlaneko sorkuntzak eta kode irekiko proiektuek aukera berriak ematen dituzte. AA tresnek ideiak sortzeko, zeregin errepikakorrak automatizatzeko eta adierazpen berriak esploratzeko balio dute, baina galdera konplexuak dakartzate: <strong>originaltasuna, egiletza, ardura etikoa eta adierazpena</strong> (disclosure). Ikasle gaituek sorkuntza <strong>prozesu iteratibo</strong> gisa lantzen dute eta beren burua giza-makina «ko-sortzaile» gisa aztertzen dute.</p>
+                <div class="levels">
+                  <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Hedabideak sortu eta aldatzeko maisutasuna du, tresna digitalak/AA argitasunez, iraunkortasunez eta sormenez erabiliz. Ikuspegi etiko sendoa aplikatzen du tresnak aukeratzean eta emaitzak helburura eta audientziara egokitzen ditu.</p></div>
+                  <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Hainbat hedabide eta AA tresna erabiltzen ditu mezuak sortzeko, audientziaren oinarrizko kontzientziarekin, eta iterazioak egiteko prest dago originaltasuna edo findutasuna lortzeko.</p></div>
+                  <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Oinarrizko plataformak edo AA sistemak erabiltzen ditu besteen proiektuetan edizio sinpleak egiteko, eta koherentzia, originaltasun eta asmoaren oinarrizko ulermena erakusten du.</p></div>
+                </div>
+                <a class="btn btn-ghost btn-sm" href="sortu.html" style="margin-top:1rem">Landu gaitasun hau →</a>
+              </div>
+            </details>
+          </section>
+
+          <!-- 5 -->
+          <section id="ebaluazioa" class="reveal">
+            <div class="block-title"><span class="n">05</span><h2>Nola ebaluatuko da?</h2></div>
+            <div class="prose">
+              <p>Proba <strong>benetako egoeretan</strong> oinarritutako atazez osatuta egongo da: eskola, lana, aisialdia, bizitza zibikoa eta harreman sozialak. Ikasleek agertokiak aztertu (klima, herritartasun digitala, online segurtasuna…), informazioa ebaluatu, lan-gune digitaletan elkarlanean aritu eta eduki originala sortu beharko dute.</p>
+              <p>Aditu-taldearen gomendioa: ebaluazio-denboraren <strong>erdia</strong> «aztertu eta ebaluatu» (%25) eta «sortu» (%25) gaitasunei ematea, eta gainerakoa beste hiru gaitasunen artean banatzea.</p>
+            </div>
+
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;margin:1.6rem 0 .8rem">Testuinguruak eta helburuak</h3>
+            <div class="p-table-wrap">
+              <table class="p-table">
+                <thead><tr><th>Testuingurua</th><th>Zer lantzen da</th><th>Adibideak</th></tr></thead>
+                <tbody>
+                  <tr><td>💞 Harremanak</td><td>Hedabideek eta AAk giza harremanak nola errazten eta zailtzen dituzten; ongizatea.</td><td>Talde-txatak, lagun-txatbotak, feedbacka ematea.</td></tr>
+                  <tr><td>📚 Ikaskuntza</td><td>Eskolako eta laneko egoerak: iturri anitzak integratu, AAren gaitasunak eta mugak aitortu, autoerregulazioa.</td><td>Lan baterako informazioa bilatzea, AA erantzunak egiaztatzea.</td></tr>
+                  <tr><td>🎮 Aisialdia</td><td>Algoritmoek, automatizazioak eta diseinuak aisialdian (arreta, lehentasunak, portaera) duten eragina.</td><td>Sare sozialak, bideo-plataformak, jokoak, gomendioak.</td></tr>
+                  <tr><td>📣 Limurtzea</td><td>Teknika erretorikoak: <em>logos</em> (arrazoiketa), <em>pathos</em> (emozioa), <em>ethos</em> (sinesgarritasuna), <em>kairos</em> (unea). AAk eskalan anplifikatzen ditu.</td><td>Publizitatea, desinformazioa, eragileak.</td></tr>
+                  <tr><td>🗳️ Herritartasuna</td><td>Albisteak eta aldarrikapen zibikoak ebaluatu; algoritmoek parte-hartze politikoan duten eragina.</td><td>Hauteskundeak, kanpainak, foro publikoak.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="grid-2" style="margin-top:1.4rem">
+              <div class="p-card soft">
+                <h3>📺 Hedabide motak</h3>
+                <ul class="checklist" style="margin-top:.6rem">
+                  <li><span class="st">1</span>Testu digitala: web-artikuluak, argitalpenak, blogak, mezuak.</li>
+                  <li><span class="st">2</span>Audioa: podcastak, ahots-laguntzaileak, AA audioak.</li>
+                  <li><span class="st">3</span>Ikus-hedabideak: irudiak, infografiak, memeak, grafikoak.</li>
+                  <li><span class="st">4</span>Bideoa: streaming-a, bideo laburrak, albisteak, tutorialak.</li>
+                  <li><span class="st">5</span>AAk sortutako eta algoritmikoki kuratutako edukia.</li>
+                </ul>
+              </div>
+              <div class="p-card soft">
+                <h3>🛠️ Tresnak</h3>
+                <p style="font-size:.93rem;margin-top:.4rem"><b>Hedabide-plataformak:</b> sare sozialak, ezagutza-plataforma kolaboratiboak (wikiak), albiste-agregatzaileak, mezularitza, bilatzaileak, posta, argazki/bideo editoreak, fitxategi-kudeatzaileak eta hodeiko biltegiak, foroak.</p>
+                <p style="font-size:.93rem;margin-top:.5rem"><b>AA sistemak:</b> hizkuntza-eredu sortzaileak (txatbotak), irudi-sortzaileak, gomendio-algoritmoak, ahots-laguntzaileak eta media sintetikoa (deepfake-ak, AA audioak).</p>
+              </div>
+            </div>
+
+            <h3 style="font-family:var(--font-display);font-size:1.3rem;margin:1.8rem 0 .8rem">Ataza-adibideak gaitasunaren arabera, eta non praktikatu</h3>
+            <div class="p-table-wrap">
+              <table class="p-table">
+                <thead><tr><th>Gaitasuna</th><th>Ataza-adibidea (ELGA)</th><th>artifiziala.eus-en</th></tr></thead>
+                <tbody>
+                  <tr><td>⚖️ Etika</td><td><b>Partekatu/onartu ala ez?</b> · <b>AA erabili ala ez?</b> · <b>Online tranpak saihestu</b></td><td><a href="ariketak.html#et01" style="color:var(--purple)">ET-01</a>, <a href="ariketak.html#et02" style="color:var(--purple)">ET-02</a>, <a href="ariketak.html#et04" style="color:var(--purple)">ET-04</a>, <a href="etika.html#simulagailua" style="color:var(--purple)">jario-simulagailua</a></td></tr>
+                  <tr><td>🧭 Eskuratu</td><td><b>Produktibitate-tresnak</b> · <b>Digital declutter</b> · <b>Kontuak eta pribatutasun-ezarpenak</b></td><td><a href="sarbidea.html#simulagailuak" style="color:var(--purple)">fitxategi-antolatzailea</a>, <a href="sarbidea.html#simulagailuak" style="color:var(--purple)">pribatutasun-panela</a>, ES-05</td></tr>
+                  <tr><td>🔎 Aztertu</td><td><b>Iragarkia/AA markatu</b> · <b>Irakurketa laterala</b> · <b>Errealitatea eta modelizazioa</b></td><td>AZ-01, AZ-06, <a href="simulagailua.html" style="color:var(--purple)">simulagailu nagusia</a>, AZ-05, AZ-08</td></tr>
+                  <tr><td>🤝 Parte hartu</td><td><b>Feedbacka eman</b> · <b>Hedabide eta AA aholkularia</b> · <b>Talde-txateko lankidetza</b></td><td>PH-01, PH-08, PH-05, <a href="parte-hartu.html#simulagailua" style="color:var(--purple)">talde-txata</a></td></tr>
+                  <tr><td>✨ Sortu</td><td><b>Profil pertsonala/profesionala</b> · <b>Hedabide-editorea</b> · <b>Memea sortu</b></td><td>SO-08, <a href="sortu.html#simulagailua" style="color:var(--purple)">meme-editorea</a>, simulagailu nagusiko 2. fasea</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note" style="margin-top:1.2rem">
+              <strong>Zergatik ataza luzeak?</strong>
+              <p>Egoera abstraktu batean aukera bat hautatzeak ez du beti islatzen benetan zer egingo genukeen. Ingurune simulatuetan ikasleek <em>askatasuna</em> dute zein tresna erabili eta zer egin erabakitzeko; horrela, estrategia, iraunkortasuna eta erabaki konplexuak neur daitezke.</p>
+            </div>
+          </section>
+
+          <!-- 6 -->
+          <section id="adibidea" class="reveal">
+            <div class="block-title"><span class="n">06</span><h2>Adibide-ataza: kazetari gaztea</h2></div>
+            <div class="prose"><p>ELGAren markoak ataza luze baten adibidea deskribatzen du. Ikasleak egunkari bateko kazetari-rola hartzen du eta albiste bat argitaratu aurretik egiaztatu behar du.</p></div>
+            <ol class="flow">
+              <li><b>Esleipena</b><span>Txat-tresnan jakinarazpena: arduradunak albiste bat eta esteka bat bidaltzen ditu, egin beharreko ekintzen zerrendarekin.</span></li>
+              <li><b>Irakurketa laterala</b><span>Nabigatzaile simulatuan albistea ireki, gako-hitzak bilatu, emaitzak aztertu eta fitxa askotan iturriak kontrastatu.</span></li>
+              <li><b>Erantzuna bidali</b><span>Epaia (zehatza / partzialki zehatza / okerra), kontsultatutako iturrien URLak eta ebidentzia. Aukeran, txantiloi bat deskargatu eta bete.</span></li>
+              <li><b>Sortu</b><span>Amaieran, AA sistema simulatu batekin argitalpen bat sortu (irudia eskatu, testua findu).</span></li>
+            </ol>
+            <div class="cta-band" style="margin-top:1.4rem">
+              <div><h2 style="font-size:1.6rem">Egin ataza hau orain</h2><p>Gure simulagailuak egitura bera jarraitzen du, euskaraz eta bi agertokirekin, eta zure ekintzen araberako txostena ematen dizu.</p></div>
+              <div class="btns"><a class="btn btn-primary" href="simulagailua.html">🖥️ Ireki simulagailua</a></div>
+            </div>
+          </section>
+
+          <!-- 7 -->
+          <section id="zailtasuna" class="reveal">
+            <div class="block-title"><span class="n">07</span><h2>Zailtasun-eragileak</h2></div>
+            <div class="prose"><p>Zerk egiten du ataza bat zailagoa? Irakasleentzat bereziki erabilgarria da: jarduerak diseinatzean, eragile hauek pixkanaka areagotu daitezke.</p></div>
+            <div class="drivers">
+              <div class="driver"><b>1. Testuinguruaren eta helburuaren konplexutasuna</b><p>Agertoki berri edo askotarikoek karga kognitiboa handitzen dute.</p><small>hasi egoera ezagunekin (institutua) eta pasa urrunagokoetara.</small></div>
+              <div class="driver"><b>2. Hedabide moten aniztasuna</b><p>Formatu ezezagun edo anitzekin aldi berean lan egitea.</p><small>konbinatu testua, grafikoa eta bideoa ariketa berean.</small></div>
+              <div class="driver"><b>3. Tresna eta plataformen aniztasuna</b><p>Interfaze berriak konplexutasun operatiboa gehitzen du.</p><small>erabili hainbat tresna mota (txata, bilatzailea, editorea).</small></div>
+              <div class="driver"><b>4. Goi-mailako pentsamendua</b><p>Analisi kritiko luzeak aitortze-atazak baino zailagoak dira.</p><small>eskatu «zergatik» beti, ez «zer» bakarrik.</small></div>
+              <div class="driver"><b>5. Erantzun irekiak</b><p>Idaztea edo artefaktu digital bat sortzea aukera anitza baino zailagoa da.</p><small>praktikatu erantzun laburrak errubrika batekin.</small></div>
+              <div class="driver"><b>6. Benetakotasuna eta errealismoa</b><p>Agertoki errealistek aldagai ezustekoak dituzte eta moldagarritasuna eskatzen dute.</p><small>erabili benetako (edo benetakoen antzeko) edukiak.</small></div>
+              <div class="driver"><b>7. Jarraibideen anbiguotasuna</b><p>Helburu irekiko atazetan zailagoa da nola jardun erabakitzea.</p><small>pixkanaka kendu urratsen zerrendak.</small></div>
+              <div class="driver"><b>8. Laguntza eta gidaritza</b><p>Laguntza gutxiagok independentzia handiagoa eskatzen du.</p><small>hasi pistekin eta amaitu pistarik gabe.</small></div>
+            </div>
+          </section>
+
+          <!-- 8 -->
+          <section id="galdetegia" class="reveal">
+            <div class="block-title"><span class="n">08</span><h2>Galdetegia: jarrerak eta ohiturak</h2></div>
+            <div class="prose"><p>Proba kognitiboaz gain, ikasleek galdetegi bat beteko dute. MAIL gaitasuna ez da trebetasun teknikoa bakarrik: <strong>pentsatzeko moduak eta jarrerak</strong> ere badira. Ikastetxeen galdetegiak ikasgelan MAIL lantzeko aukerak ere neurtuko ditu.</p></div>
+            <div class="p-table-wrap">
+              <table class="p-table">
+                <thead><tr><th>Gaitasuna</th><th>Galdetegiko eraikuntza-adibideak</th></tr></thead>
+                <tbody>
+                  <tr><td>⚖️ Etika</td><td><b>Burutik irekitako pentsamendu aktiboa</b> (beste ikuspuntuak kontuan hartzea, iritzia berrikusteko prest egotea) · <b>AArekiko jarrerak</b></td></tr>
+                  <tr><td>🧭 Eskuratu</td><td><b>Hedabideen alfabetatzerako esposizioa</b> · <b>AA alfabetatzerako esposizioa</b> · <b>Pribatutasun digitala babesteko estrategiak</b></td></tr>
+                  <tr><td>🔎 Aztertu</td><td><b>Desinformazioarekiko sentikortasuna</b> · <b>Manipulazioarekiko sentikortasuna</b> (faltsuak ez baina engainagarriak diren adierazpenak) · <b>Dependentzia digitala</b></td></tr>
+                  <tr><td>🤝 Parte hartu</td><td><b>Hedabideetako parte-hartzea</b> (sortzaile gisa, eztabaidetan, aktibismo digitalean) · <b>Arrisku eta kalte digitalak</b></td></tr>
+                  <tr><td>✨ Sortu</td><td><b>Hedabide-lehentasunak</b> · <b>Hedabide-praktikak</b> (denbora, kontsumoaren eta sorkuntzaren arteko oreka, segurtasun-ohiturak)</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="txantiloiak.html#autoebaluazioa" style="margin-top:1rem">Deskargatu autoebaluazio-galdetegia →</a>
+          </section>
+
+          <!-- 9 -->
+          <section id="loturak" class="reveal" data-tabs-scope>
+            <div class="block-title"><span class="n">09</span><h2>Loturak: ikasgaiak, gaitasun sozioemozionalak, Irakurketa eta AILit</h2></div>
+            <div class="prose"><p>MAILek oinarri sendoak behar ditu: irakurle trebeak izatea, zientzia- eta matematika-oinarriak, eta giza eta gizarte-zientzien ezagutza. Beraz, <strong>ikasgai guztien ardura</strong> da, ikaskuntza aktibo eta ikerketan oinarritutako metodoekin.</p></div>
+            <div class="p-tabs" role="tablist" data-tabs>
+              <button class="p-tab active" role="tab" aria-selected="true" data-panel="l1">Ikasgaiak</button>
+              <button class="p-tab" role="tab" aria-selected="false" data-panel="l2">Gaitasun sozioemozionalak</button>
+              <button class="p-tab" role="tab" aria-selected="false" data-panel="l3">Irakurketa vs MAIL</button>
+              <button class="p-tab" role="tab" aria-selected="false" data-panel="l4">AILit markoa</button>
+            </div>
+
+            <div class="p-panel active" id="l1" role="tabpanel">
+              <div class="p-table-wrap">
+                <table class="p-table">
+                  <thead><tr><th>Ikasgaia</th><th>Jarduera-adibideak</th></tr></thead>
+                  <tbody>
+                    <tr><td>Euskara eta Literatura · Gaztelania</td><td>Plataformek eta AAk albiste-jarioak nola pertsonalizatzen dituzten hausnartu · Gertaera baten kazetaritza-kontakizuna eta AAk sortutako laburpena alderatu (tonua, alborapena, enfasia) · <em>Proposamena:</em> AA tresnek euskarazko ironia eta esamoldeak nola itzultzen eta ulertzen dituzten aztertu.</td></tr>
+                    <tr><td>Matematika</td><td>Algoritmoek erabiltzaile-datuetan oinarrituta iragarkiak nola zuzentzen dituzten aztertu · Datu-laginketaren eta alborapenaren eginkizuna ikertu sare sozialetako iragarpenetan · Grafiko engainagarriak aztertu.</td></tr>
+                    <tr><td>Biologia eta Geologia · Fisika eta Kimika</td><td>Hedabideek klima-aldaketaren agertokiak nola irudikatzen dituzten eta iritzi publikoan duten eragina · AAk ikerketa zientifikoan dituen inplikazio etikoak eztabaidatu, aurkikuntza eta polemiken estaldura aztertuz.</td></tr>
+                    <tr><td>Geografia eta Historia</td><td>Lehen eta bigarren mailako iturrien egiazkotasuna ebaluatu · Argazkiek eta filmek gertaera historikoen ulermenean duten eragina · Deepfake-ek ebidentzia historikoaren benetakotasunean duten eragina eztabaidatu · AAk kuratutako hedabideek migrazioaren edo hondamendien pertzepzioan duten eragina · Mapa-tresnekin eskualdeen estaldura-alborapenak aztertu.</td></tr>
+                    <tr><td>Atzerriko hizkuntzak</td><td>Nazioarteko gertaera bera hizkuntza desberdinetako iturrietan alderatu (tonua, ikuspuntua, alborapena) · Memeak aztertu: hitz-jokoek eta irudiek esanahia eta anbiguotasuna nola sortzen dituzten.</td></tr>
+                    <tr><td>Plastika eta Ikus-hezkuntza · Musika</td><td>Plataforma digitalekin eta AArekin artea sortu eta audientziek AA piezen balioa nola hautematen duten aztertu · Giza-makina lankidetzaren egile-eskubideak eta sormenaren ulermen kulturala.</td></tr>
+                    <tr><td>Teknologia eta Digitalizazioa</td><td>Edukiak gomendatzeko AA eredu sinple bat sortu eta entrenamendu-datuen alborapenez hausnartu · Eragileen jarrerak aztertu (kontsumitzaileak, plataformak, gobernuak).</td></tr>
+                    <tr><td>Tutoretza · Balio etikoak</td><td>Ongizate digitala, ziberjazarpenaren prebentzioa, lagun-txatbotak, erabilera-akordioak.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="p-panel" id="l2" role="tabpanel">
+              <div class="p-table-wrap">
+                <table class="p-table">
+                  <thead><tr><th>Dimentsioa</th><th>Jarduera-adibideak</th></tr></thead>
+                  <tbody>
+                    <tr><td>Norberaren kontzientzia</td><td>Online albiste edo edukien aurrean sentitzen ditudan emozioak aitortu eta izendatu · Plataforma eta AA sistema berriekin jardutean nire indarguneak eta hobetzeko eremuak identifikatu.</td></tr>
+                    <tr><td>Norberaren kudeaketa</td><td>Gai polemikoei buruzko eztabaidetan estresa kudeatu eta lasai mantendu · Teknologiaren erabilera arduratsurako helburu pertsonalak ezarri.</td></tr>
+                    <tr><td>Kontzientzia soziala</td><td>Hedabide- eta AA mezuek komunitate desberdinengan izan dezaketen eragina kontuan hartuz enpatia erakutsi · Hizkuntza askotako albisteak alderatzean desberdintasun kulturalez hausnartu.</td></tr>
+                    <tr><td>Harreman-trebetasunak</td><td>Ikaskideekin arte digitala sortu, guztien ekarpenak errespetatuz · AAren inplikazio etikoei buruz eztabaidatzean errespetuz komunikatu.</td></tr>
+                    <tr><td>Erabaki arduratsuak</td><td>Online informazioaren sinesgarritasuna ebaluatu erabakiak hartu edo partekatu aurretik · AA tresnekin edukia sortu edo zabaltzearen ondorioez hausnartu.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="p-panel" id="l3" role="tabpanel">
+              <div class="grid-2">
+                <div class="p-card soft"><h3>📖 PISA Irakurketa</h3><ul class="dots prose" style="margin-top:.5rem"><li>Batez ere testu idatziak (testu multimodal batzuk eta AA testuak ere bai).</li><li>Ebaluazioa: testuen ulermena eta analisia, testuen barneko eta arteko kontraesanak, argudioen azterketa.</li><li>Ez du bilaketa-funtziorik ezta AA txatbotekin elkarreraginik.</li><li>Gatazka: testuen <em>barneko</em> kontraesanak.</li></ul></div>
+                <div class="p-card soft"><h3>📱 PISA MAIL</h3><ul class="dots prose" style="margin-top:.5rem"><li>Formatu anitzak (bideoa, multimodala) eta <strong>sorkuntzari</strong> garrantzi handiagoa.</li><li>Bilaketa- eta nabigazio-tresna gehiago; AA txatbotekin elkarreragina.</li><li>Ebaluazioa plataformen eta AAren ezaugarriei lotua (algoritmoak, promptak, bilaketak) eta hausnarketa etikoari.</li><li>Gatazka: <em>pertsonen arteko</em> edo elkarreraginezko gatazkak.</li></ul></div>
+              </div>
+            </div>
+
+            <div class="p-panel" id="l4" role="tabpanel">
+              <div class="prose"><p>EB-ELGAren <strong>AI Literacy Framework</strong>-ak (AILit) lehen eta bigarren hezkuntzarako AA gaitasunak lau domeinutan antolatzen ditu. MAILek AILit-en AA gaitasunak jasotzen ditu, baina ikuspegi zabalagoa du hedabideei dagokienez. <a href="../index.html#domains" style="color:var(--purple);font-weight:700">artifiziala.eus-en ikasgaiak</a> AILit-ekin lerrokatuta daude.</p></div>
+              <div class="p-table-wrap">
+                <table class="p-table">
+                  <thead><tr><th>AILit domeinua</th><th>Gaitasun-adibideak (AILit)</th><th>MAIL gaitasuna</th></tr></thead>
+                  <tbody>
+                    <tr><td>Engage with AI · AArekin jardun</td><td>AAren eginkizuna antzeman · AAren emaitzak onartu, berrikusi edo baztertu · Gomendio-sistemek ikuspegiak nola zabaltzen edo mugatzen dituzten · Energia-kontsumoa · Alborapenak</td><td>🔎 Aztertu · ⚖️ Etika · 🧭 Eskuratu</td></tr>
+                    <tr><td>Create with AI · AArekin sortu</td><td>Ikuspegi berriak esploratu · Ideiak bistaratu eta prototipatu · Feedbacka eskatu eta emaitzak findu · Benetakotasuna eta jabetza intelektuala</td><td>✨ Sortu · ⚖️ Etika</td></tr>
+                    <tr><td>Manage AI · AA kudeatu</td><td>Ataza baterako AA erabili ala ez erabaki · AA ikuspegi egokia aukeratu · Arazoak deskonposatu · AAren erabilera monitorizatu</td><td>⚖️ Etika · 🧭 Eskuratu · 🤝 Parte hartu</td></tr>
+                    <tr><td>Shape AI · AA moldatu (diseinatu)</td><td>AA sistema bat nola dabilen eta noren<wbr>tzat den ikertu · Irizpideekin ebaluatu · Datu-iturriek portaeran duten eragina · Ongizaterako hobetu</td><td>🔎 Aztertu · ⚖️ Etika</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- 10 -->
+          <section id="glosarioa" class="reveal">
+            <div class="block-title"><span class="n">10</span><h2>Glosarioa</h2></div>
+            <label class="sr-only" for="glossSearch">Bilatu glosarioan</label>
+            <input id="glossSearch" class="p-input glossary-search" type="search" placeholder="🔍 Bilatu terminoa…" />
+            <dl class="glossary" id="glossary">
+              <div><dt>Algoritmoa</dt><dd>Ataza bat egiteko urrats-multzo zehatza. Plataformetan, zer erakutsi eta zein ordenatan erabakitzen dute.</dd></div>
+              <div><dt>Alborapena <small>bias</small></dt><dd>Emaitzak modu sistematikoan talde edo ikuspegi baten alde edo kontra desorekatzen dituen joera, askotan datuetatik datorrena.</dd></div>
+              <div><dt>Alderantzizko irudi-bilaketa</dt><dd>Irudi bat bilatzailera igo, non eta noiz agertu den jakiteko. Irudi zaharrak edo manipulatuak detektatzeko baliagarria.</dd></div>
+              <div><dt>Arreta-ekonomia</dt><dd>Gure arreta baliabide eskasa eta salgarria den eredu ekonomikoa; plataformak ahalik eta denbora gehien mantentzeko diseinatzen dira.</dd></div>
+              <div><dt>Berrespen-alborapena</dt><dd>Aurretik uste duguna berresten duen informazioa bilatu, gogoratu eta sinesteko joera.</dd></div>
+              <div><dt>Content Credentials <small>jatorri-kredentzialak</small></dt><dd>Eduki digital baten jatorria eta aldaketak (AA erabili den ala ez barne) jasotzen dituzten metadatu estandarrak.</dd></div>
+              <div><dt>Datu-minimizazioa</dt><dd>Zerbitzu batek bere funtziorako behar dituen datuak bakarrik ematea edo biltzea.</dd></div>
+              <div><dt>Deepfake</dt><dd>AA bidez sortutako edo manipulatutako bideo, audio edo irudia, pertsona erreal bati egin edo esan ez duena egotziz.</dd></div>
+              <div><dt>Deskarga kognitiboa <small>cognitive offloading</small></dt><dd>Pentsatzeko lana (gogoratu, arrazoitu, idatzi) kanpoko tresnen esku uztea. Neurriz lagungarria; gehiegi, ikaskuntza ahultzen du.</dd></div>
+              <div><dt>Desinformazioa</dt><dd>Nahita engainatzeko zabaltzen den informazio faltsua. <em>Informazio okerra</em> (misinformation) nahi gabe zabaltzen dena da.</dd></div>
+              <div><dt>Engagement</dt><dd>Erabiltzaileek edukiarekin duten elkarreragina (atsegiteak, iruzkinak, ikusteko denbora). Algoritmo askoren helburu nagusia.</dd></div>
+              <div><dt>Gomendio-sistema</dt><dd>Zure portaeran eta antzeko erabiltzaileenean oinarrituta, zer eduki erakutsi aurreikusten duen AA sistema.</dd></div>
+              <div><dt>Haluzinazioa</dt><dd>AA sortzaile batek sinesgarria baina okerra edo asmatua den edukia sortzea (datuak, aipuak, erreferentziak).</dd></div>
+              <div><dt>Hizkuntza-eredu handia <small>LLM</small></dt><dd>Testu kopuru handiekin entrenatutako AA eredua, hurrengo hitzik litekeena aurreikusiz testua sortzen duena.</dd></div>
+              <div><dt>Inokulazioa <small>prebunking</small></dt><dd>Manipulazio-teknikak aldez aurretik ezagutzea, haiekiko erresistentzia sortzeko (txerto baten antzera).</dd></div>
+              <div><dt>Iragazki-burbuila eta oihartzun-ganbera</dt><dd>Pertsonalizazioaren ondorioz, gure iritziekin bat datorren informazioa bakarrik jasotzea eta ikuspegi desberdinetatik isolatzea.</dd></div>
+              <div><dt>Irakurketa laterala</dt><dd>Webgune bat ebaluatzeko hura utzi eta beste fitxa batzuetan hari buruz zer dioten bilatzea. Aditu-egiaztatzaileen estrategia.</dd></div>
+              <div><dt>Kurazioa</dt><dd>Edukia hautatu, iragazi, antolatu eta aurkezteko prozesua, pertsonek edo algoritmoek egina.</dd></div>
+              <div><dt>Media sintetikoa</dt><dd>AAk osorik edo zati batean sortutako testua, irudia, audioa edo bideoa.</dd></div>
+              <div><dt>Patroi iluna <small>dark pattern</small></dt><dd>Erabiltzailea nahi ez duen erabaki batera bultzatzeko interfaze-diseinua (botoi nabarmenak, aukera ezkutuak, presa).</dd></div>
+              <div><dt>Phishing</dt><dd>Erakunde fidagarri baten itxura hartuta, pasahitzak edo datuak lapurtzeko iruzurra (posta, SMS, txata).</dd></div>
+              <div><dt>Prompta</dt><dd>AA sortzaile bati ematen zaion jarraibidea edo eskaera.</dd></div>
+              <div><dt>Publizitate natiboa</dt><dd>Hedabidearen edukiaren itxura duen iragarkia («babestutako edukia»).</dd></div>
+              <div><dt>Remix kultura</dt><dd>Lehendik dauden obrak birkonbinatu eta eraldatuz sortzea. Lizentziak eta aitortza eskatzen ditu.</dd></div>
+              <div><dt>Triangulazioa</dt><dd>Informazio bat hainbat iturri independenteren bidez egiaztatzea.</dd></div>
+              <div><dt>Ziberjazarpena</dt><dd>Teknologia digitalen bidezko jazarpen errepikatua: irainak, mehatxuak, baztertzea, irudiak zabaltzea.</dd></div>
+            </dl>
+            <p id="glossEmpty" class="pisa-disclaimer" hidden>Ez da terminorik aurkitu.</p>
+          </section>
+
+          <section id="iturriak" class="reveal">
+            <div class="block-title"><span class="n">+</span><h2>Iturriak</h2></div>
+            <ul class="src-list">
+              <li>OECD (2026). <em>Navigating an Evolving Digital World: First draft of the PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em>. OECD Publishing, Paris.</li>
+              <li>OECD / European Commission (2026). <em>Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education</em>.</li>
+              <li>Wineburg, S. eta McGrew, S. (2019). Lateral Reading and the Nature of Expertise. <em>Teachers College Record</em>, 121(11).</li>
+              <li>Roozenbeek, J. eta van der Linden, S. (2024). <em>The Psychology of Misinformation</em>. Cambridge University Press.</li>
+              <li>Kozyreva, A. et al. (2023). Critical ignoring as a core competence for digital citizens. <em>Current Directions in Psychological Science</em>, 32(1).</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">PISA 2029ko MAIL proba prestatzeko baliabide irekiak, euskaraz: teoria, ariketak, simulagailuak eta txantiloiak.</p>
+          <p class="footer-author">Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a></p>
+        </div>
+        <div class="footer-topics">
+          <h4>PISA 2029 · MAIL</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
+            <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
+            <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="pisa-disclaimer" style="color:rgba(255,255,255,.55);margin:0 auto 1.5rem;text-align:center">
+          Atal hau ELGAren <em>PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em> (lehen zirriborroa, 2026) eta EB-ELGAren <em>AI Literacy Framework</em> dokumentuetan oinarritutako material didaktiko independentea da. Ez da ELGAren edo PISAren baliabide ofiziala, eta ariketak ez dira proba errealeko itemak.
+        </p>
+        <div class="footer-legal">
+          <a href="../lege-oharra.html">Lege oharra</a>
+          <a href="../pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="../lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/pisa.js"></script>
+  <script>
+    (function () {
+      const input = document.getElementById("glossSearch");
+      const items = document.querySelectorAll("#glossary > div");
+      const empty = document.getElementById("glossEmpty");
+      if (!input) return;
+      const norm = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      input.addEventListener("input", () => {
+        const q = norm(input.value.trim());
+        let n = 0;
+        items.forEach((d) => {
+          const show = !q || norm(d.textContent).includes(q);
+          d.hidden = !show;
+          if (show) n++;
+        });
+        empty.hidden = n > 0;
+      });
+    })();
+  </script>
+</body>
+</html>

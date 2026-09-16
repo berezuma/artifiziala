@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aztertu eta ebaluatu · PISA 2029 MAIL · artifiziala.eus</title>
+  <meta name="description" content="PISA 2029 MAIL: Aztertu eta ebaluatu gaitasuna. Irakurketa laterala, manipulazio-teknikak, AAren haluzinazioak, grafiko engainagarriak eta irudien egiaztapena." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/pisa.css" />
+  <style>
+    .sift{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:.8rem; }
+    .sift div{ border-radius:var(--r-md); padding:1.1rem; background:#fff; border:1px solid var(--rule); position:relative; overflow:hidden; }
+    .sift div::before{ content:attr(data-l); position:absolute; right:.6rem; top:-.6rem; font-family:var(--font-display); font-size:4.2rem; font-weight:800; color:var(--c-aztertu-soft); line-height:1; }
+    .sift b{ position:relative; font-family:var(--font-display); font-size:1.1rem; display:block; margin-bottom:.3rem; }
+    .sift p{ position:relative; font-size:.9rem; color:var(--ink-soft); }
+    .tech-table td:first-child{ white-space:nowrap; }
+    @media (max-width:900px){ .sift{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+    @media (max-width:640px){ .sift{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="pisa-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-dot-sm"></span><span class="brand-dot-lg"></span></span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">PISA 2029 · MAIL</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav" aria-label="Nabigazio nagusia">
+          <a href="../index.html">Hasiera</a>
+          <a href="../ikasgaiak.html">Ikasgaiak</a>
+          <a href="../laborategia.html">Laborategia</a>
+          <a href="../erronkak.html">Erronkak</a>
+          <a href="index.html" class="active" aria-current="page">PISA 2029</a>
+          <a href="../irakasleak.html">Irakasleak</a>
+          <a href="../gurasoak.html">Gurasoak</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pisa-subnav">
+    <div class="container">
+      <span class="tag">MAIL</span>
+      <nav aria-label="PISA 2029 atala">
+        <a href="index.html">Hasiera</a>
+        <a href="markoa.html">📘 Markoa</a>
+        <a href="etika.html">⚖️ Etika</a>
+        <a href="sarbidea.html">🧭 Eskuratu</a>
+        <a href="aztertu.html">🔎 Aztertu</a>
+        <a href="parte-hartu.html">🤝 Parte hartu</a>
+        <a href="sortu.html">✨ Sortu</a>
+        <a href="simulagailua.html">🖥️ Simulagailua</a>
+        <a href="ariketak.html">📝 Ariketak</a>
+        <a href="txantiloiak.html">📄 Txantiloiak</a>
+        <a href="irakasleak.html">🎓 Irakasleak</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="pisa-hero compact" data-c="aztertu" style="background:var(--cc)">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">PISA 2029</a><span>›</span><a href="markoa.html#gaitasunak">Gaitasunak</a><span>›</span><strong>Aztertu eta ebaluatu</strong></div>
+        <span class="pisa-eyebrow">03 · Proba-denboraren %25 · Analyse and Evaluate</span>
+        <h1>🔎 Aztertu eta ebaluatu</h1>
+        <p class="lead">Nork dio hau? Zertarako? Nondik dator datua? AAk asmatu al du? Probaren gaitasunik garrantzitsuenetako bat: gizakiek eta makinek sortutako edukien helburua, alborapena eta sinesgarritasuna ebaluatzea.</p>
+        <div class="hero-meta"><span>SIFT metodoa</span><span>7 manipulazio-teknika</span><span>Adibide ebatzia</span><span>11 ariketa</span></div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container comp-layout">
+        <aside class="comp-toc">
+          <div class="p-card">
+            <h4>Orri honetan</h4>
+            <ol>
+              <li><a href="#zer">1. Zer da?</a></li>
+              <li><a href="#mailak">2. Mailak</a></li>
+              <li><a href="#estrategiak">3. Irakurketa laterala</a></li>
+              <li><a href="#teknikak">4. Manipulazio-teknikak</a></li>
+              <li><a href="#aa">5. AA eta datuak egiaztatu</a></li>
+              <li><a href="#adibidea">6. Adibide ebatzia</a></li>
+              <li><a href="#simulagailua">7. Simulagailua</a></li>
+              <li><a href="#ariketak">8. Ariketak</a></li>
+              <li><a href="#gelan">9. Ikasgelan</a></li>
+            </ol>
+          </div>
+          <div class="p-card soft">
+            <h4>Zure aurrerapena</h4>
+            <div data-progress class="stack" style="grid-template-columns:1fr"></div>
+          </div>
+        </aside>
+
+        <div class="comp-main">
+          <section id="zer" class="reveal">
+            <div class="block-title"><span class="n">01</span><h2>Zer da gaitasun hau?</h2></div>
+            <div class="def-box" data-c="aztertu">
+              <span class="label">Definizioa · PISA 2029 MAIL</span>
+              <blockquote>Gizakiek eta AAk sortutako hedabide-edukien helburua, alborapena, garrantzia eta sinesgarritasuna kritikoki ebaluatzeko gaitasuna.</blockquote>
+            </div>
+            <div class="prose" style="margin-top:1.4rem">
+              <p>Giza egiletzaren eta makina-egiletzaren arteko mugak lausotzen ari dira. AAk sortutako testu, irudi eta bideoek <strong>agintea dutela dirudite</strong>, baina okerrak, alboratuak edo ezkutuko asmoz eginak izan daitezke.</p>
+              <p>Hizkuntza-eredu handiek ez dute informazioa «ulertzen»: <strong>litekeena dena aurreikusten</strong> dute. Horregatik <strong>haluzina</strong> dezakete: sinesgarria baina faltsua den edukia sortu. Batzuen ustez, hori ez da akats hutsa, ereduen propietate matematikoa baizik.</p>
+              <p>Desinformazioa ez da asmo txarrez bakarrik zabaltzen: <strong>lasterbide kognitiboek</strong> (berrespen-alborapena, autoritate-heuristikoa) ere laguntzen dute. Eta informazio <strong>zuzena ere engainagarria</strong> izan daiteke: gai konplexuak gehiegi sinplifikatzean, korrelazioa kausalitatearekin nahastean edo zarata ausazkoan patroiak ikustean.</p>
+              <h3>Ikasle gaitu batek…</h3>
+              <ul class="dots">
+                <li>egiletza identifikatzen du, iturriak triangulatzen ditu eta <strong>laterala irakurtzen</strong> du;</li>
+                <li>alborapena eta aditutasuna ebaluatzen ditu, eta nork ateratzen duen etekina galdetzen du;</li>
+                <li>zer informazio edo ikuspegi falta den eta limurtze-teknikak nola erabiltzen diren aztertzen du;</li>
+                <li>AAren baieztapenak <strong>jatorrizko iturrietaraino</strong> jarraitzen ditu eta AAk distortsioak sartu dituen ebaluatzen du;</li>
+                <li>engagement-ean oinarritutako sistemek zer den ikusgarriena nola moldatu duten detektatzen du.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="mailak" class="reveal">
+            <div class="block-title"><span class="n">02</span><h2>Maila-progresioa</h2></div>
+            <div class="levels">
+              <div class="level"><div class="lv"><b>Aurreratua</b><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></div></div><p>Iturri eta ikuspegi anitz eta sinesgarriak bilatu eta ebaluatzen ditu, hedabide/AA tresnen mekanismoak eta alborapenak kritikoki aztertzen ditu eta berrespen-alborapenaren eragina aktiboki kontuan hartzen du, ulermen oinarritu eta askotarikoa eraikitzeko.</p></div>
+              <div class="level"><div class="lv"><b>Tartekoa</b><div class="bars"><i class="on"></i><i class="on"></i><i></i></div></div><p>Sinesgarritasunaz, alborapenaz eta kanpo-eraginez jabetzen da, irakurketa laterala egiten ohituta dago, eta informazio zuzena modu engainagarrian aurkezten denean identifikatzen du.</p></div>
+              <div class="level"><div class="lv"><b>Oinarrizkoa</b><div class="bars"><i class="on"></i><i></i><i></i></div></div><p>Fidagarritasuna eta asmoa ebaluatzeko oinarrizko estrategiak erabiltzen ditu (egiletza, iturriaren sinesgarritasuna), eta eduki digitalen eta AA mezuen zehaztasuna eta motibazioa zalantzan jartzearen garrantziaz jabetzen da.</p></div>
+            </div>
+          </section>
+
+          <section id="estrategiak" class="reveal">
+            <div class="block-title"><span class="n">03</span><h2>Irakurketa laterala: SIFT metodoa</h2></div>
+            <div class="prose"><p>Ikasle askok webgune bat goitik behera irakurtzen dute (<em>bertikalki</em>) fidagarria den erabakitzeko. Aditu-egiaztatzaileek, aldiz, <strong>laster uzten dute orria</strong> eta beste fitxa batzuetan bilatzen dute hari buruz zer dioten (Wineburg eta McGrew, 2019). Mike Caulfield-en SIFT metodoak lau mugimendutan laburtzen du:</p></div>
+            <div class="sift">
+              <div data-l="S"><b>Gelditu</b><p>Emozio bizia sentitzen baduzu edo iturria ezagutzen ez baduzu, ez partekatu oraindik. Zer dakizu benetan?</p></div>
+              <div data-l="I"><b>Iturria ikertu</b><p>Ireki fitxa berria: nor dago webgune edo kontu honen atzean? Zer dio beste batzuek hari buruz?</p></div>
+              <div data-l="F"><b>Estaldura hobea bilatu</b><p>Bilatu baieztapena bera beste iturri fidagarri batzuetan. Adostasunik ba al dago?</p></div>
+              <div data-l="T"><b>Jatorrira jarraitu</b><p>Aipuak, datuak, irudiak: nondik datoz? Jatorrizko testuinguruan gauza bera esaten dute?</p></div>
+            </div>
+          </section>
+
+          <section id="teknikak" class="reveal">
+            <div class="block-title"><span class="n">04</span><h2>Manipulazio-teknikak (inokulazioa)</h2></div>
+            <div class="prose"><p>Ikerketek erakutsi dute manipulazio-teknikak <strong>aldez aurretik</strong> ezagutzeak «txerto» psikologiko gisa funtzionatzen duela (Roozenbeek eta van der Linden, 2024). Hauek dira ohikoenak:</p></div>
+            <div class="p-table-wrap">
+              <table class="p-table tech-table">
+                <thead><tr><th>Teknika</th><th>Nola aitortu</th><th>Adibidea</th></tr></thead>
+                <tbody>
+                  <tr><td>😡 Hizkuntza emozionala</td><td>Maiuskulak, emojiak, haserre- edo beldur-hitzak; arrazoiak baino emozio gehiago.</td><td>«LOTSAGARRIA!!! Ikusi zer egin duten 😡»</td></tr>
+                  <tr><td>⚫⚪ Dikotomia faltsua</td><td>Bi aukera bakarrik aurkezten dira, gehiago daudenean.</td><td>«Edo gurekin zaude, edo haien alde»</td></tr>
+                  <tr><td>🥼 Aditu faltsua</td><td>Izenik, erakunderik edo aditutasun egiaztagarririk gabeko «doktoreak» edo «zientzialariak».</td><td>«Dr. Zientzia ospetsuak dio…»</td></tr>
+                  <tr><td>🕵️ Konspirazioa</td><td>Botere ezkutu batek egia gordetzen duela; frogarik ezak «ezkutatzen dutela» frogatzen omen du.</td><td>«Ez dute nahi hau jakitea»</td></tr>
+                  <tr><td>⏰ Presa artifiziala</td><td>Pentsatzeko denbora kentzen dizu.</td><td>«Gaur gauerdian amaitzen da!»</td></tr>
+                  <tr><td>🎯 Boc-emisarioa / ad hominem</td><td>Arazo konplexu baten errua talde bati botatzea, edo argudioa ez, pertsona erasotzea.</td><td>«Hori dio, baina begiratu nolakoa den…»</td></tr>
+                  <tr><td>📊 Datu engainagarriak</td><td>Ardatz moztuak, lagin txikiak, ehuneko iturririk gabe, korrelazioa kausalitate gisa.</td><td>«%340 igo da!» (nondik?)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="aa" class="reveal">
+            <div class="block-title"><span class="n">05</span><h2>AAren erantzunak, grafikoak eta irudiak egiaztatu</h2></div>
+            <div class="grid-3">
+              <div class="p-card soft">
+                <h3>✦ AA erantzunak</h3>
+                <ul class="dots prose" style="margin-top:.5rem;font-size:.95rem">
+                  <li>Deskonposatu erantzuna <b>baieztapen txikietan</b>.</li>
+                  <li>Izenak, datak, zenbakiak eta aipuak: egiaztatu <b>bakoitza</b>.</li>
+                  <li>Erreferentziak liburutegi-katalogoan bilatu: existitzen dira?</li>
+                  <li>Ez galdetu AAri «ziur zaude?»: ez da egiaztapen independentea.</li>
+                  <li>Euskaraz: kontuz itzulpen-akatsekin eta ñabardurekin.</li>
+                </ul>
+              </div>
+              <div class="p-card soft">
+                <h3>📊 Grafikoak eta datuak</h3>
+                <ul class="dots prose" style="margin-top:.5rem;font-size:.95rem">
+                  <li>Ardatz bertikala zeroan hasten da?</li>
+                  <li>Lagina: zenbat pertsona? nor?</li>
+                  <li>Ehunekoa zeren gainean?</li>
+                  <li>Korrelazioa ≠ kausalitatea.</li>
+                  <li>Epe osoa erakusten da ala zati hautatu bat?</li>
+                </ul>
+              </div>
+              <div class="p-card soft">
+                <h3>🖼️ Irudiak eta bideoak</h3>
+                <ul class="dots prose" style="margin-top:.5rem;font-size:.95rem">
+                  <li>Alderantzizko irudi-bilaketa: lehenago agertu da?</li>
+                  <li>Metadatuak eta <em>Content Credentials</em> etiketak.</li>
+                  <li>Testuingurua: eguraldia, data, lekua bat datoz?</li>
+                  <li>Nork argitaratu du lehenik?</li>
+                  <li>Ez fidatu «akatsak ikustean» bakarrik: AA gero eta hobea da.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="adibidea" class="reveal">
+            <div class="block-title"><span class="n">06</span><h2>Adibide ebatzia</h2></div>
+            <div class="worked">
+              <div class="worked-head"><strong>AA txatbota eta Bizkaiko Zubia</strong><span class="chip" data-c="aztertu">Ikaskuntza · Tartekoa</span></div>
+              <div class="worked-body">
+                <div>
+                  <div class="stim">
+                    <div class="stim-cap">AA txatbota</div>
+                    <div class="stim-frame ai-chat">
+                      <div class="u">Eman Bizkaiko Zubiari buruzko 3 datu nire aurkezpenerako</div>
+                      <div class="a"><span class="logo">✦</span><div><ul><li>1893an inauguratu zen, Getxo eta Portugalete lotzeko.</li><li>Munduko garraio-zubirik zaharrena da oraindik martxan dagoena.</li><li>Gustave Eiffel ingeniari frantziarrak diseinatu zuen, Parisko dorrearen egileak.</li></ul></div></div>
+                      <div class="disclaimer">AAk akatsak egin ditzake. Egiaztatu informazio garrantzitsua.</div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <ol class="think-steps">
+                    <li><strong>Deskonposatu.</strong> Hiru baieztapen daude: data, «zaharrena martxan», eta egilea.</li>
+                    <li><strong>Iturria bilatu datu bakoitzerako.</strong> Zubiaren webgune ofiziala eta UNESCOren Gizateriaren Ondarearen fitxa (2006an izendatua).</li>
+                    <li><strong>Kontrastatu.</strong> 1893 ✓ · martxan dagoen zaharrena ✓ · <b>diseinatzailea: Alberto Palacio</b> arkitekto bizkaitarra, ez Eiffel ✗ (Palacio Eiffel-en ikaslea izan zen: hortik nahasmena).</li>
+                    <li><strong>Ondorioa.</strong> Erantzuna <b>partzialki zehatza</b> da. Hirugarren datua zuzendu eta iturriak aipatu aurkezpenean.</li>
+                  </ol>
+                  <div class="note ok" style="margin-top:1rem"><strong>Ikasgaia</strong><p>AAren akatsak ez dira «absurduak» izaten: <b>sinesgarriak</b> dira, egia den zerbaitetik gertu daudelako. Horregatik egiaztatu behar da datuz datu.</p></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="simulagailua" class="reveal">
+            <div class="block-title"><span class="n">07</span><h2>Simulagailua: irakurketa laterala ataza luze batean</h2></div>
+            <div class="cta-band">
+              <div>
+                <h2>🖥️ Kazetari gaztea</h2>
+                <p>Mahaigain birtual batean, arduradunak albiste bat bidaltzen dizu. Bilatzailea, nabigatzailea eta AA laburpenak erabiliz, egiaztatu zehatza den, bidali zure epaia iturriekin eta sortu argitalpen bat. Amaieran, zure ekintzen araberako txostena jasoko duzu.</p>
+              </div>
+              <div class="btns"><a class="btn btn-primary" href="simulagailua.html">Hasi ataza</a></div>
+            </div>
+          </section>
+
+          <section id="ariketak">
+            <div class="block-title"><span class="n">08</span><h2>PISA estiloko ariketak</h2></div>
+            <div class="bank-list" data-items-comp="aztertu"></div>
+          </section>
+
+          <section id="gelan" class="reveal">
+            <div class="block-title"><span class="n">09</span><h2>Ikasgelan</h2></div>
+            <div class="grid-2">
+              <div class="p-card">
+                <span class="chip plain">50 min · 4 taldetan</span>
+                <h3 style="margin-top:.6rem">Egiaztatzaile-taldeak</h3>
+                <p>Talde bakoitzak aste honetako albiste biral bat jasotzen du. SIFT urratsak jarraituz, 20 minututan epaia eman behar dute (zehatza / partzialki / okerra) egiaztapen-fitxan. Gero, «prentsaurrekoa»: beste taldeek galderak egiten dituzte.</p>
+                <a class="btn btn-ghost btn-sm" href="txantiloiak.html#egiaztapena" style="margin-top:.8rem">Deskargatu egiaztapen-fitxa →</a>
+              </div>
+              <div class="p-card">
+                <span class="chip plain">40 min · Bikoteak</span>
+                <h3 style="margin-top:.6rem">Titularra vs. ikerketa</h3>
+                <p>Zientzia-albiste baten titularra eta jatorrizko ikerketaren laburpena. Bikoteek aurkitu behar dute tartea: zer dio ikerketak benetan? Zer gehitu edo kendu du titularrak? Idatzi titular zuzenago bat.</p>
+                <a class="btn btn-ghost btn-sm" href="txantiloiak.html#mezua" style="margin-top:.8rem">Deskargatu mezu-azterketa gida →</a>
+              </div>
+            </div>
+          </section>
+
+          <nav class="exam-nav">
+            <a class="btn btn-ghost" href="sarbidea.html">← Eskuratu eta erabili</a>
+            <a class="btn btn-dark" href="parte-hartu.html">Hurrengoa: Parte hartu →</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">PISA 2029ko MAIL proba prestatzeko baliabide irekiak, euskaraz: teoria, ariketak, simulagailuak eta txantiloiak.</p>
+          <p class="footer-author">Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a></p>
+        </div>
+        <div class="footer-topics">
+          <h4>PISA 2029 · MAIL</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
+            <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
+            <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="pisa-disclaimer" style="color:rgba(255,255,255,.55);margin:0 auto 1.5rem;text-align:center">
+          Atal hau ELGAren <em>PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em> (lehen zirriborroa, 2026) eta EB-ELGAren <em>AI Literacy Framework</em> dokumentuetan oinarritutako material didaktiko independentea da. Ez da ELGAren edo PISAren baliabide ofiziala, eta ariketak ez dira proba errealeko itemak.
+        </p>
+        <div class="footer-legal">
+          <a href="../lege-oharra.html">Lege oharra</a>
+          <a href="../pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="../lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/pisa.js"></script>
+  <script src="assets/items.js"></script>
+</body>
+</html>

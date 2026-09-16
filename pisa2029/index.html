@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PISA 2029 · MAIL prestatzeko gunea · artifiziala.eus</title>
+  <meta name="description" content="PISA 2029ko Hedabideen eta Adimen Artifizialaren Alfabetatzea (MAIL) proba prestatzeko gunea, euskaraz: teoria, ariketa interaktiboak, simulagailuak eta txantiloi deskargagarriak ikasle eta irakasleentzat." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/pisa.css" />
+  <style>
+    .model-legend a{
+      display:grid; gap:.25rem; background:#fff; border:1px solid var(--rule); border-radius:var(--r-md);
+      padding:1rem 1.1rem; color:var(--ink); transition:border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .model-legend a:hover, .model-legend a:focus-visible, .model-legend a.on{ border-color:var(--ink); box-shadow:0 8px 20px rgba(38,35,79,.08); transform:translateX(4px); }
+    .model-legend a strong{ font-family:var(--font-display); font-size:1.05rem; display:flex; gap:.55rem; align-items:center; }
+    .model-legend a span{ color:var(--ink-soft); font-size:.9rem; }
+    .model-legend a em{ font-style:normal; font-family:var(--font-mono); font-size:.7rem; color:var(--ink-mute); margin-left:auto; }
+    .model-svg .node{ transition:opacity .2s ease; }
+    .model-svg.focus .node:not(.on){ opacity:.25; }
+    .model-svg .node.on circle{ filter:drop-shadow(0 6px 12px rgba(38,35,79,.25)); }
+
+    .facts{ display:grid; gap:1rem; }
+    .fact{ display:grid; grid-template-columns:56px minmax(0,1fr); gap:1rem; align-items:start; padding:1.2rem; border-radius:var(--r-md); background:var(--surface-2); }
+    .fact .big{ font-family:var(--font-display); font-size:1.6rem; line-height:1; width:56px; height:56px; border-radius:14px; background:#fff; display:grid; place-items:center; border:1px solid var(--rule); }
+    .fact h3{ font-family:var(--font-display); font-size:1.12rem; margin-bottom:.2rem; }
+    .fact p{ color:var(--ink-soft); font-size:.95rem; }
+
+    .def-quote{ font-family:var(--font-display); font-size:clamp(1.4rem, 2.6vw, 2rem); line-height:1.18; letter-spacing:-.02em; color:var(--ink); border-left:6px solid var(--teal); padding-left:1.2rem; margin:1.2rem 0 1.4rem; }
+    .def-quote b{ color:var(--purple); }
+
+    .task-types{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.25rem; }
+    .tt-card{ border-radius:var(--r-lg); padding:1.6rem; background:#fff; border:1px solid var(--rule); display:grid; gap:.7rem; align-content:start; }
+    .tt-card .lbl{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-mute); }
+    .tt-card h3{ font-family:var(--font-display); font-size:1.4rem; letter-spacing:-.02em; }
+    .tt-card p{ color:var(--ink-soft); }
+    .tt-card .chips{ display:flex; flex-wrap:wrap; gap:.35rem; }
+
+    .route{ display:grid; gap:.6rem; counter-reset:r; }
+    .route li{ display:grid; grid-template-columns:40px minmax(0,1fr); gap:.9rem; align-items:start; padding:1rem; border-radius:var(--r-md); background:#fff; border:1px solid var(--rule); }
+    .route li::before{ counter-increment:r; content:counter(r); width:40px; height:40px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-family:var(--font-display); font-weight:700; }
+    .route li b{ display:block; font-family:var(--font-display); font-size:1.05rem; }
+    .route li span{ color:var(--ink-soft); font-size:.93rem; }
+    .route li a{ color:var(--purple); font-weight:700; }
+    .route li a:hover{ text-decoration:underline; }
+    .route-title{ font-family:var(--font-display); font-size:1.5rem; letter-spacing:-.02em; margin-bottom:1rem; display:flex; gap:.6rem; align-items:center; }
+
+    .demo-wrap{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:2.5rem; align-items:start; }
+    @media (max-width:1100px){ .demo-wrap{ grid-template-columns:1fr; } }
+    @media (max-width:900px){ .task-types{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="pisa-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-dot-sm"></span><span class="brand-dot-lg"></span></span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">PISA 2029 · MAIL</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav" aria-label="Nabigazio nagusia">
+          <a href="../index.html">Hasiera</a>
+          <a href="../ikasgaiak.html">Ikasgaiak</a>
+          <a href="../laborategia.html">Laborategia</a>
+          <a href="../erronkak.html">Erronkak</a>
+          <a href="index.html" class="active" aria-current="page">PISA 2029</a>
+          <a href="../irakasleak.html">Irakasleak</a>
+          <a href="../gurasoak.html">Gurasoak</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pisa-subnav">
+    <div class="container">
+      <span class="tag">MAIL</span>
+      <nav aria-label="PISA 2029 atala">
+        <a href="index.html">Hasiera</a>
+        <a href="markoa.html">📘 Markoa</a>
+        <a href="etika.html">⚖️ Etika</a>
+        <a href="sarbidea.html">🧭 Eskuratu</a>
+        <a href="aztertu.html">🔎 Aztertu</a>
+        <a href="parte-hartu.html">🤝 Parte hartu</a>
+        <a href="sortu.html">✨ Sortu</a>
+        <a href="simulagailua.html">🖥️ Simulagailua</a>
+        <a href="ariketak.html">📝 Ariketak</a>
+        <a href="txantiloiak.html">📄 Txantiloiak</a>
+        <a href="irakasleak.html">🎓 Irakasleak</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="pisa-hero">
+      <div class="container pisa-hero-grid">
+        <div>
+          <span class="pisa-eyebrow"><span class="pulse" aria-hidden="true"></span>PISA 2029 · Domeinu berritzailea</span>
+          <h1>Prestatu <em>MAIL</em> probarako, euskaraz</h1>
+          <p class="lead">
+            2029an PISAk lehen aldiz ebaluatuko du <strong>Hedabideen eta Adimen Artifizialaren Alfabetatzea (MAIL)</strong>:
+            15 urteko ikasleek eduki digitalekin, hedabide-plataformekin eta AA sistemekin modu eraginkor, etiko eta arduratsuan jarduteko duten gaitasuna.
+            Hemen dituzu teoria, ariketa interaktiboak, simulagailuak eta txantiloi deskargagarriak.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="simulagailua.html">🖥️ Probatu simulagailua</a>
+            <a class="btn btn-secondary" href="ariketak.html">Ariketa-bankua</a>
+            <a class="btn btn-secondary" href="irakasleak.html">Irakasleentzat</a>
+          </div>
+          <div class="hero-meta">
+            <span>5 gaitasun</span><span>46 ariketa</span><span>6 simulagailu</span><span>12 txantiloi</span><span>Doakoa · CC BY-NC-SA</span>
+          </div>
+        </div>
+
+        <aside class="countdown-card" aria-label="PISA 2029 arte">
+          <div class="label">PISA 2029 aplikazioa arte</div>
+          <div class="countdown-big"><span data-countdown="2029-03-01">—</span><small>egun inguru</small></div>
+          <p style="font-size:.85rem;color:rgba(255,255,255,.7)">Proba 2029an egingo da; herrialde bakoitzak zehazten ditu data zehatzak.</p>
+          <div class="comp-bars" aria-label="Ebaluazio-denboraren banaketa gomendatua">
+            <div class="label" style="margin-top:.6rem">Denbora-banaketa gomendatua</div>
+            <div class="comp-bar"><span>🔎 Aztertu eta ebaluatu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#ff5571"></div></div></div>
+            <div class="comp-bar"><span>✨ Sortu</span><b>%25</b><div class="track"><div class="fill" style="width:25%;background:#18c3bd"></div></div></div>
+            <div class="comp-bar"><span>⚖️ 🧭 🤝 Beste hirurak</span><b>%50</b><div class="track"><div class="fill" style="width:50%;background:linear-gradient(90deg,#c95fc1,#62b9e7,#f4be7d)"></div></div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ZER DA -->
+    <section class="p-section">
+      <div class="container grid-2" style="gap:3rem;align-items:start">
+        <div class="reveal">
+          <div class="p-head" style="margin-bottom:0">
+            <span class="kicker">01 · Zer da MAIL?</span>
+            <h2>Ez da tresnak erabiltzen jakitea bakarrik</h2>
+          </div>
+          <p class="def-quote">
+            «Eduki digitalekin, hedabide-plataformekin eta AA sistemekin <b>modu eraginkor, etiko eta arduratsuan</b> jarduteko behar diren gaitasunen multzoa.»
+          </p>
+          <div class="prose">
+            <p>
+              Horrela definitzen du ELGAk MAIL, PISA 2029ko <strong>domeinu berritzailea</strong>. Bi alfabetatze uztartzen ditu:
+              <strong>hedabideen alfabetatzea</strong> (mezuak eskuratu, ulertu, aztertu eta sortzea) eta <strong>AA alfabetatzea</strong>
+              (AA sistemekin jardutea, sortzea, kudeatzea eta haien onura eta arriskuak kritikoki baloratzea).
+            </p>
+            <p>
+              Gaur egun AAk edukiak <strong>sortzen</strong> ditu, zer ikusten dugun <strong>aukeratzen</strong> du gomendio-sistemen bidez,
+              eta bera ere <strong>hedabide</strong> bihurtu da (txatbotak). Horregatik ezin dira bi alfabetatzeak bereizita landu.
+            </p>
+          </div>
+          <a class="btn btn-ghost" href="markoa.html" style="margin-top:.5rem">Irakurri markoa euskaraz →</a>
+        </div>
+
+        <div class="facts reveal">
+          <div class="fact"><span class="big" aria-hidden="true">15</span><div><h3>Nor ebaluatuko da?</h3><p>15 urteko ikasleak (Euskal Herrian, gehienak DBH 4. mailan). Ikasle bakoitzak domeinu batzuk egiten ditu; MAIL horietako bat izango da.</p></div></div>
+          <div class="fact"><span class="big" aria-hidden="true">💻</span><div><h3>Nola?</h3><p>Ordenagailuan. <strong>Ataza laburrak</strong> (aukera anitza, lotzea, erantzun laburrak) eta <strong>ataza luzeak</strong> ingurune simulatuetan: txata, nabigatzailea, bilatzailea, AA tresnak.</p></div></div>
+          <div class="fact"><span class="big" aria-hidden="true">5</span><div><h3>Zer neurtzen da?</h3><p>Bost gaitasun, hiru kontzeptu gakoren inguruan (egileak eta audientziak, mezuak eta esanahiak, irudikapenak eta errealitateak) eta bost testuingurutan.</p></div></div>
+          <div class="fact"><span class="big" aria-hidden="true">📋</span><div><h3>Eta galdetegia?</h3><p>Ikasleen jarrerak, ohiturak eta ikastetxean MAIL lantzeko izan dituzten aukerak ere jasoko dira. Irakasleen lanak garrantzia du!</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EREDUA -->
+    <section class="p-section alt">
+      <div class="container">
+        <div class="p-head reveal">
+          <span class="kicker">02 · Gaitasun-eredua</span>
+          <h2>Bost gaitasun, erdian etika</h2>
+          <p><strong>Eskuratu eta erabili</strong> da oinarria; hortik garatzen dira <strong>aztertzea</strong>, <strong>parte hartzea</strong> eta <strong>sortzea</strong>. <strong>Etika eta ardura</strong> guztiak zeharkatzen ditu. Egin klik gaitasun batean haren orrira joateko.</p>
+        </div>
+        <div class="model-wrap">
+          <svg class="model-svg reveal" id="modelSvg" viewBox="0 0 520 520" role="img" aria-labelledby="modelTitle modelDesc">
+            <title id="modelTitle">MAIL gaitasun-eredua</title>
+            <desc id="modelDesc">Erdian, Hausnartu eta jardun etikoki eta arduraz, gainerako gaitasunak zeharkatzen dituena. Ezkerrean, Eskuratu eta erabili oinarria; hortik geziak doaz Aztertu eta ebaluatu, Parte hartu eta elkarlanean aritu, eta Sortu gaitasunetara. Inguruko eraztunean, hiru kontzeptu gakoak.</desc>
+            <defs>
+              <path id="arcA" d="M58.9,333.2 A214,214 0 0 1 222.8,49.3"/>
+              <path id="arcB" d="M297.2,49.3 A214,214 0 0 1 461.1,333.2"/>
+              <path id="arcC" d="M82.3,409.1 A232,232 0 0 0 437.7,409.1"/>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a87a8"/></marker>
+            </defs>
+            <circle cx="260" cy="260" r="222" fill="none" stroke="#ebe6f5" stroke-width="42"/>
+            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcA" startOffset="50%" text-anchor="middle">EGILEAK ETA AUDIENTZIAK</textPath></text>
+            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcB" startOffset="50%" text-anchor="middle">MEZUAK ETA ESANAHIAK</textPath></text>
+            <text font-size="13.5" font-weight="700" fill="#5c5882" letter-spacing="1.2"><textPath href="#arcC" startOffset="50%" text-anchor="middle">IRUDIKAPENAK ETA ERREALITATEAK</textPath></text>
+
+            <g stroke="#8a87a8" stroke-width="2" stroke-dasharray="5 5" fill="none">
+              <line x1="168.7" y1="236.7" x2="297.7" y2="175" marker-end="url(#arr)"/>
+              <line x1="174" y1="260" x2="344" y2="260" marker-end="url(#arr)"/>
+              <line x1="168.7" y1="283.3" x2="297.7" y2="345" marker-end="url(#arr)"/>
+            </g>
+
+            <a href="sarbidea.html"><g class="node" data-node="sarbidea">
+              <circle cx="120" cy="260" r="54" fill="#e7f3fb" stroke="#3d9fd6" stroke-width="3"/>
+              <text x="120" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Eskuratu</text>
+              <text x="120" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">eta erabili</text>
+            </g></a>
+            <a href="etika.html"><g class="node" data-node="etika">
+              <circle cx="260" cy="260" r="76" fill="#f8eaf7" stroke="#c95fc1" stroke-width="4"/>
+              <text x="260" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Hausnartu eta</text>
+              <text x="260" y="263" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">jardun etikoki</text>
+              <text x="260" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">eta arduraz</text>
+            </g></a>
+            <a href="aztertu.html"><g class="node" data-node="aztertu">
+              <circle cx="350" cy="150" r="54" fill="#ffecef" stroke="#ff5571" stroke-width="3"/>
+              <text x="350" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Aztertu eta</text>
+              <text x="350" y="163" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">ebaluatu</text>
+            </g></a>
+            <a href="parte-hartu.html"><g class="node" data-node="partehartu">
+              <circle cx="402" cy="260" r="54" fill="#fdf2e3" stroke="#e9a24f" stroke-width="3"/>
+              <text x="402" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#26234f">Parte hartu</text>
+              <text x="402" y="273" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26234f">elkarlanean</text>
+            </g></a>
+            <a href="sortu.html"><g class="node" data-node="sortu">
+              <circle cx="350" cy="370" r="54" fill="#e3f7f6" stroke="#12a9a4" stroke-width="3"/>
+              <text x="350" y="375" text-anchor="middle" font-size="15" font-weight="700" fill="#26234f">Sortu</text>
+            </g></a>
+          </svg>
+
+          <div class="model-legend" id="modelLegend">
+            <a href="etika.html" data-node="etika" class="reveal"><strong><span class="dot" style="background:#c95fc1"></span>Hausnartu eta jardun etikoki eta arduraz <em>zeharkakoa</em></strong><span>Erantzukizuna, zuzentasuna eta giza balioak kontuan hartzea: pribatutasuna, ongizatea, jasangarritasuna.</span></a>
+            <a href="sarbidea.html" data-node="sarbidea" class="reveal"><strong><span class="dot" style="background:#3d9fd6"></span>Eskuratu eta erabili <em>oinarria</em></strong><span>Bilatu, kontsultatu, AAri eskatu (prompt), kuratu, antolatu eta datuak babestu.</span></a>
+            <a href="aztertu.html" data-node="aztertu" class="reveal"><strong><span class="dot" style="background:#ff5571"></span>Aztertu eta ebaluatu <em>%25</em></strong><span>Gizakiek eta AAk sortutako edukien helburua, alborapena, garrantzia eta sinesgarritasuna ebaluatu.</span></a>
+            <a href="parte-hartu.html" data-node="partehartu" class="reveal"><strong><span class="dot" style="background:#e9a24f"></span>Parte hartu eta elkarlanean aritu</strong><span>Online komunitateetan errespetuz jardun, gatazkak baretu eta AAk elkarreraginetan duen eragina ulertu.</span></a>
+            <a href="sortu.html" data-node="sortu" class="reveal"><strong><span class="dot" style="background:#12a9a4"></span>Sortu <em>%25</em></strong><span>Komunikazio-beharra, edukia eta formatua identifikatu, AArekin edo gabe, modu etikoan.</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAITASUNAK -->
+    <section class="p-section">
+      <div class="container">
+        <div class="p-head reveal">
+          <span class="kicker">03 · Landu gaitasunak</span>
+          <h2>Gaitasun bakoitzak bere gunea</h2>
+          <p>Orri bakoitzean: definizioa, maila-progresioa, estrategia praktikoak, adibide ebatziak, simulagailu bat eta PISA estiloko ariketak feedbackarekin.</p>
+        </div>
+        <div class="grid-5">
+          <a class="comp-card reveal" data-c="etika" href="etika.html">
+            <div class="top"><span class="num">01 · ZEHARKAKOA</span><span class="glyph" aria-hidden="true">⚖️</span><h3>Hausnartu eta jardun etikoki</h3></div>
+            <div class="body"><p>Partekatu ala ez? AA erabili ala ez? Patroi ilunak, datu-minimizazioa, deepfake-ak.</p><span class="weight">9 ariketa · jario-simulagailua</span><span class="go">Hasi →</span></div>
+          </a>
+          <a class="comp-card reveal" data-c="sarbidea" href="sarbidea.html">
+            <div class="top"><span class="num">02 · OINARRIA</span><span class="glyph" aria-hidden="true">🧭</span><h3>Eskuratu eta erabili</h3></div>
+            <div class="body"><p>Bilaketa-operadoreak, promptak, gomendio-sistemak, pribatutasun-ezarpenak, fitxategiak.</p><span class="weight">9 ariketa · 2 simulagailu</span><span class="go">Hasi →</span></div>
+          </a>
+          <a class="comp-card reveal" data-c="aztertu" href="aztertu.html">
+            <div class="top"><span class="num">03 · %25</span><span class="glyph" aria-hidden="true">🔎</span><h3>Aztertu eta ebaluatu</h3></div>
+            <div class="body"><p>Irakurketa laterala, manipulazio-teknikak, haluzinazioak, grafiko engainagarriak.</p><span class="weight">11 ariketa · simulagailu nagusia</span><span class="go">Hasi →</span></div>
+          </a>
+          <a class="comp-card reveal" data-c="partehartu" href="parte-hartu.html">
+            <div class="top"><span class="num">04</span><span class="glyph" aria-hidden="true">🤝</span><h3>Parte hartu eta elkarlanean</h3></div>
+            <div class="body"><p>Feedback eraikitzailea, talde-txatak, ziberjazarpena, phishing-a, herritartasun digitala.</p><span class="weight">8 ariketa · talde-txata</span><span class="go">Hasi →</span></div>
+          </a>
+          <a class="comp-card reveal" data-c="sortu" href="sortu.html">
+            <div class="top"><span class="num">05 · %25</span><span class="glyph" aria-hidden="true">✨</span><h3>Sortu</h3></div>
+            <div class="body"><p>Helburua eta audientzia, AAren adierazpena, egile-eskubideak, sortze iteratiboa.</p><span class="weight">9 ariketa · meme-editorea</span><span class="go">Hasi →</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOLA DA PROBA -->
+    <section class="p-section alt">
+      <div class="container">
+        <div class="p-head reveal">
+          <span class="kicker">04 · Nolakoa izango da proba?</span>
+          <h2>Bi ataza mota, bost testuinguru</h2>
+          <p>PISA MAILek benetako egoerak simulatzen ditu: eskola, lana, aisialdia, bizitza zibikoa eta harremanak. Ez du neurtzen zer dakizun bakarrik, baizik eta <strong>nola jarduten duzun</strong>.</p>
+        </div>
+        <div class="task-types">
+          <div class="tt-card reveal">
+            <span class="lbl">Ataza laburrak</span>
+            <h3>Azkarrak eta zehatzak</h3>
+            <p>Aukera anitzekoak, lotzekoak edo erantzun labur eraikiak. Adibidez: <em>«Iragarkia ala ez?»</em>, <em>«Partekatuko zenuke?»</em>, <em>«Zein bilaketa da egokiena?»</em></p>
+            <div class="chips"><span class="chip plain">Aukera bakarra</span><span class="chip plain">Aukera anitza</span><span class="chip plain">Sailkatu</span><span class="chip plain">Lotu</span><span class="chip plain">Erantzun laburra</span></div>
+            <a class="btn btn-ghost btn-sm" href="ariketak.html" style="justify-self:start">Ariketa-bankura →</a>
+          </div>
+          <div class="tt-card reveal">
+            <span class="lbl">Ataza luzeak</span>
+            <h3>Ingurune simulatuak</h3>
+            <p>Mahaigain birtual batean txata, nabigatzailea eta AA tresnak dituzu. Probak zure <strong>ekintza-sekuentzia</strong> behatzen du: zer bilatzen duzun, zein iturri irekitzen dituzun, nola justifikatzen duzun.</p>
+            <div class="chips"><span class="chip plain">💬 Txata</span><span class="chip plain">🌐 Nabigatzailea</span><span class="chip plain">🔍 Bilatzailea</span><span class="chip plain">✦ AA tresnak</span><span class="chip plain">📁 Fitxategiak</span></div>
+            <a class="btn btn-dark btn-sm" href="simulagailua.html" style="justify-self:start">Probatu simulagailua →</a>
+          </div>
+        </div>
+
+        <div class="grid-5" style="margin-top:1.25rem">
+          <div class="p-card reveal"><div style="font-size:1.6rem">💞</div><h3>Harremanak</h3><p style="font-size:.9rem">Lagunak, taldeak, lagun-txatbotak eta ongizatea.</p></div>
+          <div class="p-card reveal"><div style="font-size:1.6rem">📚</div><h3>Ikaskuntza</h3><p style="font-size:.9rem">Eskolako eta laneko egoerak: iturriak, AAren mugak.</p></div>
+          <div class="p-card reveal"><div style="font-size:1.6rem">🎮</div><h3>Aisialdia</h3><p style="font-size:.9rem">Sare sozialak, jokoak, gomendio-algoritmoak.</p></div>
+          <div class="p-card reveal"><div style="font-size:1.6rem">📣</div><h3>Limurtzea</h3><p style="font-size:.9rem">Publizitatea, desinformazioa, logos, pathos, ethos, kairos.</p></div>
+          <div class="p-card reveal"><div style="font-size:1.6rem">🗳️</div><h3>Herritartasuna</h3><p style="font-size:.9rem">Albisteak, parte-hartze zibikoa, demokrazia.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMOA -->
+    <section class="p-section">
+      <div class="container demo-wrap">
+        <div class="p-head reveal" style="margin-bottom:0">
+          <span class="kicker">05 · Probatu orain</span>
+          <h2>Horrela funtzionatzen dute ariketek</h2>
+          <p>Ariketa bakoitzak gaitasuna, testuingurua eta maila (oinarrizkoa, tartekoa, aurreratua) adierazten ditu. Erantzun eta jaso feedback azalpenarekin. Zure aurrerapena nabigatzaile honetan gordetzen da.</p>
+          <div class="note" style="margin-top:1.4rem">
+            <strong>Aholkua</strong>
+            <p>Begiratu ardatz bertikalari. Informazio <em>zuzena</em> ere modu engainagarrian aurkez daiteke.</p>
+          </div>
+        </div>
+        <div data-items="az05" class="reveal"></div>
+      </div>
+    </section>
+
+    <!-- IBILBIDEAK -->
+    <section class="p-section alt">
+      <div class="container">
+        <div class="p-head reveal">
+          <span class="kicker">06 · Nola erabili gune hau</span>
+          <h2>Bi ibilbide, helburu bera</h2>
+        </div>
+        <div class="grid-2" style="gap:2rem">
+          <div class="reveal">
+            <h3 class="route-title">🎒 Ikasleentzat</h3>
+            <ol class="route">
+              <li><div><b>Ulertu zer den MAIL</b><span>Irakurri <a href="markoa.html">markoaren laburpena</a> eta ikusi hiru kontzeptu gakoak.</span></div></li>
+              <li><div><b>Landu gaitasun bakoitza</b><span>Hasi <a href="sarbidea.html">Eskuratu eta erabili</a> gaitasunarekin (oinarria) eta jarraitu besteekin.</span></div></li>
+              <li><div><b>Egin proba-saio bat</b><span><a href="ariketak.html">Ariketa-bankuan</a> denbora-mugako saioa dago, gaitasunen araberako txostenarekin.</span></div></li>
+              <li><div><b>Murgildu ataza luze batean</b><span>Egin <a href="simulagailua.html">simulagailua</a>: kazetari gazte gisa, albiste bat egiaztatu eta argitalpen bat sortu.</span></div></li>
+            </ol>
+          </div>
+          <div class="reveal">
+            <h3 class="route-title">🎓 Irakasleentzat</h3>
+            <ol class="route">
+              <li><div><b>Irakurri gida didaktikoa</b><span><a href="irakasleak.html">Irakasleentzako gidak</a> sekuentzia, ikasgaiekiko loturak eta 2029rako ibilbide-orria ditu.</span></div></li>
+              <li><div><b>Deskargatu txantiloiak</b><span><a href="txantiloiak.html">12 txantiloi</a> editagarri (DOCX) eta inprimagarri (PDF): egiaztapen-fitxak, errubrikak, saio-planak.</span></div></li>
+              <li><div><b>Erabili simulagailuak gelan</b><span>Proiektatu talde handian edo bikoteka egin; eztabaidatzeko galderak dituzte.</span></div></li>
+              <li><div><b>Ebaluatu progresioa</b><span>Erabili <a href="txantiloiak.html#errubrika">MAIL errubrika</a> hiru mailekin (oinarrizkoa, tartekoa, aurreratua).</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AURRERAPENA -->
+    <section class="p-section tight">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+          <div class="p-head" style="margin-bottom:0">
+            <span class="kicker">Zure aurrerapena</span>
+            <h2 style="font-size:1.8rem">Gaitasunen araberako emaitzak</h2>
+          </div>
+          <button class="btn btn-ghost btn-sm" type="button" data-reset-progress>Aurrerapena ezabatu</button>
+        </div>
+        <div class="progress-strip" data-progress></div>
+        <p class="pisa-disclaimer" style="margin-top:.8rem">Datuak zure nabigatzailean bakarrik gordetzen dira (localStorage). Ez da ezer bidaltzen inora.</p>
+      </div>
+    </section>
+
+    <section class="p-section" style="padding-top:1rem">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Ikastetxe osoaren erronka da</h2>
+            <p>MAIL ez da ikasgai bakar batena: Euskara, Matematika, Historia, Zientziak edo Arteak… denetan landu daiteke. Hasi gaur saio bakar batekin.</p>
+          </div>
+          <div class="btns">
+            <a class="btn btn-primary" href="irakasleak.html">Gida didaktikoa</a>
+            <a class="btn btn-secondary" href="txantiloiak.html">Txantiloiak</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">PISA 2029ko MAIL proba prestatzeko baliabide irekiak, euskaraz: teoria, ariketak, simulagailuak eta txantiloiak.</p>
+          <p class="footer-author">Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a></p>
+        </div>
+        <div class="footer-topics">
+          <h4>PISA 2029 · MAIL</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
+            <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
+            <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="pisa-disclaimer" style="color:rgba(255,255,255,.55);margin:0 auto 1.5rem;text-align:center">
+          Atal hau ELGAren <em>PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em> (lehen zirriborroa, 2026) eta EB-ELGAren <em>AI Literacy Framework</em> dokumentuetan oinarritutako material didaktiko independentea da. Ez da ELGAren edo PISAren baliabide ofiziala, eta ariketak ez dira proba errealeko itemak.
+        </p>
+        <div class="footer-legal">
+          <a href="../lege-oharra.html">Lege oharra</a>
+          <a href="../pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="../lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/pisa.js"></script>
+  <script src="assets/items.js"></script>
+  <script>
+    (function () {
+      const svg = document.getElementById("modelSvg");
+      const legend = document.getElementById("modelLegend");
+      if (!svg || !legend) return;
+      const on = (key) => {
+        svg.classList.toggle("focus", !!key);
+        svg.querySelectorAll(".node").forEach((n) => n.classList.toggle("on", n.dataset.node === key));
+        legend.querySelectorAll("a").forEach((a) => a.classList.toggle("on", a.dataset.node === key));
+      };
+      const bind = (el, key) => {
+        el.addEventListener("mouseenter", () => on(key));
+        el.addEventListener("mouseleave", () => on(null));
+        el.addEventListener("focus", () => on(key));
+        el.addEventListener("blur", () => on(null));
+      };
+      legend.querySelectorAll("a").forEach((a) => bind(a, a.dataset.node));
+      svg.querySelectorAll(".node").forEach((n) => bind(n, n.dataset.node));
+    })();
+  </script>
+</body>
+</html>

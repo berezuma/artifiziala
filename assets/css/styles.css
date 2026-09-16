@@ -1227,3 +1227,13 @@ main,
 .brand-dot-sm, .brand-dot-lg {
   background-color: #ffffff !important;
 }
+
+/* 6. NABIGAZIOA: PISA 2029 esteka gehitzean lerro bakarrean mantentzeko */
+.site-nav a { white-space: nowrap; }
+@media (max-width: 1280px) {
+  .brand-subtitle, .brand-divider { display: none; }
+}
+@media (min-width: 901px) and (max-width: 1060px) {
+  .site-nav { gap: .1rem; }
+  .site-nav a { padding: .45rem .5rem; font-size: .88rem; }
+}

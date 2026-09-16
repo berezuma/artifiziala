@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irakasleentzako gida · PISA 2029 MAIL · artifiziala.eus</title>
+  <meta name="description" content="PISA 2029 MAIL ikasgelan lantzeko gida didaktikoa: 2029rako ibilbide-orria, 10 saioko unitatea, ikasgaiekiko loturak, simulagailuen erabilera, ebaluazioa eta AA erabiltzeko printzipioak." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/pisa.css" />
+  <style>
+    .principles{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; }
+    .principle{ padding:1.2rem; border-radius:var(--r-md); background:var(--surface-2); }
+    .principle b{ font-family:var(--font-display); display:block; font-size:1.08rem; margin:.3rem 0 .2rem; }
+    .principle p{ font-size:.92rem; color:var(--ink-soft); }
+    .subject-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; }
+    .subject{ border:1px solid var(--rule); border-radius:var(--r-md); padding:1.1rem; background:#fff; display:grid; gap:.4rem; align-content:start; }
+    .subject b{ font-family:var(--font-display); font-size:1.05rem; }
+    .subject p{ font-size:.9rem; color:var(--ink-soft); }
+    @media (max-width:1100px){ .principles, .subject-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+    @media (max-width:640px){ .principles, .subject-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="pisa-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-dot-sm"></span><span class="brand-dot-lg"></span></span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">PISA 2029 · MAIL</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav" aria-label="Nabigazio nagusia">
+          <a href="../index.html">Hasiera</a>
+          <a href="../ikasgaiak.html">Ikasgaiak</a>
+          <a href="../laborategia.html">Laborategia</a>
+          <a href="../erronkak.html">Erronkak</a>
+          <a href="index.html" class="active" aria-current="page">PISA 2029</a>
+          <a href="../irakasleak.html">Irakasleak</a>
+          <a href="../gurasoak.html">Gurasoak</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pisa-subnav">
+    <div class="container">
+      <span class="tag">MAIL</span>
+      <nav aria-label="PISA 2029 atala">
+        <a href="index.html">Hasiera</a>
+        <a href="markoa.html">📘 Markoa</a>
+        <a href="etika.html">⚖️ Etika</a>
+        <a href="sarbidea.html">🧭 Eskuratu</a>
+        <a href="aztertu.html">🔎 Aztertu</a>
+        <a href="parte-hartu.html">🤝 Parte hartu</a>
+        <a href="sortu.html">✨ Sortu</a>
+        <a href="simulagailua.html">🖥️ Simulagailua</a>
+        <a href="ariketak.html">📝 Ariketak</a>
+        <a href="txantiloiak.html">📄 Txantiloiak</a>
+        <a href="irakasleak.html">🎓 Irakasleak</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="pisa-hero compact">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">PISA 2029</a><span>›</span><strong>Irakasleentzat</strong></div>
+        <span class="pisa-eyebrow">Gida didaktikoa</span>
+        <h1>MAIL ikasgelan: <em>gida praktikoa</em> irakasleentzat</h1>
+        <p class="lead">Ez da «probarako entrenatzea»: ikasleek bizitza osorako behar duten gaitasuna lantzea da, eta, bide batez, PISA 2029ra prest iristea. Hemen dituzu ibilbide-orria, unitate didaktiko osoa, ikasgaiz ikasgaiko ideiak eta ebaluazio-tresnak.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="txantiloiak/T12-unitate-didaktikoa-10-saio.pdf" download>⬇ Unitate didaktikoa (PDF)</a>
+          <a class="btn btn-secondary" href="txantiloiak/T08-mail-errubrika.pdf" download>⬇ MAIL errubrika</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container comp-layout">
+        <aside class="comp-toc">
+          <div class="p-card">
+            <h4>Gida honetan</h4>
+            <ol>
+              <li><a href="#zergatik">1. Zergatik orain</a></li>
+              <li><a href="#egutegia">2. Ibilbide-orria 2029ra</a></li>
+              <li><a href="#unitatea">3. Unitatea 10 saiotan</a></li>
+              <li><a href="#ikasgaiak">4. Ikasgaiz ikasgai</a></li>
+              <li><a href="#simulagailua">5. Simulagailuak gelan</a></li>
+              <li><a href="#ebaluazioa">6. Ebaluazioa</a></li>
+              <li><a href="#printzipioak">7. AA gelan: printzipioak</a></li>
+              <li><a href="#ohikoak">8. Ohiko galderak</a></li>
+            </ol>
+          </div>
+        </aside>
+
+        <div class="comp-main">
+          <section id="zergatik" class="reveal">
+            <div class="block-title"><span class="n">01</span><h2>Zergatik orain?</h2></div>
+            <div class="prose">
+              <p>PISA 2029k lehen aldiz neurtuko du nola jarduten duten 15 urteko ikasleek hedabide-plataformekin eta AA sistemekin. Markoak berak dio gaitasun hauek <strong>ikasgai guztien ardura</strong> direla eta ikaskuntza aktibo eta ikerketan oinarritutako metodoekin landu behar direla.</p>
+              <p>Gainera, PISAren <strong>ikasleen eta ikastetxeen galdetegiek</strong> neurtuko dute ikasleek ikasgelan MAIL lantzeko zer aukera izan dituzten. Hau da: gure lana ere agertuko da emaitzetan.</p>
+              <p>Markoak onartzen du irakasle askok ez dutela prestakuntza nahikorik izan, eta AA azkarregi aldatzen dela. Gida honen asmoa da <strong>lehen urratsa erraz</strong> egitea: saio bakar batekin hasi eta pixkanaka zabaldu.</p>
+            </div>
+            <div class="note" style="margin-top:1rem"><strong>Printzipio nagusia</strong><p>Ez irakatsi tresnak: irakatsi <b>galderak</b>. Tresnak aldatu egingo dira 2029rako; «nork sortu du hau?», «zergatik ikusten dut?» eta «zer falta da?» galderek balioko dute.</p></div>
+          </section>
+
+          <section id="egutegia" class="reveal">
+            <div class="block-title"><span class="n">02</span><h2>Ibilbide-orria 2029ra</h2></div>
+            <div class="prose"><p>PISA 2029 egingo duten ikasleak, gutxi gorabehera, <strong>2013an jaiotakoak</strong> dira: 2026-27 ikasturtean DBH 2. mailan daude. Hiru ikasturte ditugu. (Data zehatzak ELGAk eta hezkuntza-administrazioak finkatzen dituzte; hau orientazio bat da.)</p></div>
+            <div class="timeline">
+              <div class="tl-item"><span class="when">2026-27 · DBH 2</span><span class="node"><i></i></span><div><h4>Oinarriak eta sentsibilizazioa</h4><p>Klaustroan MAIL aurkeztu. Diagnostikoa: <a href="txantiloiak.html#autoebaluazioa" style="color:var(--purple);font-weight:700">autoebaluazio-galdetegia</a> eta proba-saio laburra. Lehen jarduerak: «Partekatu ala ez?», gomendio-sistemak, pribatutasuna.</p></div></div>
+              <div class="tl-item"><span class="when">2027-28 · DBH 3</span><span class="node"><i></i></span><div><h4>Sakontzea ikasgaietan</h4><p><a href="txantiloiak.html#unitatea" style="color:var(--purple);font-weight:700">10 saioko unitatea</a> tutoretzan edo ikasgai batean. Ikasgai bakoitzak jarduera bat gutxienez (ikus 4. atala). Irakurketa laterala eta sorkuntza arduratsua. PISAren landa-proba (field trial) aplikazio nagusia baino urtebete lehenago egin ohi da.</p></div></div>
+              <div class="tl-item"><span class="when">2028-29 · DBH 4</span><span class="node"><i></i></span><div><h4>Finkatzea eta ataza luzeak</h4><p>Simulagailuak eta proiektu errealak (kanpainak, egiaztapen-taldeak, ikastetxeko hedabideak). Proba-saioak formatu anitzekin, errubrikarekin feedbacka.</p></div></div>
+              <div class="tl-item key"><span class="when">2029 udaberria</span><span class="node"><i></i></span><div><h4>PISA 2029 aplikazioa</h4><p>Ausaz aukeratutako ikastetxe eta ikasleek egiten dute proba, ordenagailuan. MAIL domeinu berritzailea da.</p></div></div>
+              <div class="tl-item"><span class="when">Ondoren</span><span class="node"><i></i></span><div><h4>Emaitzak eta hobekuntza</h4><p>PISAren emaitzak aplikazioaren ondorengo urtean argitaratu ohi dira. Galdetegiek ikasgelako aukerak ere erakutsiko dituzte.</p></div></div>
+            </div>
+          </section>
+
+          <section id="unitatea" class="reveal">
+            <div class="block-title"><span class="n">03</span><h2>Unitate didaktikoa: MAIL 10 saiotan</h2></div>
+            <div class="prose"><p>DBH 3–4rako proposamena, 50 minutuko saioekin. Tutoretzan, Teknologia eta Digitalizazioan edo hizkuntza-ikasgaietan txerta daiteke, edo hainbat ikasgairen artean banatu.</p></div>
+            <div class="grid-2">
+              <div class="session"><div class="s-top"><b>1 · Zer da MAIL? Nire dieta digitala</b><span class="chip" data-c="etika">Etika</span></div><p>Pantaila-denboraren auditoria eta hiru kontzeptu gakoen aurkezpena memeen bidez.</p><div class="s-links"><a href="markoa.html#kontzeptuak">Kontzeptu gakoak</a><a href="txantiloiak.html#autoebaluazioa">T10 galdetegia</a></div></div>
+              <div class="session"><div class="s-top"><b>2 · Nork aukeratzen du zer ikusten dudan?</b><span class="chip" data-c="sarbidea">Eskuratu</span></div><p>Jario-simulagailua proiektatuta: talde osoak bozkatzen du zer «atsegin» eman; gero aniztasuna eztabaidatu.</p><div class="s-links"><a href="etika.html#simulagailua">Jario-simulagailua</a></div></div>
+              <div class="session"><div class="s-top"><b>3 · Bilatu hobeto, galdetu hobeto</b><span class="chip" data-c="sarbidea">Eskuratu</span></div><p>Bilaketa-lasterketa bikoteka eta prompt onaren 5 gakoak; ariketak ES-01, ES-02, ES-07.</p><div class="s-links"><a href="sarbidea.html#estrategiak">Estrategiak</a><a href="ariketak.html?comp=sarbidea">Ariketak</a></div></div>
+              <div class="session"><div class="s-top"><b>4 · Pribatutasuna eta datuak</b><span class="chip" data-c="sarbidea">Eskuratu</span></div><p>Pribatutasun-panela (helburuen arteko oreka) eta bakarkako auditoria pribatua.</p><div class="s-links"><a href="sarbidea.html#simulagailuak">Panela</a><a href="txantiloiak.html#pribatutasuna">T07</a></div></div>
+              <div class="session"><div class="s-top"><b>5 · Manipulazioaren txertoa</b><span class="chip" data-c="aztertu">Aztertu</span></div><p>Zazpi teknika; taldeek adibide errealak bilatu eta sailkatzen dituzte. Ariketak AZ-01, AZ-02.</p><div class="s-links"><a href="aztertu.html#teknikak">Teknikak</a><a href="txantiloiak.html#mezua">T02</a></div></div>
+              <div class="session"><div class="s-top"><b>6 · Irakurketa laterala</b><span class="chip" data-c="aztertu">Aztertu</span></div><p>SIFT metodoa eta egiaztatzaile-taldeak aste honetako albiste biral batekin.</p><div class="s-links"><a href="aztertu.html#estrategiak">SIFT</a><a href="txantiloiak.html#egiaztapena">T01</a></div></div>
+              <div class="session"><div class="s-top"><b>7 · Ataza luzea: kazetari gaztea</b><span class="chip" data-c="aztertu">Aztertu</span></div><p>Simulagailu nagusia bikoteka. Amaieran, txostenak alderatu: nork aipatu zuen AA laburpena? Zergatik?</p><div class="s-links"><a href="simulagailua.html">Simulagailua</a></div></div>
+              <div class="session"><div class="s-top"><b>8 · Elkarlana eta gatazkak</b><span class="chip" data-c="partehartu">Parte hartu</span></div><p>Talde-txata adarkatua eta rol-jokoa. Talde-akordioa sinatu hurrengo proiekturako.</p><div class="s-links"><a href="parte-hartu.html#simulagailua">Talde-txata</a><a href="txantiloiak.html#talde-akordioa">T06</a></div></div>
+              <div class="session"><div class="s-top"><b>9 · Sortu arduraz</b><span class="chip" data-c="sortu">Sortu</span></div><p>Kontra-kanpaina: kanpaina-editorearekin irudia sortu, sortze-egunkaria bete eta AAren erabilera adierazi.</p><div class="s-links"><a href="sortu.html#simulagailua">Editorea</a><a href="txantiloiak.html#sortze-egunkaria">T05</a><a href="txantiloiak.html#adierazpena">T03</a></div></div>
+              <div class="session"><div class="s-top"><b>10 · Proba-saioa eta akordioa</b><span class="chip" data-c="etika">Guztiak</span></div><p>Proba-saio ertaina, errubrikarekin feedbacka eta gelako AA semaforoa adostu.</p><div class="s-links"><a href="ariketak.html?modua=proba">Proba-saioa</a><a href="txantiloiak.html#errubrika">T08</a><a href="txantiloiak.html#akordioa">T04</a></div></div>
+            </div>
+          </section>
+
+          <section id="ikasgaiak" class="reveal">
+            <div class="block-title"><span class="n">04</span><h2>Ikasgaiz ikasgai: jarduera bat bakoitzean</h2></div>
+            <div class="subject-grid">
+              <div class="subject"><b>📖 Euskara eta Literatura</b><p>Albiste bera hiru hedabidetan eta AA laburpen batean: tonua, hautatutako hitzak, falta dena. Eta AA tresnek euskarazko ironia nola ulertzen duten probatu.</p><span class="chip" data-c="aztertu">Aztertu</span></div>
+              <div class="subject"><b>🗣️ Gaztelania · Atzerriko hizkuntzak</b><p>Nazioarteko gertaera bat hizkuntza desberdinetako iturrietan; memeen hitz-jokoak eta anbiguotasuna.</p><span class="chip" data-c="aztertu">Aztertu</span></div>
+              <div class="subject"><b>📐 Matematika</b><p>Grafiko engainagarrien ehiza: ardatz moztuak, laginak, ehunekoak. Iragarkien segmentazioa datuekin.</p><span class="chip" data-c="aztertu">Aztertu</span></div>
+              <div class="subject"><b>🔬 Biologia · Fisika eta Kimika</b><p>Zientzia-titularra vs. jatorrizko ikerketa (korrelazioa eta kausalitatea). Energia-edariaren agertokia simulagailuan.</p><span class="chip" data-c="aztertu">Aztertu</span></div>
+              <div class="subject"><b>🌍 Geografia eta Historia</b><p>Argazki historikoen egiaztapena eta deepfake-ak; hondamendien estaldura mediatikoa eskualdeen arabera.</p><span class="chip" data-c="etika">Etika</span></div>
+              <div class="subject"><b>💻 Teknologia eta Digitalizazioa</b><p>Gomendio-sistema sinple bat diseinatu (orri-kalkulua edo Teachable Machine) eta datuen alborapena aztertu.</p><span class="chip" data-c="sarbidea">Eskuratu</span></div>
+              <div class="subject"><b>🎨 Plastika · Musika</b><p>AArekin eta gabe sortutako obrak; audientziak nola baloratzen dituen; egile-eskubideak eta lizentziak.</p><span class="chip" data-c="sortu">Sortu</span></div>
+              <div class="subject"><b>🧭 Tutoretza · Balio etikoak</b><p>Lagun-txatbotak, ongizate digitala, ziberjazarpena: talde-txataren simulagailua eta rol-jokoa.</p><span class="chip" data-c="partehartu">Parte hartu</span></div>
+              <div class="subject"><b>🏫 Ikastetxe osoa</b><p>Ikastetxeko hedabidea (aldizkaria, podcasta, kontua) ikasleek kudeatua, egiaztapen- eta adierazpen-arauekin.</p><span class="chip" data-c="sortu">Sortu</span></div>
+            </div>
+            <a class="btn btn-ghost btn-sm" href="markoa.html#loturak" style="margin-top:1rem">Ikusi ELGAren lotura-taula osoa →</a>
+          </section>
+
+          <section id="simulagailua" class="reveal">
+            <div class="block-title"><span class="n">05</span><h2>Simulagailuak gelan</h2></div>
+            <div class="grid-3">
+              <div class="p-card soft"><h3>📽️ Talde osoan</h3><p>Proiektatu eta bozkatu erabaki bakoitza (eskuak altxatuta edo txartelekin). Gelditu une gakoetan: «zergatik ireki dugu fitxa hau?».</p></div>
+              <div class="p-card soft"><h3>👥 Bikoteka</h3><p>Rol bat teklatuan, bestea «egiaztatzaile». Rolak aldatu fase bakoitzean. Txostena deskargatu eta entregatu.</p></div>
+              <div class="p-card soft"><h3>🔁 Bi aldiz</h3><p>Egin agertokia, eztabaidatu txostena, eta egin bigarren agertokia. Hobekuntza bera da ikaskuntzaren ebidentzia.</p></div>
+            </div>
+            <details class="acc" style="margin-top:1rem" open>
+              <summary>💬 Simulagailu nagusiaren ondorengo eztabaida</summary>
+              <div class="acc-body"><ul class="dots prose">
+                <li>Zein izan zen irekitako lehen orria? Eta zergatik? Zer ordenatan agertzen ziren emaitzak?</li>
+                <li>Bilatzailearen AA laburpena irakurri zenuen? Zer esaten zuen? Nola jakin zenuen okerra zela?</li>
+                <li>«Partzialki zehatza» eta «okerra»: zein da desberdintasuna? Zergatik da garrantzitsua ñabardura hori?</li>
+                <li>Albistearen irudia egiaztatu zenuen? Zer gertatuko litzateke irudi hori argitalpenean erabili izan bazenu?</li>
+                <li>Zure argitalpenak irakurleen artean zuzenketa zabalduko luke, ala nahasmen gehiago?</li>
+              </ul></div>
+            </details>
+          </section>
+
+          <section id="ebaluazioa" class="reveal">
+            <div class="block-title"><span class="n">06</span><h2>Ebaluazioa</h2></div>
+            <div class="prose">
+              <p>MAILen gakoa <strong>prozesua</strong> da, ez emaitza bakarrik. Ebaluatu nola bilatzen duten, zer iturri aukeratzen dituzten, nola justifikatzen duten eta nola iteratzen duten.</p>
+              <ul class="dots">
+                <li><strong>Formatiboa lehenik:</strong> gune honetako ariketek eta simulagailuek feedbacka ematen dute berehala; ez erabili nota gisa.</li>
+                <li><strong>Errubrika:</strong> <a href="txantiloiak.html#errubrika" style="color:var(--purple);font-weight:700">T08</a> PISAren hiru mailetan oinarritzen da. Markatu ebidentzia zehatzak (adib. «bi iturri independente aipatu ditu»).</li>
+                <li><strong>Prozesuaren ebidentziak:</strong> egiaztapen-fitxak (T01), sortze-egunkariak (T05), simulagailuaren txostenak (.txt).</li>
+                <li><strong>Autoebaluazioa:</strong> T10 galdetegia hasieran eta amaieran; alderatu.</li>
+                <li><strong>Erantzun irekiak:</strong> eredu-erantzunak eta irizpideak dituzte; erabili bikoteko zuzenketarako.</li>
+              </ul>
+            </div>
+            <div class="note warn"><strong>Kontuz zenbakiekin</strong><p>Gune honetako puntuazioak orientagarriak dira eta ez dute PISAren eskala errealarekin loturarik. Maila-progresioak behin-behinekoak dira ELGAren markoan ere.</p></div>
+          </section>
+
+          <section id="printzipioak" class="reveal">
+            <div class="block-title"><span class="n">07</span><h2>AA ikasgelan: printzipioak</h2></div>
+            <div class="principles">
+              <div class="principle"><span style="font-size:1.4rem">🔒</span><b>Datuak babestu</b><p>Ez sartu ikasleen datu pertsonalik AA tresnetan. Egiaztatu tresnen adin-baldintzak eta ikastetxearen eta hezkuntza-administrazioaren jarraibideak.</p></div>
+              <div class="principle"><span style="font-size:1.4rem">🪟</span><b>Gardentasuna</b><p>Irakasleak ere adierazi AAren erabilera materialetan. Modelatu nahi duzun jokabidea.</p></div>
+              <div class="principle"><span style="font-size:1.4rem">✅</span><b>Egiaztatu beti</b><p>AAren edozein erantzun gelan erabili aurretik, egiaztatu. Akatsak aukera didaktikoak dira.</p></div>
+              <div class="principle"><span style="font-size:1.4rem">🧠</span><b>Pentsamendua ez ordezkatu</b><p>Diseinatu atazak non AAk pentsatzen laguntzen duen, ez pentsatzeko lana kentzen duen (deskarga kognitiboa).</p></div>
+              <div class="principle"><span style="font-size:1.4rem">♿</span><b>Inklusioa</b><p>Ikasle guztiek ez dute gailu edo sarbide bera. Simulagailu hauek nabigatzailean dabiltza, kontu eta instalaziorik gabe.</p></div>
+              <div class="principle"><span style="font-size:1.4rem">🗣️</span><b>Euskaraz ere kritiko</b><p>AA tresnen euskarazko kalitatea aztertzea bera da jarduera: itzulpenak, estereotipoak, ñabardurak.</p></div>
+            </div>
+          </section>
+
+          <section id="ohikoak" class="reveal">
+            <div class="block-title"><span class="n">08</span><h2>Ohiko galderak</h2></div>
+            <details class="acc"><summary>Nire ikasleek egingo dute PISA 2029?</summary><div class="acc-body"><p>PISAk ikastetxe eta ikasleen lagin adierazgarri bat aukeratzen du ausaz. Ez dakigu aldez aurretik zein ikastetxek parte hartuko duten, eta ikasle bakoitzak domeinu batzuk bakarrik egiten ditu. Horregatik da garrantzitsua ikasle guztiekin lantzea.</p></div></details>
+            <details class="acc"><summary>Notarik ematen du PISAk ikasle bakoitzari?</summary><div class="acc-body"><p>Ez. PISA hezkuntza-sistemen ebaluazioa da; ez du ikasle edo ikastetxe bakoitzaren emaitzarik ematen.</p></div></details>
+            <details class="acc"><summary>Gune honetako ariketak PISAren benetako itemak dira?</summary><div class="acc-body"><p>Ez. ELGAren markoan deskribatutako ataza motetan eta adibideetan inspiratuta daude, baina guk sortuak dira. Benetako itemak ez dira publikoak probaren aurretik.</p></div></details>
+            <details class="acc"><summary>Zer behar dut simulagailuak erabiltzeko?</summary><div class="acc-body"><p>Nabigatzaile moderno bat besterik ez. Ez da konturik behar eta ez da daturik bidaltzen: aurrerapena gailuan bertan gordetzen da. Pantaila handian hobeto ikusten da, baina mugikorrean ere badabil.</p></div></details>
+            <details class="acc"><summary>Markoa aldatuko da?</summary><div class="acc-body"><p>Bai, litekeena da. 2026ko dokumentua lehen zirriborroa da. Gune hau eguneratuko dugu bertsio berriak argitaratzen direnean.</p></div></details>
+          </section>
+
+          <div class="cta-band">
+            <div><h2>Hasi gaur saio bakar batekin</h2><p>Aukeratu 2. saioa (jario-simulagailua): 50 minutu, prestaketarik gabe, eta ikasleek berehala ulertzen dute zergatik den garrantzitsua.</p></div>
+            <div class="btns"><a class="btn btn-primary" href="etika.html#simulagailua">Ireki simulagailua</a><a class="btn btn-secondary" href="txantiloiak.html">Txantiloiak</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">PISA 2029ko MAIL proba prestatzeko baliabide irekiak, euskaraz: teoria, ariketak, simulagailuak eta txantiloiak.</p>
+          <p class="footer-author">Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a></p>
+        </div>
+        <div class="footer-topics">
+          <h4>PISA 2029 · MAIL</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
+            <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
+            <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="pisa-disclaimer" style="color:rgba(255,255,255,.55);margin:0 auto 1.5rem;text-align:center">
+          Atal hau ELGAren <em>PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em> (lehen zirriborroa, 2026) eta EB-ELGAren <em>AI Literacy Framework</em> dokumentuetan oinarritutako material didaktiko independentea da. Ez da ELGAren edo PISAren baliabide ofiziala, eta ariketak ez dira proba errealeko itemak.
+        </p>
+        <div class="footer-legal">
+          <a href="../lege-oharra.html">Lege oharra</a>
+          <a href="../pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="../lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/pisa.js"></script>
+</body>
+</html>

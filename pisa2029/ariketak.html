@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="eu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ariketa-bankua eta proba-saioa · PISA 2029 MAIL · artifiziala.eus</title>
+  <meta name="description" content="PISA 2029 MAIL estiloko 46 ariketa euskaraz, gaitasun, testuinguru eta mailaren arabera iragazgarriak, eta denbora-mugako proba-saioa gaitasunen araberako txostenarekin." />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/pisa.css" />
+  <style>
+    .mode-cards{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.2rem; margin-bottom:2rem; }
+    .mode-card{ text-align:left; cursor:pointer; border:2px solid var(--rule); border-radius:var(--r-lg); padding:1.4rem; background:#fff; display:grid; gap:.4rem; font:inherit; color:var(--ink); transition:border-color .15s, box-shadow .15s; }
+    .mode-card:hover{ border-color:var(--purple-soft); }
+    .mode-card.active{ border-color:var(--ink); box-shadow:0 10px 26px rgba(38,35,79,.1); }
+    .mode-card b{ font-family:var(--font-display); font-size:1.35rem; }
+    .mode-card span{ color:var(--ink-soft); font-size:.95rem; }
+    .exam-setup{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1rem; }
+    .exam-opt{ border:2px solid var(--rule); border-radius:var(--r-md); padding:1.1rem; background:#fff; cursor:pointer; text-align:left; font:inherit; color:var(--ink); display:grid; gap:.2rem; }
+    .exam-opt:hover{ border-color:var(--ink); }
+    .exam-opt b{ font-family:var(--font-display); font-size:1.15rem; }
+    .exam-opt span{ font-size:.88rem; color:var(--ink-soft); }
+    .history li{ display:flex; justify-content:space-between; gap:1rem; padding:.55rem 0; border-bottom:1px solid var(--rule); font-size:.9rem; }
+    @media (max-width:900px){ .mode-cards, .exam-setup{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body class="pisa-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark" aria-hidden="true"><span class="brand-dot-sm"></span><span class="brand-dot-lg"></span></span>
+        <span class="brand-text">
+          <strong>artifiziala<span>.eus</span></strong>
+          <span class="brand-divider"></span>
+          <span class="brand-subtitle">PISA 2029 · MAIL</span>
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="site-nav" id="siteNav" aria-label="Nabigazio nagusia">
+          <a href="../index.html">Hasiera</a>
+          <a href="../ikasgaiak.html">Ikasgaiak</a>
+          <a href="../laborategia.html">Laborategia</a>
+          <a href="../erronkak.html">Erronkak</a>
+          <a href="index.html" class="active" aria-current="page">PISA 2029</a>
+          <a href="../irakasleak.html">Irakasleak</a>
+          <a href="../gurasoak.html">Gurasoak</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menua ireki" id="navToggle">
+          <span>Menua</span>
+          <span class="menu-lines"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="pisa-subnav">
+    <div class="container">
+      <span class="tag">MAIL</span>
+      <nav aria-label="PISA 2029 atala">
+        <a href="index.html">Hasiera</a>
+        <a href="markoa.html">📘 Markoa</a>
+        <a href="etika.html">⚖️ Etika</a>
+        <a href="sarbidea.html">🧭 Eskuratu</a>
+        <a href="aztertu.html">🔎 Aztertu</a>
+        <a href="parte-hartu.html">🤝 Parte hartu</a>
+        <a href="sortu.html">✨ Sortu</a>
+        <a href="simulagailua.html">🖥️ Simulagailua</a>
+        <a href="ariketak.html">📝 Ariketak</a>
+        <a href="txantiloiak.html">📄 Txantiloiak</a>
+        <a href="irakasleak.html">🎓 Irakasleak</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="pisa-hero compact">
+      <div class="container">
+        <div class="crumbs"><a href="index.html">PISA 2029</a><span>›</span><strong>Ariketa-bankua</strong></div>
+        <span class="pisa-eyebrow">Ataza laburrak · 7 formatu</span>
+        <h1>Ariketa-bankua eta <em>proba-saioa</em></h1>
+        <p class="lead">PISA MAILen ataza laburren estiloko ariketak: aukera bakarra, aukera anitza, sailkatzea, lotzea, ordenatzea, nabarmentzea eta erantzun irekiak. Praktikatu libreki edo egin denbora-mugako saio bat.</p>
+        <div class="hero-meta"><span data-count-all>46 ariketa</span><span>Feedback azalduta</span><span>Gaitasunen araberako txostena</span></div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container">
+        <div class="mode-cards" role="tablist">
+          <button class="mode-card active" type="button" data-mode="free" role="tab" aria-selected="true"><b>📚 Praktika librea</b><span>Iragazi gaitasunaren, testuinguruaren, mailaren edo motaren arabera. Feedbacka berehala.</span></button>
+          <button class="mode-card" type="button" data-mode="exam" role="tab" aria-selected="false"><b>⏱️ Proba-saioa</b><span>Ausazko ariketak, denbora-mugarekin eta feedbackik gabe amaierara arte, benetako proban bezala.</span></button>
+        </div>
+
+        <!-- PRAKTIKA LIBREA -->
+        <div id="freeMode">
+          <div class="bank-toolbar">
+            <label>Gaitasuna<select data-f="comp"><option value="">Denak</option></select></label>
+            <label>Testuingurua<select data-f="context"><option value="">Denak</option></select></label>
+            <label>Maila<select data-f="level"><option value="">Denak</option><option value="1">Oinarrizkoa</option><option value="2">Tartekoa</option><option value="3">Aurreratua</option></select></label>
+            <label>Mota<select data-f="type"><option value="">Denak</option></select></label>
+            <button class="btn btn-ghost btn-sm" type="button" data-clear>Garbitu</button>
+          </div>
+          <p class="bank-count" data-count></p>
+          <div class="bank-list" id="bankList"></div>
+        </div>
+
+        <!-- PROBA-SAIOA -->
+        <div id="examMode" hidden>
+          <div id="examSetup">
+            <div class="p-head"><span class="kicker">Aukeratu saioa</span><h2 style="font-size:1.9rem">Zenbat denbora duzu?</h2><p>Ariketak ausaz aukeratzen dira, PISAren denbora-banaketa gomendatua errespetatuz (aztertu eta sortu gehiago). Erantzun irekiak ez dira sartzen.</p></div>
+            <div class="exam-setup">
+              <button class="exam-opt" type="button" data-exam="8,12"><b>⚡ Laburra</b><span>8 ariketa · 12 minutu</span></button>
+              <button class="exam-opt" type="button" data-exam="14,22"><b>🎯 Ertaina</b><span>14 ariketa · 22 minutu</span></button>
+              <button class="exam-opt" type="button" data-exam="20,32"><b>🏁 Osoa</b><span>20 ariketa · 32 minutu</span></button>
+            </div>
+            <div class="grid-2" style="margin-top:2rem">
+              <div class="p-card soft"><h3>Azken saioak</h3><ul class="history" data-history></ul></div>
+              <div class="p-card soft"><h3>Gaitasunen araberako aurrerapena</h3><div data-progress class="stack" style="margin-top:.6rem;grid-template-columns:1fr"></div><button class="btn btn-ghost btn-sm" type="button" data-reset-progress style="margin-top:.8rem">Aurrerapena ezabatu</button></div>
+            </div>
+          </div>
+
+          <div id="examRun" hidden>
+            <div class="exam-bar">
+              <span class="timer" data-timer>00:00</span>
+              <div class="exam-progress" aria-hidden="true"><i data-prog></i></div>
+              <span data-pos style="font-size:.9rem">1/8</span>
+            </div>
+            <div id="examItems"></div>
+            <div class="exam-nav">
+              <button class="btn btn-ghost" type="button" data-prev>← Aurrekoa</button>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <button class="btn btn-ghost" type="button" data-finish>Amaitu saioa</button>
+                <button class="btn btn-dark" type="button" data-next>Hurrengoa →</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="examReport" hidden></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">artifiziala<span>.eus</span></div>
+          <p class="footer-desc">PISA 2029ko MAIL proba prestatzeko baliabide irekiak, euskaraz: teoria, ariketak, simulagailuak eta txantiloiak.</p>
+          <p class="footer-author">Egilea: <a href="https://berezuma.com" target="_blank" rel="noopener noreferrer">Beñat Erezuma</a></p>
+        </div>
+        <div class="footer-topics">
+          <h4>PISA 2029 · MAIL</h4>
+          <div class="footer-topic-grid">
+            <div class="footer-topic-group"><p>Ulertu</p><ul><li><a href="index.html">Atalaren hasiera</a></li><li><a href="markoa.html">📘 Markoa</a></li><li><a href="irakasleak.html">Irakasleentzako gida</a></li></ul></div>
+            <div class="footer-topic-group"><p>Gaitasunak</p><ul><li><a href="etika.html">Etika eta ardura</a></li><li><a href="sarbidea.html">Eskuratu eta erabili</a></li><li><a href="aztertu.html">Aztertu eta ebaluatu</a></li><li><a href="parte-hartu.html">Parte hartu</a></li><li><a href="sortu.html">Sortu</a></li></ul></div>
+            <div class="footer-topic-group"><p>Praktikatu</p><ul><li><a href="simulagailua.html">Simulagailua</a></li><li><a href="ariketak.html">Ariketa-bankua</a></li><li><a href="txantiloiak.html">Txantiloiak</a></li></ul></div>
+            <div class="footer-topic-group"><p>artifiziala.eus</p><ul><li><a href="../ikasgaiak.html">Ikasgaiak</a></li><li><a href="../laborategia.html">Laborategia</a></li><li><a href="../erronkak.html">Erronkak</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="pisa-disclaimer" style="color:rgba(255,255,255,.55);margin:0 auto 1.5rem;text-align:center">
+          Atal hau ELGAren <em>PISA 2029 Media and Artificial Intelligence Literacy (MAIL) Assessment Framework</em> (lehen zirriborroa, 2026) eta EB-ELGAren <em>AI Literacy Framework</em> dokumentuetan oinarritutako material didaktiko independentea da. Ez da ELGAren edo PISAren baliabide ofiziala, eta ariketak ez dira proba errealeko itemak.
+        </p>
+        <div class="footer-legal">
+          <a href="../lege-oharra.html">Lege oharra</a>
+          <a href="../pribatutasun-politika.html">Pribatutasun politika</a>
+          <a href="../lizentzia.html">Lizentzia</a>
+        </div>
+        <div class="footer-copy">
+          <span>&copy; 2026 artifiziala.eus | Beñat Erezumak egina</span>
+          <span>CC BY-NC-SA 4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/pisa.js"></script>
+  <script src="assets/items.js"></script>
+  <script>
+    (function () {
+      const items = MAIL.items;
+      document.querySelector("[data-count-all]").textContent = items.length + " ariketa";
+
+      /* ---- Moduak ---- */
+      const free = document.getElementById("freeMode");
+      const exam = document.getElementById("examMode");
+      document.querySelectorAll("[data-mode]").forEach((b) =>
+        b.addEventListener("click", () => {
+          document.querySelectorAll("[data-mode]").forEach((x) => {
+            x.classList.toggle("active", x === b);
+            x.setAttribute("aria-selected", x === b ? "true" : "false");
+          });
+          free.hidden = b.dataset.mode !== "free";
+          exam.hidden = b.dataset.mode !== "exam";
+          if (b.dataset.mode === "exam") drawHistory();
+        })
+      );
+
+      /* ---- Praktika librea ---- */
+      const sel = (k) => document.querySelector(`[data-f="${k}"]`);
+      MAIL.COMP_ORDER.forEach((c) => sel("comp").insertAdjacentHTML("beforeend", `<option value="${c}">${MAIL.COMP[c].glyph} ${MAIL.COMP[c].short}</option>`));
+      Object.entries(MAIL.CONTEXT).forEach(([k, v]) => sel("context").insertAdjacentHTML("beforeend", `<option value="${k}">${v}</option>`));
+      Object.entries(MAIL.TYPE_LABEL).forEach(([k, v]) => sel("type").insertAdjacentHTML("beforeend", `<option value="${k}">${v}</option>`));
+      const params = new URLSearchParams(location.search);
+      ["comp", "context", "level", "type"].forEach((k) => params.get(k) && (sel(k).value = params.get(k)));
+
+      function drawFree() {
+        const f = { comp: sel("comp").value, context: sel("context").value, level: sel("level").value, type: sel("type").value };
+        const list = items.filter((i) => (!f.comp || i.comp === f.comp) && (!f.context || i.context === f.context) && (!f.level || String(i.level) === f.level) && (!f.type || i.type === f.type));
+        document.querySelector("[data-count]").textContent = `${list.length} ariketa erakusten`;
+        MAIL.renderItems(document.getElementById("bankList"), list);
+      }
+      ["comp", "context", "level", "type"].forEach((k) => sel(k).addEventListener("change", drawFree));
+      document.querySelector("[data-clear]").addEventListener("click", () => {
+        ["comp", "context", "level", "type"].forEach((k) => (sel(k).value = ""));
+        drawFree();
+      });
+      drawFree();
+      if (location.hash) {
+        const el = document.getElementById("item-" + location.hash.slice(1));
+        if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+      }
+
+      /* ---- Proba-saioa ---- */
+      const setup = document.getElementById("examSetup");
+      const run = document.getElementById("examRun");
+      const rep = document.getElementById("examReport");
+      const host = document.getElementById("examItems");
+      let E = null;
+
+      function pickItems(n) {
+        const pool = items.filter((i) => i.type !== "open");
+        const share = { aztertu: 0.25, sortu: 0.25, etika: 0.1667, sarbidea: 0.1667, partehartu: 0.1667 };
+        const out = [];
+        MAIL.COMP_ORDER.forEach((c) => {
+          const want = Math.max(1, Math.round(n * share[c]));
+          out.push(...MAIL.shuffle(pool.filter((i) => i.comp === c)).slice(0, want));
+        });
+        const rest = MAIL.shuffle(pool.filter((i) => !out.includes(i)));
+        while (out.length < n && rest.length) out.push(rest.pop());
+        return MAIL.shuffle(out).slice(0, n);
+      }
+
+      function show(i) {
+        E.pos = Math.max(0, Math.min(E.list.length - 1, i));
+        [...host.children].forEach((el, k) => (el.hidden = k !== E.pos));
+        run.querySelector("[data-pos]").textContent = `${E.pos + 1}/${E.list.length}`;
+        run.querySelector("[data-prev]").disabled = E.pos === 0;
+        run.querySelector("[data-next]").textContent = E.pos === E.list.length - 1 ? "Azkena" : "Hurrengoa →";
+        run.querySelector("[data-next]").disabled = E.pos === E.list.length - 1;
+        run.querySelector("[data-prog]").style.width = `${(Object.keys(E.res).length / E.list.length) * 100}%`;
+      }
+
+      function startExam(n, mins) {
+        E = { list: pickItems(n), res: {}, end: Date.now() + mins * 60000, mins, pos: 0, armed: false };
+        host.innerHTML = "";
+        E.list.forEach((it) => {
+          const el = MAIL.renderItem(host, it, {
+            exam: true,
+            onDone: (r, item) => {
+              E.res[item.id] = r;
+              show(E.pos);
+              if (E.pos < E.list.length - 1) setTimeout(() => show(E.pos + 1), 450);
+            }
+          });
+          el.classList.add("silent");
+          el.querySelector(".js-check").textContent = "Gorde erantzuna";
+        });
+        setup.hidden = true;
+        rep.hidden = true;
+        run.hidden = false;
+        show(0);
+        tickTimer();
+        E.timer = setInterval(tickTimer, 1000);
+        run.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function tickTimer() {
+        const left = Math.max(0, Math.round((E.end - Date.now()) / 1000));
+        const t = run.querySelector("[data-timer]");
+        t.textContent = `${String(Math.floor(left / 60)).padStart(2, "0")}:${String(left % 60).padStart(2, "0")}`;
+        t.classList.toggle("low", left < 60);
+        if (left === 0) finishExam(true);
+      }
+
+      function finishExam(timeout) {
+        clearInterval(E.timer);
+        const per = {};
+        MAIL.COMP_ORDER.forEach((c) => (per[c] = { s: 0, m: 0 }));
+        let s = 0, m = 0;
+        E.list.forEach((it) => {
+          const r = E.res[it.id] || { score: 0, max: it.type === "single" ? it.points || 1 : 2 };
+          per[it.comp].s += r.score;
+          per[it.comp].m += r.max;
+          s += r.score;
+          m += r.max;
+        });
+        const pct = m ? Math.round((s / m) * 100) : 0;
+        const lvl = MAIL.levelFromPct(pct);
+        const answered = Object.keys(E.res).length;
+        const used = Math.round((E.mins * 60000 - Math.max(0, E.end - Date.now())) / 1000);
+        MAIL.store.saveExam({ n: E.list.length, pct, answered, used });
+        run.hidden = true;
+        rep.hidden = false;
+        rep.innerHTML = `
+          <div class="report">
+            <div class="report-head"><div><span class="mono" style="font-size:.75rem;opacity:.7">PROBA-SAIOAREN TXOSTENA${timeout ? " · DENBORA AMAITU DA" : ""}</span><h3>${MAIL.LEVEL[lvl]} maila</h3><span style="opacity:.75;font-size:.9rem">${answered}/${E.list.length} erantzunda · ${Math.floor(used / 60)} min ${used % 60} s</span></div><div class="score">${pct}<small>/100</small></div></div>
+            <div class="report-body">
+              <div>${MAIL.COMP_ORDER.filter((c) => per[c].m).map((c) => {
+                const p = Math.round((per[c].s / per[c].m) * 100);
+                const l = MAIL.levelFromPct(p);
+                return `<div class="meter-row" style="margin-bottom:.7rem"><span class="name">${MAIL.COMP[c].glyph} ${MAIL.COMP[c].short}</span><div class="meter"><i style="width:${p}%;background:${MAIL.COMP[c].color}"></i></div><span class="lvl l${l}">${per[c].s}/${per[c].m} · ${MAIL.LEVEL[l]}</span></div>`;
+              }).join("")}</div>
+              <div class="note"><strong>Hurrengo urratsa</strong><p>${(() => {
+                const weak = MAIL.COMP_ORDER.filter((c) => per[c].m).sort((a, b) => per[a].s / per[a].m - per[b].s / per[b].m)[0];
+                return `Zure gaitasunik ahulena: <b>${MAIL.COMP[weak].name}</b>. Landu <a href="${MAIL.COMP[weak].page}" style="font-weight:700;color:var(--purple)">haren orria</a> eta egin simulagailua.`;
+              })()}</p></div>
+              <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+                <button class="btn btn-dark btn-sm" type="button" data-review>👀 Berrikusi erantzunak</button>
+                <button class="btn btn-ghost btn-sm" type="button" data-again>↺ Beste saio bat</button>
+              </div>
+            </div>
+          </div>
+          <div id="reviewList" class="bank-list" style="margin-top:1.5rem" hidden></div>`;
+        rep.querySelector("[data-review]").addEventListener("click", () => {
+          const rl = rep.querySelector("#reviewList");
+          rl.hidden = false;
+          [...host.children].forEach((el) => {
+            el.hidden = false;
+            el.classList.remove("silent");
+            rl.appendChild(el);
+          });
+          rl.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        rep.querySelector("[data-again]").addEventListener("click", () => {
+          rep.hidden = true;
+          setup.hidden = false;
+          drawHistory();
+        });
+        rep.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document.querySelectorAll("[data-exam]").forEach((b) =>
+        b.addEventListener("click", () => {
+          const [n, mins] = b.dataset.exam.split(",").map(Number);
+          startExam(n, mins);
+        })
+      );
+      run.querySelector("[data-prev]").addEventListener("click", () => show(E.pos - 1));
+      run.querySelector("[data-next]").addEventListener("click", () => show(E.pos + 1));
+      const fin = run.querySelector("[data-finish]");
+      fin.addEventListener("click", () => {
+        const left = E.list.length - Object.keys(E.res).length;
+        if (left > 0 && !E.armed) {
+          E.armed = true;
+          fin.textContent = `${left} erantzun gabe · sakatu berriro amaitzeko`;
+          setTimeout(() => {
+            if (E) {
+              E.armed = false;
+              fin.textContent = "Amaitu saioa";
+            }
+          }, 4000);
+          return;
+        }
+        fin.textContent = "Amaitu saioa";
+        finishExam(false);
+      });
+
+      function drawHistory() {
+        const ex = MAIL.store.get().exams;
+        document.querySelector("[data-history]").innerHTML = ex.length
+          ? ex.map((e) => `<li><span>${new Date(e.ts).toLocaleDateString("eu-ES")} · ${e.n} ariketa</span><b>${e.pct}/100 · ${MAIL.LEVEL[MAIL.levelFromPct(e.pct)]}</b></li>`).join("")
+          : `<li><span>Oraindik ez duzu saiorik egin.</span></li>`;
+      }
+      if (params.get("modua") === "proba") document.querySelector('[data-mode="exam"]').click();
+    })();
+  </script>
+</body>
+</html>

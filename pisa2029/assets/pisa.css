@@ -159,8 +159,13 @@
 .comp-bar .fill{ height:100%; border-radius:6px; }
 
 /* ---------- Azpi-nabigazioa ---------- */
+/* Irakurtzean goiburu bakarra: webgunearena gora joaten da eta azpi-nabigazioa geratzen da.
+   Mugikorrean alderantziz (goiburuak Menua botoia du eta azpi-nabigazioa ez da itsasten). */
+@media (min-width: 901px){
+  .pisa-page .site-header{ position:relative; }
+}
 .pisa-subnav{
-  position:sticky; top:84px; z-index:40;
+  position:sticky; top:0; z-index:40;
   background:rgba(255,255,255,.92);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--rule);
@@ -184,12 +189,12 @@
 .pisa-subnav nav a.active{ color:#fff; background:var(--purple); }
 
 /* ---------- Atalak ---------- */
-.p-section{ padding:4.5rem 0; }
-.p-section.tight{ padding:3rem 0; }
+.p-section{ padding:6rem 0; }
+.p-section.tight{ padding:4rem 0; }
 .p-section.alt{ background:var(--surface-2) !important; }
 .p-section.ink{ background:var(--ink) !important; color:#fff; }
 .p-section.ink .p-head p{ color:rgba(255,255,255,.75); }
-.p-head{ max-width:760px; margin-bottom:2.5rem; }
+.p-head{ max-width:760px; margin-bottom:3.25rem; }
 .p-head .kicker{
   display:inline-block; font-family:var(--font-mono); font-size:.78rem; font-weight:600;
   letter-spacing:.08em; text-transform:uppercase; color:var(--purple); margin-bottom:.8rem;
@@ -199,46 +204,46 @@
   font-family:var(--font-display); font-size:clamp(1.9rem, 3.6vw, 3rem);
   line-height:1; letter-spacing:-.04em; margin-bottom:1rem;
 }
-.p-head p{ color:var(--ink-soft); font-size:1.08rem; }
+.p-head p{ color:var(--ink-soft); font-size:1.1rem; line-height:1.7; }
 .p-head.center{ margin-inline:auto; text-align:center; }
 
-.prose p{ color:var(--ink-soft); font-size:1.03rem; line-height:1.7; margin-bottom:1rem; max-width:72ch; }
+.prose p{ color:var(--ink-soft); font-size:1.075rem; line-height:1.8; margin-bottom:1.4rem; max-width:68ch; }
 .prose p strong{ color:var(--ink); }
-.prose h3{ font-family:var(--font-display); font-size:1.45rem; letter-spacing:-.02em; margin:2rem 0 .7rem; color:var(--ink); }
-.prose ul.dots{ list-style:disc; padding-left:1.3rem; display:grid; gap:.4rem; margin:0 0 1rem; color:var(--ink-soft); max-width:72ch; }
-.prose ol.nums{ list-style:decimal; padding-left:1.3rem; display:grid; gap:.4rem; margin:0 0 1rem; color:var(--ink-soft); max-width:72ch; }
+.prose h3{ font-family:var(--font-display); font-size:1.45rem; letter-spacing:-.02em; margin:2.75rem 0 1rem; color:var(--ink); }
+.prose ul.dots{ list-style:disc; padding-left:1.3rem; display:grid; gap:.7rem; margin:0 0 1.4rem; color:var(--ink-soft); font-size:1.05rem; line-height:1.7; max-width:68ch; }
+.prose ol.nums{ list-style:decimal; padding-left:1.3rem; display:grid; gap:.7rem; margin:0 0 1.4rem; color:var(--ink-soft); font-size:1.05rem; line-height:1.7; max-width:68ch; }
 
 /* ---------- Txartelak ---------- */
 .p-card{
   background:var(--surface);
   border:1px solid var(--rule);
   border-radius:var(--r-lg);
-  padding:1.75rem;
+  padding:2rem;
 }
 .p-card.soft{ background:var(--surface-2); border-color:transparent; }
-.p-card h3{ font-family:var(--font-display); font-size:1.35rem; line-height:1.1; letter-spacing:-.02em; margin-bottom:.6rem; }
-.p-card p{ color:var(--ink-soft); }
-.grid-2{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.25rem; }
-.grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.25rem; }
-.grid-4{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1.25rem; }
-.grid-5{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1rem; }
-.stack{ display:grid; gap:1rem; }
+.p-card h3{ font-family:var(--font-display); font-size:1.35rem; line-height:1.15; letter-spacing:-.02em; margin-bottom:.8rem; }
+.p-card p{ color:var(--ink-soft); line-height:1.7; }
+.grid-2{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.75rem; }
+.grid-3{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1.75rem; }
+.grid-4{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1.5rem; }
+.grid-5{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:1.25rem; }
+.stack{ display:grid; gap:1.25rem; }
 
 .note{
-  border-radius:var(--r-md); padding:1.1rem 1.25rem; background:var(--surface-3);
+  border-radius:var(--r-md); padding:1.4rem 1.6rem; background:var(--surface-3);
   border-left:5px solid var(--purple); color:var(--ink);
 }
 .note.warn{ background:var(--warn-soft); border-left-color:var(--warn); }
 .note.ok{ background:var(--ok-soft); border-left-color:var(--ok); }
 .note.bad{ background:var(--bad-soft); border-left-color:var(--bad); }
 .note strong{ display:block; font-family:var(--font-display); margin-bottom:.2rem; }
-.note p{ color:var(--ink-soft); margin:0; }
+.note p{ color:var(--ink-soft); margin:0; line-height:1.7; }
 
 /* Ibilbide txartelak (hub) */
 .path-card{
   position:relative; display:flex; flex-direction:column; gap:.7rem;
   background:var(--surface); border:1px solid var(--rule); border-radius:var(--r-lg);
-  padding:1.6rem; min-height:100%;
+  padding:1.9rem; min-height:100%;
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s;
 }
 .path-card:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(19,38,46,.12); border-color:transparent; }
@@ -285,8 +290,8 @@
 .comp-card .top .num{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; opacity:.85; }
 .comp-card .top h3{ font-family:var(--font-display); font-size:1.35rem; line-height:1.02; letter-spacing:-.02em; }
 .comp-card .top .glyph{ position:absolute; right:1rem; top:.9rem; font-size:1.8rem; opacity:.95; }
-.comp-card .body{ padding:1.2rem 1.3rem 1.3rem; display:flex; flex-direction:column; gap:.7rem; flex:1; }
-.comp-card .body p{ color:var(--ink-soft); font-size:.93rem; flex:1; }
+.comp-card .body{ padding:1.4rem 1.5rem 1.5rem; display:flex; flex-direction:column; gap:.7rem; flex:1; }
+.comp-card .body p{ color:var(--ink-soft); font-size:.95rem; line-height:1.65; flex:1; }
 .comp-card .body .go{ font-weight:700; font-size:.9rem; color:var(--ink); }
 .comp-card .weight{ font-family:var(--font-mono); font-size:.72rem; color:var(--ink-mute); }
 [data-c="etika"]{ --cc:var(--c-etika-deep); --cs:var(--c-etika-soft); }
@@ -317,22 +322,22 @@
 .model-legend .dot{ width:12px; height:12px; border-radius:50%; flex:none; }
 
 /* Maila-progresioa */
-.levels{ display:grid; gap:.6rem; }
+.levels{ display:grid; gap:1rem; }
 .level{
   display:grid; grid-template-columns:130px minmax(0,1fr); gap:1rem; align-items:start;
-  padding:1rem 1.1rem; border-radius:var(--r-md); background:var(--surface-2);
+  padding:1.3rem 1.5rem; border-radius:var(--r-md); background:var(--surface-2);
 }
 .level .lv{ display:flex; flex-direction:column; gap:.35rem; }
 .level .lv b{ font-family:var(--font-display); font-size:1rem; }
 .level .bars{ display:flex; gap:3px; }
 .level .bars i{ width:22px; height:6px; border-radius:3px; background:var(--rule); }
 .level .bars i.on{ background:var(--purple); }
-.level p{ color:var(--ink-soft); font-size:.95rem; margin:0; }
+.level p{ color:var(--ink-soft); font-size:.98rem; line-height:1.7; margin:0; }
 
 /* Taulak */
 .p-table-wrap{ overflow-x:auto; border:1px solid var(--rule); border-radius:var(--r-md); }
 .p-table{ width:100%; border-collapse:collapse; font-size:.95rem; min-width:560px; }
-.p-table th, .p-table td{ text-align:left; padding:.9rem 1rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+.p-table th, .p-table td{ text-align:left; padding:1.1rem 1.25rem; line-height:1.6; border-bottom:1px solid var(--rule); vertical-align:top; }
 .p-table th{ background:var(--surface-3); font-family:var(--font-display); font-weight:700; color:var(--ink); }
 .p-table td{ color:var(--ink-soft); }
 .p-table tr:last-child td{ border-bottom:none; }
@@ -340,19 +345,19 @@
 
 /* Akordeoia */
 details.acc{ border:1px solid var(--rule); border-radius:var(--r-md); background:#fff; }
-details.acc + details.acc{ margin-top:.6rem; }
+details.acc + details.acc{ margin-top:.85rem; }
 details.acc summary{
-  list-style:none; cursor:pointer; padding:1rem 1.2rem; font-weight:700; color:var(--ink);
+  list-style:none; cursor:pointer; padding:1.2rem 1.4rem; font-weight:700; color:var(--ink);
   display:flex; justify-content:space-between; gap:1rem; align-items:center;
 }
 details.acc summary::-webkit-details-marker{ display:none; }
 details.acc summary::after{ content:"+"; font-family:var(--font-mono); font-size:1.2rem; color:var(--ink-mute); }
 details.acc[open] summary::after{ content:"–"; }
-details.acc .acc-body{ padding:0 1.2rem 1.2rem; color:var(--ink-soft); }
-details.acc .acc-body p{ margin-bottom:.6rem; }
+details.acc .acc-body{ padding:.2rem 1.4rem 1.5rem; color:var(--ink-soft); line-height:1.7; }
+details.acc .acc-body p{ margin-bottom:.9rem; }
 
 /* Fitxak (tabs) */
-.p-tabs{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.25rem; }
+.p-tabs{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.75rem; }
 .p-tab{
   border:1.5px solid var(--rule); background:#fff; color:var(--ink-soft);
   font-weight:600; font-size:.9rem; padding:.55rem 1rem; border-radius:var(--r-pill); cursor:pointer;
@@ -363,42 +368,44 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 .p-panel.active{ display:block; }
 
 /* ---------- Gaitasun-orriaren diseinua ---------- */
-.comp-layout{ display:grid; grid-template-columns:260px minmax(0,1fr); gap:2.5rem; align-items:start; }
-.comp-toc{ position:sticky; top:150px; display:grid; gap:1rem; }
+.comp-layout{ display:grid; grid-template-columns:240px minmax(0,1fr); gap:4.5rem; align-items:start; }
+.comp-toc{ position:sticky; top:96px; display:grid; gap:1rem; }
 .comp-toc .p-card{ padding:1.2rem; }
 .comp-toc h4{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:.6rem; }
 .comp-toc ol{ display:grid; gap:.1rem; counter-reset:toc; }
 .comp-toc ol a{ display:block; padding:.4rem .5rem; border-radius:8px; color:var(--ink-soft); font-weight:600; font-size:.92rem; }
 .comp-toc ol a:hover{ background:var(--surface-3); color:var(--ink); }
 .comp-toc ol a.on{ background:var(--surface-3); color:var(--ink); }
-.comp-main{ min-width:0; display:grid; gap:3.5rem; }
-.comp-main > section{ scroll-margin-top:150px; }
-.block-title{ display:flex; align-items:baseline; gap:.8rem; margin-bottom:1.1rem; }
+.comp-toc .note{ padding:1.1rem 1.2rem; }
+.comp-toc .note p{ font-size:.92rem; line-height:1.6; }
+.comp-main{ min-width:0; display:grid; gap:6rem; }
+.comp-main > section{ scroll-margin-top:24px; }
+.block-title{ display:flex; align-items:baseline; gap:.8rem; margin-bottom:1.75rem; }
 .block-title .n{ font-family:var(--font-mono); font-size:.8rem; color:var(--ink-mute); }
 .block-title h2{ font-family:var(--font-display); font-size:clamp(1.6rem, 2.8vw, 2.2rem); letter-spacing:-.03em; line-height:1.05; }
 
 .def-box{
-  border-radius:var(--r-lg); padding:1.8rem; color:#fff; position:relative; overflow:hidden;
+  border-radius:var(--r-lg); padding:2.25rem; color:#fff; position:relative; overflow:hidden;
   background:var(--cc, var(--purple));
 }
 .def-box .label{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; opacity:.85; }
 .def-box blockquote{ font-family:var(--font-display); font-size:clamp(1.25rem, 2.2vw, 1.7rem); line-height:1.2; letter-spacing:-.02em; margin-top:.6rem; }
 .def-box .src{ font-size:.82rem; opacity:.8; margin-top:.8rem; }
 
-.strategy{ display:grid; grid-template-columns:48px minmax(0,1fr); gap:1rem; padding:1.1rem; border-radius:var(--r-md); background:var(--surface-2); }
+.strategy{ display:grid; grid-template-columns:48px minmax(0,1fr); gap:1.2rem; padding:1.5rem; border-radius:var(--r-md); background:var(--surface-2); }
 .strategy .ic{ width:48px; height:48px; border-radius:12px; background:#fff; display:grid; place-items:center; font-size:1.35rem; border:1px solid var(--rule); }
-.strategy h4{ font-family:var(--font-display); font-size:1.08rem; margin-bottom:.2rem; }
-.strategy p{ color:var(--ink-soft); font-size:.95rem; margin:0; }
+.strategy h4{ font-family:var(--font-display); font-size:1.08rem; margin-bottom:.45rem; }
+.strategy p{ color:var(--ink-soft); font-size:.97rem; line-height:1.7; margin:0; }
 
 /* Adibide ebatzia */
 .worked{ border:1px solid var(--rule); border-radius:var(--r-lg); overflow:hidden; background:#fff; }
 .worked-head{ padding:1rem 1.4rem; background:var(--surface-3); display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center; }
 .worked-head strong{ font-family:var(--font-display); font-size:1.1rem; }
 .worked-body{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
-.worked-body > div{ padding:1.4rem; }
+.worked-body > div{ padding:1.75rem; }
 .worked-body > div + div{ border-left:1px solid var(--rule); background:var(--surface-2); }
-.think-steps{ display:grid; gap:.8rem; counter-reset:step; }
-.think-steps li{ position:relative; padding-left:2.4rem; color:var(--ink-soft); font-size:.96rem; }
+.think-steps{ display:grid; gap:1.2rem; counter-reset:step; }
+.think-steps li{ position:relative; padding-left:2.4rem; color:var(--ink-soft); font-size:.97rem; line-height:1.7; }
 .think-steps li::before{
   counter-increment:step; content:counter(step);
   position:absolute; left:0; top:-.1rem; width:1.7rem; height:1.7rem; border-radius:50%;
@@ -615,7 +622,7 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 
 /* Proba-saioa */
 .exam-bar{
-  position:sticky; top:136px; z-index:30;
+  position:sticky; top:72px; z-index:30;
   display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
   padding:.8rem 1.1rem; background:var(--ink); color:#fff; border-radius:var(--r-md); margin-bottom:1.2rem;
 }
@@ -651,6 +658,10 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 .progress-cell .val{ font-family:var(--font-mono); font-size:.8rem; color:var(--ink-mute); }
 .progress-cell .meter::before, .progress-cell .meter::after{ display:none; }
 .progress-cell .meter{ height:7px; }
+.comp-toc [data-progress]{ gap:.9rem; }
+.comp-toc .progress-cell{ padding:0; border:0; background:none; gap:.3rem; }
+.comp-toc .progress-cell .meter{ height:5px; }
+.comp-toc .progress-cell .val{ font-size:.72rem; }
 
 /* ---------- Simulagailu txikiak (widget) ---------- */
 .widget{ border:1px solid var(--rule); border-radius:var(--r-lg); overflow:hidden; background:#fff; }
@@ -729,7 +740,7 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 .switch input:checked + span::after{ transform:translateX(20px); }
 .switch input:focus-visible + span{ outline:3px solid var(--c-sarbidea); outline-offset:2px; }
 .setting select{ font:inherit; font-size:.85rem; padding:.35rem .5rem; border-radius:8px; border:1.5px solid var(--rule); background:#fff; color:var(--ink); }
-.exposure{ padding:1.2rem; border-radius:var(--r-md); background:var(--surface-2); position:sticky; top:160px; display:grid; gap:.8rem; }
+.exposure{ padding:1.2rem; border-radius:var(--r-md); background:var(--surface-2); position:sticky; top:96px; display:grid; gap:.8rem; }
 .exposure .big{ font-family:var(--font-display); font-size:2.6rem; line-height:1; }
 .exposure ul{ display:grid; gap:.35rem; font-size:.86rem; color:var(--ink-soft); }
 .exposure li::before{ content:"→ "; color:var(--ink-mute); }
@@ -1017,6 +1028,9 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
   .comp-layout{ grid-template-columns:1fr; }
   .comp-toc{ position:static; }
   .comp-toc ol{ display:flex; flex-wrap:wrap; gap:.3rem; }
+  .comp-layout{ gap:2.5rem; }
+  /* Pantaila txikian aurrerapena ez da edukiaren aurretik pilatzen (hasierako orrian ikusgai dago) */
+  .comp-toc .p-card.soft{ display:none; }
   .bank-toolbar{ grid-template-columns:repeat(2, minmax(0,1fr)); }
   .feed-sim, .privacy-sim, .editor{ grid-template-columns:1fr; }
   .exposure{ position:static; }
@@ -1026,6 +1040,7 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 }
 @media (max-width: 900px){
   .pisa-subnav{ top:84px; }
+  .exam-bar{ top:96px; }
   .item-body{ grid-template-columns:1fr; }
   .item-stim{ border-right:none; border-bottom:1px solid var(--rule); }
   .worked-body{ grid-template-columns:1fr; }
@@ -1045,7 +1060,8 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
   .tl-item > div:last-child{ grid-column:2; }
 }
 @media (max-width: 640px){
-  .p-section{ padding:3rem 0; }
+  .p-section{ padding:4rem 0; }
+  .comp-main{ gap:4.5rem; }
   .pisa-hero{ padding:3rem 0 2.5rem; }
   .grid-2, .grid-4, .tpl-grid, .glossary, .folders, .declutter{ grid-template-columns:1fr; }
   .grid-5{ grid-template-columns:repeat(2, minmax(0,1fr)); }
@@ -1064,7 +1080,7 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 }
 
 /* ---------- Simulagailuak mugikorrean ---------- */
-html:has(body.pisa-page){ scroll-padding-top:150px; }
+html:has(body.pisa-page){ scroll-padding-top:72px; }
 @media (max-width: 900px){
   html:has(body.pisa-page){ scroll-padding-top:92px; }
   .pisa-subnav{ position:relative; top:auto; }

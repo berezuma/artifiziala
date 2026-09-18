@@ -980,6 +980,33 @@ details.acc .acc-body p{ margin-bottom:.6rem; }
 .cta-band p{ color:rgba(255,255,255,.75); max-width:58ch; }
 .cta-band .btns{ display:flex; gap:.6rem; flex-wrap:wrap; position:relative; z-index:1; }
 
+/* ---------- Liburua ---------- */
+.book-band{
+  display:grid; grid-template-columns:clamp(190px, 22vw, 260px) minmax(0,1fr); gap:clamp(1.6rem, 3vw, 3rem);
+  align-items:center; padding:clamp(1.6rem, 3vw, 2.4rem);
+  background:var(--surface-2); border:1px solid var(--rule); border-radius:var(--r-lg);
+}
+.book-cover{ display:block; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--rule);
+  box-shadow:0 10px 30px rgba(19,38,46,.14); transition:transform .18s ease, box-shadow .18s ease; }
+.book-cover:hover, .book-cover:focus-visible{ transform:translateY(-4px); box-shadow:0 16px 40px rgba(19,38,46,.22); }
+.book-cover img{ display:block; width:100%; height:auto; }
+.book-text h3{ font-family:var(--font-display); font-size:clamp(1.4rem, 2.4vw, 1.9rem); letter-spacing:-.02em; line-height:1.12; }
+.book-text .book-sub{ font-family:var(--font-mono); font-size:.8rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--ink-mute); margin:.45rem 0 .9rem; }
+.book-text p{ color:var(--ink-soft); }
+.book-facts{ display:flex; flex-wrap:wrap; gap:.5rem; list-style:none; margin:1.1rem 0 1.3rem; padding:0; }
+.book-facts li{ display:flex; align-items:baseline; gap:.4rem; padding:.45rem .8rem;
+  background:#fff; border:1px solid var(--rule); border-radius:var(--r-sm); }
+.book-facts b{ font-family:var(--font-display); font-size:1.15rem; color:var(--purple); letter-spacing:-.02em; }
+.book-facts span{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-mute); }
+.book-band .btns{ display:flex; gap:.6rem; flex-wrap:wrap; }
+@media (max-width: 760px){
+  .book-band{ grid-template-columns:1fr; justify-items:center; text-align:center; }
+  .book-cover{ max-width:230px; }
+  .book-facts, .book-band .btns{ justify-content:center; }
+  .book-text p{ text-align:left; }
+}
+
 /* ---------- Erantzunkorra ---------- */
 @media (max-width: 1100px){
   .pisa-hero-grid, .model-wrap{ grid-template-columns:1fr; }

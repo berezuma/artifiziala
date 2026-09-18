@@ -366,7 +366,7 @@
 
     .cta-download-card {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr minmax(0, 480px);
       align-items: center;
       gap: 3rem;
       background: linear-gradient(135deg, #0c2c3a 0%, #123f50 50%, #155c6e 100%);
@@ -479,6 +479,15 @@
       backdrop-filter: blur(8px);
     }
 
+    .cta-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: #0c2c3a;
+    }
+
     @media (max-width: 768px) {
       .cta-download-card {
         grid-template-columns: 1fr;
@@ -495,7 +504,7 @@
       }
 
       .cta-download-visual {
-        display: none;
+        margin-top: 1.8rem;
       }
 
       .cta-download-btn {
@@ -709,8 +718,14 @@
             <p>2029an PISAk lehen aldiz ebaluatuko du MAIL. Teoria euskaraz, 46 ariketa, mahaigain birtualeko simulagailua, 12 txantiloi deskargagarri eta irakasleentzako gida osoa.</p>
             <a class="cta-download-btn" href="pisa2029/index.html">Sartu PISA 2029 gunera</a>
           </div>
-          <div class="cta-download-visual" aria-hidden="true">
-            <div class="cta-doc-icon">2029</div>
+          <div class="cta-download-visual">
+            <video class="cta-video" controls muted autoplay loop playsinline
+                   preload="metadata"
+                   poster="assets/video/pisa2029-promo-poster.jpg"
+                   aria-label="PISA 2029 MAIL atalaren aurkezpen-bideoa: 22 segundo, testuduna, ahotsik gabe">
+              <source src="assets/video/pisa2029-promo-16x9.mp4" type="video/mp4" />
+              <a href="assets/video/pisa2029-promo-16x9.mp4">Ikusi aurkezpen-bideoa (MP4, 22 s)</a>
+            </video>
           </div>
         </div>
       </div>
